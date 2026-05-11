@@ -9,26 +9,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 
 /* ==================== */
-/* CSS Reset */
+/* Themes */
 /* ==================== */
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
+@theme {
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 48em;
+  --breakpoint-lg: 64em;
+  --breakpoint-xl: 80em;
+
+  --color-primary: #b0552a;
+  --color-primary-hover: #ca683b;
+  --color-surface: #f5f4f0;
+  --color-white: #fdfffe;
+  --color-text: #1c1c1c;
+  --color-light: #666666;
+
+  --spacing-sm: 1rem;
+  --spacing-md: 3rem;
+  --spacing-lg: 5rem;
+  --spacing-xl: 7rem;
+
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
 }
 
-body {
-  box-sizing: border-box;
-  font-family: "Inter", sans-serif;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Playfair Display", serif;
+@utility wrapper {
+  @apply max-sm:px-sm max-md:px-md max-lg:px-lg max-xl:px-xl px-36;
 }
