@@ -42,6 +42,14 @@
   @apply max-sm:px-sm max-md:px-md max-lg:px-lg max-xl:px-xl px-36;
 }
 
-@utility navLink {
+@utility nav-link {
   @apply px-5 py-3 font-bold rounded-md hover:bg-black-transparent hover:text-white transition-all duration-400 ease-out;
+}
+
+@utility heading-xl {
+  @apply max-sm:text-4xl max-md:text-5xl max-lg:text-6xl font-heading text-black text-7xl;
+}
+
+@utility heading-lg {
+  @apply max-sm:text-3xl max-md:text-4xl max-lg:text-5xl font-heading text-black text-6xl;
 }
