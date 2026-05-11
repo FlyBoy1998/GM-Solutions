@@ -18,7 +18,7 @@
   --breakpoint-xl: 80em;
 
   --color-primary: oklch(0.5545 0.1314 43.96);
-  --color-primary-hover: oklch(0.624 0.1379 43.98);
+  --color-primary-transparent: oklch(0.5545 0.1314 43.96 / 70%);
   --color-surface: oklch(0.9668 0.0054 95.1);
   --color-white: oklch(0.9982 0.0025 165.08);
   --color-text: oklch(0.2264 0 0);
@@ -43,5 +43,5 @@
 }
 
 @utility navLink {
-  @apply px-5 py-3 rounded-md hover:bg-black-transparent hover:text-white transition-all duration-400 ease-out;
+  @apply px-5 py-3 font-bold rounded-md hover:bg-black-transparent hover:text-white transition-all duration-400 ease-out;
 }
