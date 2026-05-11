@@ -17,12 +17,14 @@
   --breakpoint-lg: 64em;
   --breakpoint-xl: 80em;
 
-  --color-primary: #b0552a;
-  --color-primary-hover: #ca683b;
-  --color-surface: #f5f4f0;
-  --color-white: #fdfffe;
-  --color-text: #1c1c1c;
-  --color-light: #666666;
+  --color-primary: oklch(0.5545 0.1314 43.96);
+  --color-primary-hover: oklch(0.624 0.1379 43.98);
+  --color-surface: oklch(0.9668 0.0054 95.1);
+  --color-white: oklch(0.9982 0.0025 165.08);
+  --color-text: oklch(0.2264 0 0);
+  --color-light: oklch(0.5103 0 0);
+  --color-black: oklch(0.2 0 260);
+  --color-black-transparent: oklch(0.2 0 260 / 70%);
 
   --spacing-sm: 1rem;
   --spacing-md: 3rem;
@@ -35,4 +37,8 @@
 
 @utility wrapper {
   @apply max-sm:px-sm max-md:px-md max-lg:px-lg max-xl:px-xl px-36;
+}
+
+@utility navLink {
+  @apply text-[1rem];
 }
