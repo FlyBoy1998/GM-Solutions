@@ -35,10 +35,13 @@
   --font-body: "Inter", sans-serif;
 }
 
+/* ==================== */
+/* Utilities */
+/* ==================== */
 @utility wrapper {
   @apply max-sm:px-sm max-md:px-md max-lg:px-lg max-xl:px-xl px-36;
 }
 
 @utility navLink {
-  @apply text-[1rem];
+  @apply px-5 py-3 rounded-md hover:bg-black-transparent hover:text-white transition-all duration-400 ease-out;
 }
