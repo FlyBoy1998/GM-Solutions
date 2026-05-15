@@ -42,6 +42,10 @@
   @apply max-sm:px-sm max-md:px-md max-lg:px-lg max-xl:px-xl px-36;
 }
 
+@utility logo {
+  @apply max-sm:h-11 max-md:h-12 max-lg:h-14 h-16;
+}
+
 @utility nav-link {
   @apply px-5 py-3 font-bold rounded-md hover:bg-black-transparent hover:text-white transition-all duration-400 ease-out;
 }
