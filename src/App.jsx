@@ -1,5 +1,26 @@
+import { createBrowserRouter, RouterProvider } from "react-router";
+
+import RootLayout from "./pages/RootLayout";
+import Home from "./pages/Home";
+import Services from "./pages/Services";
+import Gallery from "./pages/Gallery";
+import Contact from "./pages/Contact";
+
+const router = createBrowserRouter([
+  {
+    element: <RootLayout />,
+    path: "/",
+    children: [
+      { index: true, element: <Home /> },
+      { element: <Services />, path: "services" },
+      { element: <Gallery />, path: "gallery" },
+      { element: <Contact />, path: "contact" },
+    ],
+  },
+]);
+
 function App() {
-  return <h1>GM Solutions</h1>;
+  return <RouterProvider router={router} />;
 }
 
 export default App;
