@@ -38,6 +38,18 @@
 /* ==================== */
 /* Utilities */
 /* ==================== */
+@utility root-bg-light {
+  @apply relative bg-[url('/images/kitchen.jpg')] bg-cover bg-center;
+  @apply before:content-[''] before:absolute before:inset-0;
+  @apply before:bg-[linear-gradient(to_right,rgba(245,244,240,1),rgba(245,244,240,0))];
+}
+
+@utility root-bg-dark {
+  @apply relative bg-[url('/images/kitchen.jpg')] bg-cover bg-center;
+  @apply before:content-[''] before:absolute before:inset-0;
+  @apply before:bg-[linear-gradient(to_right,rgba(0,0,0,0.7),rgba(0,0,0,0.7))];
+}
+
 @utility wrapper {
   @apply max-sm:px-sm max-md:px-md max-lg:px-lg max-xl:px-xl px-36;
 }
