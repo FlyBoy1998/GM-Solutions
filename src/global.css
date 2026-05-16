@@ -22,6 +22,7 @@
   --color-surface: oklch(0.9668 0.0054 95.1);
   --color-white: oklch(0.9982 0.0025 165.08);
   --color-gray: oklch(0.95 0 165.08);
+  --color-gray-transparent: oklch(0.95 0 0 / 50%);
   --color-text: oklch(0.2264 0 0);
   --color-light: oklch(0.5103 0 0);
   --color-black: oklch(0.2 0 260);
