@@ -27,7 +27,7 @@ export default function NavbarOffset({ children }) {
   return (
     <div
       style={{ "--nav-height": `${navHeight}px` }}
-      className={`flex flex-col min-h-screen pt-(--nav-height)`}
+      className="wrapper flex flex-col min-h-screen pt-(--nav-height)"
     >
       {children}
     </div>
