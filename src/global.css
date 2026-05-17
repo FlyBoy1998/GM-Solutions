@@ -75,3 +75,7 @@
 @utility heading-lg {
   @apply max-sm:text-3xl max-md:text-4xl max-lg:text-5xl font-heading text-black text-6xl;
 }
+
+@utility heading-md {
+  @apply max-sm:text-2xl max-md:text-3xl max-lg:text-4xl font-heading text-black text-5xl;
+}
