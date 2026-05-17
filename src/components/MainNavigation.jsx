@@ -4,7 +4,7 @@ import logoImg from "/images/gm-solutions-logo.png";
 export default function MainNavigation() {
   return (
     <header className="w-full fixed top-0 z-11 bg-[linear-gradient(to_bottom,rgba(245,244,240,0.6)_55%,rgba(245,244,240,0))]">
-      <nav id="main-nav" className="wrapper flex justify-between py-10">
+      <nav id="main-nav" className="wrapper flex justify-between py-4">
         <NavLink to="/">
           <img src={logoImg} className="logo" alt="GM Solutions logo" />
         </NavLink>
