@@ -31,6 +31,16 @@ export default function MainNavigation() {
           </li>
           <li>
             <NavLink
+              to="projects"
+              className={({ isActive }) =>
+                `nav-link ${isActive ? "nav-link-active" : ""}`
+              }
+            >
+              Projects
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
               to="gallery"
               className={({ isActive }) =>
                 `nav-link ${isActive ? "nav-link-active" : ""}`
