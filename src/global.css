@@ -19,7 +19,7 @@
 
   --color-primary: oklch(0.5545 0.1314 43.96);
   --color-primary-transparent: oklch(0.5545 0.1314 43.96 / 70%);
-  --color-surface: oklch(0.9668 0.0054 95.1);
+  --color-surface: oklch(93.7% 0 0);
   --color-white: oklch(0.9982 0.0025 165.08);
   --color-gray: oklch(0.95 0 165.08);
   --color-gray-dark: oklch(0.6031 0 0);
