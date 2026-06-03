@@ -59,7 +59,7 @@
 }
 
 @utility logo {
-  @apply max-sm:h-11 max-md:h-12 max-lg:h-14 h-16;
+  @apply max-sm:h-10 max-md:h-11 max-lg:h-13 h-15;
 }
 
 @utility nav-link {
