@@ -81,3 +81,7 @@
 @utility heading-md {
   @apply max-sm:text-2xl max-md:text-3xl max-lg:text-4xl font-heading text-black text-5xl;
 }
+
+@utility heading-popup {
+  @apply text-lg font-heading text-black font-bold;
+}
