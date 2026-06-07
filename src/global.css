@@ -98,3 +98,7 @@
 @utility heading-popup {
   @apply text-lg font-heading text-black font-bold;
 }
+
+@utility project-marker {
+  @apply inline-flex justify-center items-center w-8 h-8 rounded-[50%] bg-primary text-white;
+}
