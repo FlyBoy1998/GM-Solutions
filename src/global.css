@@ -100,5 +100,5 @@
 }
 
 @utility project-marker {
-  @apply inline-flex justify-center items-center w-8 h-8 rounded-[50%] bg-primary text-white;
+  @apply inline-flex justify-center items-center w-8 h-8 rounded-[50%] bg-primary text-white font-bold;
 }
