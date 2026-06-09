@@ -21,7 +21,7 @@ export default function FilterButton({ children, filter, Icon }) {
 
   return (
     <button
-      className={`${classes} ${isActive ? activeFilter : ""}`}
+      className={`${classes} ${isActive ? activeFilter : ""} focus-ring`}
       onClick={handleSetSearchParams}
       aria-pressed={isActive}
     >
