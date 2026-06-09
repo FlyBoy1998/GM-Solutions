@@ -5,7 +5,7 @@ export default function MainNavigation() {
   return (
     <header className="w-full fixed top-0 z-11 bg-[linear-gradient(to_right,rgba(245,244,240,0.6)_55%,rgba(245,244,240,0))]">
       <nav id="main-nav" className="wrapper flex justify-between py-4">
-        <NavLink to="/">
+        <NavLink to="/" className="focus-ring">
           <img src={logoImg} className="logo" alt="GM Solutions logo" />
         </NavLink>
         <ul className="flex items-center gap-4">
@@ -13,7 +13,7 @@ export default function MainNavigation() {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                `nav-link ${isActive ? "nav-link-active" : ""}`
+                `nav-link focus-ring ${isActive ? "nav-link-active" : ""}`
               }
             >
               Home
@@ -23,7 +23,7 @@ export default function MainNavigation() {
             <NavLink
               to="services"
               className={({ isActive }) =>
-                `nav-link ${isActive ? "nav-link-active" : ""}`
+                `nav-link focus-ring ${isActive ? "nav-link-active" : ""}`
               }
             >
               Services
@@ -33,7 +33,7 @@ export default function MainNavigation() {
             <NavLink
               to="projects"
               className={({ isActive }) =>
-                `nav-link ${isActive ? "nav-link-active" : ""}`
+                `nav-link focus-ring ${isActive ? "nav-link-active" : ""}`
               }
             >
               Projects
@@ -43,7 +43,7 @@ export default function MainNavigation() {
             <NavLink
               to="gallery"
               className={({ isActive }) =>
-                `nav-link ${isActive ? "nav-link-active" : ""}`
+                `nav-link focus-ring ${isActive ? "nav-link-active" : ""}`
               }
             >
               Gallery
@@ -53,13 +53,16 @@ export default function MainNavigation() {
             <NavLink
               to="contact"
               className={({ isActive }) =>
-                `nav-link ${isActive ? "nav-link-active" : ""}`
+                `nav-link focus-ring ${isActive ? "nav-link-active" : ""}`
               }
             >
               Contact
             </NavLink>
           </li>
-          <NavLink to="contact" className="nav-link bg-black text-white">
+          <NavLink
+            to="contact"
+            className="nav-link focus-ring bg-black text-white"
+          >
             Get a Quote
           </NavLink>
         </ul>
