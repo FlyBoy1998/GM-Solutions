@@ -6,12 +6,10 @@ export default function ProjectsList() {
   const { filteredProjects } = useFilteredProjects();
 
   return (
-    <div className="shrink-0 min-h-0">
-      <ul className="flex flex-col gap-3 overflow-y-auto mt-4">
-        {filteredProjects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
-      </ul>
-    </div>
+    <ul className="flex h-full flex-col gap-3 overflow-y-auto mt-4">
+      {filteredProjects.map((project) => (
+        <ProjectCard key={project.id} project={project} />
+      ))}
+    </ul>
   );
 }
