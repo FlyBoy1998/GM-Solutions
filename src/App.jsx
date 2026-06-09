@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
+import MapContextProvider from "./context/MapContext";
 
 import RootLayout from "./layout/RootLayout";
 import Home from "./pages/Home";
@@ -22,7 +23,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <MapContextProvider>
+      <RouterProvider router={router} />
+    </MapContextProvider>
+  );
 }
 
 export default App;
