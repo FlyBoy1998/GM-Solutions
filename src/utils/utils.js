@@ -1,40 +1,3 @@
-import {
-  Clock,
-  Folder,
-  FolderIcon,
-  Bath,
-  Home,
-  CookingPot,
-} from "lucide-react";
-
-const heroStats = [
-  { label: "Projects completed", value: "100+", icon: Folder },
-  { label: "Experience", value: "10+ Years", icon: Clock },
-];
-
-const projectFilters = [
-  {
-    label: "All",
-    value: "all",
-    icon: FolderIcon,
-  },
-  {
-    label: "Kitchen",
-    value: "kitchen",
-    icon: CookingPot,
-  },
-  {
-    label: "Bathroom",
-    value: "bathroom",
-    icon: Bath,
-  },
-  {
-    label: "Full Home",
-    value: "full-home",
-    icon: Home,
-  },
-];
-
 function formatDate(date) {
   if (!date) return;
 
@@ -49,4 +12,4 @@ function formatDate(date) {
   return formattedDate;
 }
 
-export { heroStats, projectFilters, formatDate };
+export { formatDate };
