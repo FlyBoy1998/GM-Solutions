@@ -1,4 +1,4 @@
-import { heroStats } from "../utils/utils";
+import { heroStats } from "../constants/data";
 
 import StatItem from "./ui/StatItem";
 

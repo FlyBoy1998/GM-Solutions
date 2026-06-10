@@ -1,6 +1,6 @@
 import FilterButton from "./FilterButton";
 
-import { projectFilters } from "../../utils/utils";
+import { projectFilters } from "../../constants/data";
 
 export default function ProjectFilters() {
   return (
