@@ -43,4 +43,12 @@ const projectFilters = [
   },
 ];
 
-export { heroStats, projectFilters, projectZoom, londonCoordinates };
+export {
+  heroStats,
+  projectFilters,
+  defaultMapZoom,
+  mapAttribution,
+  mapTileUrl,
+  projectZoom,
+  londonCoordinates,
+};
