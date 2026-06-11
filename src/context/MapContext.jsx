@@ -3,6 +3,7 @@ import { createContext, useState } from "react";
 const MapContext = createContext({
   selectedProject: null,
   handleSelectProject: () => {},
+  handleClearSelection: () => {},
 });
 
 export default function MapContextProvider({ children }) {
@@ -12,9 +13,14 @@ export default function MapContextProvider({ children }) {
     setSelectedProject(project);
   }
 
+  function handleClearSelection() {
+    setSelectedProject(null);
+  }
+
   const ctxValue = {
     selectedProject,
     handleSelectProject,
+    handleClearSelection,
   };
 
   return <MapContext.Provider value={ctxValue}>{children}</MapContext.Provider>;
