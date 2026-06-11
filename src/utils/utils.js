@@ -1,4 +1,5 @@
 import L from "leaflet";
+import { projectZoom } from "../constants/data";
 
 function formatDate(date) {
   if (!date) return;
@@ -25,4 +26,12 @@ function createProjectMarkerIcon({ projectIndex, isSelected = false }) {
   });
 }
 
-export { formatDate, createProjectMarkerIcon };
+function flyToProject(map, coordinates) {
+  const point = map.project(coordinates, projectZoom);
+  const offsetPoint = point.subtract([0, 150]);
+  const offsetLatLng = map.unproject(offsetPoint, projectZoom);
+
+  map.flyTo(offsetLatLng, projectZoom);
+}
+
+export { formatDate, createProjectMarkerIcon, flyToProject };
