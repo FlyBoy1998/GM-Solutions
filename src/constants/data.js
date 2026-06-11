@@ -12,6 +12,9 @@ const heroStats = [
   { label: "Experience", value: "10+ Years", icon: Clock },
 ];
 
+const projectZoom = 12;
+const londonCoordinates = [51.5074, -0.1278];
+
 const projectFilters = [
   {
     label: "All",
@@ -35,4 +38,4 @@ const projectFilters = [
   },
 ];
 
-export { heroStats, projectFilters };
+export { heroStats, projectFilters, projectZoom, londonCoordinates };
