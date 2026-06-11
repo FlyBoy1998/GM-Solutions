@@ -12,6 +12,11 @@ const heroStats = [
   { label: "Experience", value: "10+ Years", icon: Clock },
 ];
 
+const defaultMapZoom = 11;
+const mapAttribution =
+  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+const mapTileUrl =
+  "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png";
 const projectZoom = 12;
 const londonCoordinates = [51.5074, -0.1278];
 
