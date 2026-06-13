@@ -3,7 +3,11 @@ import ProjectFilters from "../components/projects/ProjectFilters";
 import ProjectsList from "../components/projects/ProjectsList";
 import ProjectsMap from "../components/projects/ProjectsMap";
 
+import useFilteredProjects from "../hooks/useFilteredProjects";
+
 export default function Projects() {
+  const { filteredProjects } = useFilteredProjects();
+
   return (
     <NavbarOffset>
       <div
@@ -16,6 +20,9 @@ export default function Projects() {
             Explore our completed projects across London and surrounding areas
           </p>
           <ProjectFilters />
+          <p className="mt-4 text-xs text-gray-dark">
+            {filteredProjects.length} projects found
+          </p>
           <ProjectsList />
         </div>
         <div className="h-[calc(100vh-var(--nav-height)-2rem)] flex-2">
