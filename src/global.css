@@ -56,6 +56,17 @@
 
   --font-heading: "Playfair Display", serif;
   --font-body: "Inter", sans-serif;
+
+  --animate-spin: spin 30s infinite linear;
+
+  @keyframes spin {
+    from {
+      translate: 0;
+    }
+    to {
+      translate: -100%;
+    }
+  }
 }
 
 /* ==================== */
