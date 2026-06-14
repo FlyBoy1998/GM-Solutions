@@ -57,7 +57,7 @@
   --font-heading: "Playfair Display", serif;
   --font-body: "Inter", sans-serif;
 
-  --animate-spin: spin 30s infinite linear;
+  --animate-spin: spin 35s infinite linear;
 
   @keyframes spin {
     from {
