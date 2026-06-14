@@ -41,16 +41,6 @@ export default function MainNavigation() {
           </li>
           <li>
             <NavLink
-              to="gallery"
-              className={({ isActive }) =>
-                `nav-link focus-ring ${isActive ? "nav-link-active" : ""}`
-              }
-            >
-              Gallery
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
               to="contact"
               className={({ isActive }) =>
                 `nav-link focus-ring ${isActive ? "nav-link-active" : ""}`
