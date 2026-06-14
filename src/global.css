@@ -123,3 +123,7 @@
 @utility project-marker {
   @apply inline-flex justify-center items-center w-8 h-8 rounded-[50%] bg-primary text-white font-bold;
 }
+
+@utility carousel-group {
+  @apply flex gap-[2em] pr-[2em] animate-spin;
+}
