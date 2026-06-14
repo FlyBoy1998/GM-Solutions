@@ -21,6 +21,12 @@
   }
 }
 
+@layer utilities {
+  .carousel::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 /* ==================== */
 /* Themes */
 /* ==================== */
