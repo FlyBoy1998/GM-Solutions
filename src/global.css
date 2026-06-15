@@ -77,9 +77,9 @@
   --font-heading: "Playfair Display", serif;
   --font-body: "Inter", sans-serif;
 
-  --animate-spin: spin 35s infinite linear;
+  --animate-scroll: scroll 35s infinite linear;
 
-  @keyframes spin {
+  @keyframes scroll {
     from {
       translate: 0;
     }
@@ -149,5 +149,5 @@
 }
 
 @utility carousel-group {
-  @apply flex gap-[2em] pr-[2em] animate-spin;
+  @apply flex gap-[2em] pr-[2em] animate-scroll;
 }
