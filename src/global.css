@@ -39,6 +39,12 @@
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .carousel-group {
+      animation-duration: 120s;
+    }
+  }
 }
 
 @layer utilities {
