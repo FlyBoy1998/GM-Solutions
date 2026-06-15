@@ -4,8 +4,8 @@ import MapContextProvider from "./context/MapContext";
 import RootLayout from "./layout/RootLayout";
 import Home from "./pages/Home";
 import Services from "./pages/Services";
-import Gallery from "./pages/Gallery";
 import Projects from "./pages/Projects";
+import ProjectDetails from "./pages/ProjectDetails";
 import Contact from "./pages/Contact";
 
 const router = createBrowserRouter([
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { element: <Services />, path: "services" },
       { element: <Projects />, path: "projects" },
-      { element: <Gallery />, path: "gallery" },
+      { element: <ProjectDetails />, path: "projects/:id" },
       { element: <Contact />, path: "contact" },
     ],
   },
