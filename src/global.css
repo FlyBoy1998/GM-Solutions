@@ -112,6 +112,10 @@
   @apply max-sm:px-sm max-md:px-md max-lg:px-lg max-xl:px-xl px-36;
 }
 
+@utility section {
+  @apply max-sm:py-3 max-md:py-6 max-lg:py-9 max-xl:py-12 py-16;
+}
+
 @utility logo {
   @apply max-sm:h-10 max-md:h-11 max-lg:h-13 h-15;
 }
