@@ -1,6 +1,11 @@
+import { useContext } from "react";
+import { MapContext } from "../../context/MapContext";
+
 import { ChevronRight, MapPin } from "lucide-react";
 
 export default function ProjectCard({ project }) {
+  const { handleSelectProject } = useContext(MapContext);
+
   return (
     <li>
       <article className="flex gap-4 h-44 p-2 rounded-md bg-light-1">
@@ -28,6 +33,7 @@ export default function ProjectCard({ project }) {
         <button
           type="button"
           className="flex items-center cursor-pointer hover:scale-[1.3] focus-ring transition-transform ease-out duration-500"
+          onClick={() => handleSelectProject(project)}
           title="View project location"
           aria-label={`View location for ${project.title}`}
         >
