@@ -97,7 +97,7 @@ export default function ProjectPopup({ project }) {
                 aria-hidden
               />
               &nbsp;<span className="font-bold">Materials:</span>{" "}
-              {project.materials.join(", ")}
+              {project.materials.slice(0, 3).join(", ")}
             </p>
           </div>
           <Link
