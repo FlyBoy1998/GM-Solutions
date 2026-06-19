@@ -3,7 +3,7 @@ import CtaButton from "../components/ui/CtaButton";
 
 export default function Home() {
   return (
-    <section id="hero" className="min-h-screen root-bg-light">
+    <section className="min-h-screen root-bg-light">
       <div className="wrapper relative flex flex-col justify-center min-h-screen z-10">
         <p className="mb-3 text-sm font-bold uppercase text-primary">
           Premium home renovations
