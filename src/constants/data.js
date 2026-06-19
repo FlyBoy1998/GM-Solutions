@@ -5,6 +5,11 @@ import {
   Bath,
   Home,
   CookingPot,
+  FolderOpenDot,
+  MapPin,
+  Calendar,
+  RulerDimensionLine,
+  Banknote,
 } from "lucide-react";
 
 const heroStats = [
@@ -43,6 +48,15 @@ const projectFilters = [
   },
 ];
 
+const projectDetailIcons = {
+  "Project Type": FolderOpenDot,
+  Location: MapPin,
+  "Completion Date": Calendar,
+  Duration: Clock,
+  "Project Size": RulerDimensionLine,
+  "Budget Range": Banknote,
+};
+
 export {
   heroStats,
   projectFilters,
@@ -51,4 +65,5 @@ export {
   mapTileUrl,
   projectZoom,
   londonCoordinates,
+  projectDetailIcons,
 };
