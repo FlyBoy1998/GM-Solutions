@@ -46,7 +46,7 @@ export default function ProjectDetails() {
             <p className="flex items-center gap-1 text-gray-dark text-sm">
               <MapPin aria-hidden /> <span>{project.address}</span>
             </p>
-            <p>{project.description}</p>
+            <p className="text-sm leading-6">{project.description}</p>
             <ProjectMeta project={project} />
             <div>
               <CtaButton type="primary">
