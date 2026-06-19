@@ -24,11 +24,11 @@ export default function NavbarOffset({ children, isFullScreen }) {
   }, []);
 
   return (
-    <div
+    <section
       style={{ "--nav-height": `${navHeight}px` }}
       className={`wrapper flex flex-col pt-(--nav-height) ${isFullScreen ? "min-h-screen" : ""}`}
     >
       {children}
-    </div>
+    </section>
   );
 }
