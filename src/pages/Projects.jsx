@@ -10,8 +10,8 @@ export default function Projects() {
 
   return (
     <NavbarOffset>
-      <div className="flex items-start gap-3 rounded-lg bg-gray-transparent p-4">
-        <div className="flex max-h-[calc(100vh-var(--nav-height)-2rem)] flex-1 flex-col">
+      <div className="flex items-start gap-3 rounded-lg">
+        <div className="flex max-h-[calc(100vh-var(--nav-height))] flex-1 flex-col">
           <h1 className="heading-md mb-3">Projects</h1>
           <p className="mb-5">
             Explore our completed projects across London and surrounding areas
@@ -22,7 +22,7 @@ export default function Projects() {
           </p>
           <ProjectsList />
         </div>
-        <div className="h-[calc(100vh-var(--nav-height)-2rem)] flex-2">
+        <div className="h-[calc(100vh-var(--nav-height))] flex-2">
           <ProjectsMap />
         </div>
       </div>
