@@ -10,10 +10,7 @@ export default function Projects() {
 
   return (
     <NavbarOffset>
-      <div
-        id="projects-showcase"
-        className="flex items-start gap-3 rounded-lg bg-gray-transparent p-4"
-      >
+      <div className="flex items-start gap-3 rounded-lg bg-gray-transparent p-4">
         <div className="flex max-h-[calc(100vh-var(--nav-height)-2rem)] flex-1 flex-col">
           <h1 className="heading-md mb-3">Projects</h1>
           <p className="mb-5">
