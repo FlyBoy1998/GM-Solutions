@@ -4,9 +4,10 @@ import { MapPin, Share2, ArrowLeft } from "lucide-react";
 import PageNotFound from "./PageNotFound";
 import NavbarOffset from "../layout/NavbarOffset";
 import CtaButton from "../components/ui/CtaButton";
-import ProjectCarousel from "../components/projects/ProjectCarousel";
+import ProjectCarousel from "../components/projects/project-details/ProjectCarousel";
 
 import { projects } from "../../dummy_data/data";
+import ProjectMeta from "../components/projects/project-details/ProjectMeta";
 
 export default function ProjectDetails() {
   const { id } = useParams();
@@ -36,15 +37,16 @@ export default function ProjectDetails() {
               <ArrowLeft aria-hidden /> <span>Back to Projects</span>
             </Link>
           </div>
-          <div className="flex-1 flex flex-col justify-center gap-5 py-10">
-            <p className="self-start bg-light-2 text-gray-dark py-2 px-3 rounded-md">
+          <div className="flex-1 flex flex-col justify-center gap-6 py-8">
+            <p className="self-start py-2 px-3 rounded-md text-sm bg-light-2 text-gray-dark">
               {project.label}
             </p>
-            <h1 className="heading-md">{project.title}</h1>
-            <p className="flex items-center gap-1 text-gray-dark">
+            <h1 className="heading-sm font-bold">{project.title}</h1>
+            <p className="flex items-center gap-1 text-gray-dark text-sm">
               <MapPin aria-hidden /> <span>{project.address}</span>
             </p>
             <p>{project.description}</p>
+            <ProjectMeta project={project} />
             <div>
               <CtaButton type="primary">
                 Share Project{" "}
