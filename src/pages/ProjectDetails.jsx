@@ -7,6 +7,7 @@ import ProjectMeta from "../components/projects/project-details/ProjectMeta";
 import CtaButton from "../components/ui/CtaButton";
 import ProjectCarousel from "../components/projects/project-details/ProjectCarousel";
 import ProjectOverviewSection from "../components/projects/project-details/ProjectOverviewSection";
+import ProjectCTA from "../components/projects/project-details/ProjectCTA";
 
 import { projects } from "../../dummy_data/data";
 
@@ -66,10 +67,9 @@ export default function ProjectDetails() {
           </div>
         </div>
       </NavbarOffset>
-      <div className="wrapper">
-        <ProjectCarousel project={project} />
-      </div>
+      <ProjectCarousel project={project} />
       <ProjectOverviewSection project={project} />
+      <ProjectCTA />
     </>
   );
 }
