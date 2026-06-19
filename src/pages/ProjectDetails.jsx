@@ -3,11 +3,12 @@ import { MapPin, Share2, ArrowLeft } from "lucide-react";
 
 import PageNotFound from "./PageNotFound";
 import NavbarOffset from "../layout/NavbarOffset";
+import ProjectMeta from "../components/projects/project-details/ProjectMeta";
 import CtaButton from "../components/ui/CtaButton";
 import ProjectCarousel from "../components/projects/project-details/ProjectCarousel";
+import ProjectOverviewSection from "../components/projects/project-details/ProjectOverviewSection";
 
 import { projects } from "../../dummy_data/data";
-import ProjectMeta from "../components/projects/project-details/ProjectMeta";
 
 export default function ProjectDetails() {
   const { id } = useParams();
@@ -68,6 +69,7 @@ export default function ProjectDetails() {
       <div className="wrapper">
         <ProjectCarousel project={project} />
       </div>
+      <ProjectOverviewSection project={project} />
     </>
   );
 }
