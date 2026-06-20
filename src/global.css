@@ -137,7 +137,7 @@
 }
 
 @utility eyebrow {
-  @apply mb-3 text-sm font-bold uppercase text-primary;
+  @apply mb-2 text-sm font-bold uppercase text-primary;
 }
 
 @utility heading-xl {
