@@ -5,9 +5,7 @@ export default function Home() {
   return (
     <section className="min-h-screen root-bg-light">
       <div className="wrapper relative flex flex-col justify-center min-h-screen z-10">
-        <p className="mb-3 text-sm font-bold uppercase text-primary">
-          Premium home renovations
-        </p>
+        <p className="eyebrow">Premium home renovations</p>
         <h1 className="heading-xl mb-3">
           Beautiful spaces. <br />
           Built around you.
