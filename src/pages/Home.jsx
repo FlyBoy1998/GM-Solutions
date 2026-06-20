@@ -10,7 +10,7 @@ export default function Home() {
           Beautiful spaces. <br />
           Built around you.
         </h1>
-        <div className="mb-3 h-1 w-16 rounded-full bg-primary"></div>
+        <div className="accent-line"></div>
         <p className="max-sm:w-full max-lg:w-[75%] w-[50%] mb-8 text-[1rem] leading-8">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
           laboriosam iste nesciunt blanditiis similique, consequuntur enim
