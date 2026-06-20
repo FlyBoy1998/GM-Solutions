@@ -26,7 +26,7 @@ export default function ProjectCard({ project }) {
             <MapPin className="size-5" aria-hidden />
             <span>{project.address}</span>
           </p>
-          <p className="self-start py-1 px-2 text-sm rounded-md bg-light-2">
+          <p className="self-start py-1 px-2 text-sm rounded-md bg-light">
             {project.label}
           </p>
         </div>

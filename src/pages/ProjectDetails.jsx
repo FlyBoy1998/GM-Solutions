@@ -40,11 +40,11 @@ export default function ProjectDetails() {
             </Link>
           </div>
           <div className="flex-1 flex flex-col justify-center gap-6 py-8">
-            <p className="self-start py-2 px-3 rounded-md text-sm bg-light-2 text-gray-dark">
+            <p className="self-start py-2 px-3 rounded-md text-sm bg-light text-gray-dark">
               {project.label}
             </p>
             <h1 className="heading-sm font-bold">{project.title}</h1>
-            <p className="flex items-center gap-1 text-gray-dark text-sm">
+            <p className="flex items-center gap-1 text-sm text-gray-dark">
               <MapPin aria-hidden /> <span>{project.address}</span>
             </p>
             <p className="text-sm leading-6">{project.description}</p>
