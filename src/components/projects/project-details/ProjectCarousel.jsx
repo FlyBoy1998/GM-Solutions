@@ -8,7 +8,7 @@ export default function ProjectCarousel({ project }) {
 
   return (
     <div className="wrapper">
-      <div className="carousel col-span-2 flex w-full overflow-hidden py-10 rounded-md bg-gray-transparent">
+      <div className="carousel col-span-2 flex w-full overflow-hidden py-10 mt-12 rounded-md">
         <CarouselGroup>
           {images.map((img) => (
             <CarouselItem key={img.src} imgSrc={img.src} imgAlt={img.alt} />
