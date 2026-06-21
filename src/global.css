@@ -171,3 +171,7 @@
 @utility carousel-group {
   @apply flex gap-[2em] pr-[2em] animate-scroll;
 }
+
+@utility form-input {
+  @apply p-2 text-sm rounded-md bg-white focus-ring;
+}
