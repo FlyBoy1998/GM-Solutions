@@ -29,12 +29,12 @@ export default function ProjectDetails() {
 
   return (
     <>
-      <NavbarOffset>
+      <NavbarOffset isFullScreen flexDirection="col">
         <div className="grid grid-cols-[45%_1fr] gap-x-6">
           <div className="col-span-2">
             <Link
               to="/projects"
-              className="cursor-pointer inline-flex items-center self-start gap-1 my-4 p-2 rounded-md text-primary hover:bg-primary-transparent hover:text-white focus-ring transition-all ease-out duration-400"
+              className="cursor-pointer inline-flex items-center self-start gap-1 my-2 p-2 rounded-md text-primary hover:bg-primary-transparent hover:text-white focus-ring transition-all ease-out duration-400"
             >
               <ArrowLeft aria-hidden /> <span>Back to Projects</span>
             </Link>
