@@ -9,22 +9,21 @@ export default function Projects() {
   const { filteredProjects } = useFilteredProjects();
 
   return (
-    <NavbarOffset>
-      <div className="flex items-start gap-3 rounded-lg">
-        <div className="flex max-h-[calc(100vh-var(--nav-height))] flex-1 flex-col">
-          <h1 className="heading-md mb-3">Projects</h1>
-          <p className="mb-5">
-            Explore our completed projects across London and surrounding areas
-          </p>
-          <ProjectFilters />
-          <p className="mt-4 text-xs text-gray-dark">
-            {filteredProjects.length} projects found
-          </p>
-          <ProjectsList />
-        </div>
-        <div className="h-[calc(100vh-var(--nav-height))] flex-2">
-          <ProjectsMap />
-        </div>
+    <NavbarOffset additionalStyling="items-start gap-3 rounded-lg">
+      <div className="flex max-h-[calc(100vh-var(--nav-height))] w-[40%] flex-col">
+        <p className="eyebrow">Our work</p>
+        <h1 className="heading-lg mb-3">Projects</h1>
+        <p className="mb-5 text-gray-dark">
+          Explore our completed projects across London and surrounding areas
+        </p>
+        <ProjectFilters />
+        <p className="mt-4 text-xs text-gray-dark">
+          {filteredProjects.length} projects found
+        </p>
+        <ProjectsList />
+      </div>
+      <div className="h-[calc(100vh-var(--nav-height))] flex-1">
+        <ProjectsMap />
       </div>
     </NavbarOffset>
   );
