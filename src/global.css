@@ -173,5 +173,5 @@
 }
 
 @utility form-input {
-  @apply p-2 text-sm rounded-md bg-white focus-ring;
+  @apply p-2 text-sm rounded-md bg-white shadow-sm focus-ring;
 }
