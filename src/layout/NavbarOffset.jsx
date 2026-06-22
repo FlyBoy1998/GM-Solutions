@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 
-export default function NavbarOffset({ children, isFullScreen }) {
+export default function NavbarOffset({
+  children,
+  isFullScreen,
+  flexDirection = "row",
+  additionalStyling = "",
+}) {
   const [navHeight, setNavHeight] = useState(0);
 
   useEffect(() => {
@@ -26,7 +31,7 @@ export default function NavbarOffset({ children, isFullScreen }) {
   return (
     <section
       style={{ "--nav-height": `${navHeight}px` }}
-      className={`wrapper flex flex-col pt-(--nav-height) ${isFullScreen ? "min-h-screen" : ""}`}
+      className={`wrapper flex flex-${flexDirection} pt-(--nav-height) ${isFullScreen ? "min-h-screen" : ""} ${additionalStyling}`}
     >
       {children}
     </section>
