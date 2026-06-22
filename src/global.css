@@ -125,7 +125,7 @@
 }
 
 @utility logo {
-  @apply max-sm:h-10 max-md:h-11 max-lg:h-13 h-15;
+  @apply max-md:h-10 max-lg:h-12 h-14;
 }
 
 @utility nav-link {
