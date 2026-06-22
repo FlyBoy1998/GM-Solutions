@@ -76,6 +76,7 @@
   --color-surface: oklch(0.9668 0.0054 95.1);
   --color-black: oklch(0.2 0 260);
   --color-black-transparent: oklch(0.2 0 260 / 70%);
+  --color-error: oklch(0.660199 0.229356 35.4025);
 
   --spacing-sm: 1rem;
   --spacing-md: 3rem;
@@ -174,4 +175,8 @@
 
 @utility form-input {
   @apply p-2 text-sm rounded-md bg-white shadow-sm focus-ring;
+}
+
+@utility input-error {
+  @apply text-sm text-error;
 }
