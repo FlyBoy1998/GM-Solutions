@@ -27,7 +27,7 @@ const londonCoordinates = [51.5074, -0.1278];
 
 const projectFilters = [
   {
-    label: "All",
+    label: "All Projects",
     value: "all",
     icon: FolderIcon,
   },
