@@ -18,8 +18,8 @@ export default function Home() {
           consequatur, error at tempore cumque corporis optio.
         </p>
         <div className="flex gap-4">
-          <CtaButton type="primary">Get a free estimate</CtaButton>
-          <CtaButton type="secondary">View our work</CtaButton>
+          <CtaButton variant="primary">Get a free estimate</CtaButton>
+          <CtaButton variant="secondary">View our work</CtaButton>
         </div>
         <HeroStatsBar />
       </div>

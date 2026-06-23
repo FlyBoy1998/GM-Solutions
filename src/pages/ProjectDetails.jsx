@@ -50,7 +50,7 @@ export default function ProjectDetails() {
             <p className="text-sm leading-7">{project.description}</p>
             <ProjectMeta project={project} />
             <div>
-              <CtaButton type="primary">
+              <CtaButton variant="primary">
                 Share Project{" "}
                 <Share2 className="inline ms-1 mb-0.5" size={18} aria-hidden />
               </CtaButton>
