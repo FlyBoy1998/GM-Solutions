@@ -1,6 +1,6 @@
-import { heroStats } from "../constants/data";
+import { heroStats } from "../../constants/data";
 
-import StatItem from "./ui/StatItem";
+import StatItem from "../ui/StatItem";
 
 export default function HeroStatsBar() {
   return (
