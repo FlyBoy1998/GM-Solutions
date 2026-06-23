@@ -57,7 +57,7 @@ const projectDetailIcons = {
   "Budget Range": Banknote,
 };
 
-const contactMethodOptions = [
+const projectTypeOptions = [
   { value: "bathroom", label: "Bathroom Renovation" },
   { value: "kitchen", label: "Kitchen Renovation" },
   { value: "full-home", label: "Full Home Renovation" },
@@ -72,5 +72,5 @@ export {
   projectZoom,
   londonCoordinates,
   projectDetailIcons,
-  contactMethodOptions,
+  projectTypeOptions,
 };
