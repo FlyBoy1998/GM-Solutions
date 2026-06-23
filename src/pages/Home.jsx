@@ -1,4 +1,4 @@
-import HeroStatsBar from "../components/HeroStatsBar";
+import HeroStatsBar from "../components/hero/HeroStatsBar";
 import CtaButton from "../components/ui/CtaButton";
 
 export default function Home() {
