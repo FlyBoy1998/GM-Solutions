@@ -180,3 +180,11 @@
 @utility input-error {
   @apply text-sm text-error;
 }
+
+@utility hamburger-inner {
+  @apply block relative h-full transform-3d transition-all duration-600 ease-[cubic-bezier(.33,1.55,.6,1.1)];
+}
+
+@utility hamburger-face {
+  @apply flex justify-center items-center absolute left-0 top-0 h-full w-full rounded-md backface-hidden bg-primary;
+}
