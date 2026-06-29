@@ -1,5 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
+
 import MapContextProvider from "./context/MapContext";
+import ProjectsTabsContextProvider from "./context/ProjectsTabsContext";
 
 import RootLayout from "./layout/RootLayout";
 import Home from "./pages/Home";
@@ -27,7 +29,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <MapContextProvider>
-      <RouterProvider router={router} />
+      <ProjectsTabsContextProvider>
+        <RouterProvider router={router} />
+      </ProjectsTabsContextProvider>
     </MapContextProvider>
   );
 }
