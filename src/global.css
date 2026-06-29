@@ -182,7 +182,7 @@
 }
 
 @utility form-input {
-  @apply p-3 text-sm rounded-md bg-white shadow-sm focus-ring;
+  @apply p-2 text-sm rounded-md bg-white shadow-sm focus-ring;
 }
 
 @utility input-error {
