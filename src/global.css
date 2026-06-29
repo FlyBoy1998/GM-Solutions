@@ -121,6 +121,14 @@
   @apply max-sm:px-sm max-md:px-md max-lg:px-lg max-xl:px-xl px-36;
 }
 
+@utility nav-offset-height {
+  @apply h-[calc(100vh-var(--nav-height))];
+}
+
+@utility min-nav-offset-height {
+  @apply min-h-[calc(100vh-var(--nav-height))];
+}
+
 @utility section {
   @apply max-sm:py-3 max-md:py-6 max-lg:py-9 max-xl:py-12 py-16;
 }
