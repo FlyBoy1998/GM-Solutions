@@ -118,7 +118,7 @@
 }
 
 @utility wrapper {
-  @apply max-sm:px-sm max-md:px-md max-lg:px-lg max-xl:px-xl px-36;
+  @apply max-md:px-sm max-lg:px-md max-xl:px-lg px-26;
 }
 
 @utility nav-offset-height {
