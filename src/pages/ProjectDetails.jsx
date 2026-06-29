@@ -1,8 +1,10 @@
 import { useParams, Link } from "react-router";
+
+import Main from "../layout/Main";
+
 import { MapPin, Share2, ArrowLeft } from "lucide-react";
 
 import PageNotFound from "./PageNotFound";
-import NavbarOffset from "../layout/NavbarOffset";
 import ProjectMeta from "../components/projects/project-details/ProjectMeta";
 import CtaButton from "../components/ui/CtaButton";
 import ProjectCarousel from "../components/projects/project-details/ProjectCarousel";
@@ -28,8 +30,8 @@ export default function ProjectDetails() {
   }
 
   return (
-    <>
-      <NavbarOffset isFullScreen flexDirection="col">
+    <Main>
+      <section className="min-nav-offset-height">
         <div className="grid grid-cols-[45%_1fr] gap-x-6">
           <div className="col-span-2">
             <Link
@@ -66,10 +68,10 @@ export default function ProjectDetails() {
             />
           </div>
         </div>
-      </NavbarOffset>
+      </section>
       <ProjectCarousel project={project} />
       <ProjectOverviewSection project={project} />
       <ProjectCTA />
-    </>
+    </Main>
   );
 }

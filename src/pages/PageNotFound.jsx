@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-import NavbarOffset from "../layout/NavbarOffset";
+import Main from "../layout/Main";
 import { ArrowLeft } from "lucide-react";
 
 export default function PageNotFound({
@@ -10,8 +10,8 @@ export default function PageNotFound({
   backLabel = "Back to Home",
 }) {
   return (
-    <NavbarOffset>
-      <div className="flex items-center justify-center min-h-[60vh]">
+    <Main>
+      <div className="flex justify-center items-start min-nav-offset-height">
         <div className="rounded-2xl bg-light-1 p-10 text-center shadow-sm">
           <p className="flex items-center justify-center mx-auto mb-5 size-14 rounded-full text-2xl font-bold bg-primary-transparent text-white">
             !
@@ -30,6 +30,6 @@ export default function PageNotFound({
           </Link>
         </div>
       </div>
-    </NavbarOffset>
+    </Main>
   );
 }
