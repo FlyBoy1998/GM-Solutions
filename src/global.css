@@ -66,7 +66,7 @@
   --breakpoint-xl: 80em;
 
   --color-primary: oklch(0.5545 0.1314 43.96);
-  --color-primary-transparent: oklch(0.5545 0.1314 43.96 / 70%);
+  --color-primary-transparent: oklch(0.5545 0.1314 43.96 / 55%);
   --color-light: oklch(93.7% 0 0);
   --color-white: oklch(0.9982 0.0025 165.08);
   --color-gray: oklch(0.95 0 165.08);
