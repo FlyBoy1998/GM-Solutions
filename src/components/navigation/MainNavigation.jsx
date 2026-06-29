@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router";
+import { NavLink, useLocation } from "react-router";
 
 import logoImg from "/images/gm-solutions-logo.png";
 
@@ -8,8 +8,14 @@ import HamburgerBtn from "./HamburgerButton";
 export default function MainNavigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const location = useLocation();
+
+  const isHome = location.pathname === "/";
+
   return (
-    <header className="w-full fixed top-0 z-11 bg-[linear-gradient(to_right,rgba(245,244,240,0.6)_55%,rgba(245,244,240,0))]">
+    <header
+      className={`w-full ${isHome ? "fixed" : "sticky"} top-0 z-11 bg-[linear-gradient(to_right,rgba(245,244,240,0.6)_55%,rgba(245,244,240,0))]`}
+    >
       <nav id="main-nav" className="wrapper flex justify-between py-4">
         <NavLink to="/" className="focus-ring">
           <img src={logoImg} className="logo" alt="GM Solutions logo" />
