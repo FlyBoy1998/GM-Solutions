@@ -13,10 +13,10 @@ import { formatDate } from "../../utils/utils";
 
 export default function ProjectPopup({ project }) {
   return (
-    <Popup minWidth={500}>
-      <div className="flex gap-3">
+    <Popup className="project-popup">
+      <div className="flex gap-3 max-md:flex-col">
         <div className="grid grid-cols-2 gap-3 flex-1 p-2 rounded-md bg-light-1">
-          <figure className="col-span-full">
+          <figure className="col-span-full max-md:h-34">
             <img
               src={project.imageUrl}
               alt={project.alt}
@@ -25,20 +25,20 @@ export default function ProjectPopup({ project }) {
             />
           </figure>
 
-          <figure className="flex flex-col h-full">
+          <figure className="flex flex-col h-full max-md:h-14">
             <img
               src={project.popupBeforeImage}
-              className="flex-1 w-full object-cover rounded-md"
+              className="flex-1 h-full w-full object-cover rounded-md"
               alt={`${project.title} before image`}
               loading="lazy"
             />
             <figcaption className="text-center">Before</figcaption>
           </figure>
 
-          <figure className="flex flex-col h-full">
+          <figure className="flex flex-col h-full max-md:h-14">
             <img
               src={project.popupAfterImage}
-              className="flex-1 w-full object-cover rounded-md"
+              className="flex-1 h-full w-full object-cover rounded-md"
               alt={`${project.title} after image`}
               loading="lazy"
             />

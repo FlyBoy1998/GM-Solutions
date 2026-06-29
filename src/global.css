@@ -12,6 +12,10 @@
 /* Layers */
 /* ==================== */
 @layer components {
+  .project-popup .leaflet-popup-content {
+    @apply w-125! max-md:w-75! max-sm:w-65!;
+  }
+
   .leaflet-popup-content {
     @apply m-3!;
   }
