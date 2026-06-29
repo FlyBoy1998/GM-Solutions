@@ -7,11 +7,13 @@ import Services from "./pages/Services";
 import Projects from "./pages/Projects";
 import ProjectDetails from "./pages/ProjectDetails";
 import Contact from "./pages/Contact";
+import PageNotFound from "./pages/PageNotFound";
 
 const router = createBrowserRouter([
   {
     element: <RootLayout />,
     path: "/",
+    errorElement: <PageNotFound />,
     children: [
       { index: true, element: <Home /> },
       { element: <Services />, path: "services" },
