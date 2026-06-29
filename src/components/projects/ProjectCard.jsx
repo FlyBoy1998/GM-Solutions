@@ -8,7 +8,7 @@ export default function ProjectCard({ project }) {
 
   return (
     <li>
-      <article className="flex gap-4 h-44 p-2 rounded-md bg-light-1">
+      <article className="flex gap-4 h-44 rounded-md bg-light-1">
         <div className="relative flex-1 rounded-md overflow-hidden">
           <img
             src={project.imageUrl}
