@@ -5,7 +5,7 @@ import WorkCompletedList from "./WorkCompletedList";
 
 export default function ProjectOverviewSection({ project }) {
   return (
-    <section className="section wrapper">
+    <section className="section">
       <div className="flex gap-8">
         <div className="flex-1 flex flex-col gap-6">
           <ProjectDescription project={project} />
