@@ -4,7 +4,7 @@ import { projectFilters } from "../../constants/data";
 
 export default function ProjectFilters() {
   return (
-    <div id="filter-buttons" className="flex gap-2">
+    <div className="grid grid-cols-4 gap-2 max-xl:grid-cols-2 max-lg:grid-cols-4 max-md:grid-cols-2">
       {projectFilters.map((filter) => (
         <FilterButton
           key={filter.value}
