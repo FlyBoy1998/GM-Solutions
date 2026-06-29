@@ -1,10 +1,17 @@
 import { useContext } from "react";
 import { MapContext } from "../../context/MapContext";
+import { ProjectsNavContext } from "../../context/ProjectsNavContext";
 
 import { ChevronRight, MapPin } from "lucide-react";
 
 export default function ProjectCard({ project }) {
   const { handleSelectProject } = useContext(MapContext);
+  const { setActiveTab } = useContext(ProjectsNavContext);
+
+  function handleShowProjectOnMap() {
+    setActiveTab("map");
+    handleSelectProject(project);
+  }
 
   return (
     <li>
@@ -33,7 +40,7 @@ export default function ProjectCard({ project }) {
         <button
           type="button"
           className="flex items-center cursor-pointer hover:scale-[1.3] focus-ring transition-transform ease-out duration-500"
-          onClick={() => handleSelectProject(project)}
+          onClick={handleShowProjectOnMap}
           title="View project location"
           aria-label={`View location for ${project.title}`}
         >
