@@ -13,7 +13,7 @@ export default function ProjectCTA() {
           Ready to start your renovation?
         </span>
       </p>
-      <CtaButton type="primary">
+      <CtaButton variant="primary">
         Get your free quote{" "}
         <ArrowRight size={20} className="inline-block" aria-hidden />
       </CtaButton>
