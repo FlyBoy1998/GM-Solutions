@@ -1,32 +1,12 @@
-import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
+import useNavbarHeight from "../hooks/useNavbarHeight";
 
 export default function Main({ children }) {
-  const [navHeight, setNavHeight] = useState(0);
+  const { navHeight } = useNavbarHeight();
 
   const location = useLocation();
 
   const isHome = location.pathname === "/";
-
-  useEffect(() => {
-    const nav = document.getElementById("main-nav");
-    if (!nav) return;
-
-    const updateHeight = () => {
-      setNavHeight(nav.offsetHeight);
-    };
-    updateHeight();
-
-    const observer = new ResizeObserver(updateHeight);
-    observer.observe(nav);
-
-    window.addEventListener("resize", updateHeight);
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("resize", updateHeight);
-    };
-  }, []);
 
   return (
     <main
