@@ -12,6 +12,18 @@
 /* Layers */
 /* ==================== */
 @layer components {
+  .mobile-nav {
+    @apply hidden flex-col justify-start absolute p-8 top-(--nav-height) right-0 bottom-0 w-full opacity-0 translate-x-0 translate-y-[5vh] transition-[display_opacity] duration-500 transition-discrete bg-surface z-10000 shadow-xl lg:hidden;
+  }
+
+  .mobile-nav.open {
+    @apply flex! opacity-100! translate-0!;
+
+    @starting-style {
+      @apply opacity-0! translate-x-0! translate-y-[-5vh]!;
+    }
+  }
+
   .project-popup .leaflet-popup-content {
     @apply w-125! max-md:w-75! max-sm:w-65!;
   }
