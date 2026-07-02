@@ -149,6 +149,10 @@
   @apply bg-black-transparent text-white;
 }
 
+@utility mobile-nav-link {
+  @apply block p-3 text-xl font-bold rounded-md focus-ring;
+}
+
 @utility eyebrow {
   @apply mb-2 text-sm font-bold uppercase text-primary;
 }
