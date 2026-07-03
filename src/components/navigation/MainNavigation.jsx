@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { NavLink, useLocation } from "react-router";
+
+import { MobileNavigationContext } from "../../context/MobileNavigationContext";
 
 import logoImg from "/images/gm-solutions-logo.png";
 
 import HamburgerBtn from "./HamburgerButton";
 
 export default function MainNavigation() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isMobileMenuOpen, setIsMobileMenuOpen } = useContext(
+    MobileNavigationContext,
+  );
 
   const location = useLocation();
 
