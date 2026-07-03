@@ -4,7 +4,7 @@ import StatItem from "../ui/StatItem";
 
 export default function HeroStatsBar() {
   return (
-    <div className="hidden absolute md:flex gap-3 bottom-0 py-8">
+    <div className="hidden absolute gap-3 bottom-0 py-8 xl:flex">
       {heroStats.map((stat) => (
         <StatItem
           key={stat.label}
