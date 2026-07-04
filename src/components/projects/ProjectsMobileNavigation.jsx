@@ -11,7 +11,7 @@ export default function ProjectsMobileNavigation() {
 
   return (
     <div className="sticky bottom-0 w-full py-4 z-9999 border-t-2 border-primary rounded-t-lg bg-surface shadow-lg lg:hidden">
-      <div className="flex">
+      <div className="flex wrapper">
         <ProjectMobileTabButton
           isActive={activeTab === "projects"}
           Icon={FolderOpenDot}
