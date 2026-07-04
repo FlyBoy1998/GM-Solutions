@@ -6,7 +6,7 @@ import { FolderOpenDot, Map } from "lucide-react";
 
 import ProjectMobileTabButton from "./ProjectsMobileTabButton";
 
-export default function ProjectsMobileNavigation() {
+export default function ProjectsMobileTabs() {
   const { activeTab, setActiveTab } = useContext(ProjectsTabsContext);
 
   return (
