@@ -6,7 +6,7 @@ import CtaButton from "../components/ui/CtaButton";
 export default function Home() {
   return (
     <Main>
-      <section className="relative flex flex-col justify-center min-h-screen z-10">
+      <section className="relative flex flex-col justify-center min-h-screen z-10 py-(--nav-height)">
         <p className="eyebrow">Premium home renovations</p>
         <h1 className="heading-xl mb-3">
           Beautiful spaces. <br />
