@@ -10,6 +10,7 @@ import Projects from "./pages/Projects";
 import ProjectDetails from "./pages/ProjectDetails";
 import Contact from "./pages/Contact";
 import PageNotFound from "./pages/PageNotFound";
+import MobileNavigationContextProvider from "./context/MobileNavigationContext";
 
 const router = createBrowserRouter([
   {
@@ -28,11 +29,13 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <MapContextProvider>
-      <ProjectsTabsContextProvider>
-        <RouterProvider router={router} />
-      </ProjectsTabsContextProvider>
-    </MapContextProvider>
+    <MobileNavigationContextProvider>
+      <MapContextProvider>
+        <ProjectsTabsContextProvider>
+          <RouterProvider router={router} />
+        </ProjectsTabsContextProvider>
+      </MapContextProvider>
+    </MobileNavigationContextProvider>
   );
 }
 
