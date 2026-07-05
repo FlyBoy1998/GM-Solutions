@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { NavLink, useLocation } from "react-router";
 
 import { MobileNavigationContext } from "../../context/MobileNavigationContext";
@@ -15,6 +15,18 @@ export default function MainNavigation() {
   const location = useLocation();
 
   const isHome = location.pathname === "/";
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
 
   return (
     <header
