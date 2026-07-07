@@ -1,4 +1,4 @@
-export default function CtaButton({ children, variant }) {
+export default function CtaButton({ children, variant, ...props }) {
   let classes =
     "cursor-pointer px-4 py-3 font-bold rounded-md focus-ring transition-all duration-400 ease-out";
 
@@ -9,5 +9,9 @@ export default function CtaButton({ children, variant }) {
     classes += " bg-white text-black border border-black hover:bg-gray";
   }
 
-  return <button className={classes}>{children}</button>;
+  return (
+    <button className={classes} {...props}>
+      {children}
+    </button>
+  );
 }
