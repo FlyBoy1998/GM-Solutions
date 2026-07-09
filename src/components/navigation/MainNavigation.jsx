@@ -15,6 +15,7 @@ export default function MainNavigation() {
   const location = useLocation();
 
   const isHome = location.pathname === "/";
+  const isContact = location.pathname === "/contact";
 
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -30,7 +31,7 @@ export default function MainNavigation() {
 
   return (
     <header
-      className={`w-full ${isHome ? "fixed" : "sticky"} top-0 z-1000 bg-[linear-gradient(to_right,rgba(245,244,240,0.6)_55%,rgba(245,244,240,0))]`}
+      className={`w-full ${isHome || isContact ? "fixed" : "sticky"} top-0 z-1000 bg-[linear-gradient(to_right,rgba(245,244,240,0.6)_55%,rgba(245,244,240,0))]`}
     >
       <nav id="main-nav" className="wrapper flex justify-between py-4">
         <NavLink to="/" className="focus-ring">
