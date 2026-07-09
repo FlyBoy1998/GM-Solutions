@@ -7,12 +7,16 @@ import logoImg from "/images/gm-solutions-logo.png";
 
 import HamburgerBtn from "./HamburgerButton";
 
+import { useScrollY } from "../../hooks/useScrollY";
+
 export default function MainNavigation() {
   const { isMobileMenuOpen, setIsMobileMenuOpen } = useContext(
     MobileNavigationContext,
   );
 
   const location = useLocation();
+
+  const { scrollY } = useScrollY();
 
   const isHome = location.pathname === "/";
   const isContact = location.pathname === "/contact";
@@ -31,9 +35,12 @@ export default function MainNavigation() {
 
   return (
     <header
-      className={`w-full ${isHome || isContact ? "fixed" : "sticky"} top-0 z-1000 bg-[linear-gradient(to_right,rgba(245,244,240,0.6)_55%,rgba(245,244,240,0))]`}
+      className={`w-full ${isHome || isContact ? "fixed" : "sticky"} top-0 z-1000`}
     >
-      <nav id="main-nav" className="wrapper flex justify-between py-4">
+      <nav
+        id="main-nav"
+        className={`wrapper flex justify-between py-4 ${isMobileMenuOpen ? "navbar-surface" : "navbar-transparent"} ${scrollY > 0 && "navbar-scrolled"} transition-all duration-300 ease-out`}
+      >
         <NavLink to="/" className="focus-ring">
           <img src={logoImg} className="logo" alt="GM Solutions logo" />
         </NavLink>
