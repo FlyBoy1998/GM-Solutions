@@ -20,7 +20,7 @@ export default function MobileNavigation() {
   return (
     <nav
       style={{ "--nav-height": `${navHeight}px` }}
-      className={`mobile-nav  ${isMobileMenuOpen ? "open" : ""}`}
+      className={`mobile-nav  ${isMobileMenuOpen ? "open" : ""} overflow-y-auto`}
     >
       <ul className="flex flex-col gap-6 list-none">
         <li>
@@ -75,22 +75,21 @@ export default function MobileNavigation() {
             Get a Quote
           </CtaButton>
         </li>
-
-        <div className="flex flex-col gap-4">
-          <ContactInfoItem
-            Icon={Phone}
-            title="Call Us"
-            primary="(234) 345-4674"
-            secondary="Mon - Fri: 8am - 6pm"
-          />
-          <ContactInfoItem
-            Icon={Mail}
-            title="Email Us"
-            primary="info@gmsolutions.com"
-            secondary="We reply within 24 hours"
-          />
-        </div>
       </ul>
+      <div className="flex flex-col gap-4">
+        <ContactInfoItem
+          Icon={Phone}
+          title="Call Us"
+          primary="(234) 345-4674"
+          secondary="Mon - Fri: 8am - 6pm"
+        />
+        <ContactInfoItem
+          Icon={Mail}
+          title="Email Us"
+          primary="info@gmsolutions.com"
+          secondary="We reply within 24 hours"
+        />
+      </div>
     </nav>
   );
 }
