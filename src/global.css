@@ -137,6 +137,14 @@
   @apply max-md:px-sm max-lg:px-md max-xl:px-lg px-26;
 }
 
+@utility navbar-transparent {
+  @apply bg-[linear-gradient(to_right,rgba(245,244,240,0.6)_55%,rgba(245,244,240,0))];
+}
+
+@utility navbar-surface {
+  @apply bg-surface;
+}
+
 @utility nav-offset-height {
   @apply h-[calc(100vh-var(--nav-height))];
 }
