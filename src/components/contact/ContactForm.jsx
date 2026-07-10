@@ -22,10 +22,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="grid grid-cols-2 gap-2 max-lg:grid-cols-1"
-    >
+    <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-2 gap-2">
       <FormField
         inputType="text"
         label="Full Name"
@@ -33,7 +30,7 @@ export default function ContactForm() {
         {...register("fullName", {
           required: "Please enter your full name",
         })}
-        additionalStyling="col-span-1 max-lg:col-span-full"
+        additionalStyling="col-span-1 max-lg:col-span-2"
         errors={
           errors.fullName && (
             <p className="input-error">{errors.fullName.message}</p>
@@ -53,7 +50,7 @@ export default function ContactForm() {
           },
         })}
         placeholder="e.g. +44 7123 456789"
-        additionalStyling="col-span-1 max-lg:col-span-full"
+        additionalStyling="col-span-1 max-lg:col-span-2"
         errors={
           errors.phone && <p className="input-error">{errors.phone.message}</p>
         }
