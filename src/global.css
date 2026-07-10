@@ -170,7 +170,7 @@
 }
 
 @utility nav-link {
-  @apply px-5 py-3 font-bold rounded-md hover:bg-black-transparent hover:text-white transition-all duration-400 ease-out;
+  @apply px-5 py-3 font-bold rounded-md hover:bg-black-transparent hover:text-white active:bg-black-transparent active:text-white transition-all duration-400 ease-out;
 }
 
 @utility nav-link-active {
