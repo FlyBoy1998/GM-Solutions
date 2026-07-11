@@ -4,7 +4,7 @@ import { MessageSquareQuote, ArrowRight } from "lucide-react";
 
 export default function ProjectCTA() {
   return (
-    <div className="flex items-center justify-between py-8 px-16 rounded-md bg-light">
+    <div className="flex items-center justify-between py-8 px-14 rounded-md bg-light max-lg:flex-col max-lg:gap-6">
       <p className="flex items-center gap-3">
         <span className="flex items-center justify-center w-20 h-20 rounded-full bg-primary-transparent">
           <MessageSquareQuote size={30} className="text-white" aria-hidden />
