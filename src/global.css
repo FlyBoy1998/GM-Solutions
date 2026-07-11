@@ -205,6 +205,10 @@
   @apply max-md:text-2xl max-lg:text-3xl font-heading text-black text-4xl;
 }
 
+@utility section-description {
+  @apply max-sm:w-full max-lg:w-[75%] w-[50%] mb-8 text-[1rem] leading-8;
+}
+
 @utility heading-popup {
   @apply text-lg font-heading text-black font-bold;
 }
