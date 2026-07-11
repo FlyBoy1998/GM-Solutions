@@ -158,7 +158,7 @@
 }
 
 @utility section {
-  @apply max-sm:py-3 max-md:py-6 max-lg:py-9 max-xl:py-12 py-16;
+  @apply max-md:py-6 max-lg:py-9 max-xl:py-12 py-16;
 }
 
 @utility section-gap {
