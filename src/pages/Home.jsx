@@ -13,7 +13,7 @@ export default function Home() {
           Built around you.
         </h1>
         <div className="accent-line"></div>
-        <p className="max-sm:w-full max-lg:w-[75%] w-[50%] mb-8 text-[1rem] leading-8">
+        <p className="section-description">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
           laboriosam iste nesciunt blanditiis similique, consequuntur enim
           excepturi veritatis delectus deleniti ex nulla autem magnam,
