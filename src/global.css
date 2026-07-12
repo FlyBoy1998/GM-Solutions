@@ -214,7 +214,7 @@
 }
 
 @utility section-description {
-  @apply max-sm:w-full max-lg:w-[75%] w-[50%] mb-8 text-[1rem] leading-8;
+  @apply max-sm:w-full max-sm:text-[0.8rem] max-lg:w-[75%] w-[50%] mb-8 text-[1rem] leading-8;
 }
 
 @utility heading-popup {
