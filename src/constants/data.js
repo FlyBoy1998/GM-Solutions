@@ -10,11 +10,31 @@ import {
   Calendar,
   RulerDimensionLine,
   Banknote,
+  ShieldPlus,
+  UserPen,
 } from "lucide-react";
 
 const heroStats = [
   { label: "Projects completed", value: "100+", icon: Folder },
   { label: "Experience", value: "10+ Years", icon: Clock },
+];
+
+const serviceHighlights = [
+  {
+    title: "On-Time Delivery",
+    description: "We respect your time and schedule.",
+    icon: Clock,
+  },
+  {
+    title: "Transparent Process",
+    description: "Clear communication at every step.",
+    icon: ShieldPlus,
+  },
+  {
+    title: "Customer Focused",
+    description: "Your satisfaction is our priority.",
+    icon: UserPen,
+  },
 ];
 
 const defaultMapZoom = 11;
@@ -65,6 +85,7 @@ const projectTypeOptions = [
 
 export {
   heroStats,
+  serviceHighlights,
   projectFilters,
   defaultMapZoom,
   mapAttribution,
