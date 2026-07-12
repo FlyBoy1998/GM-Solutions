@@ -118,7 +118,7 @@
 /* Utilities */
 /* ==================== */
 @utility root-bg-light {
-  @apply relative bg-[url('/images/kitchen-bg.jpg')] bg-cover bg-center;
+  @apply relative bg-cover bg-center;
   @apply before:content-[''] before:absolute before:inset-0;
   @apply before:bg-[linear-gradient(to_right,rgba(245,244,240,1)_35%,rgba(245,244,240,0))];
 }
@@ -127,6 +127,14 @@
   @apply relative bg-[url('/images/kitchen.jpg')] bg-cover bg-center;
   @apply before:content-[''] before:absolute before:inset-0;
   @apply before:bg-[linear-gradient(to_right,rgba(0,0,0,0.7),rgba(0,0,0,0.7))];
+}
+
+@utility home-bg {
+  @apply bg-[url('/images/kitchen-bg.jpg')];
+}
+
+@utility services-bg {
+  @apply bg-[url('/images/services-bg.jpg')];
 }
 
 @utility focus-ring {
