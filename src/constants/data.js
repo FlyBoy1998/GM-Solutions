@@ -56,7 +56,7 @@ const serviceCards = [
     icon: Bath,
   },
   {
-    title: "Kitchen Renovation",
+    title: "Full Home Renovation",
     description:
       "Complete home transformations tailored to your lifestyle, needs and vision.",
     imgUrl: serviceCardFullHomeImg,
