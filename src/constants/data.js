@@ -14,6 +14,8 @@ import {
   UserPen,
 } from "lucide-react";
 
+import serviceCardKitchenImg from "../../public/images/";
+
 const heroStats = [
   { label: "Projects completed", value: "100+", icon: Folder },
   { label: "Experience", value: "10+ Years", icon: Clock },
@@ -34,6 +36,26 @@ const serviceHighlights = [
     title: "Customer Focused",
     description: "Your satisfaction is our priority.",
     icon: UserPen,
+  },
+];
+
+const serviceCards = [
+  {
+    title: "Kitchen Renovation",
+    description:
+      "Custom kitchens that combine timeless design and exceptional craftsmanship.",
+    icon: CookingPot,
+  },
+  {
+    title: "Bathroom Renovation",
+    description: "Elegant bathrooms crafted with premium finishes and comfort.",
+    icon: Bath,
+  },
+  {
+    title: "Kitchen Renovation",
+    description:
+      "Complete home transformations tailored to your lifestyle, needs and vision.",
+    icon: Home,
   },
 ];
 
@@ -86,6 +108,7 @@ const projectTypeOptions = [
 export {
   heroStats,
   serviceHighlights,
+  serviceCards,
   projectFilters,
   defaultMapZoom,
   mapAttribution,
