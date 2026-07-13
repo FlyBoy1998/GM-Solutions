@@ -14,7 +14,9 @@ import {
   UserPen,
 } from "lucide-react";
 
-import serviceCardKitchenImg from "../../public/images/";
+import serviceCardKitchenImg from "../../public/images/service-card-kitchen.jpg";
+import serviceCardBathroomImg from "../../public/images/service-card-bathroom.jpg";
+import serviceCardFullHomeImg from "../../public/images/service-card-full-home.jpg";
 
 const heroStats = [
   { label: "Projects completed", value: "100+", icon: Folder },
@@ -44,17 +46,20 @@ const serviceCards = [
     title: "Kitchen Renovation",
     description:
       "Custom kitchens that combine timeless design and exceptional craftsmanship.",
+    imgUrl: serviceCardKitchenImg,
     icon: CookingPot,
   },
   {
     title: "Bathroom Renovation",
     description: "Elegant bathrooms crafted with premium finishes and comfort.",
+    imgUrl: serviceCardBathroomImg,
     icon: Bath,
   },
   {
     title: "Kitchen Renovation",
     description:
       "Complete home transformations tailored to your lifestyle, needs and vision.",
+    imgUrl: serviceCardFullHomeImg,
     icon: Home,
   },
 ];
