@@ -8,12 +8,11 @@ export default function Main({ children }) {
   const location = useLocation();
 
   const isHome = location.pathname === "/";
-  const isServices = location.pathname === "/services";
 
   return (
     <main
       style={{ "--nav-height": `${navHeight}px` }}
-      className={`wrapper ${isHome || isServices ? "root-bg-light" : ""} ${isHome ? "home-bg" : ""} ${isServices ? "services-bg" : ""}`}
+      className={`wrapper ${isHome ? "root-bg-light" : ""} ${isHome ? "home-bg" : ""}`}
     >
       {children}
     </main>
