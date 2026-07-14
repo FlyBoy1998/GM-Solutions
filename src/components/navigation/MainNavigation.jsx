@@ -20,7 +20,6 @@ export default function MainNavigation() {
 
   const isHome = location.pathname === "/";
   const isContact = location.pathname === "/contact";
-  const isServices = location.pathname === "/services";
 
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -36,7 +35,7 @@ export default function MainNavigation() {
 
   return (
     <header
-      className={`w-full ${isHome || isContact || isServices ? "fixed" : "sticky"} top-0 z-1000`}
+      className={`w-full ${isHome || isContact ? "fixed" : "sticky"} top-0 z-1000`}
     >
       <nav
         id="main-nav"
