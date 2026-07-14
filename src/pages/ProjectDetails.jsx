@@ -9,7 +9,7 @@ import ProjectMeta from "../components/projects/project-details/ProjectMeta";
 import CtaButton from "../components/ui/CtaButton";
 import ProjectCarousel from "../components/projects/project-details/ProjectCarousel";
 import ProjectOverviewSection from "../components/projects/project-details/ProjectOverviewSection";
-import ProjectCTA from "../components/projects/project-details/ProjectCTA";
+import CallToActionSection from "../components/ui/CallToActionSection";
 import Footer from "../components/footer/Footer";
 
 import { projects } from "../../dummy_data/data";
@@ -77,7 +77,7 @@ export default function ProjectDetails() {
         </section>
         <ProjectCarousel project={project} />
         <ProjectOverviewSection project={project} />
-        <ProjectCTA />
+        <CallToActionSection />
       </Main>
       <Footer />
     </>
