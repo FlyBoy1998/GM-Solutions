@@ -1,9 +1,13 @@
+import { useNavigate } from "react-router";
+
 import Main from "../layout/Main";
 
 import HeroStatsBar from "../components/hero/HeroStatsBar";
 import CtaButton from "../components/ui/CtaButton";
 
 export default function Home() {
+  const navigate = useNavigate();
+
   return (
     <Main>
       <section className="relative flex flex-col justify-center min-h-screen z-10 py-(--nav-height)">
@@ -20,8 +24,12 @@ export default function Home() {
           consequatur, error at tempore cumque corporis optio.
         </p>
         <div className="flex gap-4">
-          <CtaButton variant="primary">Get a free estimate</CtaButton>
-          <CtaButton variant="secondary">View our work</CtaButton>
+          <CtaButton variant="primary" onClick={() => navigate("/contact")}>
+            Get a free estimate
+          </CtaButton>
+          <CtaButton variant="secondary" onClick={() => navigate("/projects")}>
+            View our work
+          </CtaButton>
         </div>
         <HeroStatsBar />
       </section>
