@@ -166,7 +166,7 @@
 }
 
 @utility section-gap {
-  @apply max-sm:mt-3 max-md:mt-6 max-lg:mt-9 max-xl:mt-12 mt-16;
+  @apply max-lg:mt-9 max-xl:mt-12 mt-16;
 }
 
 @utility section-pb {
