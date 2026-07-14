@@ -130,6 +130,12 @@
   @apply before:bg-[linear-gradient(to_right,rgba(0,0,0,0.7),rgba(0,0,0,0.7))];
 }
 
+@utility admin-sidebar-login {
+  @apply relative bg-[url('/images/admin-login.jpg')] bg-cover bg-center;
+  @apply before:content-[''] before:absolute before:inset-0;
+  @apply before:bg-[linear-gradient(to_bottom,var(--color-midnight-blue),transparent,var(--color-midnight-blue))];
+}
+
 @utility home-bg {
   @apply bg-[url('/images/kitchen-bg.jpg')];
 }
