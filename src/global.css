@@ -92,6 +92,7 @@
   --color-surface: oklch(0.9668 0.0054 95.1);
   --color-black: oklch(0.2 0 260);
   --color-black-transparent: oklch(0.2 0 260 / 70%);
+  --color-midnight-blue: oklch(0.2329 0.0396 256.72);
   --color-error: oklch(0.660199 0.229356 35.4025);
 
   --spacing-sm: 1rem;
