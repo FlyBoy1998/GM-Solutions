@@ -82,6 +82,7 @@
   --breakpoint-xl: 80em;
 
   --color-primary: oklch(0.5545 0.1314 43.96);
+  --color-primary-light: oklch(0.6411 0.1696 43.96);
   --color-primary-transparent: oklch(0.5545 0.1314 43.96 / 55%);
   --color-light: oklch(93.7% 0 0);
   --color-white: oklch(0.9982 0.0025 165.08);
@@ -133,7 +134,7 @@
 @utility admin-sidebar-login {
   @apply relative bg-[url('/images/admin-login.jpg')] bg-cover bg-center;
   @apply before:content-[''] before:absolute before:inset-0;
-  @apply before:bg-[linear-gradient(to_bottom,var(--color-midnight-blue),transparent,var(--color-midnight-blue))];
+  @apply before:bg-[linear-gradient(to_bottom,var(--color-midnight-blue)_5%,transparent,var(--color-midnight-blue)_95%)];
 }
 
 @utility home-bg {
