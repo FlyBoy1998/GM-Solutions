@@ -1,8 +1,8 @@
-import CtaButton from "../../ui/CtaButton";
+import CtaButton from "./CtaButton";
 
 import { MessageSquareQuote, ArrowRight } from "lucide-react";
 
-export default function ProjectCTA() {
+export default function CallToActionSection() {
   return (
     <div className="flex items-center justify-between py-8 px-14 rounded-md bg-light max-lg:flex-col max-lg:gap-6">
       <p className="flex items-center gap-3">
