@@ -194,19 +194,19 @@
 }
 
 @utility heading-xl {
-  @apply max-sm:text-4xl max-md:text-5xl max-lg:text-6xl font-heading text-black text-7xl;
+  @apply max-sm:text-4xl max-md:text-5xl font-heading font-bold text-black text-6xl;
 }
 
 @utility heading-lg {
-  @apply max-sm:text-3xl max-md:text-4xl max-lg:text-5xl font-heading text-black text-6xl;
+  @apply max-sm:text-3xl max-md:text-4xl font-heading font-bold text-black text-5xl;
 }
 
 @utility heading-md {
-  @apply max-sm:text-2xl max-md:text-3xl max-lg:text-4xl font-heading text-black text-5xl;
+  @apply max-sm:text-2xl max-md:text-3xl font-heading font-bold text-black text-4xl;
 }
 
 @utility heading-sm {
-  @apply max-md:text-2xl max-lg:text-3xl font-heading text-black text-4xl;
+  @apply max-md:text-2xl font-heading font-bold text-black text-3xl;
 }
 
 @utility section-description {
