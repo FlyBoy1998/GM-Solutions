@@ -169,6 +169,10 @@
   @apply max-sm:mt-3 max-md:mt-6 max-lg:mt-9 max-xl:mt-12 mt-16;
 }
 
+@utility section-pb {
+  @apply pb-16 max-sm:pb-3 max-md:pb-6 max-lg:pb-9 max-xl:pb-12;
+}
+
 @utility logo {
   @apply max-md:h-10 max-lg:h-12 h-14;
 }
