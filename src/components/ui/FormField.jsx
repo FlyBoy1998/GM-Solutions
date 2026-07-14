@@ -35,7 +35,7 @@ export default function FormField({
 
   return (
     <div className={`flex flex-col ${additionalStyling}`}>
-      <label htmlFor={id} className="text-sm mb-1">
+      <label htmlFor={id} className="text-sm mb-1 font-bold">
         {label}
       </label>
       {field}
