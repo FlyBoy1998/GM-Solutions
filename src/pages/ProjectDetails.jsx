@@ -33,7 +33,7 @@ export default function ProjectDetails() {
   return (
     <>
       <Main>
-        <section className="pb-16 max-sm:pb-3 max-md:pb-6 max-lg:pb-9 max-xl:pb-12">
+        <section className="section-pb">
           <div className="grid grid-cols-[45%_1fr] gap-x-6 max-lg:grid-cols-1">
             <div className="col-span-2 max-lg:col-span-full">
               <Link
