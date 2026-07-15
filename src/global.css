@@ -88,7 +88,7 @@
   --color-white: oklch(0.9982 0.0025 165.08);
   --color-gray: oklch(0.8806 0 0);
   --color-gray-dark: oklch(0.6031 0 0);
-  --color-gray-transparent: oklch(0.95 0 0 / 50%);
+  --color-gray-transparent: oklch(0.95 0 0 / 10%);
   --color-text: oklch(0.2264 0 0);
   --color-surface: oklch(0.9668 0.0054 95.1);
   --color-black: oklch(0.2 0 260);
@@ -195,6 +195,10 @@
 
 @utility mobile-nav-link {
   @apply block p-3 text-xl font-bold rounded-md focus-ring;
+}
+
+@utility admin-nav-link {
+  @apply block p-3 rounded-md text-white hover:bg-gray-transparent transition-colors duration-400 ease-out;
 }
 
 @utility eyebrow {
