@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 
 import { Phone, Mail } from "lucide-react";
 
@@ -15,7 +15,13 @@ export default function MobileNavigation() {
   const { isMobileMenuOpen, setIsMobileMenuOpen } = useContext(
     MobileNavigationContext,
   );
+  const navigate = useNavigate();
   const { navHeight } = useNavbarHeight();
+
+  function handleClick() {
+    navigate("/contact");
+    setIsMobileMenuOpen(false);
+  }
 
   return (
     <nav
@@ -68,10 +74,7 @@ export default function MobileNavigation() {
           </NavLink>
         </li>
         <li>
-          <CtaButton
-            variant="primary"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
+          <CtaButton variant="primary" onClick={handleClick}>
             Get a Quote
           </CtaButton>
         </li>
