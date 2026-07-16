@@ -242,7 +242,19 @@
 }
 
 @utility form-input {
-  @apply p-2 text-sm rounded-md bg-white shadow-sm focus-ring;
+  @apply flex-1 p-3 ps-10 text-sm rounded-md bg-white focus-ring;
+}
+
+@utility form-input-wrapper {
+  @apply relative rounded-md bg-white shadow-sm;
+}
+
+@utility form-input-icon-wrapper {
+  @apply absolute flex justify-center items-center h-full w-10;
+}
+
+@utility form-input-icon {
+  @apply text-gray-dark;
 }
 
 @utility input-error {
