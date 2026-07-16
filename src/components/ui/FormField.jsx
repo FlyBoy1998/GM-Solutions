@@ -6,6 +6,7 @@ export default function FormField({
   options = [],
   errors,
   additionalStyling = "",
+  icon,
   ...props
 }) {
   let field;
@@ -38,7 +39,10 @@ export default function FormField({
       <label htmlFor={id} className="text-sm mb-1 font-bold">
         {label}
       </label>
-      {field}
+      <div className="form-input-wrapper flex items-center">
+        <div className="form-input-icon-wrapper">{icon}</div>
+        {field}
+      </div>
       {errors}
     </div>
   );
