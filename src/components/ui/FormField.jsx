@@ -6,14 +6,16 @@ export default function FormField({
   options = [],
   errors,
   additionalStyling = "",
-  icon,
+  icon = null,
   ...props
 }) {
   let field;
 
   switch (type) {
     case "textarea":
-      field = <textarea id={id} className="form-input" {...props}></textarea>;
+      field = (
+        <textarea id={id} className="form-input ps-3" {...props}></textarea>
+      );
       break;
     case "select":
       field = (
@@ -40,7 +42,7 @@ export default function FormField({
         {label}
       </label>
       <div className="form-input-wrapper flex items-center">
-        <div className="form-input-icon-wrapper">{icon}</div>
+        {icon && <div className="form-input-icon-wrapper">{icon}</div>}
         {field}
       </div>
       {errors}
