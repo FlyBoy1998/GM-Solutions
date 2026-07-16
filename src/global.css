@@ -253,10 +253,6 @@
   @apply absolute flex justify-center items-center h-full w-10;
 }
 
-@utility form-input-icon {
-  @apply text-gray-dark;
-}
-
 @utility input-error {
   @apply text-sm font-bold text-error;
 }
