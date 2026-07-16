@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import FormField from "../ui/FormField";
 import CtaButton from "../ui/CtaButton";
 
-import { Send } from "lucide-react";
+import { Send, User, Phone, Mail, Folder } from "lucide-react";
 
 import { projectTypeOptions } from "../../constants/data";
 
@@ -30,6 +30,7 @@ export default function ContactForm() {
         {...register("fullName", {
           required: "Please enter your full name",
         })}
+        icon={<User className="text-gray-dark" size={16} aria-hidden />}
         additionalStyling="col-span-1 max-lg:col-span-2"
         errors={
           errors.fullName && (
@@ -49,6 +50,7 @@ export default function ContactForm() {
             message: "Please enter a valid phone number.",
           },
         })}
+        icon={<Phone className="text-gray-dark" size={16} aria-hidden />}
         placeholder="e.g. +44 7123 456789"
         additionalStyling="col-span-1 max-lg:col-span-2"
         errors={
@@ -67,6 +69,7 @@ export default function ContactForm() {
             message: "Please enter a valid email address.",
           },
         })}
+        icon={<Mail className="text-gray-dark" size={16} aria-hidden />}
         additionalStyling="col-span-2"
         errors={
           errors.email && <p className="input-error">{errors.email.message}</p>
@@ -81,6 +84,7 @@ export default function ContactForm() {
         {...register("projectType", {
           required: "Please select a project type.",
         })}
+        icon={<Folder className="text-gray-dark" size={16} aria-hidden />}
         additionalStyling="col-span-2"
         errors={
           errors.projectType && (
