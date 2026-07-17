@@ -19,6 +19,7 @@
     "react-dom": "^19.0.0-rc.1",
     "react-hook-form": "^7.79.0",
     "react-leaflet": "^5.0.0-rc.2",
+    "react-loader-spinner": "^8.0.2",
     "react-router": "^7.15.0",
     "tailwindcss": "^4.2.4"
   },
