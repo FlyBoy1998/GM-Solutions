@@ -254,7 +254,7 @@
 }
 
 @utility input-error {
-  @apply text-sm font-bold text-error;
+  @apply mt-1 text-sm font-bold text-error;
 }
 
 @utility hamburger-inner {
