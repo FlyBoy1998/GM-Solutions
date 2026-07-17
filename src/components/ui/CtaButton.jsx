@@ -1,4 +1,9 @@
-export default function CtaButton({ children, variant, ...props }) {
+export default function CtaButton({
+  children,
+  variant,
+  isFullWidth = false,
+  ...props
+}) {
   let classes =
     "cursor-pointer px-4 py-3 font-bold rounded-md focus-ring transition-all duration-400 ease-out";
 
@@ -7,6 +12,9 @@ export default function CtaButton({ children, variant, ...props }) {
   }
   if (variant === "secondary") {
     classes += " bg-white text-black border border-black hover:bg-gray";
+  }
+  if (isFullWidth) {
+    classes += " w-full";
   }
 
   return (
