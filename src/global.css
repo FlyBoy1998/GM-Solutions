@@ -131,7 +131,7 @@
   @apply before:bg-[linear-gradient(to_right,rgba(0,0,0,0.7),rgba(0,0,0,0.7))];
 }
 
-@utility admin-sidebar-login {
+@utility admin-aside-auth {
   @apply relative bg-[url('/images/admin-login.jpg')] bg-cover bg-center;
   @apply before:content-[''] before:absolute before:inset-0;
   @apply before:bg-[linear-gradient(to_bottom,var(--color-midnight-blue)_5%,transparent,var(--color-midnight-blue)_95%)];
