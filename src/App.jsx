@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import MapContextProvider from "./context/MapContext";
 import ProjectsTabsContextProvider from "./context/ProjectsTabsContext";
@@ -29,15 +30,19 @@ const router = createBrowserRouter([
   },
 ]);
 
+const queryClient = new QueryClient();
+
 function App() {
   return (
-    <MobileNavigationContextProvider>
-      <MapContextProvider>
-        <ProjectsTabsContextProvider>
-          <RouterProvider router={router} />
-        </ProjectsTabsContextProvider>
-      </MapContextProvider>
-    </MobileNavigationContextProvider>
+    <QueryClientProvider client={queryClient}>
+      <MobileNavigationContextProvider>
+        <MapContextProvider>
+          <ProjectsTabsContextProvider>
+            <RouterProvider router={router} />
+          </ProjectsTabsContextProvider>
+        </MapContextProvider>
+      </MobileNavigationContextProvider>
+    </QueryClientProvider>
   );
 }
 
