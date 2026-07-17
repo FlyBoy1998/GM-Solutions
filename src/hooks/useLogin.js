@@ -1,0 +1,18 @@
+import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router";
+
+import { login as loginApi } from "../api/auth";
+
+export function useLogin() {
+  const navigate = useNavigate();
+
+  const { mutate: login, isPending: isLoading } = useMutation({
+    mutationFn: ({ email, password }) => loginApi({ email, password }),
+    onSuccess: (user) => {
+      console.log(user);
+      navigate("/admin/dashboard");
+    },
+  });
+
+  return { login, isLoading };
+}
