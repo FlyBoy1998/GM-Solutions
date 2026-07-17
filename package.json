@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.110.2",
     "@tailwindcss/vite": "^4.2.4",
+    "@tanstack/react-query": "^5.101.2",
     "leaflet": "^1.9.4",
     "lucide-react": "^1.3.0",
     "react": "^19.0.0-rc.1",
