@@ -4,7 +4,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import MapContextProvider from "./context/MapContext";
 import ProjectsTabsContextProvider from "./context/ProjectsTabsContext";
 import MobileNavigationContextProvider from "./context/MobileNavigationContext";
-import UserContextProvider from "./context/UserContext";
 
 import ProtectedRoute from "./components/authentication/ProtectedRoute";
 
@@ -64,15 +63,13 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <UserContextProvider>
-        <MobileNavigationContextProvider>
-          <MapContextProvider>
-            <ProjectsTabsContextProvider>
-              <RouterProvider router={router} />
-            </ProjectsTabsContextProvider>
-          </MapContextProvider>
-        </MobileNavigationContextProvider>
-      </UserContextProvider>
+      <MobileNavigationContextProvider>
+        <MapContextProvider>
+          <ProjectsTabsContextProvider>
+            <RouterProvider router={router} />
+          </ProjectsTabsContextProvider>
+        </MapContextProvider>
+      </MobileNavigationContextProvider>
     </QueryClientProvider>
   );
 }
