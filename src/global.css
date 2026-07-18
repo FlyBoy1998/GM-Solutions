@@ -198,7 +198,7 @@
 }
 
 @utility admin-nav-link {
-  @apply block p-3 rounded-md text-white hover:bg-gray-transparent transition-colors duration-400 ease-out;
+  @apply flex items-center gap-2 p-3 rounded-md text-sm text-white hover:bg-gray-transparent transition-colors duration-400 ease-out;
 }
 
 @utility eyebrow {
