@@ -41,7 +41,7 @@ export default function MainNavigation() {
         id="main-nav"
         className={`wrapper flex justify-between py-4 ${isMobileMenuOpen ? "navbar-surface" : "navbar-transparent"} ${scrollY > 0 && "navbar-scrolled"} transition-all duration-300 ease-out`}
       >
-        <NavLink to="/" className="focus-ring">
+        <NavLink to="/" className="rounded-md focus-ring">
           <img src={logoImg} className="logo" alt="GM Solutions logo" />
         </NavLink>
         <ul className="hidden lg:flex items-center gap-4">
