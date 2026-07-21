@@ -34,4 +34,13 @@ function flyToProject(map, coordinates) {
   map.flyTo(offsetLatLng, projectZoom);
 }
 
-export { formatDate, createProjectMarkerIcon, flyToProject };
+function formatToCapitalize(string) {
+  return string[0].toUpperCase() + string.slice(1);
+}
+
+export {
+  formatDate,
+  createProjectMarkerIcon,
+  flyToProject,
+  formatToCapitalize,
+};
