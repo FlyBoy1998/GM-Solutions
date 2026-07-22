@@ -5,6 +5,7 @@ import {
   FolderOpen,
   Toolbox,
   Image,
+  Users,
   Settings,
 } from "lucide-react";
 
@@ -61,6 +62,17 @@ export default function AdminNavigation() {
           >
             <Image size={16} aria-hidden />
             <span>Media</span>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="leads"
+            className={({ isActive }) =>
+              `admin-nav-link focus-ring ${isActive ? "bg-gray-transparent" : ""}`
+            }
+          >
+            <Users size={16} aria-hidden />
+            <span>Leads</span>
           </NavLink>
         </li>
         <li>
