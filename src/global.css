@@ -264,3 +264,11 @@
 @utility hamburger-face {
   @apply flex justify-center items-center absolute left-0 top-0 h-full w-full rounded-md backface-hidden bg-primary;
 }
+
+@utility projects-table-th {
+  @apply text-start py-2 px-2;
+}
+
+@utility projects-table-td {
+  @apply px-2 align-middle;
+}
