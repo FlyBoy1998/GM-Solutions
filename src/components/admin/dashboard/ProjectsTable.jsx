@@ -4,7 +4,7 @@ import ProjectsTableRow from "./ProjectsTableRow";
 import { projects } from "../../../../dummy_data/data";
 
 export default function ProjectsTable() {
-  const sortedProjects = projects.sort((a, b) => {
+  const sortedProjects = projects.slice().sort((a, b) => {
     const dateA = new Date(a.completionDate);
     const dateB = new Date(b.completionDate);
     return dateB - dateA;
