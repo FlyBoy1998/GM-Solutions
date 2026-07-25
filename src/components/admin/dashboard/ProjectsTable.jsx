@@ -11,7 +11,7 @@ export default function ProjectsTable() {
   });
 
   return (
-    <div className="col-span-3 row-start-3 row-end-5 rounded-lg shadow-md">
+    <div className="col-span-3 row-start-3 row-end-5 rounded-lg shadow-md bg-white">
       <table className="h-full w-full text-sm">
         <ProjectsTableHead />
         <tbody className="text-xs">
