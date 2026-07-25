@@ -1,6 +1,6 @@
 import ProjectTableActions from "./ProjectsTableActions";
 
-import { formatToCapitalize } from "../../../utils/utils";
+import { formatToCapitalize, formatDate } from "../../../utils/utils";
 
 export default function ProjectsTableRow({ project }) {
   let formattedCategory;
@@ -28,7 +28,9 @@ export default function ProjectsTableRow({ project }) {
       <td className="projects-table-td">
         {formatToCapitalize(project.status)}
       </td>
-      <td className="projects-table-td">{project.completionDate}</td>
+      <td className="projects-table-td">
+        {formatDate(project.completionDate)}
+      </td>
       <ProjectTableActions />
     </tr>
   );
