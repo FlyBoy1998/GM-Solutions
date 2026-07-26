@@ -4,6 +4,7 @@ export default function FormField({
   id,
   label,
   options = [],
+  optionsPlaceholder,
   errors,
   additionalStyling = "",
   icon = null,
@@ -20,7 +21,7 @@ export default function FormField({
     case "select":
       field = (
         <select id={id} className="form-input" {...props}>
-          <option value="">Select a project type</option>
+          <option value="">{optionsPlaceholder}</option>
 
           {options.map((option) => (
             <option key={option.value} value={option.value}>
@@ -38,9 +39,12 @@ export default function FormField({
 
   return (
     <div className={`flex flex-col ${additionalStyling}`}>
-      <label htmlFor={id} className="text-sm mb-1 font-bold">
-        {label}
-      </label>
+      {label && (
+        <label htmlFor={id} className="text-sm mb-1 font-bold">
+          {label}
+        </label>
+      )}
+
       <div className="form-input-wrapper flex items-center">
         {icon && <div className="form-input-icon-wrapper">{icon}</div>}
         {field}
