@@ -1,11 +1,12 @@
 export default function CtaButton({
   children,
   variant,
+  size = "medium",
   isFullWidth = false,
   ...props
 }) {
   let classes =
-    "cursor-pointer px-4 py-3 font-bold rounded-md focus-ring transition-all duration-400 ease-out";
+    "cursor-pointer font-bold rounded-md focus-ring transition-all duration-400 ease-out";
 
   if (variant === "primary") {
     classes +=
@@ -17,6 +18,16 @@ export default function CtaButton({
   }
   if (isFullWidth) {
     classes += " w-full";
+  }
+
+  if (size === "small") {
+    classes += " px-2 py-1 text-xs";
+  }
+  if (size === "medium") {
+    classes += " px-3 py-2 text-sm";
+  }
+  if (size === "large") {
+    classes += " px-4 py-3 text-md";
   }
 
   return (
