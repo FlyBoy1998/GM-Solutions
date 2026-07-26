@@ -80,6 +80,7 @@ export default function ContactForm() {
         type="select"
         label="Project Type"
         id="projectType"
+        optionsPlaceholder="Select a project type"
         options={projectTypeOptions}
         {...register("projectType", {
           required: "Please select a project type.",
@@ -103,7 +104,7 @@ export default function ContactForm() {
       />
 
       <div className="col-span-full">
-        <CtaButton variant="primary" disabled={isSubmitting}>
+        <CtaButton variant="primary" size="large" disabled={isSubmitting}>
           {isSubmitting ? "Sending..." : "Send message"}{" "}
           <Send size={14} className="inline-block" aria-hidden />
         </CtaButton>
