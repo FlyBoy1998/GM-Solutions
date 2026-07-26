@@ -24,10 +24,18 @@ export default function Home() {
           consequatur, error at tempore cumque corporis optio.
         </p>
         <div className="flex gap-4">
-          <CtaButton variant="primary" onClick={() => navigate("/contact")}>
+          <CtaButton
+            variant="primary"
+            size="large"
+            onClick={() => navigate("/contact")}
+          >
             Get a free estimate
           </CtaButton>
-          <CtaButton variant="secondary" onClick={() => navigate("/projects")}>
+          <CtaButton
+            variant="secondary"
+            size="large"
+            onClick={() => navigate("/projects")}
+          >
             View our work
           </CtaButton>
         </div>
