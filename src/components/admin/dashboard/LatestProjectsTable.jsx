@@ -3,7 +3,7 @@ import ProjectsTableRow from "./ProjectsTableRow";
 
 import { projects } from "../../../../dummy_data/data";
 
-export default function ProjectsTable() {
+export default function LatestProjectsTable() {
   const sortedProjects = projects.slice().sort((a, b) => {
     const dateA = new Date(a.completionDate);
     const dateB = new Date(b.completionDate);
