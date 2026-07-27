@@ -1,8 +1,12 @@
+import { useLocation } from "react-router";
+
 import ProjectTableActions from "./ProjectsTableActions";
 
 import { formatToCapitalize, formatDate } from "../../../utils/utils";
 
 export default function ProjectsTableRow({ project }) {
+  const location = useLocation();
+
   let formattedCategory;
 
   if (project.category.includes("-")) {
@@ -31,7 +35,9 @@ export default function ProjectsTableRow({ project }) {
       <td className="projects-table-td">
         {formatDate(project.completionDate)}
       </td>
-      <ProjectTableActions />
+      <ProjectTableActions
+        hasDeleteAction={location.pathname.includes("/admin/projects")}
+      />
     </tr>
   );
 }
