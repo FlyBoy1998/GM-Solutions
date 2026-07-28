@@ -1,4 +1,4 @@
-import { useUser } from "../../hooks/useUser";
+import { useUser } from "../../../hooks/useUser";
 
 import AdminAuthAside from "./AdminAuthAside";
 import AdminNavigation from "../navigation/AdminNavigation";
