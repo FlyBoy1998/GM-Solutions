@@ -9,9 +9,9 @@ import {
   Settings,
 } from "lucide-react";
 
-import Logout from "../authentication/Logout";
+import Logout from "../../authentication/Logout";
 
-import logo from "../../../public/images/gm-solutions-logo-dark.png";
+import logo from "../../../../public/images/gm-solutions-logo-dark.png";
 
 export default function AdminNavigation() {
   return (
