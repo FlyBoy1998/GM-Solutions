@@ -2,7 +2,7 @@ import { NavLink } from "react-router";
 
 import { ChartLine, TableOfContents } from "lucide-react";
 
-import logo from "../../../public/images/gm-solutions-logo-dark.png";
+import logo from "../../../../public/images/gm-solutions-logo-dark.png";
 
 export default function AdminAuthAside() {
   return (
