@@ -1,6 +1,6 @@
 import { useLocation } from "react-router";
 
-import ProjectTableActions from "./ProjectsTableActions";
+import ProjectTableActions from "../dashboard/ProjectsTableActions";
 
 import { formatToCapitalize, formatDate } from "../../../utils/utils";
 
