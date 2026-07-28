@@ -1,4 +1,5 @@
 import { useLocation } from "react-router";
+import { Dot } from "lucide-react";
 
 import ProjectTableActions from "../dashboard/ProjectsTableActions";
 
@@ -8,11 +9,21 @@ export default function ProjectsTableRow({ project }) {
   const location = useLocation();
 
   let formattedCategory;
+  let projectStatusClasses =
+    "inline-flex items-center pe-[12px] font-bold rounded-md";
 
   if (project.category.includes("-")) {
     formattedCategory = project.category.replace("-", " ");
   } else {
     formattedCategory = project.category;
+  }
+
+  if (project.status === "completed") {
+    projectStatusClasses += " text-green-500 bg-green-100";
+  } else if (project.status === "in progress") {
+    projectStatusClasses += " text-blue-500 bg-blue-100";
+  } else {
+    projectStatusClasses += " text-orange-500 bg-orange-100";
   }
 
   return (
@@ -29,8 +40,11 @@ export default function ProjectsTableRow({ project }) {
         {formatToCapitalize(formattedCategory)}
       </td>
       <td className="projects-table-td">{project.address}</td>
-      <td className="projects-table-td">
-        {formatToCapitalize(project.status)}
+      <td className="projects-table-td rounded-md">
+        <span className={projectStatusClasses}>
+          <Dot aria-hidden />
+          <span>{formatToCapitalize(project.status)}</span>
+        </span>
       </td>
       <td className="projects-table-td">
         {formatDate(project.completionDate)}
