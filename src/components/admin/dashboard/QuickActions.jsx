@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { FolderPlus, Users, Settings } from "lucide-react";
 
-import QuickActionButton from "../../ui/QuickActionButton";
+import QuickActionButton from "../ui/QuickActionButton";
 
 export default function QuickActions() {
   const navigate = useNavigate();
