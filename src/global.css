@@ -272,3 +272,9 @@
 @utility projects-table-td {
   @apply px-2 align-middle;
 }
+
+@utility pagination-nav-btn {
+  @apply flex items-center gap-2 rounded-md border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition-colors duration-200;
+  @apply hover:bg-slate-50 hover:border-slate-300;
+  @apply disabled:pointer-events-none disabled:opacity-50;
+}
