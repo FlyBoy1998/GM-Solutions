@@ -1,0 +1,40 @@
+import { CookingPot, Bath, House } from "lucide-react";
+
+import ProjectsCategoriesItem from "./ProjectsCategoriesItem";
+
+import { projects } from "../../../../dummy_data/data";
+
+export default function ProjectsCategories() {
+  const kitchenProjectsCount = projects.filter(
+    (project) => project.category === "kitchen",
+  ).length;
+  const bathroomProjectsCount = projects.filter(
+    (project) => project.category === "bathroom",
+  ).length;
+  const fullHomeProjectsCount = projects.filter(
+    (project) => project.category === "full-home",
+  ).length;
+
+  return (
+    <div className="col-start-4 col-end-5 row-start-4 row-end-5 flex flex-col py-3 px-4 rounded-lg shadow-md bg-white">
+      <h3 className="mb-2 font-bold">Categories</h3>
+      <div className="flex-1 flex flex-col justify-evenly">
+        <ProjectsCategoriesItem
+          Icon={CookingPot}
+          projectType="Kitchen"
+          value={kitchenProjectsCount}
+        />
+        <ProjectsCategoriesItem
+          Icon={Bath}
+          projectType="Bathroom"
+          value={bathroomProjectsCount}
+        />
+        <ProjectsCategoriesItem
+          Icon={House}
+          projectType="Full Home"
+          value={fullHomeProjectsCount}
+        />
+      </div>
+    </div>
+  );
+}
