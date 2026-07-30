@@ -110,6 +110,12 @@ const projectTypeOptions = [
   { value: "full-home", label: "Full Home Renovation" },
 ];
 
+const projectStatusOptions = [
+  { value: "completed", label: "Completed" },
+  { value: "in-progress", label: "In Progress" },
+  { value: "draft", label: "Draft" },
+];
+
 export {
   heroStats,
   serviceHighlights,
@@ -122,4 +128,5 @@ export {
   londonCoordinates,
   projectDetailIcons,
   projectTypeOptions,
+  projectStatusOptions,
 };
