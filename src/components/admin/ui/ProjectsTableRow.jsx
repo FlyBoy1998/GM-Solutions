@@ -1,7 +1,7 @@
 import { useLocation } from "react-router";
 import { Dot } from "lucide-react";
 
-import ProjectTableActions from "../dashboard/ProjectsTableActions";
+import ProjectTableActions from "./ProjectsTableActions";
 
 import { formatToCapitalize, formatDate } from "../../../utils/utils";
 
@@ -28,10 +28,10 @@ export default function ProjectsTableRow({ project }) {
 
   return (
     <tr className="border-t border-slate-100 hover:bg-slate-50 transition-colors">
-      <td className="h-12 projects-table-td">
+      <td className="projects-table-td">
         <img
           src={project.imageUrl}
-          className="object-cover w-full h-full rounded-lg"
+          className="object-cover w-full h-12 rounded-lg"
           alt={project.alt}
         />
       </td>
