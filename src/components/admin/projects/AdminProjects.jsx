@@ -1,3 +1,4 @@
+import PageHeader from "../ui/PageHeader";
 import HamburgerBtn from "../../navigation/HamburgerButton";
 import CtaButton from "../../ui/CtaButton";
 import ProjectFilters from "./ProjectFilters";
@@ -12,12 +13,10 @@ export default function AdminProjects() {
         <HamburgerBtn />
       </div>
       <div className="flex justify-between items-center col-span-full">
-        <div>
-          <h1 className="heading-md">Projects</h1>
-          <p className="text-gray-dark">
-            Manage and showcase your interior renovation projects.
-          </p>
-        </div>
+        <PageHeader
+          heading="Projects"
+          description="Manage and showcase your interior renovation projects."
+        />
         <div>
           <CtaButton variant="primary">Add New Project</CtaButton>
         </div>

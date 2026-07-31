@@ -1,3 +1,4 @@
+import PageHeader from "../ui/PageHeader";
 import HamburgerBtn from "../../navigation/HamburgerButton";
 import DashboardStats from "./DashboardStats";
 import LatestProjectsTable from "./LatestProjectsTable";
@@ -10,10 +11,10 @@ export default function AdminDashboard() {
       <div className="hidden col-span-full max-lg:block">
         <HamburgerBtn />
       </div>
-      <div className="col-span-full">
-        <h1 className="heading-md">Dashboard</h1>
-        <p className="text-gray-dark">Welcome to your dashboard!</p>
-      </div>
+      <PageHeader
+        heading="Dashboard"
+        description="Welcome to your dashboard!"
+      />
       <DashboardStats />
       <LatestProjectsTable />
       <QuickActions />
