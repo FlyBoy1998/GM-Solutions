@@ -299,3 +299,7 @@
   @apply hover:bg-slate-50 hover:border-slate-300;
   @apply disabled:pointer-events-none disabled:opacity-50;
 }
+
+@utility service-card-btn {
+  @apply cursor-pointer flex items-center gap-1.5 py-1 px-3 rounded-md border border-slate-100 bg-white text-xs focus-ring;
+}
