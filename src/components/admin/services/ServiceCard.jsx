@@ -12,7 +12,7 @@ export default function ServiceCard({
   title,
   description,
 }) {
-  const [isToggled, setIsToggled] = useState(false);
+  const [isToggled, setIsToggled] = useState(true);
 
   return (
     <div className="col-span-1 flex flex-col gap-4 h-70 p-3 rounded-md bg-light">
