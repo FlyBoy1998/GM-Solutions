@@ -116,6 +116,24 @@ const projectStatusOptions = [
   { value: "draft", label: "Draft" },
 ];
 
+const chartServiceCategories = [
+  {
+    label: "Kitchen",
+    chartLabel: "Kitchen Renovation",
+    color: "rgb(194, 106, 51)",
+  },
+  {
+    label: "Bathroom",
+    chartLabel: "Bathroom Renovation",
+    color: "rgb(74, 128, 145)",
+  },
+  {
+    label: "Full home",
+    chartLabel: "Full Home Renovation",
+    color: "rgb(126, 108, 91)",
+  },
+];
+
 export {
   heroStats,
   serviceHighlights,
@@ -129,4 +147,5 @@ export {
   projectDetailIcons,
   projectTypeOptions,
   projectStatusOptions,
+  chartServiceCategories,
 };
