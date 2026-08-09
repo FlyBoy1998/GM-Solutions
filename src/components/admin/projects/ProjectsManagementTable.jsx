@@ -1,24 +1,18 @@
-import { useState } from "react";
-
 import ProjectsTable from "../ui/ProjectsTable";
-import ProjectsPagination from "./ProjectsPagination";
+import Pagination from "../ui/Pagination";
+
+import usePagination from "../../../hooks/usePagination";
 
 import { projects } from "../../../../dummy_data/data";
 
 export default function ProjectsManagementTable() {
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const itemsPerPage = 6;
-  const totalPages = Math.ceil(projects.length / itemsPerPage);
-  const currentData = projects.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage,
-  );
+  const { currentPage, totalPages, currentData, setCurrentPage } =
+    usePagination(projects || []);
 
   return (
     <div className="flex flex-col col-span-3 row-start-3 row-end-5 min-h-135 px-4 rounded-lg shadow-md bg-white">
       <ProjectsTable projects={currentData} />
-      <ProjectsPagination
+      <Pagination
         totalPages={totalPages}
         currentPage={currentPage}
         onPageChange={setCurrentPage}
