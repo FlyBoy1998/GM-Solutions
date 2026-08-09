@@ -38,9 +38,14 @@ function formatToCapitalize(string) {
   return string[0].toUpperCase() + string.slice(1);
 }
 
+function bytesToKB(bytes, decimals = 2) {
+  return Number((bytes / 1024).toFixed(decimals));
+}
+
 export {
   formatDate,
   createProjectMarkerIcon,
   flyToProject,
   formatToCapitalize,
+  bytesToKB,
 };
