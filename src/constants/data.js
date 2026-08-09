@@ -134,6 +134,12 @@ const chartServiceCategories = [
   },
 ];
 
+const mediaTypesOptions = [
+  { value: "images", label: "Images" },
+  { value: "videos", label: "Videos" },
+  { value: "documents", label: "Documents" },
+];
+
 export {
   heroStats,
   serviceHighlights,
@@ -148,4 +154,5 @@ export {
   projectTypeOptions,
   projectStatusOptions,
   chartServiceCategories,
+  mediaTypesOptions,
 };
