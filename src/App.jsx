@@ -9,8 +9,13 @@ import ProtectedRoute from "./components/authentication/ProtectedRoute";
 
 import RootLayout from "./layout/RootLayout";
 import Admin from "./pages/Admin";
-import AdminLogin from "./components/admin/AdminLogin";
-import AdminDashboard from "./components/admin/AdminDashboard";
+import AdminLogin from "./components/admin/auth/AdminLogin";
+import AdminDashboard from "./components/admin/dashboard/AdminDashboard";
+import AdminProjects from "./components/admin/projects/AdminProjects";
+import AdminServices from "./components/admin/services/AdminServices";
+import AdminMedia from "./components/admin/media/AdminMedia";
+import AdminLeads from "./components/admin/AdminLeads";
+import AdminSettings from "./components/admin/AdminSettings";
 import Home from "./pages/Home";
 import Services from "./pages/Services";
 import Projects from "./pages/Projects";
@@ -46,11 +51,30 @@ const router = createBrowserRouter([
             <Admin />
           </ProtectedRoute>
         ),
-        path: "dashboard",
         children: [
           {
-            index: true,
+            path: "dashboard",
             element: <AdminDashboard />,
+          },
+          {
+            path: "projects",
+            element: <AdminProjects />,
+          },
+          {
+            path: "services",
+            element: <AdminServices />,
+          },
+          {
+            path: "media",
+            element: <AdminMedia />,
+          },
+          {
+            path: "leads",
+            element: <AdminLeads />,
+          },
+          {
+            path: "settings",
+            element: <AdminSettings />,
           },
         ],
       },
