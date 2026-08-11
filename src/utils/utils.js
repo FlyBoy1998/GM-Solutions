@@ -38,8 +38,12 @@ function formatToCapitalize(string) {
   return string[0].toUpperCase() + string.slice(1);
 }
 
-function bytesToKB(bytes, decimals = 2) {
-  return Number((bytes / 1024).toFixed(decimals));
+function formatBytes(bytes, decimals = 2) {
+  if (bytes < 1024 * 1024) {
+    return `${(bytes / 1024).toFixed(decimals)} KB`;
+  }
+
+  return `${(bytes / (1024 * 1024)).toFixed(decimals)} MB`;
 }
 
 export {
@@ -47,5 +51,5 @@ export {
   createProjectMarkerIcon,
   flyToProject,
   formatToCapitalize,
-  bytesToKB,
+  formatBytes,
 };
