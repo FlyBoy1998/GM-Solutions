@@ -1,6 +1,8 @@
 import L from "leaflet";
 import { projectZoom } from "../constants/data";
 
+import documentsImg from '../../public/images/documents-placeholder-image.png';
+
 function formatDate(date) {
   if (!date) return;
 
@@ -46,10 +48,40 @@ function formatBytes(bytes, decimals = 2) {
   return `${(bytes / (1024 * 1024)).toFixed(decimals)} MB`;
 }
 
+function getMediaFileInfo(file) {
+  const mimeType = file.metadata?.mimetype || '';
+
+  const isImage = mimeType.startsWith('image/');
+  const isVideo = mimeType.startsWith('video/');
+  const isPdf = mimeType.includes('application/pdf');
+
+  let format = 'FILE';
+
+  if (isImage) {
+    format = mimeType.split("/")[1].toUpperCase();
+  } else if (isVideo) {
+    format = mimeType.split("/")[1].toUpperCase();
+  } else if (isPdf) {
+    format = "PDF";
+  }
+
+  return {
+    ...file,
+    isImage,
+    isVideo,
+    isPdf,
+    format,
+    imgUrl: isImage || isVideo
+      ? `https://lilgyzxwnynguwroopii.supabase.co/storage/v1/object/public/carousel_images/${file.name}`
+      : documentsImg,
+  };
+}
+
 export {
   formatDate,
   createProjectMarkerIcon,
   flyToProject,
   formatToCapitalize,
   formatBytes,
+  getMediaFileInfo
 };
