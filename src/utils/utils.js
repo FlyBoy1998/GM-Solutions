@@ -1,7 +1,7 @@
 import L from "leaflet";
 import { projectZoom } from "../constants/data";
 
-import documentsImg from '../../public/images/documents-placeholder-image.png';
+import documentsImg from "../../public/images/documents-placeholder-image.png";
 
 function formatDate(date) {
   if (!date) return;
@@ -49,13 +49,13 @@ function formatBytes(bytes, decimals = 2) {
 }
 
 function getMediaFileInfo(file) {
-  const mimeType = file.metadata?.mimetype || '';
+  const mimeType = file.metadata?.mimetype || "";
 
-  const isImage = mimeType.startsWith('image/');
-  const isVideo = mimeType.startsWith('video/');
-  const isPdf = mimeType.includes('application/pdf');
+  const isImage = mimeType.startsWith("image/");
+  const isVideo = mimeType.startsWith("video/");
+  const isPdf = mimeType.includes("application/pdf");
 
-  let format = 'FILE';
+  let format = "FILE";
 
   if (isImage) {
     format = mimeType.split("/")[1].toUpperCase();
@@ -71,9 +71,10 @@ function getMediaFileInfo(file) {
     isVideo,
     isPdf,
     format,
-    imgUrl: isImage || isVideo
-      ? `https://lilgyzxwnynguwroopii.supabase.co/storage/v1/object/public/carousel_images/${file.name}`
-      : documentsImg,
+    imgUrl:
+      isImage || isVideo
+        ? `https://lilgyzxwnynguwroopii.supabase.co/storage/v1/object/public/carousel_images/${file.name}`
+        : documentsImg,
   };
 }
 
@@ -83,5 +84,5 @@ export {
   flyToProject,
   formatToCapitalize,
   formatBytes,
-  getMediaFileInfo
+  getMediaFileInfo,
 };
