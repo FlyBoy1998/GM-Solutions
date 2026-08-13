@@ -18,12 +18,12 @@ import serviceCardKitchenImg from "../../public/images/service-card-kitchen.jpg"
 import serviceCardBathroomImg from "../../public/images/service-card-bathroom.jpg";
 import serviceCardFullHomeImg from "../../public/images/service-card-full-home.jpg";
 
-const heroStats = [
+export const heroStats = [
   { label: "Projects completed", value: "100+", icon: Folder },
   { label: "Experience", value: "10+ Years", icon: Clock },
 ];
 
-const serviceHighlights = [
+export const serviceHighlights = [
   {
     title: "On-Time Delivery",
     description: "We respect your time and schedule.",
@@ -41,7 +41,7 @@ const serviceHighlights = [
   },
 ];
 
-const serviceCards = [
+export const serviceCards = [
   {
     title: "Kitchen Renovation",
     description:
@@ -64,15 +64,15 @@ const serviceCards = [
   },
 ];
 
-const defaultMapZoom = 11;
-const mapAttribution =
+export const defaultMapZoom = 11;
+export const mapAttribution =
   '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
-const mapTileUrl =
+export const mapTileUrl =
   "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png";
-const projectZoom = 12;
-const londonCoordinates = [51.5074, -0.1278];
+export const projectZoom = 12;
+export const londonCoordinates = [51.5074, -0.1278];
 
-const projectFilters = [
+export const projectFilters = [
   {
     label: "All Projects",
     value: "all",
@@ -95,7 +95,7 @@ const projectFilters = [
   },
 ];
 
-const projectDetailIcons = {
+export const projectDetailIcons = {
   "Project Type": FolderOpenDot,
   Location: MapPin,
   "Completion Date": Calendar,
@@ -104,19 +104,19 @@ const projectDetailIcons = {
   "Budget Range": Banknote,
 };
 
-const projectTypeOptions = [
+export const projectTypeOptions = [
   { value: "bathroom", label: "Bathroom Renovation" },
   { value: "kitchen", label: "Kitchen Renovation" },
   { value: "full-home", label: "Full Home Renovation" },
 ];
 
-const projectStatusOptions = [
+export const projectStatusOptions = [
   { value: "completed", label: "Completed" },
   { value: "in-progress", label: "In Progress" },
   { value: "draft", label: "Draft" },
 ];
 
-const chartServiceCategories = [
+export const chartServiceCategories = [
   {
     label: "Kitchen",
     chartLabel: "Kitchen Renovation",
@@ -134,13 +134,13 @@ const chartServiceCategories = [
   },
 ];
 
-const mediaTypesOptions = [
+export const mediaTypesOptions = [
   { value: "images", label: "Images" },
   { value: "videos", label: "Videos" },
   { value: "documents", label: "Documents" },
 ];
 
-const mediaCategories = [
+export const mediaCategories = [
   {
     label: "Images",
     color: "rgb(166, 81, 34)",
@@ -154,21 +154,3 @@ const mediaCategories = [
     color: "rgb(46, 40, 29)",
   },
 ];
-
-export {
-  heroStats,
-  serviceHighlights,
-  serviceCards,
-  projectFilters,
-  defaultMapZoom,
-  mapAttribution,
-  mapTileUrl,
-  projectZoom,
-  londonCoordinates,
-  projectDetailIcons,
-  projectTypeOptions,
-  projectStatusOptions,
-  chartServiceCategories,
-  mediaTypesOptions,
-  mediaCategories,
-};
