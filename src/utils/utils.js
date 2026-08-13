@@ -66,7 +66,7 @@ function getMediaFileInfo(file) {
     category = "Images";
   } else if (isVideo) {
     format = mimeType.split("/")[1].toUpperCase();
-    imgUrl = documentsPlaceholderImg;
+    imgUrl = videosPlaceholderImg;
     category = "Videos";
   } else if (isPdf) {
     format = "PDF";
