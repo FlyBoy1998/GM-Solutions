@@ -142,18 +142,18 @@ const mediaTypesOptions = [
 
 const mediaCategories = [
   {
-    label: 'Images',
-    color: 'rgba(166, 81, 34)'
+    label: "Images",
+    color: "rgb(166, 81, 34)",
   },
   {
-    label: 'Videos',
-    color: 'rgba(218, 195, 173)'
+    label: "Videos",
+    color: "rgb(218, 195, 173)",
   },
   {
-    label: 'Documents',
-    color: 'rgba(46, 40, 29)'
-  }
-]
+    label: "Documents",
+    color: "rgb(46, 40, 29)",
+  },
+];
 
 export {
   heroStats,
@@ -170,5 +170,5 @@ export {
   projectStatusOptions,
   chartServiceCategories,
   mediaTypesOptions,
-  mediaCategories
+  mediaCategories,
 };
