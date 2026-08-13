@@ -49,6 +49,12 @@ function formatBytes(bytes, decimals = 2) {
   return `${(bytes / (1024 * 1024)).toFixed(decimals)} MB`;
 }
 
+function bytesToMB(bytes, decimals = 2) {
+  if (!bytes) return 0;
+
+  return Number((bytes / (1024 * 1024)).toFixed(decimals));
+}
+
 function getMediaFileInfo(file) {
   const mimeType = file.metadata?.mimetype || "";
 
@@ -92,4 +98,5 @@ export {
   formatToCapitalize,
   formatBytes,
   getMediaFileInfo,
+  bytesToMB,
 };
