@@ -1,7 +1,8 @@
 import L from "leaflet";
 import { projectZoom } from "../constants/data";
 
-import documentsImg from "../../public/images/documents-placeholder-image.png";
+import documentsPlaceholderImg from "../../public/images/documents-placeholder-image.png";
+import videosPlaceholderImg from "../../public/images/videos-placeholder-image.png";
 
 function formatDate(date) {
   if (!date) return;
@@ -56,13 +57,21 @@ function getMediaFileInfo(file) {
   const isPdf = mimeType.includes("application/pdf");
 
   let format = "FILE";
+  let imgUrl;
+  let category;
 
   if (isImage) {
     format = mimeType.split("/")[1].toUpperCase();
+    imgUrl = `https://lilgyzxwnynguwroopii.supabase.co/storage/v1/object/public/carousel_images/${file.name}`;
+    category = "Images";
   } else if (isVideo) {
     format = mimeType.split("/")[1].toUpperCase();
+    imgUrl = documentsPlaceholderImg;
+    category = "Videos";
   } else if (isPdf) {
     format = "PDF";
+    imgUrl = documentsPlaceholderImg;
+    category = "Documents";
   }
 
   return {
@@ -71,10 +80,8 @@ function getMediaFileInfo(file) {
     isVideo,
     isPdf,
     format,
-    imgUrl:
-      isImage || isVideo
-        ? `https://lilgyzxwnynguwroopii.supabase.co/storage/v1/object/public/carousel_images/${file.name}`
-        : documentsImg,
+    imgUrl,
+    category,
   };
 }
 
