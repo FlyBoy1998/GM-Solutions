@@ -4,7 +4,7 @@ import { projectZoom } from "../constants/data";
 import documentsPlaceholderImg from "../../public/images/documents-placeholder-image.png";
 import videosPlaceholderImg from "../../public/images/videos-placeholder-image.png";
 
-function formatDate(date) {
+export function formatDate(date) {
   if (!date) return;
 
   const d = new Date(date);
@@ -18,7 +18,7 @@ function formatDate(date) {
   return formattedDate;
 }
 
-function createProjectMarkerIcon({ projectIndex, isSelected = false }) {
+export function createProjectMarkerIcon({ projectIndex, isSelected = false }) {
   return L.divIcon({
     className: "",
     html: `<div class="flex justify-center items-center w-7 h-7 ${isSelected && "scale-[1.3]"} rounded-[50%] font-bold text-white bg-primary border-2 border-primary outline outline-solid outline-primary-transparent outline-offset-4">
@@ -29,7 +29,7 @@ function createProjectMarkerIcon({ projectIndex, isSelected = false }) {
   });
 }
 
-function flyToProject(map, coordinates) {
+export function flyToProject(map, coordinates) {
   const point = map.project(coordinates, projectZoom);
   const offsetPoint = point.subtract([0, 150]);
   const offsetLatLng = map.unproject(offsetPoint, projectZoom);
@@ -37,11 +37,11 @@ function flyToProject(map, coordinates) {
   map.flyTo(offsetLatLng, projectZoom);
 }
 
-function formatToCapitalize(string) {
+export function formatToCapitalize(string) {
   return string[0].toUpperCase() + string.slice(1);
 }
 
-function formatBytes(bytes, decimals = 2) {
+export function formatBytes(bytes, decimals = 2) {
   if (bytes < 1024 * 1024) {
     return `${(bytes / 1024).toFixed(decimals)} KB`;
   }
@@ -49,13 +49,13 @@ function formatBytes(bytes, decimals = 2) {
   return `${(bytes / (1024 * 1024)).toFixed(decimals)} MB`;
 }
 
-function bytesToMB(bytes, decimals = 2) {
+export function bytesToMB(bytes, decimals = 2) {
   if (!bytes) return 0;
 
   return Number((bytes / (1024 * 1024)).toFixed(decimals));
 }
 
-function getMediaFileInfo(file) {
+export function getMediaFileInfo(file) {
   const mimeType = file.metadata?.mimetype || "";
 
   const isImage = mimeType.startsWith("image/");
@@ -90,13 +90,3 @@ function getMediaFileInfo(file) {
     category,
   };
 }
-
-export {
-  formatDate,
-  createProjectMarkerIcon,
-  flyToProject,
-  formatToCapitalize,
-  formatBytes,
-  getMediaFileInfo,
-  bytesToMB,
-};
