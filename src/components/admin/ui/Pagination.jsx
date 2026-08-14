@@ -5,7 +5,7 @@ export default function Pagination({ totalPages, currentPage, onPageChange }) {
 
   return (
     <nav
-      className="flex items-center justify-between mt-auto py-2 border-t border-slate-200"
+      className="flex items-center justify-between mt-auto py-4 border-t border-slate-200"
       aria-label="Pagination"
     >
       <button
