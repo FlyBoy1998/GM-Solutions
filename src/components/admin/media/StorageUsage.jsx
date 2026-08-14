@@ -3,7 +3,7 @@ import StorageUsageChart from "./StorageUsageChart";
 import { bytesToMB } from "../../../utils/utils";
 
 export default function StorageUsage({ mediaFiles }) {
-  const memoryUsed = mediaFiles.reduce((memory, file) => {
+  const memoryUsed = mediaFiles?.reduce((memory, file) => {
     memory += file.metadata?.size;
 
     return bytesToMB(memory);
