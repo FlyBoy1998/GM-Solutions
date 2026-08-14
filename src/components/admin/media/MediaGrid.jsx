@@ -9,8 +9,8 @@ export default function MediaGrid({ mediaFiles }) {
     usePagination(mediaFiles || []);
 
   return (
-    <div className="flex flex-col col-span-3 row-span-2 min-h-125 p-3 rounded-lg shadow-lg bg-white">
-      <div className="grid grid-cols-3 gap-4">
+    <div className="flex flex-col col-span-3 row-span-2 p-3 rounded-lg shadow-lg bg-white">
+      <div className="flex-1 grid grid-cols-3 gap-4">
         {currentData?.map((file) => {
           const mediaFile = getMediaFileInfo(file);
 
