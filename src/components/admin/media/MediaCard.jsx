@@ -7,7 +7,7 @@ export default function MediaCard({ mediaFile }) {
 
   return (
     <article className="col-span-1 flex flex-col rounded-lg shadow-md overflow-hidden bg-white">
-      <div className="h-28 overflow-hidden">
+      <div className="h-38 overflow-hidden">
         <img
           src={mediaFile.imgUrl}
           className={`${imageClasses} ${mediaFile.isImage ? "scale-125" : ""}`}
