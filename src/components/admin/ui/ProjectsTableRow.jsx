@@ -28,10 +28,10 @@ export default function ProjectsTableRow({ project }) {
 
   return (
     <tr className="border-t border-slate-100 hover:bg-slate-50 transition-colors">
-      <td className="projects-table-td">
+      <td className="projects-table-td whitespace-nowrap">
         <img
           src={project.imageUrl}
-          className="object-cover w-full h-12 rounded-lg"
+          className="object-cover h-12 rounded-lg max-w-none"
           alt={project.alt}
         />
       </td>
