@@ -90,3 +90,16 @@ export function getMediaFileInfo(file) {
     category,
   };
 }
+
+export function formatTime(time) {
+  const [hours, minutes] = time.split(":");
+
+  const date = new Date();
+  date.setHours(hours, minutes);
+
+  return date.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  });
+}
