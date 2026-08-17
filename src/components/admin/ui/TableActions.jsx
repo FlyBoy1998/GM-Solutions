@@ -2,7 +2,7 @@ import { Eye, Pencil, Trash2 } from "lucide-react";
 
 import IconButton from "./IconButton";
 
-export default function ProjectTableActions({ hasDeleteAction = false }) {
+export default function TableActions({ hasDeleteAction = false }) {
   return (
     <td>
       <div className="flex justify-center items-center gap-1">

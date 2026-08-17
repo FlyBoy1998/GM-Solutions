@@ -1,7 +1,7 @@
 import { useLocation } from "react-router";
 import { Dot } from "lucide-react";
 
-import ProjectTableActions from "./ProjectsTableActions";
+import TableActions from "./TableActions";
 
 import { formatToCapitalize, formatDate } from "../../../utils/utils";
 
@@ -49,7 +49,7 @@ export default function ProjectsTableRow({ project }) {
       <td className="projects-table-td">
         {formatDate(project.completionDate)}
       </td>
-      <ProjectTableActions
+      <TableActions
         hasDeleteAction={location.pathname.includes("/admin/projects")}
       />
     </tr>
