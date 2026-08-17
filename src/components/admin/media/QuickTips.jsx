@@ -6,7 +6,7 @@ export default function QuickTips() {
   return (
     <div className="col-start-4 col-end-5 row-start-4 row-end-5 py-3 px-4 rounded-lg shadow-md bg-white">
       <h3 className="mb-2 font-bold">Quick Tips</h3>
-      <ul className="list-none flex flex-col gap-2">
+      <ul className="list-none flex flex-col gap-4">
         {quickTips.map((tip) => (
           <li className="flex items-start gap-2 text-sm" key={tip}>
             <Lightbulb
