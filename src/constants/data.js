@@ -154,3 +154,11 @@ export const mediaCategories = [
     color: "rgb(46, 40, 29)",
   },
 ];
+
+export const quickTips = [
+  "Use descriptive filenames so files are easy to find.",
+  "Compress large images to improve website performance.",
+  "Use images at least 1920px wide for best results.",
+  "Check file storage regularly.",
+  "Use JPG/WebP for photos, PNG for transparency, and MP4 for videos.",
+];
