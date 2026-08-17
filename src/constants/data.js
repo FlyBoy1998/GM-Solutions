@@ -162,3 +162,17 @@ export const quickTips = [
   "Check file storage regularly.",
   "Use JPG/WebP for photos, PNG for transparency, and MP4 for videos.",
 ];
+
+export const leadsStatuses = [
+  { value: "new", label: "New" },
+  { value: "contacted", label: "Contacted" },
+  { value: "consultation", label: "Consultation" },
+  { value: "converted", label: "Converted" },
+];
+
+export const leadsSources = [
+  { value: "website", label: "Website" },
+  { value: "instagram", label: "Instagram" },
+  { value: "email", label: "Email" },
+  { value: "other", label: "Other" },
+];
