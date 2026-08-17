@@ -12,7 +12,7 @@ export default function RecentLeads() {
   });
 
   return (
-    <div className="col-start-4 col-end-5 row-start-4 row-end-5 flex flex-col rounded-lg py-3 px-4 shadow-md bg-white max-lg:col-start-1 max-lg:col-end-3 max-lg:row-start-5 max-lg:row-end-6">
+    <div className="col-start-4 col-end-5 row-start-4 row-end-5 flex flex-col rounded-lg py-3 px-4 shadow-md bg-white max-xl:col-start-1 max-xl:col-end-3 max-xl:row-start-5 max-xl:row-end-6">
       <div className="mb-2 flex justify-between items-center">
         <h3 className="font-bold">Recent Leads</h3>
         <Link to="/admin/leads" className="text-xs text-blue-500">
