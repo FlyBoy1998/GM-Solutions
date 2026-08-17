@@ -10,7 +10,7 @@ export default function ProjectsManagementTable() {
     usePagination(projects || []);
 
   return (
-    <div className="flex flex-col col-span-3 row-start-3 row-end-5 min-h-135 px-4 rounded-lg shadow-md bg-white">
+    <div className="flex flex-col col-span-3 row-start-3 row-end-5 min-h-135 px-4 rounded-lg shadow-md bg-white max-xl:col-span-full">
       <ProjectsTable projects={currentData} />
       <Pagination
         totalPages={totalPages}
