@@ -9,15 +9,15 @@ import { serviceCards } from "../../../constants/data";
 export default function AdminServices() {
   return (
     <div className="grid grid-cols-3 grid-rows-[auto_1fr_auto] gap-4 h-full p-6">
-      <div className="col-span-full flex justify-between items-center">
-        <PageHeader
-          heading="Services"
-          description="Manage the renovation services displayed on your website."
-        />
-        <div>
+      <PageHeader
+        heading="Services"
+        description="Manage the renovation services displayed on your website."
+      >
+        <div className="max-lg:hidden">
           <CtaButton variant="primary">Add Service</CtaButton>
         </div>
-      </div>
+      </PageHeader>
+
       <div className="col-span-full grid grid-cols-3 gap-3">
         {serviceCards.map((card) => (
           <ServiceCard

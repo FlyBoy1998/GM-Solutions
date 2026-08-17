@@ -31,15 +31,14 @@ export default function AdminMedia() {
 
   return (
     <div className="grid grid-cols-4 grid-rows-[auto_auto_1fr_1fr] gap-4 min-h-full p-6 overflow-y-auto">
-      <div className="col-span-full flex justify-between items-center">
-        <PageHeader
-          heading="Media"
-          description="Manage and organize all images and files used on your website."
-        />
-        <div>
+      <PageHeader
+        heading="Media"
+        description="Manage and organize all images and files used on your website."
+      >
+        <div className="max-lg:hidden">
           <CtaButton variant="primary">Upload Files</CtaButton>
         </div>
-      </div>
+      </PageHeader>
 
       <MediaFilters />
       {mediaGridContent}
