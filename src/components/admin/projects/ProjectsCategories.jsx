@@ -16,7 +16,7 @@ export default function ProjectsCategories() {
   ).length;
 
   return (
-    <div className="col-start-4 col-end-5 row-start-4 row-end-5 flex flex-col py-3 px-4 rounded-lg shadow-md bg-white">
+    <div className="col-start-4 col-end-5 row-start-4 row-end-5 flex flex-col py-3 px-4 rounded-lg shadow-md bg-white max-xl:col-start-3 max-xl:col-end-5 max-xl:row-start-5 max-xl:row-end-6">
       <h3 className="mb-2 font-bold">Categories</h3>
       <div className="flex-1 flex flex-col justify-evenly">
         <ProjectsCategoriesItem
