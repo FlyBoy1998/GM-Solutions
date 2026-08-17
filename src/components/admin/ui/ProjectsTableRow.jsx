@@ -28,27 +28,23 @@ export default function ProjectsTableRow({ project }) {
 
   return (
     <tr className="border-t border-slate-100 hover:bg-slate-50 transition-colors">
-      <td className="projects-table-td whitespace-nowrap">
+      <td className="table-td whitespace-nowrap">
         <img
           src={project.imageUrl}
           className="object-cover h-12 rounded-lg max-w-none"
           alt={project.alt}
         />
       </td>
-      <td className="projects-table-td">{project.title}</td>
-      <td className="projects-table-td">
-        {formatToCapitalize(formattedCategory)}
-      </td>
-      <td className="projects-table-td">{project.address}</td>
-      <td className="projects-table-td rounded-md">
+      <td className="table-td">{project.title}</td>
+      <td className="table-td">{formatToCapitalize(formattedCategory)}</td>
+      <td className="table-td">{project.address}</td>
+      <td className="table-td rounded-md">
         <span className={projectStatusClasses}>
           <Dot aria-hidden />
           <span>{formatToCapitalize(project.status)}</span>
         </span>
       </td>
-      <td className="projects-table-td">
-        {formatDate(project.completionDate)}
-      </td>
+      <td className="table-td">{formatDate(project.completionDate)}</td>
       <TableActions
         hasDeleteAction={location.pathname.includes("/admin/projects")}
       />
