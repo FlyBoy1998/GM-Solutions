@@ -14,18 +14,16 @@ export default function FormField({
 
   switch (type) {
     case "textarea":
-      field = (
-        <textarea id={id} className="form-input ps-3" {...props}></textarea>
-      );
+      field = <textarea id={id} className="form-input" {...props}></textarea>;
       break;
     case "select":
       field = (
         <select
           id={id}
-          className={`form-input ${icon ? "ps-10" : ""}`}
+          className={`form-input ps-2 ${icon ? "ps-10" : ""}`}
           {...props}
         >
-          <option value="">{optionsPlaceholder}</option>
+          {optionsPlaceholder && <option value="">{optionsPlaceholder}</option>}
 
           {options.map((option) => (
             <option key={option.value} value={option.value}>
