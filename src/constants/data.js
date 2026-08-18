@@ -182,9 +182,10 @@ export const leadsSources = [
 
 export const settingsTabs = [
   {
-    to: "/",
+    to: "",
     icon: Settings,
     label: "General",
+    end: true,
   },
   {
     to: "site-information",
