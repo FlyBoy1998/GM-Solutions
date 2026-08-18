@@ -263,7 +263,7 @@
 }
 
 @utility form-input {
-  @apply flex-1 p-3 ps-10 text-sm rounded-md bg-white focus-ring;
+  @apply flex-1 p-3 text-sm rounded-md bg-white focus-ring;
 }
 
 @utility form-input-wrapper {
