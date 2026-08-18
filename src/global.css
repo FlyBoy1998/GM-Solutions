@@ -303,3 +303,11 @@
 @utility service-card-btn {
   @apply cursor-pointer flex items-center gap-1.5 py-1 px-3 rounded-md border border-slate-100 bg-white text-xs focus-ring;
 }
+
+@utility settings-tab {
+  @apply flex items-center gap-2 py-4 px-3 text-sm font-bold border-b-2 border-transparent text-gray-dark hover:settings-tab-active transition-colors duration-400 ease-out focus-ring;
+}
+
+@utility settings-tab-active {
+  @apply border-b-2 border-primary!;
+}
