@@ -12,6 +12,9 @@ import {
   Banknote,
   ShieldPlus,
   UserPen,
+  Settings,
+  Info,
+  Contact,
 } from "lucide-react";
 
 import serviceCardKitchenImg from "../../public/images/service-card-kitchen.jpg";
@@ -175,4 +178,22 @@ export const leadsSources = [
   { value: "instagram", label: "Instagram" },
   { value: "email", label: "Email" },
   { value: "other", label: "Other" },
+];
+
+export const settingsTabs = [
+  {
+    to: "/",
+    icon: Settings,
+    label: "General",
+  },
+  {
+    to: "site-information",
+    icon: Info,
+    label: "Site Information",
+  },
+  {
+    to: "contact",
+    icon: Contact,
+    label: "Contact & Social",
+  },
 ];
