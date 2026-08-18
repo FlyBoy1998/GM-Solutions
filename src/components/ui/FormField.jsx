@@ -20,7 +20,11 @@ export default function FormField({
       break;
     case "select":
       field = (
-        <select id={id} className="form-input" {...props}>
+        <select
+          id={id}
+          className={`form-input ${icon ? "ps-10" : ""}`}
+          {...props}
+        >
           <option value="">{optionsPlaceholder}</option>
 
           {options.map((option) => (
@@ -33,7 +37,12 @@ export default function FormField({
       break;
     default:
       field = (
-        <input type={inputType} id={id} className="form-input" {...props} />
+        <input
+          type={inputType}
+          id={id}
+          className={`form-input ${icon ? "ps-10" : ""}`}
+          {...props}
+        />
       );
   }
 
