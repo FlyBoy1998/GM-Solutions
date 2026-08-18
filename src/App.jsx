@@ -15,7 +15,7 @@ import AdminProjects from "./components/admin/projects/AdminProjects";
 import AdminServices from "./components/admin/services/AdminServices";
 import AdminMedia from "./components/admin/media/AdminMedia";
 import AdminLeads from "./components/admin/leads/AdminLeads";
-import AdminSettings from "./components/admin/AdminSettings";
+import AdminSettings from "./components/admin/settings/AdminSettings";
 import Home from "./pages/Home";
 import Services from "./pages/Services";
 import Projects from "./pages/Projects";
