@@ -103,3 +103,32 @@ export function formatTime(time) {
     hour12: true,
   });
 }
+
+export function formatCurrency(value, currency, format) {
+  const options = {
+    style: "currency",
+    currency,
+  };
+
+  switch (format) {
+    case "symbol-no-decimal":
+      options.minimumFractionDigits = 0;
+      options.maximumFractionDigits = 0;
+      break;
+
+    case "code-decimal":
+      options.currencyDisplay = "code";
+      break;
+
+    case "code-no-decimal":
+      options.currencyDisplay = "code";
+      options.minimumFractionDigits = 0;
+      options.maximumFractionDigits = 0;
+      break;
+
+    default:
+      options.currencyDisplay = "symbol";
+  }
+
+  return new Intl.NumberFormat("en-GB", options).format(value);
+}
