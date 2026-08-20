@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { Pen, Eye } from "lucide-react";
 
-import ToggleButton from "./ToggleButton";
+import ToggleButton from "../ui/ToggleButton";
 import ServiceCardButton from "./ServiceCardButton";
 
 export default function ServiceCard({
