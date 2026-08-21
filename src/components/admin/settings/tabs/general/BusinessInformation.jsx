@@ -1,3 +1,6 @@
+import { Link } from "react-router";
+import { ArrowRight } from "lucide-react";
+
 import BusinessInfoItem from "./BusinessInfoItem";
 
 import { siteInformation } from "../../../../../constants/data";
@@ -11,11 +14,18 @@ export default function BusinessInformation() {
           Update your business information.
         </p>
       </div>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 mb-4">
         {siteInformation.map((item) => (
           <BusinessInfoItem key={item.label} item={item} />
         ))}
       </div>
+      <Link
+        to="site-information"
+        className="flex items-center gap-2 text-sm font-bold text-primary"
+      >
+        <span>Edit Information</span>
+        <ArrowRight size={16} aria-hidden />
+      </Link>
     </div>
   );
 }
