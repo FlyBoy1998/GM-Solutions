@@ -8,7 +8,7 @@ import { serviceCards } from "../../../constants/data";
 
 export default function AdminServices() {
   return (
-    <div className="grid grid-cols-3 grid-rows-[auto_1fr_auto] gap-4 h-full p-6 overflow-y-auto">
+    <div className="grid grid-cols-3 grid-rows-[repeat(3,auto)] gap-4 p-6 overflow-y-auto">
       <PageHeader
         heading="Services"
         description="Manage the renovation services displayed on your website."
@@ -20,13 +20,7 @@ export default function AdminServices() {
 
       <div className="col-span-full grid grid-cols-3 gap-3">
         {serviceCards.map((card) => (
-          <ServiceCard
-            key={card.description}
-            imgUrl={card.icon}
-            Icon={card.icon}
-            title={card.title}
-            description={card.description}
-          />
+          <ServiceCard key={card.description} card={card} />
         ))}
       </div>
       <TopServices />
