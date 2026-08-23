@@ -2,21 +2,29 @@ import { Eye, Pencil, Trash2 } from "lucide-react";
 
 import IconButton from "./IconButton";
 
-export default function TableActions({ hasDeleteAction = false }) {
+export default function TableActions({
+  hasViewAction = true,
+  hasEditAction = true,
+  hasDeleteAction = false,
+}) {
   return (
     <td>
       <div className="flex justify-center items-center gap-1">
-        <IconButton
-          variant="view"
-          Icon={Eye}
-          ariaLabel="View Project Details"
-        />
-        <IconButton variant="edit" Icon={Pencil} ariaLabel="Edit Project" />
+        {hasViewAction && (
+          <IconButton
+            variant="view"
+            Icon={Eye}
+            aria-label="View Project Details"
+          />
+        )}
+        {hasEditAction && (
+          <IconButton variant="edit" Icon={Pencil} aria-label="Edit Project" />
+        )}
         {hasDeleteAction && (
           <IconButton
             variant="delete"
             Icon={Trash2}
-            ariaLabel="Delete Project"
+            aria-label="Delete Project"
           />
         )}
       </div>
