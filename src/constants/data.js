@@ -222,3 +222,8 @@ export const dateFormatOptions = [
   { value: "MM/DD/YYYY", label: "MM/DD/YYYY — 08/18/2026" },
   { value: "YYYY-MM-DD", label: "YYYY-MM-DD — 2026-08-18" },
 ];
+
+export const timeFormatOptions = [
+  { value: "12-hour", label: "12-hour — 2:30 PM" },
+  { value: "24-hour", label: "24-hour — 14:30" },
+];
