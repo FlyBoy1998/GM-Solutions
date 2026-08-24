@@ -227,3 +227,22 @@ export const timeFormatOptions = [
   { value: "12-hour", label: "12-hour — 2:30 PM" },
   { value: "24-hour", label: "24-hour — 14:30" },
 ];
+
+export const currencyFormats = [
+  {
+    value: "symbol-decimal",
+    label: "£1,234.56",
+  },
+  {
+    value: "symbol-no-decimal",
+    label: "£1,235",
+  },
+  {
+    value: "code-decimal",
+    label: "GBP 1,234.56",
+  },
+  {
+    value: "code-no-decimal",
+    label: "GBP 1,235",
+  },
+];
