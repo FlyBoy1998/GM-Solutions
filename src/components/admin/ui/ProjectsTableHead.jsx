@@ -8,7 +8,7 @@ export default function ProjectsTableHead() {
         <th className="table-th">Location</th>
         <th className="table-th">Status</th>
         <th className="table-th">Date</th>
-        <th className="table-th px-0">Actions</th>
+        <th className="table-th">Actions</th>
       </tr>
     </thead>
   );
