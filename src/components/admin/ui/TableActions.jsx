@@ -8,8 +8,8 @@ export default function TableActions({
   hasDeleteAction = false,
 }) {
   return (
-    <td>
-      <div className="flex justify-center items-center gap-1">
+    <th className="table-th">
+      <div className="flex items-center gap-1">
         {hasViewAction && (
           <IconButton
             variant="view"
@@ -28,6 +28,6 @@ export default function TableActions({
           />
         )}
       </div>
-    </td>
+    </th>
   );
 }
