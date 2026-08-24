@@ -216,3 +216,9 @@ export const currencyOptions = [
   { value: "AUD", label: "Australian Dollar (A$)" },
   { value: "CHF", label: "Swiss Franc (CHF)" },
 ];
+
+export const dateFormatOptions = [
+  { value: "DD/MM/YYYY", label: "DD/MM/YYYY — 18/08/2026" },
+  { value: "MM/DD/YYYY", label: "MM/DD/YYYY — 08/18/2026" },
+  { value: "YYYY-MM-DD", label: "YYYY-MM-DD — 2026-08-18" },
+];
