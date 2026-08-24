@@ -15,6 +15,10 @@ import {
   Settings,
   Info,
   Contact,
+  Building2,
+  Phone,
+  Mail,
+  Handshake,
 } from "lucide-react";
 
 import serviceCardKitchenImg from "../../public/images/service-card-kitchen.jpg";
@@ -197,4 +201,9 @@ export const settingsTabs = [
     icon: Contact,
     label: "Contact & Social",
   },
+];
+
+export const measurementSystemOptions = [
+  { value: "metric", label: "Metric" },
+  { value: "imperial", label: "Imperial" },
 ];
