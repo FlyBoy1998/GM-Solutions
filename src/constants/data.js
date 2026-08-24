@@ -207,3 +207,12 @@ export const measurementSystemOptions = [
   { value: "metric", label: "Metric" },
   { value: "imperial", label: "Imperial" },
 ];
+
+export const currencyOptions = [
+  { value: "GBP", label: "British Pound (£)" },
+  { value: "EUR", label: "Euro (€)" },
+  { value: "USD", label: "US Dollar ($)" },
+  { value: "CAD", label: "Canadian Dollar (C$)" },
+  { value: "AUD", label: "Australian Dollar (A$)" },
+  { value: "CHF", label: "Swiss Franc (CHF)" },
+];
