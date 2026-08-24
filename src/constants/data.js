@@ -246,3 +246,36 @@ export const currencyFormats = [
     label: "GBP 1,235",
   },
 ];
+
+export const siteInformation = [
+  {
+    label: "Business Name",
+    value: "GM Solutions",
+    icon: Handshake,
+  },
+  {
+    label: "Industry",
+    value: "Interior Renovation",
+    icon: Building2,
+  },
+  {
+    label: "Established",
+    value: "2014",
+    icon: Calendar,
+  },
+  {
+    label: "Service Areas",
+    value: "London",
+    icon: MapPin,
+  },
+  {
+    label: "Phone",
+    value: "+44 20 7946 0958",
+    icon: Phone,
+  },
+  {
+    label: "Email",
+    value: "hello@gmsolutions.co.uk",
+    icon: Mail,
+  },
+];
