@@ -17,6 +17,7 @@ export default function QuickActions() {
         <QuickActionButton
           Icon={FolderPlus}
           iconClassName="text-blue-500 bg-blue-100"
+          onClick={() => navigate("/admin/projects/new")}
         >
           Add New Project
         </QuickActionButton>
