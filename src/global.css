@@ -246,6 +246,10 @@
   @apply max-md:text-2xl font-heading font-bold text-black text-3xl;
 }
 
+@utility heading-xs {
+  @apply max-md:text-lg font-heading font-bold text-black text-xl;
+}
+
 @utility section-description {
   @apply max-sm:w-full max-sm:text-[0.8rem] max-lg:w-[75%] w-[50%] mb-8 text-[1rem] leading-8;
 }
