@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import { FolderPlus, Users, Settings } from "lucide-react";
 
+import SectionHeader from "../ui/SectionHeader";
 import QuickActionButton from "../ui/QuickActionButton";
 
 export default function QuickActions() {
@@ -8,7 +9,10 @@ export default function QuickActions() {
 
   return (
     <div className="col-start-4 col-end-5 row-start-3 row-end-4 flex flex-col py-3 px-4 rounded-lg shadow-md bg-white max-xl:col-start-3 max-xl:col-end-5 max-xl:row-start-5 max-xl:row-end-6">
-      <h3 className="mb-2 font-bold">Quick Actions</h3>
+      <SectionHeader
+        title="Quick Actions"
+        description="Quick access to frequently used actions."
+      />
       <div className="flex-1 flex flex-col justify-evenly">
         <QuickActionButton
           Icon={FolderPlus}

@@ -1,3 +1,4 @@
+import SectionHeader from "../ui/SectionHeader";
 import ServicePerformanceMetric from "./ServicePerformanceMetric";
 
 import { Folder, DollarSign, FolderKanban, TrendingUp } from "lucide-react";
@@ -5,7 +6,10 @@ import { Folder, DollarSign, FolderKanban, TrendingUp } from "lucide-react";
 export default function ServicePerformanceOverview() {
   return (
     <div className="col-start-1 col-end-3 row-start-3 row-end-4 flex flex-col py-3 px-4 rounded-lg shadow-md bg-white">
-      <h3 className="mb-3 font-bold">Service Performance Overview</h3>
+      <SectionHeader
+        title="Service Performance Overview"
+        description="Track key metrics and insights into your services' overall performance."
+      />
       <div className="flex-1 grid grid-cols-2 gap-2 max-lg:grid-cols-1">
         <ServicePerformanceMetric
           label="Total Projects"

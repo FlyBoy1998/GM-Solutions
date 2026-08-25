@@ -1,8 +1,7 @@
-import { Link } from "react-router";
+import SectionHeader from "../ui/SectionHeader";
+import LeadItem from "./LeadItem";
 
 import { leads } from "../../../../dummy_data/data";
-
-import LeadItem from "./LeadItem";
 
 export default function RecentLeads() {
   const sortedLeads = leads.sort((a, b) => {
@@ -13,12 +12,10 @@ export default function RecentLeads() {
 
   return (
     <div className="col-start-4 col-end-5 row-start-4 row-end-5 flex flex-col rounded-lg py-3 px-4 shadow-md bg-white max-xl:col-start-1 max-xl:col-end-3 max-xl:row-start-5 max-xl:row-end-6">
-      <div className="mb-2 flex justify-between items-center">
-        <h3 className="font-bold">Recent Leads</h3>
-        <Link to="/admin/leads" className="text-xs text-blue-500">
-          View All Leads
-        </Link>
-      </div>
+      <SectionHeader
+        title="Recent Leads"
+        description="View the latest enquiries submitted through your website."
+      />
       <div className="flex-1 flex flex-col justify-evenly gap-3">
         {sortedLeads.slice(0, 3).map((leadItem) => (
           <LeadItem key={leadItem.id} leadItem={leadItem} />

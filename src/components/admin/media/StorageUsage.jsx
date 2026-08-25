@@ -1,3 +1,4 @@
+import SectionHeader from "../ui/SectionHeader";
 import StorageUsageChart from "./StorageUsageChart";
 
 import { bytesToMB } from "../../../utils/utils";
@@ -10,8 +11,11 @@ export default function StorageUsage({ mediaFiles }) {
   }, 0);
 
   return (
-    <div className="col-start-4 col-end-5 row-start-3 row-end-4 flex flex-col py-3 px-4 rounded-lg shadow-md bg-white">
-      <h3 className="mb-2 font-bold">Storage Usage</h3>
+    <div className="col-start-4 col-end-5 row-start-3 row-end-4 flex flex-col gap-4 py-3 px-4 rounded-lg shadow-md bg-white">
+      <SectionHeader
+        title="Storage Usage"
+        description="Monitor your media storage and keep track of available space."
+      />
       <div>
         <StorageUsageChart mediaFiles={mediaFiles} />
       </div>
