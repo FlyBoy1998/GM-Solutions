@@ -23,6 +23,9 @@ import ProjectDetails from "./pages/ProjectDetails";
 import Contact from "./pages/Contact";
 import PageNotFound from "./pages/PageNotFound";
 import AdminLayout from "./layout/AdminLayout";
+import GeneralSettings from "./components/admin/settings/tabs/general/GeneralSettings";
+import SiteInformation from "./components/admin/settings/tabs/site-information/SiteInformation";
+import ContactSocial from "./components/admin/settings/tabs/contact-social/ContactSocial";
 
 const router = createBrowserRouter([
   {
@@ -75,6 +78,11 @@ const router = createBrowserRouter([
           {
             path: "settings",
             element: <AdminSettings />,
+            children: [
+              { index: true, element: <GeneralSettings /> },
+              { path: "site-information", element: <SiteInformation /> },
+              { path: "contact", element: <ContactSocial /> },
+            ],
           },
         ],
       },
