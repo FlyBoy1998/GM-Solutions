@@ -8,6 +8,7 @@ export default function FormField({
   errors,
   additionalStyling = "",
   icon = null,
+  required = false,
   ...props
 }) {
   let field;
@@ -48,7 +49,7 @@ export default function FormField({
     <div className={`flex flex-col ${additionalStyling}`}>
       {label && (
         <label htmlFor={id} className="text-sm mb-1 font-bold">
-          {label}
+          {label} {required ? <span className="text-red-500">*</span> : ""}
         </label>
       )}
 
