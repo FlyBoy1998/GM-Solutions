@@ -8,7 +8,7 @@ export default function WorkCompletedItem({ id, description, onDelete }) {
       </p>
       <button
         type="button"
-        className="cursor-pointer p-2 rounded-md border border-red-500 hover:bg-red-50 transition-colors"
+        className="cursor-pointer p-2 rounded-md border border-red-500 hover:bg-red-50 transition-colors focus-ring"
         onClick={() => onDelete(id)}
         aria-label="Delete Work Completed Item"
       >
