@@ -25,9 +25,8 @@ export default function WorkCompleted() {
         {workCompleted.map((item) => (
           <WorkCompletedItem
             key={item.id}
-            id={item.id}
-            description={item.description}
-            onDelete={handleDeleteItem}
+            item={item}
+            onClick={() => handleDeleteItem(item.id)}
           />
         ))}
       </ul>
