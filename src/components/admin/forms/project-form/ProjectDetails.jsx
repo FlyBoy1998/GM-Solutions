@@ -44,7 +44,7 @@ export default function ProjectDetails() {
           label="Budget Range"
           id="budget-range"
           name="budget-range"
-          placeholder="e.g. £18,0000 - £35,000"
+          placeholder="e.g. £18,000 - £35,000"
           required
           additionalStyling="col-span-2"
         />
