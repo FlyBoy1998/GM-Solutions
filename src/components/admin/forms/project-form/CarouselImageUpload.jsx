@@ -1,12 +1,18 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
+import { useFormContext, useFieldArray } from "react-hook-form";
 import { Plus } from "lucide-react";
 
 import AddItemButton from "../../ui/AddItemButton";
 import CarouselImageItem from "./CarouselImageItem";
 
 export default function CarouselImageUpload() {
-  const [uploadedImages, setUploadedImages] = useState([]);
   const inputRef = useRef(null);
+
+  const { control } = useFormContext();
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "carousel_images",
+  });
 
   function handleClick() {
     inputRef?.current?.click();
@@ -28,34 +34,26 @@ export default function CarouselImageUpload() {
     }
 
     const imageUrl = URL.createObjectURL(file);
-    setUploadedImages((prev) => [
-      ...prev,
-      {
-        id: crypto.randomUUID(),
-        imageName: file.name,
-        imageUrl,
-        alt: "",
-      },
-    ]);
-  }
-
-  function handleDeleteImage(id) {
-    setUploadedImages((prev) => prev.filter((item) => item.id !== id));
+    append({
+      file,
+      imageName: file.name,
+      imageUrl,
+    });
   }
 
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
-        {uploadedImages.length === 0 ? (
+        {fields.length === 0 ? (
           <p className="py-4 text-center text-sm text-gray-dark">
             No uploaded images.
           </p>
         ) : (
-          uploadedImages.map((item) => (
+          fields.map((item, index) => (
             <CarouselImageItem
-              key={item.imageUrl}
+              key={item.id}
               item={item}
-              onClick={() => handleDeleteImage(item.id)}
+              onClick={() => remove(index)}
             />
           ))
         )}
@@ -66,7 +64,6 @@ export default function CarouselImageUpload() {
       <input
         ref={inputRef}
         type="file"
-        name="image"
         accept="image/png,image/jpeg,image/webp"
         className="hidden"
         onChange={handleUploadImage}
