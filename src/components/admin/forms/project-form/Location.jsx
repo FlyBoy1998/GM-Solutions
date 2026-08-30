@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { useSearchParams } from "react-router";
+import { useFormContext } from "react-hook-form";
 import { MapContainer, TileLayer, useMap, useMapEvents } from "react-leaflet";
 
 import SectionHeader from "../../ui/SectionHeader";
@@ -14,9 +16,24 @@ import {
 
 export default function Location() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const {
+    register,
+    setValue,
+    formState: { errors },
+  } = useFormContext();
 
   const lat = searchParams.get("lat") || "";
   const lng = searchParams.get("lng") || "";
+
+  useEffect(() => {
+    setValue("latitude", lat, {
+      shouldDirty: true,
+    });
+
+    setValue("longitude", lng, {
+      shouldDirty: true,
+    });
+  }, [lat, lng, setValue]);
 
   function clearSearchParams() {
     setSearchParams({}, { replace: true });
@@ -34,22 +51,36 @@ export default function Location() {
           inputType="text"
           label="Latitude"
           id="latitude"
-          name="latitude"
+          {...register("latitude", {
+            required: "Latitude is required.",
+          })}
           placeholder="e.g. 51.486337"
           defaultValue={lat ? lat : ""}
           required
           additionalStyling="col-span-1"
+          errors={
+            errors?.latitude && (
+              <p className="input-error">{errors?.latitude.message}</p>
+            )
+          }
         />
         <FormField
           type="input"
           inputType="text"
           label="Longitude"
           id="longitude"
-          name="longitude"
+          {...register("longitude", {
+            required: "Longitude is required.",
+          })}
           placeholder="e.g. -10.486337"
           defaultValue={lng ? lng : ""}
           required
           additionalStyling="col-span-1"
+          errors={
+            errors?.longitude && (
+              <p className="input-error">{errors?.longitude.message}</p>
+            )
+          }
         />
         <div className="col-span-full">
           <h3 className="mb-1 text-sm font-bold">Map Preview</h3>
