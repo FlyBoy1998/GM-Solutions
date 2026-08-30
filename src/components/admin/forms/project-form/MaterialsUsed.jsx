@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useFieldArray, useFormContext } from "react-hook-form";
 import { Eraser } from "lucide-react";
 
 import FormField from "../../../ui/FormField";
@@ -7,8 +8,13 @@ import AddItemButton from "../../ui/AddItemButton";
 import MaterialsUsedItem from "./MeterialsUsedItem";
 
 export default function MaterialsUsed() {
-  const [materialsUsed, setMaterialsUsed] = useState([]);
   const [material, setMaterial] = useState("");
+
+  const { control } = useFormContext();
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "materials",
+  });
 
   function handleAddMaterial(e) {
     if (e.key !== "Enter") return;
@@ -18,14 +24,14 @@ export default function MaterialsUsed() {
 
     if (!trimmedMaterial) return;
 
-    setMaterialsUsed((prev) => {
-      const alreadyExists = prev.some(
-        (item) => item.toLowerCase() === trimmedMaterial.toLowerCase(),
-      );
-      if (alreadyExists) return prev;
+    const alreadyExists = fields.some(
+      (item) =>
+        item.trimmedMaterial.toLowerCase() === trimmedMaterial.toLowerCase(),
+    );
 
-      return [...prev, trimmedMaterial];
-    });
+    if (alreadyExists) return;
+
+    append({ trimmedMaterial });
     setMaterial("");
   }
 
@@ -47,17 +53,20 @@ export default function MaterialsUsed() {
         onChange={(e) => setMaterial(e.target.value)}
         onKeyDown={handleAddMaterial}
       />
-      {materialsUsed.length > 0 && (
+      {fields.length > 0 && (
         <>
           <div className="text-sm">
             <p className="text-gray-dark">Materials Added: </p>
             <div className="inline-flex flex-wrap items-center gap-2">
-              {materialsUsed.map((material) => (
-                <MaterialsUsedItem key={material} material={material} />
+              {fields.map((material) => (
+                <MaterialsUsedItem
+                  key={material.id}
+                  material={material.trimmedMaterial}
+                />
               ))}
             </div>
           </div>
-          <AddItemButton Icon={Eraser} onClick={() => setMaterialsUsed([])}>
+          <AddItemButton Icon={Eraser} onClick={() => remove()}>
             Clear List
           </AddItemButton>
         </>
