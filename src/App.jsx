@@ -26,6 +26,7 @@ import AdminLayout from "./layout/AdminLayout";
 import GeneralSettings from "./components/admin/settings/tabs/general/GeneralSettings";
 import SiteInformation from "./components/admin/settings/tabs/site-information/SiteInformation";
 import ContactSocial from "./components/admin/settings/tabs/contact-social/ContactSocial";
+import ManageProjectForm from "./components/admin/forms/project-form/ManageProjectForm";
 
 const router = createBrowserRouter([
   {
@@ -61,7 +62,11 @@ const router = createBrowserRouter([
           },
           {
             path: "projects",
-            element: <AdminProjects />,
+            children: [
+              { index: true, element: <AdminProjects /> },
+              { path: "new", element: <ManageProjectForm /> },
+              { path: ":id/edit", element: <ManageProjectForm /> },
+            ],
           },
           {
             path: "services",
