@@ -1,7 +1,11 @@
+import { useFormContext } from "react-hook-form";
+
 import FormField from "../../../ui/FormField";
 import SectionHeader from "../../ui/SectionHeader";
 
 export default function SeoAltText() {
+  const { register } = useFormContext();
+
   return (
     <div className="flex flex-col gap-6 p-4 rounded-lg shadow-md bg-white">
       <SectionHeader
@@ -12,7 +16,7 @@ export default function SeoAltText() {
         type="textarea"
         label="Alt Text"
         id="main-img-alt"
-        name="main_img_alt"
+        {...register("main_img_alt")}
         placeholder="e.g. Modern kitchen renovation with quartz countertops and oak cabinets in Clapham, London"
       />
     </div>

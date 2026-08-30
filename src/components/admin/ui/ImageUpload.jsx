@@ -3,11 +3,11 @@ import { Upload } from "lucide-react";
 
 export default function ImageUpload({
   label,
+  id,
   initialImage = null,
   required = false,
   onChange,
-  id,
-  name,
+  errors,
 }) {
   const [preview, setPreview] = useState(initialImage);
   const inputRef = useRef(null);
@@ -80,6 +80,8 @@ export default function ImageUpload({
           onChange={handleFileChange}
         />
       </div>
+
+      {errors}
     </div>
   );
 }
