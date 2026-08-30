@@ -13,13 +13,13 @@ export default function ProjectImages() {
         description="Add the main images for the project."
       />
       <Controller
-        name="project_main_img"
+        name="thumbnail_image"
         control={control}
         rules={{ required: "Project thumbnail is required." }}
         render={({ field, fieldState }) => (
           <ImageUpload
             label="Project Thumbnail (Card Image)"
-            id="project-main-img"
+            id="thumbnail-image"
             onChange={field.onChange}
             required
             errors={
