@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useFieldArray, useFormContext } from "react-hook-form";
 import { Plus, X } from "lucide-react";
 
 import FormField from "../../../ui/FormField";
@@ -7,13 +8,18 @@ import WorkCompletedItem from "./WorkCompletedItem";
 import AddItemButton from "../../ui/AddItemButton";
 
 export default function WorkCompleted() {
-  const [workCompleted, setWorkCompleted] = useState([]);
   const [workItem, setWorkItem] = useState("");
   const [isAddingItem, setIsAddingItem] = useState(false);
 
+  const { control } = useFormContext();
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "work_completed",
+  });
+
   let workCompletedContent;
 
-  if (workCompleted.length === 0) {
+  if (fields.length === 0) {
     workCompletedContent = (
       <p className="text-sm text-gray-dark">
         There are no work completed items on your list.
@@ -22,11 +28,11 @@ export default function WorkCompleted() {
   } else {
     workCompletedContent = (
       <ul className="list-none flex flex-col gap-2">
-        {workCompleted.map((item) => (
+        {fields.map((item, index) => (
           <WorkCompletedItem
             key={item.id}
             item={item}
-            onClick={() => handleDeleteItem(item.id)}
+            onClick={() => remove(index)}
           />
         ))}
       </ul>
@@ -41,26 +47,16 @@ export default function WorkCompleted() {
 
     if (!trimmedItem) return;
 
-    setWorkCompleted((prev) => {
-      const alreadyExists = prev.some(
-        (item) => item.description.toLowerCase() === trimmedItem.toLowerCase(),
-      );
+    const alreadyExists = fields.some(
+      (item) => item.description.toLowerCase() === trimmedItem.toLowerCase(),
+    );
 
-      if (alreadyExists) return prev;
+    if (alreadyExists) return;
 
-      return [
-        ...prev,
-        {
-          id: crypto.randomUUID(),
-          description: trimmedItem,
-        },
-      ];
+    append({
+      description: trimmedItem,
     });
     setWorkItem("");
-  }
-
-  function handleDeleteItem(id) {
-    setWorkCompleted((prev) => prev.filter((item) => item.id !== id));
   }
 
   return (
