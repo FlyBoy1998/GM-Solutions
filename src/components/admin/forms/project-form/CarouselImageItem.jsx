@@ -11,7 +11,7 @@ export default function CarouselImageItem({ item, onClick }) {
             alt=""
           />
         </div>
-        <div className="text-xs text-gray-dark">{item.imageName}</div>
+        <div className="text-xs text-gray-dark">{item.file.name}</div>
       </div>
       <DeleteItemButton onClick={onClick} aria-label="Delete Carousel Image" />
     </div>
