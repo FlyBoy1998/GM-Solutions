@@ -36,8 +36,7 @@ export default function CarouselImageUpload() {
     const imageUrl = URL.createObjectURL(file);
     append({
       file,
-      imageName: file.name,
-      imageUrl,
+      preview: imageUrl,
     });
   }
 

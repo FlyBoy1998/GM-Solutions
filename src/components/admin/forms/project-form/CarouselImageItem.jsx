@@ -6,7 +6,7 @@ export default function CarouselImageItem({ item, onClick }) {
       <div className="flex items-center gap-2">
         <div className="h-8 w-12 rounded-md overflow-hidden">
           <img
-            src={item.imageUrl}
+            src={item.preview}
             className="object-cover h-full w-full"
             alt=""
           />
