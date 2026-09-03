@@ -31,7 +31,7 @@ export default function ProjectImages() {
         )}
       ></Controller>
       <Controller
-        name="main_img"
+        name="main_image"
         control={control}
         rules={{ required: "Main image is required." }}
         render={({ field, fieldState }) => (
