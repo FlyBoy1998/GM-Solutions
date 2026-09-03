@@ -74,7 +74,6 @@ export default function ImageUpload({
           ref={inputRef}
           type="file"
           id={id}
-          name={name}
           accept="image/png,image/jpeg,image/webp"
           className="hidden"
           onChange={handleFileChange}
