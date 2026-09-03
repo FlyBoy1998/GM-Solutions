@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { Upload } from "lucide-react";
+import toast from "react-hot-toast";
 
 export default function ImageUpload({
   label,
@@ -22,12 +23,12 @@ export default function ImageUpload({
     if (!file) return;
 
     if (!file.type.startsWith("image/")) {
-      alert("Please select an image file");
+      toast.error("Please select an image file");
       return;
     }
 
     if (file.size > 5 * 1024 * 1024) {
-      alert("Image must be smaller than 5MB.");
+      toast.error("Image must be smaller than 5MB.");
       return;
     }
 
