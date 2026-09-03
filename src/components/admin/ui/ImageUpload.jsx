@@ -61,7 +61,7 @@ export default function ImageUpload({
 
         <button
           type="button"
-          className="cursor-pointer flex flex-col items-center justify-center gap-3 aspect-square border border-dashed rounded-md transition hover:bg-gray-50"
+          className="cursor-pointer flex flex-col items-center justify-center gap-3 aspect-square border border-dashed rounded-md transition hover:bg-gray-50 focus-ring"
           onClick={handleClick}
         >
           <Upload size={24} aria-hidden />
