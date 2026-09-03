@@ -1,5 +1,8 @@
+import { useRef } from "react";
 import { useNavigate } from "react-router";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { FormProvider, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 import PageHeader from "../../ui/PageHeader";
 import CtaButton from "../../../ui/CtaButton";
@@ -13,8 +16,12 @@ import MaterialsUsed from "./MaterialsUsed";
 import WorkCompleted from "./WorkCompleted";
 import SeoAltText from "./SeoAltText";
 
+import { createProject } from "../../../../api/api";
+
 export default function ManageProjectForm() {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const abortControllerRef = useRef(null);
 
   const methods = useForm({
     defaultValues: {
@@ -57,8 +64,33 @@ export default function ManageProjectForm() {
     },
   });
 
+  const { mutateAsync, isPending: isLoading } = useMutation({
+    mutationFn: async (formData) => {
+      const controller = new AbortController();
+      abortControllerRef.current = controller;
+
+      try {
+        return createProject(formData, controller.signal);
+      } finally {
+        abortControllerRef.current = null;
+      }
+    },
+    onSuccess: () => {
+      toast.success("Project successfully created!");
+      queryClient.invalidateQueries({ queryKey: ["projects"] });
+      methods.reset();
+    },
+    onError: (err) => {
+      if (err.name === "AbortError") {
+        toast.error("Project creation cancelled.");
+        return;
+      }
+      toast.error(err.message);
+    },
+  });
+
   async function handleSubmit(data) {
-    console.log(data);
+    await mutateAsync(data);
   }
 
   return (
@@ -68,11 +100,20 @@ export default function ManageProjectForm() {
         description="Fill in the details below to add a new project to your portfolio."
       >
         <div className="flex items-center gap-4 max-lg:hidden">
-          <CtaButton variant="secondary" onClick={() => navigate(-1)}>
+          <CtaButton
+            variant="secondary"
+            onClick={() => navigate(-1)}
+            disable={isLoading}
+          >
             Cancel
           </CtaButton>
-          <CtaButton variant="primary" form="project-form">
-            Save Project
+          <CtaButton
+            variant="primary"
+            form="project-form"
+            type="submit"
+            disabled={isLoading}
+          >
+            {isLoading ? "Saving project..." : "Save Project"}
           </CtaButton>
         </div>
       </PageHeader>
