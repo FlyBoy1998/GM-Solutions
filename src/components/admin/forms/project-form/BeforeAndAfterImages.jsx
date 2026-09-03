@@ -13,7 +13,7 @@ export default function BeforeAndAfterImages() {
         description="Add before and after images for the project popup."
       />
       <Controller
-        name="popup_before_img"
+        name="before_image"
         control={control}
         rules={{ required: "Before image is required." }}
         render={({ field, fieldState }) => (
@@ -31,7 +31,7 @@ export default function BeforeAndAfterImages() {
         )}
       ></Controller>
       <Controller
-        name="popup_after_img"
+        name="after_image"
         control={control}
         rules={{ required: "After image is required." }}
         render={({ field, fieldState }) => (
