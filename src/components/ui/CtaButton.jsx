@@ -6,7 +6,7 @@ export default function CtaButton({
   ...props
 }) {
   let classes =
-    "cursor-pointer font-bold rounded-md focus-ring transition-all duration-400 ease-out";
+    "cursor-pointer font-bold rounded-md focus-ring transition-all duration-400 ease-out disabled:cursor-not-allowed";
 
   if (variant === "primary") {
     classes +=
