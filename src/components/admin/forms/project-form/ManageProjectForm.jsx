@@ -103,7 +103,7 @@ export default function ManageProjectForm() {
           <CtaButton
             variant="secondary"
             onClick={() => navigate(-1)}
-            disable={isLoading}
+            disabled={isLoading}
           >
             Cancel
           </CtaButton>
