@@ -16,7 +16,7 @@ export default function SeoAltText() {
         type="textarea"
         label="Alt Text"
         id="main-img-alt"
-        {...register("main_img_alt")}
+        {...register("alt")}
         placeholder="e.g. Modern kitchen renovation with quartz countertops and oak cabinets in Clapham, London"
       />
     </div>
