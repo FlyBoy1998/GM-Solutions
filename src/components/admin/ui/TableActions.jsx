@@ -6,6 +6,9 @@ export default function TableActions({
   hasViewAction = true,
   hasEditAction = true,
   hasDeleteAction = false,
+  onView,
+  onEdit,
+  onDelete,
 }) {
   return (
     <th className="table-th">
@@ -14,17 +17,24 @@ export default function TableActions({
           <IconButton
             variant="view"
             Icon={Eye}
+            onClick={onView}
             aria-label="View Project Details"
           />
         )}
         {hasEditAction && (
-          <IconButton variant="edit" Icon={Pencil} aria-label="Edit Project" />
+          <IconButton
+            variant="edit"
+            Icon={Pencil}
+            onClick={onEdit}
+            aria-label="Edit Project"
+          />
         )}
         {hasDeleteAction && (
           <IconButton
             variant="delete"
             Icon={Trash2}
-            aria-label="Delete Project"
+            aria-label="Delete Item"
+            onClick={onDelete}
           />
         )}
       </div>
