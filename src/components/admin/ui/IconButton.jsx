@@ -1,4 +1,4 @@
-export default function IconButton({ variant, Icon, ariaLabel }) {
+export default function IconButton({ variant, Icon, ariaLabel, ...props }) {
   let bgColor;
   let iconClasses;
 
@@ -15,6 +15,7 @@ export default function IconButton({ variant, Icon, ariaLabel }) {
     <button
       className={`cursor-pointer flex justify-center items-center p-1 rounded-md ${bgColor}`}
       aria-label={ariaLabel}
+      {...props}
     >
       {<Icon size={14} className={iconClasses} aria-hidden />}
     </button>
