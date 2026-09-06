@@ -203,3 +203,17 @@ export async function getMediaFiles() {
 
   return results.flat().slice(1);
 }
+
+export async function getProject(projectId) {
+  const { data, error } = await supabase
+    .from("projects")
+    .select("*")
+    .eq("id", projectId)
+    .single();
+
+  if (error) {
+    throw new Error("Could not load project.");
+  }
+
+  return data;
+}
