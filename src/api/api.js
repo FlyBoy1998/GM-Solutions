@@ -38,9 +38,12 @@ export async function getProjects() {
   const { data, error } = await supabase.from("projects").select(`
       id,
       title,
+      address,
       category,
       label,
       description,
+      latitude,
+      longitude,
       project_images (
         id,
         storage_path,
