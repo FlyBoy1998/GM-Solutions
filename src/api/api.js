@@ -48,7 +48,8 @@ export async function getProjects() {
         id,
         storage_path,
         image_type
-      )
+      ),
+      materials (*)
     `);
 
   if (error) {
