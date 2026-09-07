@@ -207,7 +207,25 @@ export async function getMediaFiles() {
 export async function getProject(projectId) {
   const { data, error } = await supabase
     .from("projects")
-    .select("*")
+    .select(
+      `
+      *,
+      materials (
+        id,
+        material,
+      ),
+      work_completed (
+        id,
+        description,
+      ),
+      project_images (
+        id,
+        storage_path,
+        image_type,
+        position
+      )
+    `,
+    )
     .eq("id", projectId)
     .single();
 
