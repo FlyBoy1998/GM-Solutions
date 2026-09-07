@@ -1,8 +1,6 @@
 import { useSearchParams } from "react-router";
 
-import { projects } from "../../dummy_data/data";
-
-export default function useFilteredProjects() {
+export default function useFilteredProjects(projects = []) {
   const [searchParams] = useSearchParams();
 
   const category = searchParams.get("category") || "all";
