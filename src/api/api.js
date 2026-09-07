@@ -35,13 +35,37 @@ export async function uploadProjectImage(
 }
 
 export async function getProjects() {
-  const { data, error } = await supabase.from("projects").select("*");
+  const { data, error } = await supabase.from("projects").select(`
+      id,
+      title,
+      category,
+      label,
+      description,
+      project_images (
+        id,
+        storage_path,
+        image_type
+      )
+    `);
 
   if (error) {
     throw new Error("Could not load projects.");
   }
 
-  return data;
+  return data.map((project) => ({
+    ...project,
+
+    project_images: project?.project_images.map((file) => {
+      const { data: urlData } = supabase.storage
+        .from("project_images")
+        .getPublicUrl(file.storage_path);
+
+      return {
+        ...file,
+        storage_path: urlData,
+      };
+    }),
+  }));
 }
 
 export async function createProject(formData, signal) {
