@@ -14,22 +14,32 @@ export default function ProjectMarker({ project }) {
   const map = useMap();
   const isSelected = project.id === selectedProject?.id;
 
+  const thumbnail = selectedProject?.project_images.find(
+    (image) => image.image_type === "thumbnail",
+  ).storage_path.publicUrl;
+  const beforeImage = selectedProject?.project_images.find(
+    (image) => image.image_type === "before",
+  ).storage_path.publicUrl;
+  const afterImage = selectedProject?.project_images.find(
+    (image) => image.image_type === "after",
+  ).storage_path.publicUrl;
+
   useEffect(() => {
     if (selectedProject?.id === project.id) {
-      flyToProject(map, project.coordinates);
+      flyToProject(map, [project.latitude, project.longitude]);
       markerRef.current?.openPopup();
     }
-  }, [map, selectedProject, project.id, project.coordinates]);
+  }, [map, selectedProject, project.id, project.latitude, project.longitude]);
 
   function handleMarkerClick() {
-    flyToProject(map, project.coordinates);
+    flyToProject(map, [project.latitude, project.longitude]);
     handleSelectProject(project);
   }
 
   return (
     <Marker
       ref={markerRef}
-      position={project.coordinates}
+      position={[project.latitude, project.longitude]}
       icon={createProjectMarkerIcon({
         projectIndex: project.id,
         isSelected,
@@ -39,7 +49,12 @@ export default function ProjectMarker({ project }) {
         popupclose: handleClearSelection,
       }}
     >
-      <ProjectPopup project={project} />
+      <ProjectPopup
+        project={project}
+        thumbnail={thumbnail}
+        beforeImage={beforeImage}
+        afterImage={afterImage}
+      />
     </Marker>
   );
 }
