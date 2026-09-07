@@ -4,7 +4,7 @@ import { ProjectsTabsContext } from "../../context/ProjectsTabsContext";
 
 import { ChevronRight, MapPin } from "lucide-react";
 
-export default function ProjectCard({ project }) {
+export default function ProjectCard({ project, thumbnail }) {
   const { handleSelectProject } = useContext(MapContext);
   const { setActiveTab } = useContext(ProjectsTabsContext);
 
@@ -18,7 +18,7 @@ export default function ProjectCard({ project }) {
       <article className="flex gap-4 h-44 rounded-md bg-light-1">
         <div className="relative flex-1 rounded-md overflow-hidden">
           <img
-            src={project.imageUrl}
+            src={thumbnail}
             alt={project.alt}
             className="object-cover h-full w-full"
             loading="lazy"
