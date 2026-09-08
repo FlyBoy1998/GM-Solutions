@@ -1,4 +1,4 @@
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { Dot } from "lucide-react";
 
 import TableActions from "./TableActions";
@@ -7,6 +7,7 @@ import { formatToCapitalize, formatDate } from "../../../utils/utils";
 
 export default function ProjectsTableRow({ project }) {
   const location = useLocation();
+  const navigate = useNavigate();
 
   let formattedCategory;
   let projectStatusClasses =
@@ -47,6 +48,7 @@ export default function ProjectsTableRow({ project }) {
       <td className="table-td">{formatDate(project.completionDate)}</td>
       <TableActions
         hasDeleteAction={location.pathname.includes("/admin/projects")}
+        onEdit={() => navigate(`/admin/projects/${project.id}/edit`)}
       />
     </tr>
   );
