@@ -242,11 +242,11 @@ export async function getProject(projectId) {
       *,
       materials (
         id,
-        material,
+        material
       ),
       work_completed (
         id,
-        description,
+        description
       ),
       project_images (
         id,
