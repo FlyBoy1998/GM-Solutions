@@ -44,6 +44,7 @@ export async function getProjects() {
       description,
       latitude,
       longitude,
+      completion_date,
       project_images (
         id,
         storage_path,
