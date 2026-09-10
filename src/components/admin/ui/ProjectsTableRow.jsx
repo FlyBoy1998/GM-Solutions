@@ -1,4 +1,4 @@
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { Dot } from "lucide-react";
 
 import TableActions from "./TableActions";
@@ -7,6 +7,11 @@ import { formatToCapitalize, formatDate } from "../../../utils/utils";
 
 export default function ProjectsTableRow({ project }) {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const imageUrl = project?.project_images?.find(
+    (image) => image.image_type === "thumbnail",
+  ).storage_path.publicUrl;
 
   let formattedCategory;
   let projectStatusClasses =
@@ -30,7 +35,7 @@ export default function ProjectsTableRow({ project }) {
     <tr className="border-t border-slate-100 hover:bg-slate-50 transition-colors">
       <td className="table-td whitespace-nowrap">
         <img
-          src={project.imageUrl}
+          src={imageUrl}
           className="object-cover h-12 rounded-lg max-w-none"
           alt={project.alt}
         />
@@ -44,9 +49,10 @@ export default function ProjectsTableRow({ project }) {
           <span>{formatToCapitalize(project.status)}</span>
         </span>
       </td>
-      <td className="table-td">{formatDate(project.completionDate)}</td>
+      <td className="table-td">{formatDate(project.completion_date)}</td>
       <TableActions
         hasDeleteAction={location.pathname.includes("/admin/projects")}
+        onEdit={() => navigate(`/admin/projects/${project.id}/edit`)}
       />
     </tr>
   );

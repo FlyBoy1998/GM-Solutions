@@ -3,6 +3,8 @@ import { useFormContext } from "react-hook-form";
 import SectionHeader from "../../ui/SectionHeader";
 import FormField from "../../../ui/FormField";
 
+import { projectStatusOptions } from "../../../../constants/data";
+
 export default function ProjectDetails() {
   const {
     register,
@@ -80,6 +82,23 @@ export default function ProjectDetails() {
           errors={
             errors.budget_range && (
               <p className="input-error">{errors.budget_range.message}</p>
+            )
+          }
+        />
+        <FormField
+          type="select"
+          label="Status"
+          options={projectStatusOptions}
+          id="status"
+          {...register("status", {
+            required: "The status is required.",
+          })}
+          optionsPlaceholder="Select project status"
+          required
+          additionalStyling="col-span-full"
+          errors={
+            errors.status && (
+              <p className="input-error">{errors.status.message}</p>
             )
           }
         />

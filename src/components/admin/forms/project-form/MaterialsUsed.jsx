@@ -25,8 +25,7 @@ export default function MaterialsUsed() {
     if (!trimmedMaterial) return;
 
     const alreadyExists = fields.some(
-      (item) =>
-        item.trimmedMaterial.toLowerCase() === trimmedMaterial.toLowerCase(),
+      (item) => item.material.toLowerCase() === trimmedMaterial.toLowerCase(),
     );
 
     if (alreadyExists) return;
@@ -61,7 +60,7 @@ export default function MaterialsUsed() {
               {fields.map((material) => (
                 <MaterialsUsedItem
                   key={material.id}
-                  material={material.trimmedMaterial}
+                  material={material.material}
                 />
               ))}
             </div>

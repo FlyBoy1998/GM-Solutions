@@ -66,7 +66,7 @@ const router = createBrowserRouter([
             children: [
               { index: true, element: <AdminProjects /> },
               { path: "new", element: <ManageProjectForm /> },
-              { path: ":id/edit", element: <ManageProjectForm /> },
+              { path: ":projectId/edit", element: <ManageProjectForm /> },
             ],
           },
           {

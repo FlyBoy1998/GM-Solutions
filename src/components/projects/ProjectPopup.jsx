@@ -11,14 +11,19 @@ import {
 
 import { formatDate } from "../../utils/utils";
 
-export default function ProjectPopup({ project }) {
+export default function ProjectPopup({
+  project,
+  thumbnail,
+  beforeImage,
+  afterImage,
+}) {
   return (
     <Popup className="project-popup">
       <div className="flex gap-3 max-md:flex-col">
         <div className="grid grid-cols-2 gap-3 flex-1 p-2 rounded-md bg-light-1">
           <figure className="col-span-full max-md:h-34">
             <img
-              src={project.imageUrl}
+              src={thumbnail}
               alt={project.alt}
               className="h-full w-full object-cover rounded-md"
               loading="lazy"
@@ -27,7 +32,7 @@ export default function ProjectPopup({ project }) {
 
           <figure className="flex flex-col h-full max-md:h-14">
             <img
-              src={project.popupBeforeImage}
+              src={beforeImage}
               className="flex-1 h-full w-full object-cover rounded-md"
               alt={`${project.title} before image`}
               loading="lazy"
@@ -37,7 +42,7 @@ export default function ProjectPopup({ project }) {
 
           <figure className="flex flex-col h-full max-md:h-14">
             <img
-              src={project.popupAfterImage}
+              src={afterImage}
               className="flex-1 h-full w-full object-cover rounded-md"
               alt={`${project.title} after image`}
               loading="lazy"

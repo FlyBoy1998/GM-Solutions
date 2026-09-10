@@ -35,13 +35,43 @@ export async function uploadProjectImage(
 }
 
 export async function getProjects() {
-  const { data, error } = await supabase.from("projects").select("*");
+  const { data, error } = await supabase.from("projects").select(`
+      id,
+      title,
+      address,
+      category,
+      label,
+      description,
+      latitude,
+      longitude,
+      status,
+      completion_date,
+      project_images (
+        id,
+        storage_path,
+        image_type
+      ),
+      materials (*)
+    `);
 
   if (error) {
     throw new Error("Could not load projects.");
   }
 
-  return data;
+  return data.map((project) => ({
+    ...project,
+
+    project_images: project?.project_images.map((file) => {
+      const { data: urlData } = supabase.storage
+        .from("project_images")
+        .getPublicUrl(file.storage_path);
+
+      return {
+        ...file,
+        storage_path: urlData,
+      };
+    }),
+  }));
 }
 
 export async function createProject(formData, signal) {
@@ -207,7 +237,25 @@ export async function getMediaFiles() {
 export async function getProject(projectId) {
   const { data, error } = await supabase
     .from("projects")
-    .select("*")
+    .select(
+      `
+      *,
+      materials (
+        id,
+        material
+      ),
+      work_completed (
+        id,
+        description
+      ),
+      project_images (
+        id,
+        storage_path,
+        image_type,
+        position
+      )
+    `,
+    )
     .eq("id", projectId)
     .single();
 
