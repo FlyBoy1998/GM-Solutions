@@ -1,34 +1,13 @@
 import DashboardStatsCard from "./DashboardStatsCard";
 
-import { ClipboardCheck, Folder, Map, Image } from "lucide-react";
+import { dashboardStats } from "../../../constants/data";
 
 export default function DashboardStats() {
   return (
     <div className="grid grid-cols-4 row-start-2 row-end-3 grid-rows-auto gap-3 col-span-full max-lg:grid-cols-2">
-      <DashboardStatsCard
-        title="Projects completed"
-        value={120}
-        icon={<ClipboardCheck className="text-white" aria-hidden />}
-        bgColor="bg-blue-500"
-      />
-      <DashboardStatsCard
-        title="Active projects"
-        value={5}
-        icon={<Folder className="text-white" aria-hidden />}
-        bgColor="bg-orange-500"
-      />
-      <DashboardStatsCard
-        title="Map Views"
-        value={100}
-        icon={<Map className="text-white" aria-hidden />}
-        bgColor="bg-green-500"
-      />
-      <DashboardStatsCard
-        title="Media Items"
-        value={100}
-        icon={<Image className="text-white" aria-hidden />}
-        bgColor="bg-purple-500"
-      />
+      {dashboardStats.map((item) => (
+        <DashboardStatsCard key={item.id} item={item} />
+      ))}
     </div>
   );
 }
