@@ -3,8 +3,12 @@ import { useFormContext, Controller } from "react-hook-form";
 import SectionHeader from "../../ui/SectionHeader";
 import ImageUpload from "../../ui/ImageUpload";
 
-export default function ProjectImages() {
+import useProject from "../../../../hooks/useProject";
+
+export default function ProjectImages({ projectId }) {
   const { control } = useFormContext();
+
+  const { data: project } = useProject(projectId);
 
   return (
     <div className="flex flex-col gap-6 p-4 rounded-lg shadow-md bg-white">
@@ -18,6 +22,7 @@ export default function ProjectImages() {
         rules={{ required: "Project thumbnail is required." }}
         render={({ field, fieldState }) => (
           <ImageUpload
+            initialImage={project?.thumbnail_image.storage_path}
             label="Project Thumbnail (Card Image)"
             id="thumbnail-image"
             onChange={field.onChange}
@@ -36,6 +41,7 @@ export default function ProjectImages() {
         rules={{ required: "Main image is required." }}
         render={({ field, fieldState }) => (
           <ImageUpload
+            initialImage={project?.main_image.storage_path}
             label="Project Details Main Image"
             id="main-img"
             onChange={field.onChange}
