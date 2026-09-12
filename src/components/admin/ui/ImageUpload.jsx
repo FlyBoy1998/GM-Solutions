@@ -10,8 +10,10 @@ export default function ImageUpload({
   onChange,
   errors,
 }) {
-  const [preview, setPreview] = useState(initialImage);
+  const [selectedPreview, setSelectedPreview] = useState(initialImage);
   const inputRef = useRef(null);
+
+  const preview = selectedPreview || initialImage;
 
   function handleClick() {
     inputRef?.current.click();
@@ -33,9 +35,12 @@ export default function ImageUpload({
     }
 
     const imageUrl = URL.createObjectURL(file);
-    setPreview(imageUrl);
+    setSelectedPreview(imageUrl);
 
-    onChange?.(file);
+    onChange?.({
+      file,
+      previewUrl: imageUrl,
+    });
   }
 
   return (
