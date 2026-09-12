@@ -87,6 +87,7 @@ export async function createProject(formData, signal) {
       longitude: +formData.longitude,
       duration: formData.duration,
       completion_date: formData.completion_date,
+      status: formData.status,
       overview: formData.overview,
       budget_range: formData.budget_range,
       project_size: formData.project_size,
