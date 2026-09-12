@@ -1,12 +1,14 @@
 import SectionHeader from "../ui/SectionHeader";
 import ProjectsTable from "../ui/ProjectsTable";
 
-import { projects } from "../../../../dummy_data/data";
+import useProjects from "../../../hooks/useProjects";
 
 export default function LatestProjectsTable() {
-  const sortedProjects = projects.slice().sort((a, b) => {
-    const dateA = new Date(a.completionDate);
-    const dateB = new Date(b.completionDate);
+  const { data: projects = [], isLoading, error } = useProjects();
+
+  const sortedProjects = projects?.slice().sort((a, b) => {
+    const dateA = new Date(a.completion_date);
+    const dateB = new Date(b.completion_date);
 
     return dateB - dateA;
   });
@@ -17,7 +19,7 @@ export default function LatestProjectsTable() {
         title="Latest Projects"
         description="View your most recent projects and their current status."
       />
-      <ProjectsTable projects={sortedProjects.slice(0, 6)} />
+      <ProjectsTable projects={sortedProjects?.slice(0, 6)} />
     </div>
   );
 }
