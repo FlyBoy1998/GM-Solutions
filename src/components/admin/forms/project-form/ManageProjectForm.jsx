@@ -1,5 +1,5 @@
-import { useRef } from "react";
-import { useNavigate } from "react-router";
+import { useEffect, useRef } from "react";
+import { useNavigate, useParams } from "react-router";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { FormProvider, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -18,10 +18,22 @@ import SeoAltText from "./SeoAltText";
 
 import { createProject } from "../../../../api/api";
 
+import useProject from "../../../../hooks/useProject";
+
 export default function ManageProjectForm() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const abortControllerRef = useRef(null);
+
+  const { projectId } = useParams();
+
+  const isEditMode = Boolean(projectId);
+
+  const {
+    data: project,
+    isLoading: isProjectLoading,
+    error: projectLoadingError,
+  } = useProject(projectId);
 
   const methods = useForm({
     defaultValues: {
@@ -64,7 +76,64 @@ export default function ManageProjectForm() {
     },
   });
 
-  const { mutateAsync, isPending: isLoading } = useMutation({
+  useEffect(() => {
+    if (projectLoadingError) {
+      toast.error(projectLoadingError.message);
+    }
+
+    if (!project) return;
+
+    methods.reset({
+      // Basic information
+      title: project.title ?? "",
+      category: project.category ?? "",
+      label: project.label ?? "",
+      address: project.address ?? "",
+      description: project.description ?? "",
+
+      // Location
+      latitude: project.latitude ?? "",
+      longitude: project.longitude ?? "",
+
+      // Project Details
+      completion_date: project.completion_date ?? "",
+      duration: project.duration ?? "",
+      project_size: project.project_size ?? "",
+      budget_range: project.budget_range ?? "",
+      status: project.status ?? "",
+      overview: project.overview ?? "",
+      alt: project.alt ?? "",
+
+      // Materials
+      materials:
+        project?.materials.map((item) => ({
+          id: item.id,
+          material: item.material,
+        })) ?? [],
+
+      // Work Completed
+      work_completed:
+        project?.work_completed.map((item) => ({
+          id: item.id,
+          description: item.description,
+        })) ?? [],
+
+      // Images
+      thumbnail_image: project?.thumbnail_image ?? null,
+      main_image: project?.main_image ?? null,
+
+      before_image: project?.before_image ?? null,
+      after_image: project?.after_image ?? null,
+
+      carousel_images:
+        project?.carousel_images.map((item) => ({
+          preview: item.preview,
+          name: item.file_name,
+        })) ?? [],
+    });
+  }, [project, methods, projectLoadingError]);
+
+  const { mutateAsync, isPending: isCreatingLoading } = useMutation({
     mutationFn: async (formData) => {
       const controller = new AbortController();
       abortControllerRef.current = controller;
@@ -88,6 +157,8 @@ export default function ManageProjectForm() {
       toast.error(err.message);
     },
   });
+
+  const isLoading = isProjectLoading || isCreatingLoading;
 
   async function handleSubmit(data) {
     await mutateAsync(data);
@@ -113,31 +184,34 @@ export default function ManageProjectForm() {
             type="submit"
             disabled={isLoading}
           >
-            {isLoading ? "Saving project..." : "Save Project"}
+            {isEditMode ? "Save Changes" : "Save Project"}
           </CtaButton>
         </div>
       </PageHeader>
-      <FormProvider {...methods}>
-        <form
-          id="project-form"
-          onSubmit={methods.handleSubmit(handleSubmit)}
-          className="grid grid-cols-5 gap-6 items-start"
-        >
-          <div className="col-start-1 col-end-4 flex flex-col gap-6">
-            <BasicInformation />
-            <Location />
-            <ProjectDetails />
-            <MaterialsUsed />
-            <WorkCompleted />
-          </div>
-          <div className="col-start-4 col-end-6 flex flex-col gap-6">
-            <ProjectImages />
-            <BeforeAndAfterImages />
-            <ImagesCarousel />
-            <SeoAltText />
-          </div>
-        </form>
-      </FormProvider>
+      {isProjectLoading && <p>Loading project data...</p>}
+      {!isProjectLoading && !projectLoadingError && (
+        <FormProvider {...methods}>
+          <form
+            id="project-form"
+            onSubmit={methods.handleSubmit(handleSubmit)}
+            className="grid grid-cols-5 gap-6 items-start"
+          >
+            <div className="col-start-1 col-end-4 flex flex-col gap-6">
+              <BasicInformation />
+              <Location />
+              <ProjectDetails />
+              <MaterialsUsed />
+              <WorkCompleted />
+            </div>
+            <div className="col-start-4 col-end-6 flex flex-col gap-6">
+              <ProjectImages />
+              <BeforeAndAfterImages />
+              <ImagesCarousel />
+              <SeoAltText />
+            </div>
+          </form>
+        </FormProvider>
+      )}
     </div>
   );
 }
