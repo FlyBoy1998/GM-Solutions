@@ -263,5 +263,45 @@ export async function getProject(projectId) {
     throw new Error("Could not load project.");
   }
 
-  return data;
+  const projectImages = data?.project_images.map((file) => {
+    const { data: urlData } = supabase.storage
+      .from("project_images")
+      .getPublicUrl(file.storage_path);
+
+    return {
+      ...file,
+      storage_path: urlData.publicUrl,
+    };
+  });
+
+  const thumbnail_image =
+    projectImages?.find((image) => image.image_type === "thumbnail") ?? null;
+  const main_image =
+    projectImages?.find((image) => image.image_type === "main") ?? null;
+  const before_image =
+    projectImages?.find((image) => image.image_type === "before") ?? null;
+  const after_image =
+    projectImages?.find((image) => image.image_type === "after") ?? null;
+  const carousel_images = projectImages?.reduce((arr, item) => {
+    if (item.image_type === "carousel") {
+      const fileName = item.storage_path.split("/").pop();
+
+      arr.push({
+        ...item,
+        preview: item.storage_path,
+        file_name: fileName,
+      });
+    }
+
+    return arr;
+  }, []);
+
+  return {
+    ...data,
+    thumbnail_image,
+    main_image,
+    before_image,
+    after_image,
+    carousel_images,
+  };
 }
