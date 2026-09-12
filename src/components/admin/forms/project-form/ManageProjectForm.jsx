@@ -204,8 +204,8 @@ export default function ManageProjectForm() {
               <WorkCompleted />
             </div>
             <div className="col-start-4 col-end-6 flex flex-col gap-6">
-              <ProjectImages />
-              <BeforeAndAfterImages />
+              <ProjectImages projectId={projectId} />
+              <BeforeAndAfterImages projectId={projectId} />
               <ImagesCarousel />
               <SeoAltText />
             </div>
