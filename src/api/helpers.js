@@ -33,3 +33,54 @@ export async function uploadProjectImage(
     position,
   };
 }
+
+export async function replaceProjectImage(projectId, image, type, signal) {
+  if (!image?.file) return null;
+
+  const oldStoragePath = image.storage_path;
+
+  const row = await uploadProjectImage(projectId, image.file, type);
+
+  const { data: existingImage, error: findImageError } = await supabase
+    .from("project_images")
+    .select("id, storage_path")
+    .eq("project_id", projectId)
+    .eq("image_type", type)
+    .maybeSingle()
+    .abortSignal(signal);
+
+  if (findImageError) {
+    throw new Error(`Could not find existing ${type} image.`);
+  }
+
+  if (existingImage) {
+    const { error: updateError } = await supabase
+      .from("project_images")
+      .update({ storage_path: row.storage_path })
+      .eq("id", existingImage.id)
+      .abortSignal(signal);
+
+    if (updateError) {
+      throw new Error(`Could not update ${type} image`);
+    } else {
+      const { error: insertError } = await supabase
+        .from("project_images")
+        .insert(row);
+      if (insertError) {
+        throw new Error(`Could not save ${type} image.`);
+      }
+    }
+  }
+
+  if (oldStoragePath) {
+    const { error: deleteError } = await supabase
+      .storage("project_images")
+      .remove([oldStoragePath]);
+
+    if (deleteError) {
+      throw new Error(`Could not delete old ${type} image.`);
+    }
+  }
+
+  return row;
+}
