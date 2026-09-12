@@ -167,8 +167,12 @@ export default function ManageProjectForm() {
   return (
     <div className="flex flex-col gap-6 w-full p-6">
       <PageHeader
-        heading="Add New Project"
-        description="Fill in the details below to add a new project to your portfolio."
+        heading={isEditMode ? "Edit Project" : "Add New Project"}
+        description={
+          isEditMode
+            ? `Edit ${project?.title} project details.`
+            : "Fill in the details below to add a new project to your portfolio."
+        }
       >
         <div className="flex items-center gap-4 max-lg:hidden">
           <CtaButton
