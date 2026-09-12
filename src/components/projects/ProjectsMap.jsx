@@ -10,8 +10,11 @@ import { MapContainer, TileLayer } from "react-leaflet";
 
 import ProjectMarker from "./ProjectMarker";
 
+import useProjects from "../../hooks/useProjects";
+
 export default function ProjectsMap() {
-  const { filteredProjects } = useFilteredProjects();
+  const { data: projects, isLoading, error } = useProjects();
+  const { filteredProjects } = useFilteredProjects(projects);
 
   return (
     <MapContainer
@@ -22,7 +25,7 @@ export default function ProjectsMap() {
       aria-label="Map showing completed renovation projects"
     >
       <TileLayer attribution={mapAttribution} url={mapTileUrl} />
-      {filteredProjects.map((project) => (
+      {filteredProjects?.map((project) => (
         <ProjectMarker project={project} key={project.id} />
       ))}
     </MapContainer>
