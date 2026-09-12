@@ -2,9 +2,12 @@ import { Controller, useFormContext } from "react-hook-form";
 
 import SectionHeader from "../../ui/SectionHeader";
 import ImageUpload from "../../ui/ImageUpload";
+import useProject from "../../../../hooks/useProject";
 
 export default function BeforeAndAfterImages() {
   const { control } = useFormContext();
+
+  const { data: project, isLoading, error } = useProject();
 
   return (
     <div className="flex flex-col gap-6 p-4 rounded-lg shadow-md bg-white">
@@ -18,6 +21,7 @@ export default function BeforeAndAfterImages() {
         rules={{ required: "Before image is required." }}
         render={({ field, fieldState }) => (
           <ImageUpload
+            initialImage={project?.before_image}
             label="Before Image"
             id="popup-before-img"
             required
@@ -36,6 +40,7 @@ export default function BeforeAndAfterImages() {
         rules={{ required: "After image is required." }}
         render={({ field, fieldState }) => (
           <ImageUpload
+            initialImage={project?.after_image}
             label="After Image"
             id="popup-after-img"
             required
