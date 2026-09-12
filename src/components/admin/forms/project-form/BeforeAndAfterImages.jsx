@@ -4,10 +4,10 @@ import SectionHeader from "../../ui/SectionHeader";
 import ImageUpload from "../../ui/ImageUpload";
 import useProject from "../../../../hooks/useProject";
 
-export default function BeforeAndAfterImages() {
+export default function BeforeAndAfterImages({ projectId }) {
   const { control } = useFormContext();
 
-  const { data: project, isLoading, error } = useProject();
+  const { data: project } = useProject(projectId);
 
   return (
     <div className="flex flex-col gap-6 p-4 rounded-lg shadow-md bg-white">
@@ -21,7 +21,7 @@ export default function BeforeAndAfterImages() {
         rules={{ required: "Before image is required." }}
         render={({ field, fieldState }) => (
           <ImageUpload
-            initialImage={project?.before_image}
+            initialImage={project?.before_image.storage_path}
             label="Before Image"
             id="popup-before-img"
             required
@@ -40,7 +40,7 @@ export default function BeforeAndAfterImages() {
         rules={{ required: "After image is required." }}
         render={({ field, fieldState }) => (
           <ImageUpload
-            initialImage={project?.after_image}
+            initialImage={project?.after_image.storage_path}
             label="After Image"
             id="popup-after-img"
             required
