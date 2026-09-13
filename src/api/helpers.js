@@ -34,6 +34,36 @@ export async function uploadProjectImage(
   };
 }
 
+export async function replaceMaterials(projectId, materials, signal) {
+  const { error: deleteError } = await supabase
+    .from("materials")
+    .delete()
+    .eq("project_id", projectId)
+    .abortSignal(signal);
+
+  if (deleteError) {
+    throw new Error("Could not replace project materials.");
+  }
+
+  if (!materials.length) return;
+
+  const rows = materials
+    ?.filter((item) => item?.material.trim())
+    .map((item) => ({
+      project_id: projectId,
+      material: item.material.trim(),
+    }));
+
+  const { error: insertMaterialsError } = await supabase
+    .from("materials")
+    .insert(rows)
+    .abortSignal(signal);
+
+  if (insertMaterialsError) {
+    throw new Error("Could not save project materials.");
+  }
+}
+
 export async function replaceProjectImage(projectId, image, type, signal) {
   if (!image?.file) return null;
 
