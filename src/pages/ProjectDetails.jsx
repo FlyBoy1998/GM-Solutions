@@ -8,6 +8,7 @@ import PageNotFound from "./PageNotFound";
 import ProjectMeta from "../components/projects/project-details/ProjectMeta";
 import CtaButton from "../components/ui/CtaButton";
 import ProjectCarousel from "../components/projects/project-details/ProjectCarousel";
+import ProjectImagesGrid from "../components/projects/project-details/ProjectImagesGrid";
 import ProjectOverviewSection from "../components/projects/project-details/ProjectOverviewSection";
 import CallToActionSection from "../components/ui/CallToActionSection";
 import Footer from "../components/footer/Footer";
@@ -18,6 +19,8 @@ export default function ProjectDetails() {
   const { projectId } = useParams();
 
   const { data: project = [], isLoading, error } = useProject(projectId);
+
+  const carouselImagesLength = project?.carousel_images?.length;
 
   if (!project) {
     return (
@@ -75,7 +78,11 @@ export default function ProjectDetails() {
             </div>
           </div>
         </section>
-        <ProjectCarousel project={project} />
+        {carouselImagesLength < 8 ? (
+          <ProjectImagesGrid project={project} />
+        ) : (
+          <ProjectCarousel project={project} />
+        )}
         <ProjectOverviewSection project={project} />
         <CallToActionSection />
       </Main>
