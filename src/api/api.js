@@ -14,6 +14,7 @@ export async function getProjects() {
       title,
       address,
       category,
+      duration,
       label,
       description,
       latitude,
