@@ -45,14 +45,16 @@ export async function replaceMaterials(projectId, materials, signal) {
     throw new Error("Could not replace project materials.");
   }
 
-  if (!materials.length) return;
+  if (!materials?.length) return;
 
   const rows = materials
-    ?.filter((item) => item?.material.trim())
+    .filter((item) => item.material?.trim())
     .map((item) => ({
       project_id: projectId,
       material: item.material.trim(),
     }));
+
+  if (!rows.length) return;
 
   const { error: insertMaterialsError } = await supabase
     .from("materials")
