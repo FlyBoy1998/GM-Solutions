@@ -12,12 +12,12 @@ import ProjectOverviewSection from "../components/projects/project-details/Proje
 import CallToActionSection from "../components/ui/CallToActionSection";
 import Footer from "../components/footer/Footer";
 
-import { projects } from "../../dummy_data/data";
+import useProject from "../hooks/useProject";
 
 export default function ProjectDetails() {
-  const { id } = useParams();
+  const { projectId } = useParams();
 
-  const project = projects.find((project) => project.id === +id);
+  const { data: project = [], isLoading, error } = useProject(projectId);
 
   if (!project) {
     return (
@@ -66,7 +66,7 @@ export default function ProjectDetails() {
             </div>
             <div className="flex-2 rounded-md overflow-hidden max-lg:col-span-full">
               <img
-                src={project.detailsBgImageUrl}
+                src={project.main_image?.storage_path}
                 className="object-cover h-full w-full"
                 alt={project.alt}
                 loading="eager"
