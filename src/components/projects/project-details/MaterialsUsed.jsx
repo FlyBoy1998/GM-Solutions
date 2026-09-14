@@ -3,12 +3,12 @@ export default function MaterialsUsed({ project }) {
     <div>
       <h2 className="heading-sm font-bold mb-4">Materials used</h2>
       <ul className="flex flex-wrap gap-3">
-        {project.materials.map((material) => (
+        {project?.materials?.map((material) => (
           <li
             className="p-3 text-sm border border-primary rounded-full"
-            key={material}
+            key={material.material}
           >
-            {material}
+            {material.material}
           </li>
         ))}
       </ul>
