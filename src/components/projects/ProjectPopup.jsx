@@ -17,6 +17,8 @@ export default function ProjectPopup({
   beforeImage,
   afterImage,
 }) {
+  const materialsArr = project?.materials.map((item) => item.material);
+
   return (
     <Popup className="project-popup">
       <div className="flex gap-3 max-md:flex-col">
@@ -82,7 +84,7 @@ export default function ProjectPopup({
                 aria-hidden
               />
               &nbsp;<span className="font-bold">Completed:</span>{" "}
-              {formatDate(project.completionDate)}
+              {formatDate(project.completion_date)}
             </p>
             <p>
               <Calendar
@@ -102,7 +104,7 @@ export default function ProjectPopup({
                 aria-hidden
               />
               &nbsp;<span className="font-bold">Materials:</span>{" "}
-              {project.materials.slice(0, 3).join(", ")}
+              {materialsArr.slice(0, 3).join(", ")}
             </p>
           </div>
           <Link
