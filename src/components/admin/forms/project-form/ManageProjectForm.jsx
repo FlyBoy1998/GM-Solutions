@@ -16,7 +16,7 @@ import MaterialsUsed from "./MaterialsUsed";
 import WorkCompleted from "./WorkCompleted";
 import SeoAltText from "./SeoAltText";
 
-import { createProject } from "../../../../api/api";
+import { createProject, updateProject } from "../../../../api/api";
 
 import useProject from "../../../../hooks/useProject";
 
@@ -127,26 +127,41 @@ export default function ManageProjectForm() {
 
       carousel_images:
         project?.carousel_images.map((item) => ({
-          preview: item.preview,
-          name: item.file_name,
+          databaseId: item.id,
+          storage_path: item.storage_path,
+          image_type: item.image_type,
+          position: item.position,
+          name: item.storage_path.split("/").pop(),
         })) ?? [],
     });
   }, [project, methods, projectLoadingError]);
 
-  const { mutateAsync, isPending: isCreatingLoading } = useMutation({
+  const { mutateAsync, isPending: isSaving } = useMutation({
     mutationFn: async (formData) => {
       const controller = new AbortController();
       abortControllerRef.current = controller;
 
       try {
+        if (isEditMode) {
+          return updateProject(projectId, formData, controller.signal);
+        }
         return createProject(formData, controller.signal);
       } finally {
         abortControllerRef.current = null;
       }
     },
     onSuccess: () => {
-      toast.success("Project successfully created!");
+      toast.success(
+        isEditMode
+          ? "Project successfully updated!"
+          : "Project successfully created!",
+      );
       queryClient.invalidateQueries({ queryKey: ["projects"] });
+
+      if (isEditMode) {
+        queryClient.invalidateQueries({ queryKey: ["project", projectId] });
+      }
+
       methods.reset();
     },
     onError: (err) => {
@@ -158,7 +173,7 @@ export default function ManageProjectForm() {
     },
   });
 
-  const isLoading = isProjectLoading || isCreatingLoading;
+  const isLoading = isProjectLoading || isSaving;
 
   async function handleSubmit(data) {
     await mutateAsync(data);
