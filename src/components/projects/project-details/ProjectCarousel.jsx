@@ -2,7 +2,7 @@ import CarouselGroup from "./CarouselGroup";
 import CarouselItem from "./CarouselItem";
 
 export default function ProjectCarousel({ project }) {
-  const images = project.carouselImages ?? [];
+  const images = project.carousel_images ?? [];
 
   if (!images.length) return null;
 
@@ -10,16 +10,20 @@ export default function ProjectCarousel({ project }) {
     <div className="wrapper">
       <div className="carousel section col-span-2 flex w-full overflow-hidden rounded-md">
         <CarouselGroup>
-          {images.map((img) => (
-            <CarouselItem key={img.src} imgSrc={img.src} imgAlt={img.alt} />
+          {images.map((image) => (
+            <CarouselItem
+              key={image.id}
+              imgSrc={image.storage_path}
+              imgAlt={image.alt}
+            />
           ))}
         </CarouselGroup>
         <CarouselGroup isAriaHidden>
-          {images.map((img) => (
+          {images.map((image) => (
             <CarouselItem
-              key={`duplicate-${img.src}`}
-              imgSrc={img.src}
-              imgAlt=""
+              key={`duplicate-${image.id}`}
+              imgSrc={image.storage_path}
+              imgAlt={image.alt}
             />
           ))}
         </CarouselGroup>
