@@ -84,7 +84,7 @@ export async function replaceProjectImage(projectId, image, type, signal) {
   }
 
   if (existingImage) {
-    const { error: updateError } = await supabase
+    const { error: updateError } = await supabase.storage
       .from("project_images")
       .update({ storage_path: row.storage_path })
       .eq("id", existingImage.id)
@@ -92,13 +92,13 @@ export async function replaceProjectImage(projectId, image, type, signal) {
 
     if (updateError) {
       throw new Error(`Could not update ${type} image`);
-    } else {
-      const { error: insertError } = await supabase
-        .from("project_images")
-        .insert(row);
-      if (insertError) {
-        throw new Error(`Could not save ${type} image.`);
-      }
+    }
+  } else {
+    const { error: insertError } = await supabase
+      .from("project_images")
+      .insert(row);
+    if (insertError) {
+      throw new Error(`Could not save ${type} image.`);
     }
   }
 
