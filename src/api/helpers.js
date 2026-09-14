@@ -107,7 +107,7 @@ export async function replaceProjectImage(projectId, image, type, signal) {
 
   const { data: existingImage, error: findImageError } = await supabase
     .from("project_images")
-    .select("id", "storage_path")
+    .select("id, storage_path")
     .eq("project_id", projectId)
     .eq("image_type", type)
     .maybeSingle()
@@ -118,7 +118,7 @@ export async function replaceProjectImage(projectId, image, type, signal) {
   }
 
   if (existingImage) {
-    const { error: updateError } = await supabase.storage
+    const { error: updateError } = await supabase
       .from("project_images")
       .update({ storage_path: row.storage_path })
       .eq("id", existingImage.id)
@@ -137,8 +137,8 @@ export async function replaceProjectImage(projectId, image, type, signal) {
   }
 
   if (oldStoragePath) {
-    const { error: deleteError } = await supabase
-      .storage("project_images")
+    const { error: deleteError } = await supabase.storage
+      .from("project_images")
       .remove([oldStoragePath]);
 
     if (deleteError) {
@@ -164,12 +164,12 @@ export async function replaceCarouselImages(projectId, carouselImages, signal) {
     throw new Error("Could not load carousel images");
   }
 
-  const keptImagesIds = new Set(
-    images.filter((image) => image.id).map((image) => image.id),
+  const submittedExistingIds = new Set(
+    images.filter((image) => image.databaseId).map((image) => image.databaseId),
   );
 
   const deletedImages = existingCarouselImages.filter(
-    (image) => !keptImagesIds.has(image.id),
+    (image) => !submittedExistingIds.has(image.id),
   );
 
   if (deletedImages.length) {
