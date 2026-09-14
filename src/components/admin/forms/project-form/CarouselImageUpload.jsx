@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useFormContext, useFieldArray } from "react-hook-form";
 import { Plus } from "lucide-react";
+import toast from "react-hot-toast";
 
 import AddItemButton from "../../ui/AddItemButton";
 import CarouselImageItem from "./CarouselImageItem";
@@ -24,12 +25,12 @@ export default function CarouselImageUpload() {
     if (!file) return;
 
     if (!file.type.startsWith("image/")) {
-      alert("The file format is incorrect.");
+      toast.error("The file format is incorrect.");
       return;
     }
 
     if (file.size > 5 * 1024 * 1024) {
-      alert("Image file must be smaller than 5MB.");
+      toast.error("Image file must be smaller than 5MB.");
       return;
     }
 
