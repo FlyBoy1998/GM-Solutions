@@ -9,7 +9,7 @@ export default function ProjectMeta({ project }) {
         <Calendar size={30} className="text-primary" aria-hidden />
         <p className="flex flex-col">
           <span className="font-bold">Completed</span>
-          <span>{formatDate(project.completionDate)}</span>
+          <span>{formatDate(project.completion_date)}</span>
         </p>
       </div>
       <div className="flex items-center gap-2">
