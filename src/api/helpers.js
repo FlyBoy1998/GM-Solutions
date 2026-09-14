@@ -114,3 +114,88 @@ export async function replaceProjectImage(projectId, image, type, signal) {
 
   return row;
 }
+
+export async function replaceCarouselImages(projectId, carouselImages, signal) {
+  const images = carouselImages || [];
+
+  const { data: existingCarouselImages, error: fetchError } = await supabase
+    .from("project_images")
+    .select("id", "storage_path", "position")
+    .eq("project_id", projectId)
+    .eq("image_type", "carousel")
+    .order("position", { ascending: true })
+    .abortSignal(signal);
+
+  if (fetchError) {
+    throw new Error("Could not load carousel images");
+  }
+
+  const keptImagesIds = new Set(
+    images.filter((image) => image.id).map((image) => image.id),
+  );
+
+  const deletedImages = existingCarouselImages.filter(
+    (image) => !keptImagesIds.has(image.id),
+  );
+
+  if (deletedImages.length) {
+    const deletedImagesIds = deletedImages.map((image) => image.id);
+
+    const { error } = await supabase
+      .from("project_images")
+      .delete()
+      .in("id", deletedImagesIds)
+      .abortSignal(signal);
+
+    if (error) {
+      throw new Error("Could not delete carousel images.");
+    }
+
+    const storagePaths = deletedImages
+      .map((image) => image.storage_path)
+      .filter(Boolean);
+
+    if (storagePaths.length) {
+      const { error: storageError } = await supabase.storage
+        .from("project_images")
+        .remove(storagePaths);
+
+      if (storageError) {
+        throw new Error("Could not delete storage paths.");
+      }
+    }
+  }
+
+  for (const [position, image] of images.entries()) {
+    if (image.id && !image.file) {
+      const { error: positionError } = await supabase
+        .from("project_images")
+        .update({ position })
+        .eq("id", image.id)
+        .abortSignal(signal);
+
+      if (positionError) {
+        throw new Error("Could not update carousel image position.");
+      }
+      continue;
+    }
+
+    if (image.file) {
+      const newImage = await uploadProjectImage(
+        projectId,
+        image.file,
+        "carousel",
+        position,
+      );
+
+      const { error: uploadError } = await supabase
+        .from("project_images")
+        .insert(newImage)
+        .abortSignal(signal);
+
+      if (uploadError) {
+        throw new Error("Could not save carousel image.");
+      }
+    }
+  }
+}
