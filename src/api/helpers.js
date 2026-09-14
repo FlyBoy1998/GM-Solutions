@@ -64,6 +64,38 @@ export async function replaceMaterials(projectId, materials, signal) {
   }
 }
 
+export async function replaceWorkCompleted(projectId, workCompleted, signal) {
+  const { error: deleteWorkCompletedError } = await supabase
+    .from("work_completed")
+    .delete()
+    .eq("project_id", projectId)
+    .abortSignal(signal);
+
+  if (deleteWorkCompletedError) {
+    throw new Error("Could not replace work completed.");
+  }
+
+  if (!workCompleted.length) return;
+
+  const rows = workCompleted
+    .filter((item) => item.description?.trim())
+    .map((item) => ({
+      project_id: projectId,
+      description: item.description.trim(),
+    }));
+
+  if (!rows.length) return;
+
+  const { error: insertWorkCompletedRowsError } = await supabase
+    .from("work_completed")
+    .insert(rows)
+    .abortSignal(signal);
+
+  if (insertWorkCompletedRowsError) {
+    throw new Error("Could not save work completed.");
+  }
+}
+
 export async function replaceProjectImage(projectId, image, type, signal) {
   if (!image?.file) return null;
 
