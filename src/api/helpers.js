@@ -35,13 +35,13 @@ export async function uploadProjectImage(
 }
 
 export async function replaceMaterials(projectId, materials, signal) {
-  const { error: deleteError } = await supabase
+  const { error: deleteMaterialsError } = await supabase
     .from("materials")
     .delete()
     .eq("project_id", projectId)
     .abortSignal(signal);
 
-  if (deleteError) {
+  if (deleteMaterialsError) {
     throw new Error("Could not replace project materials.");
   }
 
