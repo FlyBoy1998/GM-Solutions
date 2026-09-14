@@ -73,7 +73,7 @@ export async function replaceProjectImage(projectId, image, type, signal) {
 
   const { data: existingImage, error: findImageError } = await supabase
     .from("project_images")
-    .select("id, storage_path")
+    .select("id", "storage_path")
     .eq("project_id", projectId)
     .eq("image_type", type)
     .maybeSingle()
