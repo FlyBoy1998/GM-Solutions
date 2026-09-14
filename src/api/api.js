@@ -1,6 +1,12 @@
 import supabase from "../lib/supabase";
 
-import { uploadProjectImage } from "./helpers";
+import {
+  uploadProjectImage,
+  replaceMaterials,
+  replaceWorkCompleted,
+  replaceProjectImage,
+  replaceCarouselImages,
+} from "./helpers";
 
 export async function getProjects() {
   const { data, error } = await supabase.from("projects").select(`
@@ -273,4 +279,58 @@ export async function getProject(projectId) {
     after_image,
     carousel_images,
   };
+}
+
+export async function updateProject(projectId, formData, signal) {
+  const { data: project, error: projectError } = await supabase
+    .from("projects")
+    .update({
+      title: formData.title,
+      address: formData.address,
+      category: formData.category,
+      label: formData.label,
+      description: formData.description,
+      latitude: +formData.latitude,
+      longitude: +formData.longitude,
+      duration: formData.duration,
+      completion_date: formData.completion_date,
+      status: formData.status,
+      overview: formData.overview,
+      budget_range: formData.budget_range,
+      project_size: formData.project_size,
+      alt: formData.alt,
+    })
+    .eq("id", projectId)
+    .select()
+    .single()
+    .abortSignal(signal);
+
+  if (projectError) {
+    throw new Error("Could not update project.");
+  }
+
+  // Replace materials
+  await replaceMaterials(projectId, formData.materials, signal);
+
+  // Replace work completed
+  await replaceWorkCompleted(projectId, formData.work_completed, signal);
+
+  // Replace single images
+  await replaceProjectImage(
+    projectId,
+    formData.thumbnail_image,
+    "thumbnail",
+    signal,
+  );
+
+  await replaceProjectImage(projectId, formData.main_image, "main", signal);
+
+  await replaceProjectImage(projectId, formData.before_image, "before", signal);
+
+  await replaceProjectImage(projectId, formData.after_image, "after", signal);
+
+  // Replace carousel images
+  await replaceCarouselImages(projectId, formData.carousel_images, signal);
+
+  return project;
 }
