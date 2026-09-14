@@ -108,8 +108,7 @@ export const serviceCards = [
 export const defaultMapZoom = 11;
 export const mapAttribution =
   '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
-export const mapTileUrl =
-  "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png";
+export const mapTileUrl = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
 export const projectZoom = 12;
 export const londonCoordinates = [51.5074, -0.1278];
 
