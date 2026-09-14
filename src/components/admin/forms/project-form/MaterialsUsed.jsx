@@ -30,7 +30,7 @@ export default function MaterialsUsed() {
 
     if (alreadyExists) return;
 
-    append({ trimmedMaterial });
+    append({ material: trimmedMaterial });
     setMaterial("");
   }
 
@@ -57,10 +57,11 @@ export default function MaterialsUsed() {
           <div className="text-sm">
             <p className="text-gray-dark">Materials Added: </p>
             <div className="inline-flex flex-wrap items-center gap-2">
-              {fields.map((material) => (
+              {fields.map((material, index) => (
                 <MaterialsUsedItem
                   key={material.id}
                   material={material.material}
+                  onDelete={() => remove(index)}
                 />
               ))}
             </div>
