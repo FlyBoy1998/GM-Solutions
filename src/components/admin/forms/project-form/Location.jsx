@@ -37,12 +37,10 @@ export default function Location() {
   function handleResetCoordinates() {
     setValue("latitude", "", {
       shouldDirty: true,
-      shouldValidate: true,
     });
 
     setValue("longitude", "", {
       shouldDirty: true,
-      shouldValidate: true,
     });
   }
 
