@@ -16,7 +16,7 @@ export default function LeadsTableRow({ lead }) {
       <td className="table-td">{lead.source}</td>
       <td className="table-td">{lead.status}</td>
       <td className="table-td">
-        <p className="max-w-60 line-clamp-2 leading-5">{lead.enquiry}</p>
+        <p className="max-w-60 line-clamp-2 leading-5">{lead.message}</p>
       </td>
       <td className="table-td">
         <p className="mb-1">{formatDate(lead.createdAt.split("T")[0])}</p>
