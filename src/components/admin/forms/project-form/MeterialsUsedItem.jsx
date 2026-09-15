@@ -10,7 +10,7 @@ export default function MaterialsUsedItem({ material, onDelete }) {
     >
       {formatToCapitalize(material)}
       <button
-        className="cursor-pointer absolute top-[-25%] p-px rounded-full text-white bg-red-500 hover:bg-red-400 transition-colors"
+        className="cursor-pointer absolute top-[-25%] right-[-5%] p-px rounded-full text-white bg-red-500 hover:bg-red-400 transition-colors"
         title="Delete material"
         aria-label="Delete Material"
         onClick={onDelete}
