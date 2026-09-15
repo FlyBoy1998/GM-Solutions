@@ -59,6 +59,26 @@
     mask-size: 100% 100%;
   }
 
+  #project-modal {
+    opacity: 0;
+    scale: 0.95;
+    transition:
+      opacity 400ms ease,
+      scale 400ms ease,
+      display 400ms allow-discrete,
+      overlay 400ms allow-discrete;
+  }
+
+  #project-modal[open] {
+    opacity: 1;
+    scale: 1;
+
+    @starting-style {
+      opacity: 0;
+      scale: 0.95;
+    }
+  }
+
   .toggle {
     @apply relative h-6 w-10 cursor-pointer rounded-full bg-gray transition-colors duration-200;
   }
