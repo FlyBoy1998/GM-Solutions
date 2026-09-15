@@ -10,5 +10,5 @@ export default function usePagination(data = []) {
     currentPage * itemsPerPage,
   );
 
-  return { currentPage, totalPages, currentData, setCurrentPage };
+  return { currentPage, itemsPerPage, totalPages, currentData, setCurrentPage };
 }
