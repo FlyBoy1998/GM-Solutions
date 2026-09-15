@@ -116,6 +116,7 @@
   --color-black-transparent: oklch(0.2 0 260 / 70%);
   --color-midnight-blue: oklch(0.2329 0.0396 256.72);
   --color-error: oklch(0.660199 0.229356 35.4025);
+  --color-modal-backdrop: oklch(0 0 0 / 60%);
 
   --spacing-sm: 1rem;
   --spacing-md: 3rem;
