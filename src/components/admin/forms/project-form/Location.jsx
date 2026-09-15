@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useSearchParams } from "react-router";
+import { useEffect, useMemo } from "react";
 import { useFormContext } from "react-hook-form";
 import { MapContainer, TileLayer, useMap, useMapEvents } from "react-leaflet";
 
@@ -15,28 +14,36 @@ import {
 } from "../../../../constants/data";
 
 export default function Location() {
-  const [searchParams, setSearchParams] = useSearchParams();
   const {
     register,
+    watch,
     setValue,
     formState: { errors },
   } = useFormContext();
 
-  const lat = searchParams.get("lat") || "";
-  const lng = searchParams.get("lng") || "";
+  const lat = watch("latitude");
+  const lng = watch("longitude");
 
-  useEffect(() => {
-    setValue("latitude", lat, {
+  const hasCoordinates =
+    lat !== "" &&
+    lng !== "" &&
+    !Number.isNaN(Number(lat)) &&
+    !Number.isNaN(Number(lng));
+
+  const position = useMemo(() => {
+    return hasCoordinates ? [Number(lat), Number(lng)] : londonCoordinates;
+  }, [lat, lng, hasCoordinates]);
+
+  function handleResetCoordinates() {
+    setValue("latitude", "", {
       shouldDirty: true,
+      shouldValidate: true,
     });
 
-    setValue("longitude", lng, {
+    setValue("longitude", "", {
       shouldDirty: true,
+      shouldValidate: true,
     });
-  }, [lat, lng, setValue]);
-
-  function clearSearchParams() {
-    setSearchParams({}, { replace: true });
   }
 
   return (
@@ -53,9 +60,11 @@ export default function Location() {
           id="latitude"
           {...register("latitude", {
             required: "Latitude is required.",
+            validate: (value) =>
+              (Number(value) >= -90 && Number(value) <= 90) ||
+              "Latitude must be beween -90 and 90.",
           })}
           placeholder="e.g. 51.486337"
-          defaultValue={lat ? lat : ""}
           required
           additionalStyling="col-span-1"
           errors={
@@ -71,9 +80,11 @@ export default function Location() {
           id="longitude"
           {...register("longitude", {
             required: "Longitude is required.",
+            validate: (value) =>
+              (Number(value) >= -180 && Number(value) <= 180) ||
+              "Longitude must be between -180 and 180.",
           })}
           placeholder="e.g. -10.486337"
-          defaultValue={lng ? lng : ""}
           required
           additionalStyling="col-span-1"
           errors={
@@ -87,24 +98,22 @@ export default function Location() {
           <div className="w-full h-70 mb-2">
             <MapContainer
               scrollWheelZoom={true}
-              center={londonCoordinates}
+              center={position}
               zoom={defaultMapZoom}
               className="h-full rounded-md"
               aria-label="A map where the admin can click to add project coordinates"
             >
               <TileLayer attribution={mapAttribution} url={mapTileUrl} />
 
-              <MapClickHandler />
-              <ChangeMapPosition
-                position={lat && lng ? [+lat, +lng] : londonCoordinates}
-              />
+              <MapClickHandler setValue={setValue} />
+              <ChangeMapPosition position={position} />
             </MapContainer>
           </div>
 
           <CtaButton
             variant="secondary"
             type="button"
-            onClick={clearSearchParams}
+            onClick={handleResetCoordinates}
           >
             Reset Coordinates
           </CtaButton>
@@ -116,18 +125,28 @@ export default function Location() {
 
 function ChangeMapPosition({ position }) {
   const map = useMap();
-  map.setView(position);
+
+  useEffect(() => {
+    map.setView(position);
+  }, [map, position]);
+
   return null;
 }
 
-function MapClickHandler() {
-  const [, setSearchParams] = useSearchParams();
-
+function MapClickHandler({ setValue }) {
   useMapEvents({
     click: (e) => {
       const { lat, lng } = e.latlng;
 
-      setSearchParams({ lat, lng });
+      setValue("latitude", lat.toFixed(6), {
+        shouldDirty: true,
+        shouldValidate: true,
+      });
+
+      setValue("longitude", lng.toFixed(6), {
+        shouldDirty: true,
+        shouldValidate: true,
+      });
     },
   });
 
