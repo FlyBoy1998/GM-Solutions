@@ -24,11 +24,11 @@ export default function ProjectsTableRow({ project, onView }) {
   }
 
   if (project.status === "completed") {
-    projectStatusClasses += " text-green-500 bg-green-100";
+    projectStatusClasses += " project-status-completed";
   } else if (project.status === "in progress") {
-    projectStatusClasses += " text-blue-500 bg-blue-100";
+    projectStatusClasses += " project-status-in-progress";
   } else {
-    projectStatusClasses += " text-orange-500 bg-orange-100";
+    projectStatusClasses += " project-status-draft";
   }
 
   return (
