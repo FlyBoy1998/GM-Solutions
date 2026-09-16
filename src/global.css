@@ -283,6 +283,18 @@
   @apply inline-flex justify-center items-center w-8 h-8 rounded-[50%] bg-primary text-white font-bold;
 }
 
+@utility project-status-completed {
+  @apply text-green-500 bg-green-100;
+}
+
+@utility project-status-in-progress {
+  @apply text-blue-500 bg-blue-100;
+}
+
+@utility project-status-draft {
+  @apply text-orange-500 bg-orange-100;
+}
+
 @utility carousel-group {
   @apply flex gap-[2em] pr-[2em] animate-scroll;
 }
