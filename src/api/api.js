@@ -27,7 +27,8 @@ export async function getProjects() {
         storage_path,
         image_type
       ),
-      materials (*)
+      materials (*),
+      work_completed (*)
     `);
 
   if (error) {
