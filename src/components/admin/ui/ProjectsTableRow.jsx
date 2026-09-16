@@ -5,7 +5,7 @@ import TableActions from "./TableActions";
 
 import { formatToCapitalize, formatDate } from "../../../utils/utils";
 
-export default function ProjectsTableRow({ project }) {
+export default function ProjectsTableRow({ project, onView }) {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -53,6 +53,7 @@ export default function ProjectsTableRow({ project }) {
       <TableActions
         hasDeleteAction={location.pathname.includes("/admin/projects")}
         onEdit={() => navigate(`/admin/projects/${project.id}/edit`)}
+        onView={onView}
       />
     </tr>
   );
