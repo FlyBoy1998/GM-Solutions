@@ -21,6 +21,7 @@ export async function getProjects() {
       longitude,
       status,
       completion_date,
+      overview,
       project_images (
         id,
         storage_path,
