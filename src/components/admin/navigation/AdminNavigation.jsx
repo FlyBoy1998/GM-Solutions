@@ -15,7 +15,7 @@ import logo from "../../../../public/images/gm-solutions-logo-dark.png";
 
 export default function AdminNavigation() {
   return (
-    <nav className="grid-span-1 flex flex-col p-10 bg-midnight-blue">
+    <nav className="grid-span-1 flex flex-col p-10 bg-midnight-blue max-lg:hidden">
       <NavLink to="/admin" className="w-40 mb-6 rounded-md focus-ring">
         <img src={logo} className="logo" alt="Gm Solutions logo" />
       </NavLink>
