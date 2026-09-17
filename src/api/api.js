@@ -10,18 +10,7 @@ import {
 
 export async function getProjects() {
   const { data, error } = await supabase.from("projects").select(`
-      id,
-      title,
-      address,
-      category,
-      duration,
-      label,
-      description,
-      latitude,
-      longitude,
-      status,
-      completion_date,
-      overview,
+      *,
       project_images (
         id,
         storage_path,
