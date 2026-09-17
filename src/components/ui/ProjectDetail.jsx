@@ -1,4 +1,4 @@
-import { formatDate } from "../../../utils/utils";
+import { formatDate } from "../../utils/utils";
 
 export default function ProjectDetail({ detail, isLastItem, Icon }) {
   return (

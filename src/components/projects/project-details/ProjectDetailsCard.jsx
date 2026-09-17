@@ -1,6 +1,6 @@
 import { projectDetailIcons } from "../../../constants/data";
 
-import ProjectDetail from "./ProjectDetail";
+import ProjectDetail from "../../ui/ProjectDetail";
 
 export default function ProjectDetailsCard({ project }) {
   const projectDetails = [
