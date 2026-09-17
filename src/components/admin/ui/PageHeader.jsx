@@ -1,5 +1,3 @@
-import HamburgerBtn from "../../navigation/HamburgerButton";
-
 export default function PageHeader({ heading, description, children }) {
   return (
     <div className="col-span-full flex justify-between items-center">
@@ -8,9 +6,6 @@ export default function PageHeader({ heading, description, children }) {
         <p className="text-gray-dark">{description}</p>
       </div>
       {children}
-      <div className="hidden max-lg:block">
-        <HamburgerBtn />
-      </div>
     </div>
   );
 }
