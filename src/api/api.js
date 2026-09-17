@@ -326,3 +326,38 @@ export async function updateProject(projectId, formData, signal) {
 
   return project;
 }
+
+export async function deleteProject(projectId, signal) {
+  const { data: images, error: imagesError } = await supabase
+    .from("project_images")
+    .select("storage_path")
+    .eq("project_id", projectId)
+    .abortSignal(signal);
+
+  if (imagesError) {
+    throw new Error("Could not find project images.");
+  }
+
+  const storagePaths =
+    images?.map((image) => image.storage_path).filter(Boolean) ?? [];
+
+  const { error: projectError } = await supabase
+    .from("projects")
+    .delete()
+    .eq("id", projectId)
+    .abortSignal(signal);
+
+  if (projectError) {
+    throw new Error("Could not delete project.");
+  }
+
+  if (storagePaths.length) {
+    const { error: storageError } = await supabase.storage
+      .from("project_images")
+      .remove(storagePaths);
+
+    if (storageError) {
+      throw new Error("Project deleted, but image cleanup failed.");
+    }
+  }
+}
