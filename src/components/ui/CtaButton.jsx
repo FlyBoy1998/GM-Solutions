@@ -10,11 +10,15 @@ export default function CtaButton({
 
   if (variant === "primary") {
     classes +=
-      " bg-primary text-white hover:bg-primary-transparent disabled:bg-primary-transparent";
+      " bg-primary text-white border-2 border-primary hover:bg-primary-transparent disabled:bg-primary-transparent";
   }
   if (variant === "secondary") {
     classes +=
-      " bg-white text-black border border-black hover:bg-gray disabled:bg-gray-transparent";
+      " bg-white text-black border-2 border-black hover:bg-gray disabled:bg-gray-transparent";
+  }
+  if (variant === "danger") {
+    classes +=
+      " bg-white text-red-500 border-2 border-red-500 hover:bg-red-100 disabled:bg-red-50";
   }
   if (isFullWidth) {
     classes += " w-full";
