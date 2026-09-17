@@ -6,7 +6,7 @@ export default function ProjectDetail({ detail, isLastItem, Icon }) {
       className={`flex py-3 text-xs ${!isLastItem ? "border-b border-b-gray-dark" : ""}}`}
     >
       <p className="flex-1 flex items-center gap-2">
-        <Icon className="text-primary" aria-hidden />{" "}
+        <Icon size={16} className="text-primary" aria-hidden />{" "}
         <span>{detail.label}</span>
       </p>
       <p>
