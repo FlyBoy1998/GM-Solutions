@@ -299,6 +299,10 @@
   @apply flex gap-[2em] pr-[2em] animate-scroll;
 }
 
+@utility carousel-button {
+  @apply cursor-pointer absolute top-[50%] translate-y-[-50%] p-2 rounded-full bg-white hover:bg-light transition-colors focus-ring disabled:cursor-not-allowed disabled:bg-gray disabled:hover:bg-gray;
+}
+
 @utility form-input {
   @apply flex-1 p-3 text-sm rounded-md bg-white focus-ring;
 }
