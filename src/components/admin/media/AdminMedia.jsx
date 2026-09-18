@@ -30,7 +30,7 @@ export default function AdminMedia() {
   }
 
   return (
-    <div className="grid grid-cols-4 grid-rows-[auto_auto_1fr_1fr] gap-4 min-h-full p-6 overflow-y-auto">
+    <div className="grid grid-cols-4 gap-4 min-h-full p-6 overflow-y-auto">
       <PageHeader
         heading="Media"
         description="Manage and organize all images and files used on your website."
