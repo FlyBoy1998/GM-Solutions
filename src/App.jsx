@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 import MapContextProvider from "./context/MapContext";
 import ProjectsTabsContextProvider from "./context/ProjectsTabsContext";
 import MobileNavigationContextProvider from "./context/MobileNavigationContext";
+import AdminMobileNavigationContextProvider from "./components/admin/context/AdminMobileNavigationContext";
 
 import ProtectedRoute from "./components/authentication/ProtectedRoute";
 
@@ -104,7 +105,9 @@ function App() {
       <MobileNavigationContextProvider>
         <MapContextProvider>
           <ProjectsTabsContextProvider>
-            <RouterProvider router={router} />
+            <AdminMobileNavigationContextProvider>
+              <RouterProvider router={router} />
+            </AdminMobileNavigationContextProvider>
           </ProjectsTabsContextProvider>
         </MapContextProvider>
       </MobileNavigationContextProvider>
