@@ -1,11 +1,14 @@
 import supabase from "../lib/supabase";
 
+import { mediaBuckets } from "../constants/data";
+
 import {
   uploadProjectImage,
   replaceMaterials,
   replaceWorkCompleted,
   replaceProjectImage,
   replaceCarouselImages,
+  getBucketFiles,
 } from "./helpers";
 
 export async function getProjects() {
@@ -181,24 +184,11 @@ export async function createProject(formData, signal) {
 }
 
 export async function getMediaFiles() {
-  const bucketNames = ["carousel_images", "documents", "videos"];
-
-  const results = await Promise.all(
-    bucketNames.map(async (bucketName) => {
-      const { data, error } = await supabase.storage.from(bucketName).list();
-
-      if (error) {
-        throw new Error("Something when wrong with data fetching.");
-      }
-
-      return data.map((file) => ({
-        ...file,
-        bucket: bucketName,
-      }));
-    }),
+  const media = await Promise.all(
+    mediaBuckets.map(({ name, type }) => getBucketFiles(name, type)),
   );
 
-  return results.flat().slice(1);
+  return media.flat(3);
 }
 
 export async function getProject(projectId) {
