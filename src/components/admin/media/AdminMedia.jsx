@@ -40,7 +40,7 @@ export default function AdminMedia() {
         </div>
       </PageHeader>
 
-      <MediaFilters />
+      <MediaFilters filesNumber={media?.length} />
       {mediaGridContent}
       <StorageUsage mediaFiles={media} />
       <QuickTips />
