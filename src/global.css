@@ -255,6 +255,10 @@
   @apply flex items-center gap-2 p-3 rounded-md text-sm text-white hover:bg-gray-transparent transition-colors duration-400 ease-out;
 }
 
+@utility admin-mobile-nav-link {
+  @apply flex items-center gap-4 p-2 rounded-lg font-bold focus-ring;
+}
+
 @utility eyebrow {
   @apply mb-2 text-sm font-bold uppercase text-primary;
 }
