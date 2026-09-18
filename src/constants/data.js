@@ -195,6 +195,12 @@ export const mediaCategories = [
   },
 ];
 
+export const mediaBuckets = [
+  { name: "project_images", type: "image" },
+  { name: "documents", type: "document" },
+  { name: "videos", type: "video" },
+];
+
 export const quickTips = [
   "Use descriptive filenames so files are easy to find.",
   "Compress large images to improve website performance.",
