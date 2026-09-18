@@ -2,7 +2,7 @@ import { Chart as ChartJS, ArcElement, Legend, Tooltip } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 
 import { mediaCategories } from "../../../constants/data";
-import { bytesToMB, getMediaFileInfo } from "../../../utils/utils";
+import { bytesToMB } from "../../../utils/utils";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -17,11 +17,10 @@ const options = {
 
 export default function StorageUsageChart({ mediaFiles }) {
   const storageUsage = mediaFiles?.reduce((acc, file) => {
-    const mediaFile = getMediaFileInfo(file);
+    const type = file.type;
+    const size = Number(file.metadata?.size) || 0;
 
-    acc[mediaFile.category] = bytesToMB(
-      (acc[mediaFile.category] || 0) + mediaFile.metadata.size,
-    );
+    acc[type] = (acc[type] || 0) + size;
 
     return acc;
   }, {});
@@ -30,7 +29,9 @@ export default function StorageUsageChart({ mediaFiles }) {
     labels: mediaCategories.map((category) => category.label),
     datasets: [
       {
-        data: mediaCategories.map((category) => storageUsage?.[category.label]),
+        data: mediaCategories.map((category) =>
+          bytesToMB(storageUsage[category.type]),
+        ),
         backgroundColor: mediaCategories.map((category) => category.color),
         hoverOffset: 4,
       },
@@ -39,7 +40,7 @@ export default function StorageUsageChart({ mediaFiles }) {
 
   return (
     <div className="flex flex-1 justify-center">
-      <div className="h50 w-50">
+      <div className="h-46 w-46">
         <Doughnut options={options} data={data} />
       </div>
     </div>
