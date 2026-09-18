@@ -16,7 +16,7 @@ export default function MediaCard({ mediaFile }) {
       </div>
       <div className="flex-1 flex flex-col gap-4 p-2">
         <div className="flex items-center justify-between">
-          <p className="text-sm font-bold">{mediaFile?.name}</p>
+          <p className="text-xs font-bold">{mediaFile?.name}</p>
           <button className="cursor-pointer">
             <EllipsisVertical size={18} />
           </button>
