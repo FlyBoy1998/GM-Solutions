@@ -182,14 +182,17 @@ export const mediaTypesOptions = [
 
 export const mediaCategories = [
   {
+    type: "image",
     label: "Images",
     color: "rgb(166, 81, 34)",
   },
   {
+    type: "video",
     label: "Videos",
     color: "rgb(218, 195, 173)",
   },
   {
+    type: "document",
     label: "Documents",
     color: "rgb(46, 40, 29)",
   },
