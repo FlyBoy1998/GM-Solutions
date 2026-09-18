@@ -3,7 +3,9 @@ export default function PageHeader({ heading, description, children }) {
     <div className="col-span-full flex justify-between items-center">
       <div className="flex flex-col gap-1.5">
         <h3 className="heading-md">{heading}</h3>
-        <p className="text-gray-dark">{description}</p>
+        <p className="text-gray-dark max-md:w-[80%] max-md:text-xs">
+          {description}
+        </p>
       </div>
       {children}
     </div>
