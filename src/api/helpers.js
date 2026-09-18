@@ -233,3 +233,56 @@ export async function replaceCarouselImages(projectId, carouselImages, signal) {
     }
   }
 }
+
+export async function getBucketFiles(bucket, type) {
+  async function listFolder(path = "") {
+    const { data, error } = await supabase.storage.from(bucket).list(path, {
+      limit: 1000,
+      offset: 0,
+      sortBy: {
+        column: "name",
+        order: "asc",
+      },
+    });
+
+    if (error) {
+      throw new Error(`Could not load ${bucket}.`);
+    }
+
+    const files = [];
+    const folders = [];
+
+    for (const item of data ?? []) {
+      const itemPath = path ? `${path}/${item.name}` : item.name;
+
+      if (item.id === null) {
+        folders.push(itemPath);
+        continue;
+      }
+
+      const { data: urlData } = supabase.storage
+        .from(bucket)
+        .getPublicUrl(itemPath);
+
+      files.push({
+        id: item.id,
+        bucket,
+        type,
+        name: item.name,
+        storage_path: itemPath,
+        url: urlData.publicUrl,
+        created_at: item.created_at,
+        updated_at: item.updated_at,
+        metadata: item.metadata,
+      });
+    }
+
+    const nestedFiles = await Promise.all(
+      folders.map((folder) => listFolder(folder)),
+    );
+
+    return [...files, ...nestedFiles];
+  }
+
+  return listFolder();
+}
