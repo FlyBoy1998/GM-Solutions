@@ -4,7 +4,7 @@ import FormField from "../../../components/ui/FormField";
 
 import { mediaTypesOptions } from "../../../constants/data";
 
-export default function MediaFilters() {
+export default function MediaFilters({ filesNumber }) {
   return (
     <div className="col-span-full flex justify-between items-center p-4 rounded-lg shadow-md bg-white">
       <form action="" className="flex gap-4">
@@ -24,7 +24,7 @@ export default function MediaFilters() {
         />
       </form>
       <p className="text-sm">
-        <span className="font-bold">43</span> Results
+        <span className="font-bold">{filesNumber}</span> Results
       </p>
     </div>
   );
