@@ -18,7 +18,7 @@ export default function CtaButton({
   }
   if (variant === "danger") {
     classes +=
-      " bg-white text-red-500 border-2 border-red-500 hover:bg-red-100 disabled:bg-red-50";
+      " bg-red-500 text-white border-2 border-red-500 hover:bg-white hover:text-red-500 disabled:bg-red-50";
   }
   if (isFullWidth) {
     classes += " w-full";
