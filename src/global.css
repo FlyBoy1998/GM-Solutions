@@ -13,7 +13,7 @@
 /* ==================== */
 @layer components {
   .mobile-nav {
-    @apply hidden flex-col gap-6 justify-start fixed p-8 top-(--nav-height) right-0 bottom-0 w-full opacity-0 translate-x-0 translate-y-[5vh] transition-[display_opacity] duration-500 transition-discrete bg-surface z-10000 shadow-xl lg:hidden!;
+    @apply hidden flex-col gap-6 justify-start fixed p-8 top-(--nav-height) right-0 bottom-0 w-full opacity-0 translate-x-0 translate-y-[5vh] transition-[display_opacity] duration-500 transition-discrete bg-surface z-10000 shadow-xl;
   }
 
   .mobile-nav.open {
@@ -21,6 +21,18 @@
 
     @starting-style {
       @apply opacity-0 translate-x-0 translate-y-[-5vh];
+    }
+  }
+
+  .admin-mobile-nav {
+    @apply hidden fixed top-(--mobile-header-height) left-0 flex-col p-4 z-1000 -translate-x-full transition-discrete transition-all bg-white max-lg:flex max-lg:w-[40%] max-md:w-full;
+  }
+
+  .admin-mobile-nav.open {
+    @apply flex translate-0;
+
+    @starting-style {
+      @apply hidden -translate-x-full;
     }
   }
 
@@ -59,7 +71,7 @@
     mask-size: 100% 100%;
   }
 
-  #project-modal {
+  .modal {
     opacity: 0;
     scale: 0.95;
     transition:
@@ -69,7 +81,7 @@
       overlay 400ms allow-discrete;
   }
 
-  #project-modal[open] {
+  .modal[open] {
     opacity: 1;
     scale: 1;
 
