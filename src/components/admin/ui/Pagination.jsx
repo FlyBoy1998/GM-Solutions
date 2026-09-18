@@ -1,7 +1,9 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+import { getPaginationPages } from "../../../utils/utils";
+
 export default function Pagination({ totalPages, currentPage, onPageChange }) {
-  const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
+  const pages = getPaginationPages(totalPages, currentPage);
 
   return (
     <nav
@@ -18,20 +20,35 @@ export default function Pagination({ totalPages, currentPage, onPageChange }) {
       </button>
 
       <div className="flex items-center gap-2">
-        {pages.map((page) => (
-          <button
-            key={page}
-            onClick={() => onPageChange(page)}
-            className={`cursor-pointer h-10 w-10 rounded-lg text-sm font-semibold transition
+        {pages.map((page, index) => {
+          if (page === "...") {
+            return (
+              <span
+                key={`elipsis-${index}`}
+                className="flex items-center justify-center h-10 w-10 text-sm text-gray-dark"
+              >
+                ...
+              </span>
+            );
+          }
+
+          return (
+            <button
+              key={page}
+              type="button"
+              onClick={() => onPageChange(page)}
+              className={`cursor-pointer h-10 w-10 rounded-lg text-sm font-semibold transition
               ${
                 currentPage === page
                   ? "bg-primary text-white"
                   : "border border-slate-200 hover:bg-slate-50"
               }`}
-          >
-            {page}
-          </button>
-        ))}
+              aria-current={currentPage === page ? "page" : undefined}
+            >
+              {page}
+            </button>
+          );
+        })}
       </div>
 
       <button
