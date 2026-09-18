@@ -11,22 +11,22 @@ import { getMediaFiles } from "../../../api/api";
 
 export default function AdminMedia() {
   const {
-    data: mediaFiles,
-    isLoadingMedia,
-    errorMedia,
+    data: media = [],
+    isLoading,
+    error,
   } = useQuery({
-    queryKey: ["mediaFiles"],
+    queryKey: ["media"],
     queryFn: getMediaFiles,
   });
 
   let mediaGridContent;
 
-  if (isLoadingMedia) {
+  if (isLoading) {
     mediaGridContent = <p>Loading media files...</p>;
-  } else if (!isLoadingMedia && errorMedia) {
+  } else if (!isLoading && error) {
     mediaGridContent = <p>Error</p>;
   } else {
-    mediaGridContent = <MediaGrid mediaFiles={mediaFiles} />;
+    mediaGridContent = <MediaGrid mediaFiles={media} />;
   }
 
   return (
@@ -42,7 +42,7 @@ export default function AdminMedia() {
 
       <MediaFilters />
       {mediaGridContent}
-      <StorageUsage mediaFiles={mediaFiles} />
+      <StorageUsage mediaFiles={media} />
       <QuickTips />
     </div>
   );
