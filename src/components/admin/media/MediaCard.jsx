@@ -1,8 +1,13 @@
+import { useState } from "react";
 import { EllipsisVertical } from "lucide-react";
+
+import MediaCardDropdown from "./MediaCardDropdown";
 
 import { formatDate, formatBytes } from "../../../utils/utils";
 
 export default function MediaCard({ mediaFile }) {
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+
   let imageClasses = "object-cover h-full w-full";
 
   return (
@@ -17,9 +22,17 @@ export default function MediaCard({ mediaFile }) {
       <div className="flex-1 flex flex-col gap-4 p-2">
         <div className="flex items-center justify-between">
           <p className="text-xs font-bold">{mediaFile?.name}</p>
-          <button className="cursor-pointer">
-            <EllipsisVertical size={18} />
-          </button>
+          <div className="relative">
+            <button
+              className="cursor-pointer p-1 rounded-md focus-ring transition-colors hover:bg-light"
+              onClick={() => setIsDropdownVisible((prev) => !prev)}
+              aria-label={`${isDropdownVisible ? "Close" : "Open"} Dropdown Menu`}
+            >
+              <EllipsisVertical size={18} aria-hidden />
+            </button>
+
+            {isDropdownVisible && <MediaCardDropdown />}
+          </div>
         </div>
         <p className="text-xs text-gray-dark">
           {`${formatBytes(mediaFile?.metadata.size)}`} •{" "}
