@@ -8,7 +8,7 @@ import { serviceCards } from "../../../constants/data";
 
 export default function AdminServices() {
   return (
-    <div className="grid grid-cols-3 grid-rows-[repeat(3,auto)] gap-4 p-6 overflow-y-auto">
+    <div className="grid grid-cols-3 grid-rows-[repeat(3,auto)] gap-4 p-6 overflow-y-auto max-lg:grid-cols-6">
       <PageHeader
         heading="Services"
         description="Manage the renovation services displayed on your website."
