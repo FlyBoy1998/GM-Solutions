@@ -3,7 +3,7 @@ import TopServicesChart from "./TopServicesChart";
 
 export default function TopServices() {
   return (
-    <div className="col-start-3 col-end-4 flex flex-col py-3 px-4 rounded-lg shadow-md bg-white">
+    <div className="col-start-3 col-end-4 flex flex-col py-3 px-4 rounded-lg shadow-md bg-white max-lg:col-span-3 max-md:col-span-full">
       <SectionHeader
         title="Top Services by Projects"
         description="See which services generate the most projects for your business."
