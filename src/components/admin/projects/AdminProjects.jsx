@@ -16,11 +16,9 @@ export default function AdminProjects() {
         heading="Projects"
         description="Manage and showcase your interior renovation projects."
       >
-        <div className="max-lg:hidden">
-          <CtaButton variant="primary" onClick={() => navigate("new")}>
-            Add New Project
-          </CtaButton>
-        </div>
+        <CtaButton variant="primary" onClick={() => navigate("new")}>
+          Add New Project
+        </CtaButton>
       </PageHeader>
 
       <ProjectFilters />
