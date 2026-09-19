@@ -35,7 +35,7 @@ export default function AdminMobileNavigation() {
       {isAuthenticated ? (
         <nav
           style={{ "--mobile-header-height": `${mobileHeaderHeight}px` }}
-          className={`admin-mobile-nav ${isOpen ? "open" : ""} min-h-[calc(100vh-var(--mobile-header-height))] overflow-y-auto`}
+          className={`admin-mobile-nav ${isOpen ? "open" : ""} min-h-[calc(100vh-var(--mobile-header-height))] shadow-2xl overflow-y-auto`}
         >
           <ul className="list-none flex flex-col gap-2 p-2 max-sm:p-0.5">
             <li>
