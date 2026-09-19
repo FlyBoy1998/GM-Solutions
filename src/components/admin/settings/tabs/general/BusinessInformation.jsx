@@ -8,7 +8,7 @@ import { siteInformation } from "../../../../../constants/data";
 
 export default function BusinessInformation() {
   return (
-    <div className="col-start-3 col-end-5 row-start-2 row-end-4 flex flex-col gap-4 py-3 px-4 rounded-lg shadow-md bg-white">
+    <div className="col-start-3 col-end-5 row-start-2 row-end-4 flex flex-col gap-4 py-3 px-4 rounded-lg shadow-md bg-white max-md:col-span-full">
       <SectionHeader
         title="Business Information"
         description="Update your business information."
