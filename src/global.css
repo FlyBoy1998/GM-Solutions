@@ -362,7 +362,7 @@
 }
 
 @utility settings-tab {
-  @apply flex items-center gap-2 py-4 px-3 text-sm font-bold border-b-2 border-transparent text-gray-dark hover:settings-tab-active transition-colors duration-400 ease-out focus-ring;
+  @apply flex items-center gap-2 py-4 px-3 text-sm font-bold border-b-2 border-transparent text-gray-dark hover:settings-tab-active transition-colors duration-400 ease-out focus-ring max-sm:flex-1 max-sm:justify-center;
 }
 
 @utility settings-tab-active {
