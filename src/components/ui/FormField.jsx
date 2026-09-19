@@ -21,7 +21,7 @@ export default function FormField({
       field = (
         <select
           id={id}
-          className={`form-input ps-2 ${icon ? "ps-10" : ""}`}
+          className={`form-input h-full ${icon ? "ps-10" : ""}`}
           {...props}
         >
           {optionsPlaceholder && <option value="">{optionsPlaceholder}</option>}
