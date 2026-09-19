@@ -6,8 +6,8 @@ export default function MediaCard({ mediaFile }) {
   let imageClasses = "object-cover h-full w-full";
 
   return (
-    <article className="col-span-1 flex flex-col rounded-lg shadow-md overflow-hidden bg-white">
-      <div className="h-46 overflow-hidden">
+    <article className="col-span-1 flex flex-col rounded-lg shadow-md bg-white">
+      <div className="h-46 rounded-t-lg overflow-hidden">
         <img
           src={mediaFile?.url}
           className={`${imageClasses} ${mediaFile?.type === "image" ? "scale-125" : ""}`}
