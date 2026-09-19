@@ -9,7 +9,7 @@ import LeadMetricCard from "./LeadMetricCard";
 
 export default function LeadsMetrics() {
   return (
-    <div className="grid grid-cols-4 col-span-full row-start-2 row-end-3 gap-3">
+    <div className="grid grid-cols-4 col-span-full row-start-2 row-end-3 gap-3 max-xl:grid-cols-2 max-sm:grid-cols-1">
       <LeadMetricCard
         title="New Leads"
         value={24}
