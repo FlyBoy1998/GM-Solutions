@@ -11,7 +11,7 @@ export default function RecentLeads() {
   });
 
   return (
-    <div className="col-start-4 col-end-5 row-start-4 row-end-5 flex flex-col rounded-lg py-3 px-4 shadow-md bg-white max-xl:col-start-1 max-xl:col-end-3 max-xl:row-start-5 max-xl:row-end-6">
+    <div className="col-start-4 col-end-5 row-start-4 row-end-5 flex flex-col rounded-lg py-3 px-4 shadow-md bg-white max-xl:col-start-1 max-xl:col-end-3 max-xl:row-start-5 max-xl:row-end-6 max-sm:col-span-full max-sm:row-start-6 max-sm:row-end-7">
       <SectionHeader
         title="Recent Leads"
         description="View the latest enquiries submitted through your website."
