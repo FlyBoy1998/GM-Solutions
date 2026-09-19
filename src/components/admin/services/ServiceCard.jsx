@@ -9,7 +9,7 @@ export default function ServiceCard({ card }) {
   const [isToggled, setIsToggled] = useState(true);
 
   return (
-    <div className="col-span-1 flex flex-col gap-4 h-full p-3 rounded-md bg-light max-md:col-span-full">
+    <div className="col-span-1 flex flex-col gap-4 h-full p-3 rounded-md bg-light max-lg:grid-cols-2 max-md:col-span-full">
       <div className="relative h-40 rounded-md overflow-hidden">
         <card.icon
           className="absolute bottom-2 left-2 p-2 rounded-md text-white bg-primary"
