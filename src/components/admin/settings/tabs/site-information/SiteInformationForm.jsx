@@ -10,7 +10,7 @@ export default function SiteInformationForm() {
         id="business-name"
         name="business-name"
         defaultValue="GM Solutions"
-        additionalStyling="col-span-1"
+        additionalStyling="col-span-1 max-md:col-span-full"
       />
       <FormField
         type="input"
@@ -19,7 +19,7 @@ export default function SiteInformationForm() {
         id="service-areas"
         name="service-areas"
         defaultValue="London"
-        additionalStyling="col-span-1"
+        additionalStyling="col-span-1 max-md:col-span-full"
       />
       <FormField
         type="textarea"
