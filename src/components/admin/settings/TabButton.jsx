@@ -8,9 +8,10 @@ export default function TabButton({ tab }) {
       className={({ isActive }) =>
         `settings-tab ${isActive ? "settings-tab-active" : null}`
       }
+      aria-label={`${tab} Label`}
     >
       <tab.icon size={16} strokeWidth={3} aria-hidden />
-      <span>{tab.label}</span>
+      <span className="max-sm:hidden">{tab.label}</span>
     </NavLink>
   );
 }
