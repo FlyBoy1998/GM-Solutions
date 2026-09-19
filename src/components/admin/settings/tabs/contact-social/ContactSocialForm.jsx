@@ -10,7 +10,7 @@ export default function ContactSocialForm() {
         id="phone-number"
         name="phone-number"
         defaultValue="+44 20 7946 0958"
-        additionalStyling="col-span-1"
+        additionalStyling="col-span-1 max-md:col-span-full"
       />
       <FormField
         type="input"
@@ -19,7 +19,7 @@ export default function ContactSocialForm() {
         id="email-address"
         name="email-address"
         defaultValue="hello@gmsolutions.co.uk"
-        additionalStyling="col-span-1"
+        additionalStyling="col-span-1 max-md:col-span-full"
       />
     </form>
   );
