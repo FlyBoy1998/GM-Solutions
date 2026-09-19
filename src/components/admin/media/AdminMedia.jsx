@@ -6,6 +6,7 @@ import MediaFilters from "./MediaFilters";
 import MediaGrid from "./MediaGrid";
 import StorageUsage from "./StorageUsage";
 import QuickTips from "./QuickTips";
+import MediaSkeleton from "./MediaSkeleton";
 
 import { getMediaFiles } from "../../../api/api";
 
@@ -21,9 +22,7 @@ export default function AdminMedia() {
 
   let mediaGridContent;
 
-  if (isLoading) {
-    mediaGridContent = <p>Loading media files...</p>;
-  } else if (!isLoading && error) {
+  if (!isLoading && error) {
     mediaGridContent = <p>Error</p>;
   } else {
     mediaGridContent = <MediaGrid mediaFiles={media} />;
@@ -40,10 +39,16 @@ export default function AdminMedia() {
         </div>
       </PageHeader>
 
-      <MediaFilters filesNumber={media?.length} />
-      {mediaGridContent}
-      <StorageUsage mediaFiles={media} />
-      <QuickTips />
+      {isLoading ? (
+        <MediaSkeleton />
+      ) : (
+        <>
+          <MediaFilters filesNumber={media?.length} />
+          {mediaGridContent}
+          <StorageUsage mediaFiles={media} />
+          <QuickTips />
+        </>
+      )}
     </div>
   );
 }
