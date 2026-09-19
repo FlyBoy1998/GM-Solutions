@@ -25,7 +25,7 @@
   }
 
   .admin-mobile-nav {
-    @apply hidden flex-col fixed top-(--mobile-header-height) left-0 p-4 -translate-x-full transition-discrete transition-[display_translate] z-1000 bg-white max-lg:flex! max-lg:w-[40%] max-md:w-full;
+    @apply hidden flex-col fixed top-(--mobile-header-height) left-0 p-4 -translate-x-full transition-discrete transition-[display_translate] z-1000 bg-white max-lg:flex! max-lg:w-[40%] max-md:w-full lg:hidden!;
   }
 
   .admin-mobile-nav.open {
@@ -324,7 +324,7 @@
 }
 
 @utility form-input-wrapper {
-  @apply relative rounded-md bg-white shadow-sm;
+  @apply relative h-full rounded-md bg-white shadow-sm;
 }
 
 @utility form-input-icon-wrapper {
