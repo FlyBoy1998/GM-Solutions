@@ -18,7 +18,7 @@ export default function GeneralSettingsForm() {
         id="tagline"
         name="tagline"
         defaultValue="Beautiful Spaces. Built Around you"
-        additionalStyling="col-span-1"
+        additionalStyling="col-span-1 max-md:col-span-full"
       />
       <FormField
         type="select"
@@ -26,7 +26,7 @@ export default function GeneralSettingsForm() {
         id="currency"
         name="currency"
         options={currencyOptions}
-        additionalStyling="col-span-1"
+        additionalStyling="col-span-1 max-md:col-span-full"
       />
       <FormField
         type="select"
@@ -34,7 +34,7 @@ export default function GeneralSettingsForm() {
         id="currency-format"
         name="currency-format"
         options={currencyFormats}
-        additionalStyling="col-span-1"
+        additionalStyling="col-span-1 max-md:col-span-full"
       />
       <FormField
         type="select"
@@ -42,7 +42,7 @@ export default function GeneralSettingsForm() {
         id="date-format"
         name="date-format"
         options={dateFormatOptions}
-        additionalStyling="col-span-1"
+        additionalStyling="col-span-1 max-md:col-span-full"
       />
       <FormField
         type="select"
@@ -50,7 +50,7 @@ export default function GeneralSettingsForm() {
         id="time-format"
         name="time-format"
         options={timeFormatOptions}
-        additionalStyling="col-span-1"
+        additionalStyling="col-span-1 max-md:col-span-full"
       />
       <FormField
         type="select"
@@ -58,7 +58,7 @@ export default function GeneralSettingsForm() {
         id="measurement-system"
         name="measurement-system"
         options={measurementSystemOptions}
-        additionalStyling="col-span-1"
+        additionalStyling="col-span-1 max-md:col-span-full"
       />
     </form>
   );
