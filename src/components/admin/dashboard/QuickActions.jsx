@@ -8,7 +8,7 @@ export default function QuickActions() {
   const navigate = useNavigate();
 
   return (
-    <div className="col-start-4 col-end-5 row-start-3 row-end-4 flex flex-col py-3 px-4 rounded-lg shadow-md bg-white max-xl:col-start-3 max-xl:col-end-5 max-xl:row-start-5 max-xl:row-end-6">
+    <div className="col-start-4 col-end-5 row-start-3 row-end-4 flex flex-col py-3 px-4 rounded-lg shadow-md bg-white max-xl:col-start-3 max-xl:col-end-5 max-xl:row-start-5 max-xl:row-end-6 max-sm:col-span-full">
       <SectionHeader
         title="Quick Actions"
         description="Quick access to frequently used actions."
