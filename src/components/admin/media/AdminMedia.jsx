@@ -1,5 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
-
 import PageHeader from "../ui/PageHeader";
 import CtaButton from "../../ui/CtaButton";
 import MediaFilters from "./MediaFilters";
@@ -8,17 +6,10 @@ import StorageUsage from "./StorageUsage";
 import QuickTips from "./QuickTips";
 import MediaSkeleton from "./MediaSkeleton";
 
-import { getMediaFiles } from "../../../api/api";
+import useMediaFiles from "../../../hooks/useMediaFiles";
 
 export default function AdminMedia() {
-  const {
-    data: media = [],
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["media"],
-    queryFn: getMediaFiles,
-  });
+  const { data: media = [], isLoading, error } = useMediaFiles();
 
   let mediaGridContent;
 
