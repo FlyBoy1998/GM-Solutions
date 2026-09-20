@@ -3,7 +3,7 @@ import supabase from "../lib/supabase";
 import { mediaBuckets } from "../constants/data";
 
 import {
-  uploadProjectImage,
+  uploadStorageFile,
   replaceMaterials,
   replaceWorkCompleted,
   replaceProjectImage,
@@ -111,7 +111,8 @@ export async function createProject(formData, signal) {
 
   // // Thumbnail
   if (formData.thumbnail_image) {
-    const row = await uploadProjectImage(
+    const row = await uploadStorageFile(
+      "project_images",
       projectId,
       formData.thumbnail_image,
       "thumbnail",
@@ -122,7 +123,8 @@ export async function createProject(formData, signal) {
 
   // // Main Image
   if (formData.main_image) {
-    const row = await uploadProjectImage(
+    const row = await uploadStorageFile(
+      "project_images",
       projectId,
       formData.main_image,
       "main",
@@ -133,7 +135,8 @@ export async function createProject(formData, signal) {
 
   // // Before Image
   if (formData.before_image) {
-    const row = await uploadProjectImage(
+    const row = await uploadStorageFile(
+      "project_images",
       projectId,
       formData.before_image,
       "before",
@@ -144,7 +147,8 @@ export async function createProject(formData, signal) {
 
   // // After Image
   if (formData.after_image) {
-    const row = await uploadProjectImage(
+    const row = await uploadStorageFile(
+      "project_images",
       projectId,
       formData.after_image,
       "after",
@@ -158,7 +162,8 @@ export async function createProject(formData, signal) {
     for (const [index, image] of formData.carousel_images.entries()) {
       if (!image.file) continue;
 
-      const row = await uploadProjectImage(
+      const row = await uploadStorageFile(
+        "project_images",
         projectId,
         image.file,
         "carousel",
