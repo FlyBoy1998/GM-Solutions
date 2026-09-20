@@ -1,4 +1,4 @@
-export default function ToggleButton({ isToggled, onChange }) {
+export default function ToggleButton({ isToggled, onChange, disabled }) {
   return (
     <div>
       <label>
@@ -7,8 +7,9 @@ export default function ToggleButton({ isToggled, onChange }) {
           className="peer hidden"
           checked={isToggled}
           onChange={onChange}
+          disabled={disabled}
         />
-        <div className="toggle"></div>
+        <div className={`toggle ${disabled ? "cursor-not-allowed" : ""}`}></div>
       </label>
     </div>
   );
