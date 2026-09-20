@@ -1,26 +1,70 @@
-import { useState } from "react";
+import { useRef } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 import { Pen, Eye } from "lucide-react";
 
 import ToggleButton from "../ui/ToggleButton";
 import ServiceCardButton from "./ServiceCardButton";
 
-export default function ServiceCard({ card }) {
-  const [isToggled, setIsToggled] = useState(true);
+import { toggleServiceVisibility as toggleServiceVisibilityApi } from "../../../api/api";
+
+export default function ServiceCard({ service }) {
+  const abortControllerRef = useRef(null);
+
+  const queryClient = useQueryClient();
+
+  const {
+    mutateAsync: toggleServiceVisibility,
+    isPending: isToggling,
+    error,
+  } = useMutation({
+    mutationFn: async ({ serviceId, isVisible }) => {
+      const controller = new AbortController();
+      abortControllerRef.current = controller;
+
+      try {
+        await toggleServiceVisibilityApi(
+          serviceId,
+          isVisible,
+          controller.signal,
+        );
+      } finally {
+        abortControllerRef.current = null;
+      }
+    },
+    onSuccess: () => {
+      toast.success("Service visibility toggled successfully.");
+
+      queryClient.invalidateQueries({ queryKey: ["services"] });
+    },
+    onError: (err) => {
+      if (err.name === "AbortError") {
+        toast.error("Service visibility toggle cancelled.");
+      }
+      toast.error(error.message ?? "Could not change service visibility.");
+    },
+  });
+
+  function handleToggle() {
+    toggleServiceVisibility({
+      serviceId: service.id,
+      isVisible: !service.is_visible,
+    });
+  }
 
   return (
     <div className="col-span-1 flex flex-col gap-4 h-full p-3 rounded-md bg-light max-lg:grid-cols-2 max-md:col-span-full">
-      <div className="relative h-40 rounded-md overflow-hidden">
-        <card.icon
-          className="absolute bottom-2 left-2 p-2 rounded-md text-white bg-primary"
-          size={40}
-          aria-hidden
+      <div className="h-40 rounded-md overflow-hidden">
+        <img
+          src={service?.storage_path}
+          className="object-cover h-full w-full"
+          alt={`${service.name} Service Image`}
         />
-        <img src={card.imgUrl} className="object-cover h-full w-full" alt="" />
       </div>
       <div>
-        <h3 className="text-lg font-bold mb-1">{card.title}</h3>
-        <p className="text-xs">{card.description}</p>
+        <h3 className="text-lg font-bold mb-1">{service?.name}</h3>
+        <p className="text-xs">{service?.description}</p>
       </div>
       <div className="flex justify-between items-center mt-auto max-xl:flex-col max-xl:gap-2">
         <div className="flex items-center gap-2 max-xl:flex-col max-xl:w-full max-xl:order-2">
@@ -29,8 +73,9 @@ export default function ServiceCard({ card }) {
         </div>
         <div className="flex items-center gap-2 max-xl:justify-start max-xl:order-1 max-xl:w-full">
           <ToggleButton
-            isToggled={isToggled}
-            onChange={() => setIsToggled((prev) => !prev)}
+            isToggled={service?.is_visible}
+            onChange={() => handleToggle(service.id, !service.is_visible)}
+            disabled={isToggling}
           />
           <p className="text-xs">Visible</p>
         </div>
