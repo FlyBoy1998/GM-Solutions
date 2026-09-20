@@ -356,3 +356,29 @@ export async function deleteProject(projectId, signal) {
     }
   }
 }
+
+export async function getServices() {
+  const { data: services, error: servicesError } = await supabase
+    .from("services")
+    .select(`*`, "service_images (*)")
+    .order("id", { ascending: false });
+
+  if (servicesError) {
+    throw new Error("Could not load services.");
+  }
+
+  return services.map((service) => ({
+    ...service,
+
+    service_images: service.service_images?.map((file) => {
+      const { data: urlData } = supabase.storage
+        .from("service_images")
+        .getPublicUrl(file.storage_path);
+
+      return {
+        ...file,
+        storage_path: urlData,
+      };
+    }),
+  }));
+}
