@@ -4,9 +4,11 @@ import ServiceCard from "./ServiceCard";
 import TopServices from "./TopServices";
 import ServicePerformanceOverview from "./ServicePerformanceOverview";
 
-import { serviceCards } from "../../../constants/data";
+import useServices from "../../../hooks/useServices";
 
 export default function AdminServices() {
+  const { data: services = [], isLoading, error } = useServices();
+
   return (
     <div className="grid grid-cols-3 grid-rows-[repeat(3,auto)] gap-4 p-6 overflow-y-auto max-lg:grid-cols-6">
       <PageHeader
@@ -19,8 +21,8 @@ export default function AdminServices() {
       </PageHeader>
 
       <div className="col-span-full grid grid-cols-3 gap-3">
-        {serviceCards.map((card) => (
-          <ServiceCard key={card.description} card={card} />
+        {services.map((service) => (
+          <ServiceCard key={service.id} service={service} />
         ))}
       </div>
       <TopServices />
