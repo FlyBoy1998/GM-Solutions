@@ -1,6 +1,7 @@
 import supabase from "../lib/supabase";
 
-export async function uploadProjectImage(
+export async function uploadStorageFile(
+  bucket,
   projectId,
   file,
   type,
@@ -16,7 +17,7 @@ export async function uploadProjectImage(
       : `${projectId}/${type}-${filename}.${extension}`;
 
   const { error: uploadError } = await supabase.storage
-    .from("project_images")
+    .from(bucket)
     .upload(path, file, {
       contentType: file.type,
       upsert: false,
@@ -27,7 +28,6 @@ export async function uploadProjectImage(
   }
 
   return {
-    project_id: projectId,
     storage_path: path,
     image_type: type,
     position,
@@ -103,7 +103,12 @@ export async function replaceProjectImage(projectId, image, type, signal) {
 
   const oldStoragePath = image.storage_path;
 
-  const row = await uploadProjectImage(projectId, image.file, type);
+  const row = await uploadStorageFile(
+    "project_images",
+    projectId,
+    image.file,
+    type,
+  );
 
   const { data: existingImage, error: findImageError } = await supabase
     .from("project_images")
@@ -215,7 +220,8 @@ export async function replaceCarouselImages(projectId, carouselImages, signal) {
     }
 
     if (image.file) {
-      const newImage = await uploadProjectImage(
+      const newImage = await uploadStorageFile(
+        "project_images",
         projectId,
         image.file,
         "carousel",
