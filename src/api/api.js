@@ -382,3 +382,17 @@ export async function getServices() {
     }),
   }));
 }
+
+export async function toggleServiceVisibility(serviceId, isVisible, signal) {
+  const { error } = await supabase
+    .from("services")
+    .update({ is_visible: isVisible })
+    .eq("id", serviceId)
+    .abortSignal(signal);
+
+  if (error) {
+    throw new Error("Could not change service visibility.");
+  }
+
+  return true;
+}
