@@ -408,21 +408,55 @@ export async function getService(serviceId) {
     const { data: urlData } = supabase.storage
       .from("service_images")
       .getPublicUrl(file.storage_path);
-
-    return {
-      ...file,
-      storage_path: urlData.publicUrl,
-    };
+    return { ...file, storage_path: urlData.publicUrl };
   });
 
   const thumbnail_image = serviceImages?.find(
     (image) => image.image_type === "thumbnail",
   );
+  return { ...data, thumbnail_image };
+}
 
-  return {
-    ...data,
-    thumbnail_image,
-  };
+export async function createService(formData, signal) {
+  const { data: service, error: serviceError } = await supabase
+    .from("services")
+    .insert({
+      name: formData.name,
+      description: formData.description,
+      is_visible: formData.is_visible,
+    })
+    .select()
+    .single()
+    .abortSignal(signal);
+
+  if (serviceError) {
+    throw new Error(serviceError);
+  }
+
+  const serviceId = service.id;
+
+  const images = [];
+
+  if (formData.thumbnail_image) {
+    const row = await uploadStorageFile(
+      "services",
+      serviceId,
+      formData.thumbnail_image,
+      "thumbnail",
+    );
+
+    images.push(row);
+  }
+
+  if (images.length) {
+    const { error: imagesError } = await supabase
+      .from("service_images")
+      .insert(images);
+
+    if (imagesError) {
+      throw new Error("Could not upload service image");
+    }
+  }
 }
 
 export async function toggleServiceVisibility(serviceId, isVisible, signal) {
