@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router";
+
 import CtaButton from "../../../components/ui/CtaButton";
 import PageHeader from "../ui/PageHeader";
 import ServiceCard from "./ServiceCard";
@@ -7,6 +9,8 @@ import ServicePerformanceOverview from "./ServicePerformanceOverview";
 import useServices from "../../../hooks/useServices";
 
 export default function AdminServices() {
+  const navigate = useNavigate();
+
   const { data: services = [], isLoading, error } = useServices();
 
   return (
@@ -16,7 +20,9 @@ export default function AdminServices() {
         description="Manage the renovation services displayed on your website."
       >
         <div className="max-lg:hidden">
-          <CtaButton variant="primary">Add Service</CtaButton>
+          <CtaButton variant="primary" onClick={() => navigate("new")}>
+            Add Service
+          </CtaButton>
         </div>
       </PageHeader>
 
