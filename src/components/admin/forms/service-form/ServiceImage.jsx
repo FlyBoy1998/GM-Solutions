@@ -10,8 +10,6 @@ export default function ServiceImage({ serviceId }) {
 
   const { data: service } = useService(serviceId);
 
-  console.log(service);
-
   return (
     <div className="flex flex-col gap-6 p-4 rounded-lg shadow-md bg-white">
       <SectionHeader
