@@ -14,11 +14,7 @@ import {
 export async function getProjects() {
   const { data, error } = await supabase.from("projects").select(`
       *,
-      project_images (
-        id,
-        storage_path,
-        image_type
-      ),
+      project_images (*),
       materials (*),
       work_completed (*)
     `);
@@ -79,7 +75,10 @@ export async function createProject(formData, signal) {
       material: item.trimmedMaterial,
     }));
 
-    const { error } = await supabase.from("materials").insert(materialRows);
+    const { error } = await supabase
+      .from("materials")
+      .insert(materialRows)
+      .abortSignal(signal);
 
     if (error) {
       throw new Error(
@@ -97,7 +96,8 @@ export async function createProject(formData, signal) {
 
     const { error } = await supabase
       .from("work_completed")
-      .insert(workCompletedRows);
+      .insert(workCompletedRows)
+      .abortSignal(signal);
 
     if (error) {
       throw new Error(
@@ -114,11 +114,14 @@ export async function createProject(formData, signal) {
     const row = await uploadStorageFile(
       "project_images",
       projectId,
-      formData.thumbnail_image,
+      formData.thumbnail_image.file,
       "thumbnail",
     );
 
-    imageRows.push(row);
+    imageRows.push({
+      project_id: projectId,
+      ...row,
+    });
   }
 
   // // Main Image
@@ -126,11 +129,14 @@ export async function createProject(formData, signal) {
     const row = await uploadStorageFile(
       "project_images",
       projectId,
-      formData.main_image,
+      formData.main_image.file,
       "main",
     );
 
-    imageRows.push(row);
+    imageRows.push({
+      project_id: projectId,
+      ...row,
+    });
   }
 
   // // Before Image
@@ -138,11 +144,14 @@ export async function createProject(formData, signal) {
     const row = await uploadStorageFile(
       "project_images",
       projectId,
-      formData.before_image,
+      formData.before_image.file,
       "before",
     );
 
-    imageRows.push(row);
+    imageRows.push({
+      project_id: projectId,
+      ...row,
+    });
   }
 
   // // After Image
@@ -150,11 +159,14 @@ export async function createProject(formData, signal) {
     const row = await uploadStorageFile(
       "project_images",
       projectId,
-      formData.after_image,
+      formData.after_image.file,
       "after",
     );
 
-    imageRows.push(row);
+    imageRows.push({
+      project_id: projectId,
+      ...row,
+    });
   }
 
   // // Carousel Images
@@ -170,7 +182,10 @@ export async function createProject(formData, signal) {
         index,
       );
 
-      imageRows.push(row);
+      imageRows.push({
+        project_id: projectId,
+        ...row,
+      });
     }
   }
 
@@ -178,7 +193,8 @@ export async function createProject(formData, signal) {
   if (imageRows.length) {
     const { error: imagesError } = await supabase
       .from("project_images")
-      .insert(imageRows);
+      .insert(imageRows)
+      .abortSignal(signal);
 
     if (imagesError) {
       throw new Error("Could not upload images");
