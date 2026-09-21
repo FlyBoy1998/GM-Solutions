@@ -72,7 +72,7 @@ export async function createProject(formData, signal) {
   if (formData.materials?.length) {
     const materialRows = formData.materials.map((item) => ({
       project_id: projectId,
-      material: item.trimmedMaterial,
+      material: item.material,
     }));
 
     const { error } = await supabase
