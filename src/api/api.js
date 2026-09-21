@@ -497,6 +497,33 @@ export async function createService(formData, signal) {
   return service;
 }
 
+export async function updateService(serviceId, formData, signal) {
+  const { data, error: serviceError } = await supabase
+    .from("services")
+    .update({
+      name: formData.name,
+      description: formData.description,
+      is_visible: formData.is_visible,
+    })
+    .eq("id", serviceId)
+    .select()
+    .single()
+    .abortSignal(signal);
+
+  if (serviceError) {
+    throw new Error("Could not update service.");
+  }
+
+  await replaceServiceImage(
+    serviceId,
+    formData.thumbnail_image,
+    "thumbnail",
+    signal,
+  );
+
+  return data;
+}
+
 export async function toggleServiceVisibility(serviceId, isVisible, signal) {
   const { error } = await supabase
     .from("services")
