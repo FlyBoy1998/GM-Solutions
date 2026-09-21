@@ -404,21 +404,7 @@ export async function getService(serviceId) {
     throw new Error("Could not load service.");
   }
 
-  const serviceImages = data?.service_images.map((file) => {
-    const { data: urlData } = supabase.storage
-      .from("service_images")
-      .getPublicUrl(file.storage_path);
-
-    return {
-      ...file,
-      storage_path: urlData.publicUrl,
-    };
-  });
-
-  return {
-    ...data,
-    serviceImages,
-  };
+  return data;
 }
 
 export async function toggleServiceVisibility(serviceId, isVisible, signal) {
