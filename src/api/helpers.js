@@ -7,7 +7,15 @@ export async function uploadStorageFile(
   type,
   position = null,
 ) {
-  const extension = file.name.split(".").pop();
+  if (!(file instanceof File)) {
+    throw new Error("The uploaded file is not a valid File object.");
+  }
+
+  if (!file.type.startsWith("image/")) {
+    throw new Error(`Invalid image type: ${file.type || "unknown"}`);
+  }
+
+  const extension = file.name?.split(".").pop();
 
   const filename = crypto.randomUUID();
 
@@ -28,6 +36,7 @@ export async function uploadStorageFile(
   }
 
   return {
+    project_id: projectId,
     storage_path: path,
     image_type: type,
     position,
