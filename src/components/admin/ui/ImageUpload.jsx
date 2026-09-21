@@ -16,7 +16,7 @@ export default function ImageUpload({
   const preview = selectedPreview || initialImage;
 
   function handleClick() {
-    inputRef?.current.click();
+    inputRef.current?.click();
   }
 
   function handleFileChange(e) {
