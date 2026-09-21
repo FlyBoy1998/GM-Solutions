@@ -29,6 +29,7 @@ import GeneralSettings from "./components/admin/settings/tabs/general/GeneralSet
 import SiteInformation from "./components/admin/settings/tabs/site-information/SiteInformation";
 import ContactSocial from "./components/admin/settings/tabs/contact-social/ContactSocial";
 import ManageProjectForm from "./components/admin/forms/project-form/ManageProjectForm";
+import ManageServiceForm from "./components/admin/forms/service-form/ManageServiceForm";
 
 const router = createBrowserRouter([
   {
@@ -72,7 +73,11 @@ const router = createBrowserRouter([
           },
           {
             path: "services",
-            element: <AdminServices />,
+            children: [
+              { index: true, element: <AdminServices /> },
+              { path: "new", element: <ManageServiceForm /> },
+              { path: ":serviceId/edit", element: <ManageServiceForm /> },
+            ],
           },
           {
             path: "media",
