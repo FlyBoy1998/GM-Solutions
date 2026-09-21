@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { useNavigate } from "react-router";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
@@ -10,6 +11,7 @@ import ServiceCardButton from "./ServiceCardButton";
 import { toggleServiceVisibility as toggleServiceVisibilityApi } from "../../../api/api";
 
 export default function ServiceCard({ service }) {
+  const navigate = useNavigate();
   const abortControllerRef = useRef(null);
 
   const queryClient = useQueryClient();
@@ -57,7 +59,7 @@ export default function ServiceCard({ service }) {
     <div className="col-span-1 flex flex-col gap-4 h-full p-3 rounded-md bg-light max-lg:grid-cols-2 max-md:col-span-full">
       <div className="h-40 rounded-md overflow-hidden">
         <img
-          src={service?.storage_path}
+          src={service?.service_images[0]?.storage_path}
           className="object-cover h-full w-full"
           alt={`${service.name} Service Image`}
         />
@@ -68,7 +70,12 @@ export default function ServiceCard({ service }) {
       </div>
       <div className="flex justify-between items-center mt-auto max-xl:flex-col max-xl:gap-2">
         <div className="flex items-center gap-2 max-xl:flex-col max-xl:w-full max-xl:order-2">
-          <ServiceCardButton Icon={Pen}>Edit</ServiceCardButton>
+          <ServiceCardButton
+            Icon={Pen}
+            onClick={() => navigate(`/admin/services/${service?.id}/edit`)}
+          >
+            Edit
+          </ServiceCardButton>
           <ServiceCardButton Icon={Eye}>View</ServiceCardButton>
         </div>
         <div className="flex items-center gap-2 max-xl:justify-start max-xl:order-1 max-xl:w-full">
