@@ -388,6 +388,39 @@ export async function getServices() {
   }));
 }
 
+export async function getService(serviceId) {
+  const { data, error } = await supabase
+    .from("services")
+    .select(
+      `
+    *,
+    service_images (*)
+    `,
+    )
+    .eq("id", serviceId)
+    .single();
+
+  if (error) {
+    throw new Error("Could not load service.");
+  }
+
+  const serviceImages = data?.service_images.map((file) => {
+    const { data: urlData } = supabase.storage
+      .from("service_images")
+      .getPublicUrl(file.storage_path);
+
+    return {
+      ...file,
+      storage_path: urlData.publicUrl,
+    };
+  });
+
+  return {
+    ...data,
+    serviceImages,
+  };
+}
+
 export async function toggleServiceVisibility(serviceId, isVisible, signal) {
   const { error } = await supabase
     .from("services")
