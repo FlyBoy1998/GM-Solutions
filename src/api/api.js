@@ -8,6 +8,7 @@ import {
   replaceWorkCompleted,
   replaceProjectImage,
   replaceCarouselImages,
+  replaceServiceImage,
   getBucketFiles,
 } from "./helpers";
 
@@ -409,8 +410,8 @@ export async function getService(serviceId) {
     .from("services")
     .select(
       `
-    *,
-    service_images (*)
+      *,
+      service_images (*)
     `,
     )
     .eq("id", serviceId)
@@ -420,17 +421,32 @@ export async function getService(serviceId) {
     throw new Error("Could not load service.");
   }
 
-  const serviceImages = data?.service_images.map((file) => {
-    const { data: urlData } = supabase.storage
-      .from("service_images")
-      .getPublicUrl(file.storage_path);
-    return { ...file, storage_path: urlData.publicUrl };
+  const serviceImages =
+    data?.service_images?.map((file) => {
+      const { data: urlData } = supabase.storage
+        .from("service_images")
+        .getPublicUrl(file.storage_path);
+
+      return {
+        ...file,
+        url: urlData.publicUrl,
+      };
+    }) ?? [];
+
+  const thumbnail_image =
+    serviceImages.find((image) => image.image_type === "thumbnail") ?? null;
+
+  console.log({
+    ...data,
+    service_images: serviceImages,
+    thumbnail_image,
   });
 
-  const thumbnail_image = serviceImages?.find(
-    (image) => image.image_type === "thumbnail",
-  );
-  return { ...data, thumbnail_image };
+  return {
+    ...data,
+    service_images: serviceImages,
+    thumbnail_image,
+  };
 }
 
 export async function createService(formData, signal) {
@@ -453,26 +469,32 @@ export async function createService(formData, signal) {
 
   const images = [];
 
-  if (formData.thumbnail_image) {
+  if (formData.thumbnail_image?.file) {
     const row = await uploadStorageFile(
-      "services",
+      "service_images",
       serviceId,
-      formData.thumbnail_image,
+      formData.thumbnail_image.file,
       "thumbnail",
     );
 
-    images.push(row);
+    images.push({
+      service_id: serviceId,
+      ...row,
+    });
   }
 
   if (images.length) {
     const { error: imagesError } = await supabase
       .from("service_images")
-      .insert(images);
+      .insert(images)
+      .abortSignal(signal);
 
     if (imagesError) {
       throw new Error("Could not upload service image");
     }
   }
+
+  return service;
 }
 
 export async function toggleServiceVisibility(serviceId, isVisible, signal) {
