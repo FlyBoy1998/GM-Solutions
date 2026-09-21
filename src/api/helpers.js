@@ -2,7 +2,7 @@ import supabase from "../lib/supabase";
 
 export async function uploadStorageFile(
   bucket,
-  projectId,
+  entityId,
   file,
   type,
   position = null,
@@ -21,8 +21,8 @@ export async function uploadStorageFile(
 
   const path =
     position !== null
-      ? `${projectId}/${type}/${position}-${filename}.${extension}`
-      : `${projectId}/${type}-${filename}.${extension}`;
+      ? `${entityId}/${type}/${position}-${filename}.${extension}`
+      : `${entityId}/${type}-${filename}.${extension}`;
 
   const { error: uploadError } = await supabase.storage
     .from(bucket)
@@ -36,10 +36,9 @@ export async function uploadStorageFile(
   }
 
   return {
-    project_id: projectId,
     storage_path: path,
     image_type: type,
-    position,
+    ...(position !== null ? { position } : {}),
   };
 }
 
@@ -107,22 +106,25 @@ export async function replaceWorkCompleted(projectId, workCompleted, signal) {
   }
 }
 
-export async function replaceProjectImage(projectId, image, type, signal) {
+export async function replaceEntityImage({
+  bucket,
+  table,
+  foreignKey,
+  entityId,
+  image,
+  type,
+  signal,
+}) {
   if (!image?.file) return null;
 
   const oldStoragePath = image.storage_path;
 
-  const row = await uploadStorageFile(
-    "project_images",
-    projectId,
-    image.file,
-    type,
-  );
+  const row = await uploadStorageFile(bucket, entityId, image.file, type);
 
   const { data: existingImage, error: findImageError } = await supabase
-    .from("project_images")
+    .from(table)
     .select("id, storage_path")
-    .eq("project_id", projectId)
+    .eq(foreignKey, entityId)
     .eq("image_type", type)
     .maybeSingle()
     .abortSignal(signal);
@@ -133,7 +135,7 @@ export async function replaceProjectImage(projectId, image, type, signal) {
 
   if (existingImage) {
     const { error: updateError } = await supabase
-      .from("project_images")
+      .from(table)
       .update({ storage_path: row.storage_path })
       .eq("id", existingImage.id)
       .abortSignal(signal);
@@ -143,8 +145,12 @@ export async function replaceProjectImage(projectId, image, type, signal) {
     }
   } else {
     const { error: insertError } = await supabase
-      .from("project_images")
-      .insert(row);
+      .from(table)
+      .insert({
+        ...row,
+        [foreignKey]: entityId,
+      })
+      .abortSignal(signal);
     if (insertError) {
       throw new Error(`Could not save ${type} image.`);
     }
@@ -152,7 +158,7 @@ export async function replaceProjectImage(projectId, image, type, signal) {
 
   if (oldStoragePath) {
     const { error: deleteError } = await supabase.storage
-      .from("project_images")
+      .from(bucket)
       .remove([oldStoragePath]);
 
     if (deleteError) {
@@ -161,6 +167,30 @@ export async function replaceProjectImage(projectId, image, type, signal) {
   }
 
   return row;
+}
+
+export async function replaceProjectImage(projectId, image, type, signal) {
+  return replaceEntityImage({
+    bucket: "project_images",
+    table: "project_images",
+    foreignKey: "project_id",
+    entityId: projectId,
+    image,
+    type,
+    signal,
+  });
+}
+
+export async function replaceServiceImage(serviceId, image, type, signal) {
+  return replaceEntityImage({
+    bucket: "service_images",
+    table: "service_images",
+    foreignKey: "service_id",
+    entityId: serviceId,
+    image,
+    type,
+    signal,
+  });
 }
 
 export async function replaceCarouselImages(projectId, carouselImages, signal) {
