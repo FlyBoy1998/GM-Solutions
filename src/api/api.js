@@ -360,7 +360,12 @@ export async function deleteProject(projectId, signal) {
 export async function getServices() {
   const { data: services, error: servicesError } = await supabase
     .from("services")
-    .select(`*`, "service_images (*)")
+    .select(
+      `
+      *,
+      service_images (*)
+      `,
+    )
     .order("id", { ascending: false });
 
   if (servicesError) {
@@ -377,7 +382,7 @@ export async function getServices() {
 
       return {
         ...file,
-        storage_path: urlData,
+        storage_path: urlData.publicUrl,
       };
     }),
   }));
