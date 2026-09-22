@@ -30,8 +30,8 @@ export default function ManageServiceForm() {
 
   const {
     mutateAsync,
-    isPending: isLoading,
-    error,
+    isPending: isServiceMutationLoading,
+    error: isServiceMutationError,
   } = useMutation({
     mutationFn: async (formData) => {
       const controller = new AbortController();
@@ -98,6 +98,14 @@ export default function ManageServiceForm() {
     await mutateAsync(data);
   }
 
+  const submitButtonContent = isServiceMutationLoading
+    ? isEditMode
+      ? "Saving changes..."
+      : "Saving service..."
+    : isEditMode
+      ? "Save changes"
+      : "Save service";
+
   return (
     <div className="flex flex-col gap-6 w-full p-6">
       <PageHeader
@@ -105,11 +113,20 @@ export default function ManageServiceForm() {
         description="Fill in the details below to add a new renovation service to your website."
       >
         <div className="flex items-center gap-4 max-lg:hidden">
-          <CtaButton variant="secondary" onClick={() => navigate(-1)}>
+          <CtaButton
+            variant="secondary"
+            onClick={() => navigate(-1)}
+            disabled={isServiceMutationLoading}
+          >
             Cancel
           </CtaButton>
-          <CtaButton variant="primary" form="service-form" type="submit">
-            {isEditMode ? "Save Changes" : "Add Service"}
+          <CtaButton
+            variant="primary"
+            form="service-form"
+            type="submit"
+            disabled={isServiceMutationLoading}
+          >
+            {submitButtonContent}
           </CtaButton>
         </div>
       </PageHeader>
