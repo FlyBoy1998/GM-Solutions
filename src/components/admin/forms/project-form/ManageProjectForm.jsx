@@ -136,7 +136,7 @@ export default function ManageProjectForm() {
     });
   }, [project, methods, projectLoadingError]);
 
-  const { mutateAsync, isPending: isSaving } = useMutation({
+  const { mutateAsync, isPending: isProjectMutationLoading } = useMutation({
     mutationFn: async (formData) => {
       const controller = new AbortController();
       abortControllerRef.current = controller;
@@ -173,11 +173,19 @@ export default function ManageProjectForm() {
     },
   });
 
-  const isLoading = isProjectLoading || isSaving;
-
   async function handleSubmit(data) {
     await mutateAsync(data);
   }
+
+  const isLoading = isProjectLoading || isProjectMutationLoading;
+
+  const submitButtonContent = isProjectMutationLoading
+    ? isEditMode
+      ? "Saving changes..."
+      : "Saving service..."
+    : isEditMode
+      ? "Save changes"
+      : "Save service";
 
   return (
     <div className="flex flex-col gap-6 w-full p-6">
@@ -203,7 +211,7 @@ export default function ManageProjectForm() {
             type="submit"
             disabled={isLoading}
           >
-            {isEditMode ? "Save Changes" : "Save Project"}
+            {submitButtonContent}
           </CtaButton>
         </div>
       </PageHeader>
