@@ -98,6 +98,8 @@ export default function ManageServiceForm() {
     await mutateAsync(data);
   }
 
+  const isLoading = isServiceLoading || isServiceMutationLoading;
+
   const submitButtonContent = isServiceMutationLoading
     ? isEditMode
       ? "Saving changes..."
@@ -116,7 +118,7 @@ export default function ManageServiceForm() {
           <CtaButton
             variant="secondary"
             onClick={() => navigate(-1)}
-            disabled={isServiceMutationLoading}
+            disabled={isLoading}
           >
             Cancel
           </CtaButton>
@@ -124,7 +126,7 @@ export default function ManageServiceForm() {
             variant="primary"
             form="service-form"
             type="submit"
-            disabled={isServiceMutationLoading}
+            disabled={isLoading}
           >
             {submitButtonContent}
           </CtaButton>
