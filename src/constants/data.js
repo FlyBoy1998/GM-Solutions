@@ -321,3 +321,11 @@ export const siteInformation = [
     icon: Mail,
   },
 ];
+
+export const contactMethods = [
+  { value: "email", label: "Email" },
+  { value: "phone", label: "Phone Call" },
+  { value: "sms", label: "SMS" },
+  { value: "whatsapp", label: "WhatsApp" },
+  { value: "no_preference", label: "No Preference" },
+];
