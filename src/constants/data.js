@@ -348,3 +348,12 @@ export const leadStatusOptions = [
   { value: "won", label: "Won" },
   { value: "lost", label: "Lost" },
 ];
+
+export const timeframes = [
+  { value: "asap", label: "As soon as possible" },
+  { value: "1_3_months", label: "Within 1–3 months" },
+  { value: "3_6_months", label: "Within 3–6 months" },
+  { value: "6_12_months", label: "Within 6–12 months" },
+  { value: "12_plus_months", label: "12+ months" },
+  { value: "flexible", label: "Flexible" },
+];
