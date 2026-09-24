@@ -339,3 +339,12 @@ export const leadSourceOptions = [
   { value: "existing_client", label: "Existing Client" },
   { value: "other", label: "Other" },
 ];
+
+export const leadStatusOptions = [
+  { value: "new", label: "New" },
+  { value: "contacted", label: "Contacted" },
+  { value: "quote_sent", label: "Quote Sent" },
+  { value: "follow_up", label: "Follow-up" },
+  { value: "won", label: "Won" },
+  { value: "lost", label: "Lost" },
+];
