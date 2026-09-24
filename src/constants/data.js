@@ -329,3 +329,13 @@ export const contactMethods = [
   { value: "whatsapp", label: "WhatsApp" },
   { value: "no_preference", label: "No Preference" },
 ];
+
+export const leadSourceOptions = [
+  { value: "website", label: "Website" },
+  { value: "social_media", label: "Social Media" },
+  { value: "referral", label: "Referral" },
+  { value: "phone", label: "Phone" },
+  { value: "email", label: "Email" },
+  { value: "existing_client", label: "Existing Client" },
+  { value: "other", label: "Other" },
+];
