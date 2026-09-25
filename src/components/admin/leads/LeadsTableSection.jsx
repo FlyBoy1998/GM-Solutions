@@ -3,20 +3,24 @@ import Pagination from "../ui/Pagination";
 
 import usePagination from "../../../hooks/usePagination";
 
-import { leads } from "../../../../dummy_data/data";
+import useLeads from "../../../hooks/useLeads";
 
 export default function LeadsTableSection() {
-  const { currentPage, totalPages, currentData, setCurrentPage } =
+  const { data: leads = [], isLoading, error } = useLeads();
+
+  const { currentPage, itemsPerPage, totalPages, currentData, setCurrentPage } =
     usePagination(leads || []);
 
   return (
     <div className="col-span-full flex flex-col min-h-135 px-4 rounded-lg shadow-md bg-white max-xl:col-span-full">
       <LeadsTable leads={currentData} />
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={setCurrentPage}
-      />
+      {leads.length > itemsPerPage ? (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
+      ) : null}
     </div>
   );
 }
