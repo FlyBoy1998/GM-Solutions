@@ -6,8 +6,10 @@ export default function LeadsTableRow({ lead }) {
   return (
     <tr className="border-t border-slate-100 hover:bg-slate-50 transition-colors">
       <td className="table-td">
-        <p className="mb-1 font-bold">{lead.name}</p>
-        <p className="text-gray-dark">{lead.projectType}</p>
+        <p className="mb-1 font-bold">
+          {lead.first_name} {lead.last_name}
+        </p>
+        <p className="text-gray-dark">{lead.project_type}</p>
       </td>
       <td className="table-td">
         <p className="mb-1">{lead.email}</p>
@@ -16,12 +18,12 @@ export default function LeadsTableRow({ lead }) {
       <td className="table-td">{lead.source}</td>
       <td className="table-td">{lead.status}</td>
       <td className="table-td">
-        <p className="max-w-60 line-clamp-2 leading-5">{lead.message}</p>
+        <p className="max-w-60 line-clamp-2 leading-5">{lead.enquiry}</p>
       </td>
       <td className="table-td">
-        <p className="mb-1">{formatDate(lead.createdAt.split("T")[0])}</p>
+        <p className="mb-1">{formatDate(lead.created_at.split("T")[0])}</p>
         <p className="text-gray-dark">
-          {formatTime(lead.createdAt.split("T")[1])}
+          {formatTime(lead.created_at.split("T")[1])}
         </p>
       </td>
 
