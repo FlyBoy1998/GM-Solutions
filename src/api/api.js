@@ -537,3 +537,13 @@ export async function toggleServiceVisibility(serviceId, isVisible, signal) {
 
   return true;
 }
+
+export async function getLeads() {
+  const { data, error } = await supabase.from("leads").select("*");
+
+  if (error) {
+    throw new Error("Could not load leads.");
+  }
+
+  return data;
+}
