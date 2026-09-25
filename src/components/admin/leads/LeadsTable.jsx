@@ -1,7 +1,11 @@
 import LeadsTableHead from "./LeadsTableHead";
 import LeadsTableRow from "./LeadsTableRow";
 
-export default function LeadsTable({ leads }) {
+import useLeads from "../../../hooks/useLeads";
+
+export default function LeadsTable() {
+  const { data: leads = [], isLoading, error } = useLeads();
+
   return (
     <table className="w-full text-sm border-separate border-spacing-y-5.5">
       <LeadsTableHead />
