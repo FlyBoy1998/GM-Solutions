@@ -17,13 +17,13 @@ export default function LeadModal({ lead, ref }) {
       ref={ref}
     >
       <ModalHeader modalTitle="Lead Details" />
-      <div className="grid grid-cols-3 gap-6 px-4 py-2">
-        <div className="col-start-1 col-end-3 flex flex-col gap-6">
+      <div className="grid grid-cols-3 gap-6 px-4 py-2 max-sm:grid-cols-1">
+        <div className="col-start-1 col-end-3 flex flex-col gap-6 max-sm:col-span-full">
           <LeadsModalContact lead={lead} />
           <LeadsModalEnquiry lead={lead} />
           <LeadsModalMessage lead={lead} />
         </div>
-        <div className="col-start-3 col-end-4 flex flex-col gap-4">
+        <div className="col-start-3 col-end-4 flex flex-col gap-4 max-sm:col-span-full">
           <LeadsModalTimeline lead={lead} />
           <LeadsModalAdditionalInfo lead={lead} />
         </div>
