@@ -1,8 +1,12 @@
+import { useNavigate } from "react-router";
+
 import TableActions from "../ui/TableActions";
 
 import { formatDate, formatTime } from "../../../utils/utils";
 
-export default function LeadsTableRow({ lead }) {
+export default function LeadsTableRow({ lead, onDelete, onView }) {
+  const navigate = useNavigate();
+
   return (
     <tr className="border-t border-slate-100 hover:bg-slate-50 transition-colors">
       <td className="table-td">
@@ -27,7 +31,12 @@ export default function LeadsTableRow({ lead }) {
         </p>
       </td>
 
-      <TableActions hasDeleteAction />
+      <TableActions
+        hasDeleteAction
+        onEdit={() => navigate(`/admin/leads/${lead.id}/edit`)}
+        onView={onView}
+        onDelete={onDelete}
+      />
     </tr>
   );
 }
