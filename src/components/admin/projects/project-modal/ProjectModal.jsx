@@ -4,10 +4,10 @@ import ProjectModalCarousel from "./ProjectModalCarousel";
 import ProjectModalOverview from "./ProjectModalOverview";
 import ProjectModalMaterials from "./ProjectModalMaterials";
 import ProjectModalActions from "./ProjectModalActions";
-import ProjectModalHeader from "./ProjectModalHeader";
 import ProjectModalWorkCompleted from "./ProjectModalWorkCompleted";
 import ProjectModalDetails from "./ProjectModalDetails";
 import BeforeAfterImages from "./BeforeAfterImages";
+import ModalHeader from "../../ui/ModalHeader";
 
 export default function ProjectModal({ project, onDelete, ref }) {
   const projectId = project?.id;
@@ -23,7 +23,7 @@ export default function ProjectModal({ project, onDelete, ref }) {
       className="modal fixed top-6 left-1/2 w-[calc(100%-3rem)] m-0 max-w-4xl -translate-x-1/2 overflow-y-auto rounded-lg border-0 shadow-2xl backdrop:bg-modal-backdrop"
       ref={ref}
     >
-      <ProjectModalHeader />
+      <ModalHeader modalTitle="Project Details" />
       <div className="flex gap-6 px-4 py-2 max-md:flex-col">
         <div className="flex-1">
           <ProjectModalDetails project={project} />
