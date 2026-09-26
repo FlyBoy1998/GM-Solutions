@@ -547,3 +547,17 @@ export async function getLeads() {
 
   return data;
 }
+
+export async function getLead(leadId) {
+  const { data, error } = await supabase
+    .from("leads")
+    .select()
+    .eq("id", leadId)
+    .single();
+
+  if (error) {
+    throw new Error("Could not load lead details.");
+  }
+
+  return data;
+}
