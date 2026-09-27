@@ -74,12 +74,12 @@ export default function ContactInformation() {
           inputType="tel"
           label="Phone Number"
           id="phone-number"
-          {...register("phone_number")}
+          {...register("phone")}
           placeholder="e.g. 07912 354 564"
           additionalStyling="col-span-1"
           errors={
-            errors.phone_number && (
-              <p className="input-error">{errors.phone_number.message}</p>
+            errors.phone && (
+              <p className="input-error">{errors.phone.message}</p>
             )
           }
         />
