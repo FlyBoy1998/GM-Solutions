@@ -622,3 +622,15 @@ export async function updateLead(leadId, formData, signal) {
 
   return data;
 }
+
+export async function deleteLead(leadId, signal) {
+  const { error } = await supabase
+    .from("leads")
+    .delete()
+    .eq("id", leadId)
+    .abortSignal(signal);
+
+  if (error) {
+    throw new Error("Could not delete.lead");
+  }
+}
