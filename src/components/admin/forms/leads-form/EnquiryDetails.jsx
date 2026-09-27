@@ -88,12 +88,12 @@ export default function EnquiryDetails() {
           type="textarea"
           label="Enquiry Details"
           id="enquiry-details"
-          {...register("enquiry_details")}
+          {...register("enquiry")}
           placeholder="Enter the client's message or enquiry details..."
           additionalStyling="col-span-full"
           errors={
-            errors.enquiry_details && (
-              <p className="input-error">{errors.enquiry_details.message}</p>
+            errors.enquiry && (
+              <p className="input-error">{errors.enquiry.message}</p>
             )
           }
         />
