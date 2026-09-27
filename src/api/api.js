@@ -561,3 +561,34 @@ export async function getLead(leadId) {
 
   return data;
 }
+
+export async function updateLead(leadId, formData, signal) {
+  const { data, error } = await supabase
+    .from("leads")
+    .update({
+      first_name: formData.first_name,
+      last_name: formData.last_name,
+      email: formData.email,
+      phone: formData.phone,
+      contact_method: formData.contact_method,
+      source: formData.source,
+      status: formData.status,
+      project_type: formData.project_type,
+      estimated_budget: formData.estimated_budget,
+      enquiry: formData.enquiry,
+      start_date: formData.start_date,
+      timeframe: formData.timeframe,
+      property_address: formData.property_address,
+      notes: formData.notes,
+    })
+    .eq("id", leadId)
+    .select()
+    .single()
+    .abortSignal(signal);
+
+  if (error) {
+    throw new Error("Could not update lead.");
+  }
+
+  return data;
+}
