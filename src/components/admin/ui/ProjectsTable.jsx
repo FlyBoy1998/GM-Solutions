@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import ProjectsTableHead from "./ProjectsTableHead";
 import ProjectsTableRow from "./ProjectsTableRow";
 import ProjectModal from "../projects/project-modal/ProjectModal";
-import DeleteProjectModal from "./DeleteProjectModal.jsx";
+import DeleteModal from "./DeleteModal.jsx";
 
 import { deleteProject as deleteProjectApi } from "../../../api/api.js";
 
@@ -50,7 +50,7 @@ export default function ProjectsTable({ projects }) {
     projectDetailsModalRef.current?.showModal();
   }
 
-  function handleDisplayDeleteProjectModal(project) {
+  function handleDisplayDeleteModal(project) {
     setSelectedProject(project);
     deleteModalRef.current?.showModal();
   }
@@ -68,11 +68,14 @@ export default function ProjectsTable({ projects }) {
       <ProjectModal
         ref={projectDetailsModalRef}
         project={selectedProject}
-        onDelete={handleDisplayDeleteProjectModal}
+        onDelete={handleDisplayDeleteModal}
       />
-      <DeleteProjectModal
+      <DeleteModal
         ref={deleteModalRef}
-        project={selectedProject}
+        title="Delete Project?"
+        entity={selectedProject?.title}
+        message="This action cannot be undone. All projects data, files and associated
+          information will permanently removed."
         onDelete={handleDeleteProject}
         isDeleting={isDeleting}
       />
@@ -85,7 +88,7 @@ export default function ProjectsTable({ projects }) {
               key={project.id}
               project={project}
               onView={() => handleDisplayProjectModal(project)}
-              onDelete={() => handleDisplayDeleteProjectModal(project)}
+              onDelete={() => handleDisplayDeleteModal(project)}
             />
           ))}
         </tbody>
