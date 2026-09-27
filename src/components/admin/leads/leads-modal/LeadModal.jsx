@@ -28,7 +28,7 @@ export default function LeadModal({ lead, ref }) {
           <LeadsModalAdditionalInfo lead={lead} />
         </div>
       </div>
-      <LeadsModalActions date={formatDate(lead.created_at)} />
+      <LeadsModalActions date={formatDate(lead?.created_at)} />
     </dialog>,
     document.getElementById("modal"),
   );
