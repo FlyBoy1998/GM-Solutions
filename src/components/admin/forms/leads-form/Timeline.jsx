@@ -23,12 +23,10 @@ export default function Timeline() {
           inputType="date"
           label="Preferred Start Date"
           id="preferred-start-date"
-          {...register("preferred_start_date")}
+          {...register("start_date")}
           errors={
-            errors.preferred_start_date && (
-              <p className="input-error">
-                {errors.preferred_start_date.message}
-              </p>
+            errors.start_date && (
+              <p className="input-error">{errors.start_date.message}</p>
             )
           }
         />
