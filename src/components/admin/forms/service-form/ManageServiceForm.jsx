@@ -28,11 +28,7 @@ export default function ManageServiceForm() {
     error: isServiceLoadingError,
   } = useService(serviceId);
 
-  const {
-    mutateAsync,
-    isPending: isServiceMutationLoading,
-    error: isServiceMutationError,
-  } = useMutation({
+  const { mutateAsync, isPending: isServiceMutationLoading } = useMutation({
     mutationFn: async (formData) => {
       const controller = new AbortController();
       abortSignalRef.current = controller.signal;
