@@ -30,6 +30,7 @@ import SiteInformation from "./components/admin/settings/tabs/site-information/S
 import ContactSocial from "./components/admin/settings/tabs/contact-social/ContactSocial";
 import ManageProjectForm from "./components/admin/forms/project-form/ManageProjectForm";
 import ManageServiceForm from "./components/admin/forms/service-form/ManageServiceForm";
+import ManageLeadForm from "./components/admin/forms/leads-form/ManageLeadForm";
 
 const router = createBrowserRouter([
   {
@@ -85,7 +86,11 @@ const router = createBrowserRouter([
           },
           {
             path: "leads",
-            element: <AdminLeads />,
+            children: [
+              { index: true, element: <AdminLeads /> },
+              { path: "new", element: <ManageLeadForm /> },
+              { path: ":leadId/edit", element: <ManageLeadForm /> },
+            ],
           },
           {
             path: "settings",
