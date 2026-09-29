@@ -1,38 +1,9 @@
-import { useState, useEffect } from "react";
-import useEmblaCarousel from "embla-carousel-react";
-
 import CarouselPrevButton from "../../ui/CarouselPrevButton";
 import CarouselNextButton from "../../ui/CarouselNextButton";
+import useCarouselButtons from "../../../../hooks/useCarouselButtons";
 
 export default function ProjectModalCarousel({ carouselImages }) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: false,
-    inViewThreshold: 0.5,
-  });
-
-  const [buttons, setButtons] = useState({
-    prev: true,
-    next: false,
-  });
-
-  useEffect(() => {
-    if (!emblaApi) return;
-
-    const onSelect = (api) => {
-      setButtons({
-        prev: !api.canScrollPrev(),
-        next: !api.canScrollNext(),
-      });
-    };
-
-    emblaApi.on("select", onSelect);
-    emblaApi.on("reInit", onSelect);
-
-    return () => {
-      emblaApi.off("select", onSelect);
-      emblaApi.off("reInit", onSelect);
-    };
-  }, [emblaApi]);
+  const { emblaRef, emblaApi, buttons } = useCarouselButtons();
 
   return (
     <div className="relative max-md:flex-1">
