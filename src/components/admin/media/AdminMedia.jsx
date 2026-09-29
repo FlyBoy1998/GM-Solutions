@@ -1,3 +1,5 @@
+import noMediaImage from "../../../../public/images/no-media-image.png";
+
 import PageHeader from "../ui/PageHeader";
 import CtaButton from "../../ui/CtaButton";
 import MediaFilters from "./MediaFilters";
@@ -5,6 +7,7 @@ import MediaGrid from "./MediaGrid";
 import StorageUsage from "./StorageUsage";
 import QuickTips from "./QuickTips";
 import MediaSkeleton from "./MediaSkeleton";
+import NoDataPlaceholder from "../ui/NoDataPlaceholder";
 
 import useMediaFiles from "../../../hooks/useMediaFiles";
 
@@ -15,6 +18,16 @@ export default function AdminMedia() {
 
   if (!isLoading && error) {
     mediaGridContent = <p>Error</p>;
+  } else if (!isLoading && !media.length) {
+    mediaGridContent = (
+      <NoDataPlaceholder
+        imageSrc={noMediaImage}
+        heading="No Media Files Yet"
+        description="Upload your first media file to get started."
+        secondaryDescription="Add photos, documents, videos or other files."
+        buttonText="Upload Media"
+      />
+    );
   } else {
     mediaGridContent = <MediaGrid mediaFiles={media} />;
   }
