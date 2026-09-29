@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import CarouselPrevButton from "../../ui/CarouselPrevButton";
+import CarouselNextButton from "../../ui/CarouselNextButton";
 
 export default function ProjectModalCarousel({ carouselImages }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -52,31 +53,14 @@ export default function ProjectModalCarousel({ carouselImages }) {
         </div>
       </div>
 
-      <button
-        className="carousel-button left-2"
+      <CarouselPrevButton
         onClick={() => emblaApi?.scrollPrev()}
         disabled={buttons.prev}
-      >
-        <ChevronLeft
-          size={16}
-          strokeWidth={3}
-          className="text-primary"
-          aria-hidden
-        />
-      </button>
-
-      <button
-        className="carousel-button right-2"
+      />
+      <CarouselNextButton
         onClick={() => emblaApi?.scrollNext()}
         disabled={buttons.next}
-      >
-        <ChevronRight
-          size={16}
-          strokeWidth={3}
-          className="text-primary"
-          aria-hidden
-        />
-      </button>
+      />
     </div>
   );
 }
