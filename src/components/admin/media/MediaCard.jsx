@@ -1,14 +1,24 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { EllipsisVertical } from "lucide-react";
 
 import MediaCardDropdown from "./MediaCardDropdown";
 
 import { formatDate, formatBytes } from "../../../utils/utils";
+import useClickOutside from "../../../hooks/useClickOutside";
 
-export default function MediaCard({ mediaFile }) {
+export default function MediaCard({
+  mediaFile,
+  onView,
+  onDownload,
+  onCopyURL,
+  onDelete,
+}) {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const dropdownRef = useRef(null);
 
   let imageClasses = "object-cover h-full w-full";
+
+  useClickOutside(dropdownRef, () => setIsDropdownVisible(false));
 
   return (
     <article className="col-span-1 flex flex-col rounded-lg shadow-md bg-white">
@@ -22,7 +32,7 @@ export default function MediaCard({ mediaFile }) {
       <div className="flex-1 flex flex-col gap-4 p-2">
         <div className="flex items-center justify-between">
           <p className="text-xs font-bold">{mediaFile?.name}</p>
-          <div className="relative">
+          <div ref={dropdownRef} className="relative">
             <button
               className="cursor-pointer p-1 rounded-md focus-ring transition-colors hover:bg-light"
               onClick={() => setIsDropdownVisible((prev) => !prev)}
@@ -31,7 +41,14 @@ export default function MediaCard({ mediaFile }) {
               <EllipsisVertical size={18} aria-hidden />
             </button>
 
-            {isDropdownVisible && <MediaCardDropdown />}
+            {isDropdownVisible && (
+              <MediaCardDropdown
+                onView={onView}
+                onDownload={onDownload}
+                onCopyURL={onCopyURL}
+                onDelete={onDelete}
+              />
+            )}
           </div>
         </div>
         <p className="text-xs text-gray-dark">
