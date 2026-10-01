@@ -368,3 +368,7 @@
 @utility settings-tab-active {
   @apply border-b-2 border-primary!;
 }
+
+@utility footer-nav-link {
+  @apply text-sm hover:text-light active:text-light focus-ring;
+}
