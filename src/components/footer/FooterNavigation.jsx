@@ -7,34 +7,22 @@ export default function FooterNavigation() {
       <nav>
         <ul className="list-none flex flex-col gap-3 text-white">
           <li>
-            <Link
-              to="/"
-              className="hover:text-light active:text-light focus-ring"
-            >
+            <Link to="/" className="footer-nav-link">
               Home
             </Link>
           </li>
           <li>
-            <Link
-              to="/projects"
-              className="hover:text-light active:text-light focus-ring"
-            >
+            <Link to="/projects" className="footer-nav-link">
               Projects
             </Link>
           </li>
           <li>
-            <Link
-              to="/services"
-              className="hover:text-light active:text-light focus-ring"
-            >
+            <Link to="/services" className="footer-nav-link">
               Services
             </Link>
           </li>
           <li>
-            <Link
-              to="/contact"
-              className="hover:text-light active:text-light focus-ring"
-            >
+            <Link to="/contact" className="footer-nav-link">
               Contact
             </Link>
           </li>
