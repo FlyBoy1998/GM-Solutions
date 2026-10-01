@@ -5,7 +5,7 @@ export default function FooterNavigation() {
     <div className="flex-1">
       <h3 className="mb-4 font-bold text-white">Quick links</h3>
       <nav>
-        <ul className="list-none flex flex-col gap-3 text-white">
+        <ul className="list-none flex flex-col gap-2 text-white">
           <li>
             <Link to="/" className="footer-nav-link">
               Home
