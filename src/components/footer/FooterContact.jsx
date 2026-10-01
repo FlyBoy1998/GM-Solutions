@@ -6,10 +6,12 @@ export default function FooterContact() {
       <h3 className="mb-4 font-bold text-white">Contact Us</h3>
       <ul className="list-none flex flex-col gap-3 text-white">
         <li className="flex items-center gap-2">
-          <Phone /> <span>(024) 345-4674</span>
+          <Phone size={16} aria-hidden />{" "}
+          <span className="text-sm">(024) 345-4674</span>
         </li>
         <li className="flex items-center gap-2">
-          <Mail /> <span>test@mail.com</span>
+          <Mail size={16} aria-hidden />{" "}
+          <span className="text-sm">test@mail.com</span>
         </li>
       </ul>
     </div>
