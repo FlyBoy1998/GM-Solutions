@@ -11,7 +11,7 @@ export default function FooterBrand() {
           loading="lazy"
         />
       </div>
-      <p className="w-[70%] text-white max-sm:w-full">
+      <p className="w-[70%] text-sm text-white max-sm:w-full">
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima
         laudantium adipisci laborum distinctio.
       </p>
