@@ -182,10 +182,10 @@ export default function ManageProjectForm() {
   const submitButtonContent = isProjectMutationLoading
     ? isEditMode
       ? "Saving changes..."
-      : "Saving service..."
+      : "Saving project..."
     : isEditMode
       ? "Save changes"
-      : "Save service";
+      : "Save project";
 
   return (
     <div className="flex flex-col gap-6 w-full p-6">
