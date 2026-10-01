@@ -137,10 +137,10 @@ export default function ManageLeadForm() {
   const submitButtonContent = isLeadMutationLoading
     ? isEditMode
       ? "Saving changes..."
-      : "Saving service..."
+      : "Saving lead..."
     : isEditMode
       ? "Save changes"
-      : "Save service";
+      : "Save lead";
 
   return (
     <div className="flex flex-col gap-6 w-full p-6">
