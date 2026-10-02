@@ -1,5 +1,5 @@
 import { createPortal } from "react-dom";
-import { Trash } from "lucide-react";
+import { Trash, X } from "lucide-react";
 
 import CtaButton from "../../ui/CtaButton";
 
@@ -27,7 +27,12 @@ export default function DeleteModal({
         <div className="flex self-stretch gap-2 max-sm:flex-col">
           <div className="flex-1 max-sm:order-2">
             <form method="dialog">
-              <CtaButton variant="secondary" isFullWidth disabled={isDeleting}>
+              <CtaButton
+                variant="secondary"
+                Icon={X}
+                isFullWidth
+                disabled={isDeleting}
+              >
                 Cancel
               </CtaButton>
             </form>
@@ -35,6 +40,7 @@ export default function DeleteModal({
           <div className="flex-1">
             <CtaButton
               variant="danger"
+              Icon={Trash}
               isFullWidth
               onClick={onDelete}
               disabled={isDeleting}
