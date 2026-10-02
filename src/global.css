@@ -358,7 +358,7 @@
 }
 
 @utility service-card-btn {
-  @apply cursor-pointer flex items-center gap-1.5 py-1 px-3 rounded-md border border-slate-100 bg-white text-xs focus-ring max-xl:w-full max-xl:justify-center;
+  @apply cursor-pointer flex items-center gap-1.5 py-1 px-3 rounded-md border border-slate-100 text-xs bg-white focus-ring hover:bg-slate-50 transition-colors max-xl:w-full max-xl:justify-center;
 }
 
 @utility settings-tab {
