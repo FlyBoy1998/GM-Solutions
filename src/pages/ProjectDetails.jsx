@@ -1,8 +1,7 @@
 import { useParams, Link } from "react-router";
+import { MapPin, Share2, ArrowLeft } from "lucide-react";
 
 import Main from "../layout/Main";
-
-import { MapPin, Share2, ArrowLeft } from "lucide-react";
 
 import PageNotFound from "./PageNotFound";
 import ProjectMeta from "../components/projects/project-details/ProjectMeta";
@@ -57,13 +56,8 @@ export default function ProjectDetails() {
               <p className="text-sm leading-7">{project.description}</p>
               <ProjectMeta project={project} />
               <div>
-                <CtaButton variant="primary">
-                  Share Project{" "}
-                  <Share2
-                    className="inline ms-1 mb-0.5"
-                    size={18}
-                    aria-hidden
-                  />
+                <CtaButton variant="primary" Icon={Share2}>
+                  Share Project
                 </CtaButton>
               </div>
             </div>
