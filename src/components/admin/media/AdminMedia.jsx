@@ -1,3 +1,4 @@
+import { Upload } from "lucide-react";
 import noMediaImage from "../../../../public/images/no-media-image.png";
 
 import PageHeader from "../ui/PageHeader";
@@ -39,7 +40,9 @@ export default function AdminMedia() {
         description="Manage and organize all images and files used on your website."
       >
         <div className="max-lg:hidden">
-          <CtaButton variant="primary">Upload Files</CtaButton>
+          <CtaButton variant="primary" Icon={Upload}>
+            Upload Files
+          </CtaButton>
         </div>
       </PageHeader>
 
