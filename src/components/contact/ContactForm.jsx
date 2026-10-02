@@ -104,9 +104,13 @@ export default function ContactForm() {
       />
 
       <div className="col-span-full">
-        <CtaButton variant="primary" size="large" disabled={isSubmitting}>
-          {isSubmitting ? "Sending..." : "Send message"}{" "}
-          <Send size={14} className="inline-block" aria-hidden />
+        <CtaButton
+          variant="primary"
+          size="large"
+          Icon={Send}
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Sending..." : "Send message"}
         </CtaButton>
       </div>
     </form>
