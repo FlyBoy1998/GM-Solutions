@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import { Plus } from "lucide-react";
 
 import PageHeader from "../ui/PageHeader";
 import CtaButton from "../../ui/CtaButton";
@@ -16,7 +17,11 @@ export default function AdminProjects() {
         heading="Projects"
         description="Manage and showcase your interior renovation projects."
       >
-        <CtaButton variant="primary" onClick={() => navigate("new")}>
+        <CtaButton
+          variant="primary"
+          Icon={Plus}
+          onClick={() => navigate("new")}
+        >
           Add New Project
         </CtaButton>
       </PageHeader>
