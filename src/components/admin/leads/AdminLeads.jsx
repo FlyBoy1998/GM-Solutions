@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import { Plus } from "lucide-react";
 
 import PageHeader from "../ui/PageHeader";
 import CtaButton from "../../ui/CtaButton";
@@ -16,7 +17,11 @@ export default function AdminLeads() {
         description="Manage and track all leads and enquiries."
       >
         <div className="max-lg:hidden">
-          <CtaButton variant="primary" onClick={() => navigate("new")}>
+          <CtaButton
+            variant="primary"
+            Icon={Plus}
+            onClick={() => navigate("new")}
+          >
             Add Lead
           </CtaButton>
         </div>
