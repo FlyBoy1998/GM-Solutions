@@ -1,7 +1,6 @@
 import { Navigate } from "react-router";
 import { useForm } from "react-hook-form";
-
-import { Mail, Lock } from "lucide-react";
+import { Mail, Lock, LogIn } from "lucide-react";
 
 import FormField from "../../ui/FormField";
 import CtaButton from "../../ui/CtaButton";
@@ -75,7 +74,12 @@ export default function AdminLogin() {
         </div>
 
         <div>
-          <CtaButton variant="primary" isFullWidth disabled={isLoading}>
+          <CtaButton
+            variant="primary"
+            isFullWidth
+            Icon={LogIn}
+            disabled={isLoading}
+          >
             {isLoading ? "Logging in..." : "Log in"}
           </CtaButton>
         </div>
