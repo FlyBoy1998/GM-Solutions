@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { FormProvider, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { X, Plus, Save } from "lucide-react";
 
 import PageHeader from "../../ui/PageHeader";
 import CtaButton from "../../../ui/CtaButton";
@@ -200,6 +201,7 @@ export default function ManageProjectForm() {
         <div className="flex items-center gap-4 max-lg:hidden">
           <CtaButton
             variant="secondary"
+            Icon={X}
             onClick={() => navigate(-1)}
             disabled={isLoading}
           >
@@ -207,6 +209,7 @@ export default function ManageProjectForm() {
           </CtaButton>
           <CtaButton
             variant="primary"
+            Icon={isEditMode ? Save : Plus}
             form="project-form"
             type="submit"
             disabled={isLoading}
