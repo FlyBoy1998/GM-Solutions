@@ -1,4 +1,5 @@
 import { Outlet } from "react-router";
+import { Save } from "lucide-react";
 
 import PageHeader from "../ui/PageHeader";
 import CtaButton from "../../ui/CtaButton";
@@ -12,7 +13,9 @@ export default function AdminSettings() {
         description="Manage your website, business and system preference."
       >
         <div className="max-lg:hidden">
-          <CtaButton variant="primary">Save Changes</CtaButton>
+          <CtaButton variant="primary" Icon={Save}>
+            Save Changes
+          </CtaButton>
         </div>
       </PageHeader>
       <SettingsTabs />
