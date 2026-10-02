@@ -4,7 +4,7 @@ import { ProjectsTabsContext } from "../../context/ProjectsTabsContext";
 
 import { ChevronRight, MapPin } from "lucide-react";
 
-export default function ProjectCard({ project, thumbnail }) {
+export default function ProjectCard({ project, thumbnail, index }) {
   const { handleSelectProject } = useContext(MapContext);
   const { setActiveTab } = useContext(ProjectsTabsContext);
 
@@ -24,7 +24,7 @@ export default function ProjectCard({ project, thumbnail }) {
             loading="lazy"
           />
           <div className="project-marker absolute top-1.5 left-1.5 z-50">
-            {project.id}
+            {index}
           </div>
         </div>
         <div className="flex flex-col justify-evenly flex-1">
