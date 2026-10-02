@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import { Plus } from "lucide-react";
 
 import CtaButton from "../../../components/ui/CtaButton";
 import PageHeader from "../ui/PageHeader";
@@ -20,7 +21,11 @@ export default function AdminServices() {
         description="Manage the renovation services displayed on your website."
       >
         <div className="max-lg:hidden">
-          <CtaButton variant="primary" onClick={() => navigate("new")}>
+          <CtaButton
+            variant="primary"
+            Icon={Plus}
+            onClick={() => navigate("new")}
+          >
             Add Service
           </CtaButton>
         </div>
