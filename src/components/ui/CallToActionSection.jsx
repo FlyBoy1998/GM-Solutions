@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 
 import CtaButton from "./CtaButton";
 
-import { MessageSquareQuote, ArrowRight } from "lucide-react";
+import { MessageSquareQuote, MessageSquare } from "lucide-react";
 
 export default function CallToActionSection() {
   const navigate = useNavigate();
@@ -18,9 +18,12 @@ export default function CallToActionSection() {
             Ready to start your renovation?
           </span>
         </p>
-        <CtaButton variant="primary" onClick={() => navigate("/contact")}>
-          Get your free quote{" "}
-          <ArrowRight size={20} className="inline-block" aria-hidden />
+        <CtaButton
+          variant="primary"
+          Icon={MessageSquare}
+          onClick={() => navigate("/contact")}
+        >
+          Get your free quote
         </CtaButton>
       </div>
     </div>
