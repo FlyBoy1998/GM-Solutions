@@ -524,6 +524,41 @@ export async function updateService(serviceId, formData, signal) {
   return data;
 }
 
+export async function deleteService(serviceId, signal) {
+  const { data: images, error: imageError } = await supabase
+    .from("service_images")
+    .select("storage_path")
+    .eq("service_id", serviceId)
+    .abortSignal(signal);
+
+  if (imageError) {
+    throw new Error("Could not find service image.");
+  }
+
+  const storagePaths =
+    images?.map((image) => image.storage_path).filter(Boolean) ?? [];
+
+  const { error } = await supabase
+    .from("services")
+    .delete()
+    .eq("id", serviceId)
+    .abortSignal(signal);
+
+  if (error) {
+    throw new Error("Could not delete service.");
+  }
+
+  if (storagePaths.length) {
+    const { error: storageError } = await supabase.storage
+      .from("service_images")
+      .remove(storagePaths);
+
+    if (storageError) {
+      throw new Error("Service deleted, but image cleanup failed.");
+    }
+  }
+}
+
 export async function toggleServiceVisibility(serviceId, isVisible, signal) {
   const { error } = await supabase
     .from("services")
@@ -631,6 +666,6 @@ export async function deleteLead(leadId, signal) {
     .abortSignal(signal);
 
   if (error) {
-    throw new Error("Could not delete.lead");
+    throw new Error("Could not delete lead.");
   }
 }
