@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import { MessageSquare, Folders } from "lucide-react";
 
 import Main from "../layout/Main";
 
@@ -25,6 +26,7 @@ export default function Home() {
         </p>
         <div className="flex gap-4">
           <CtaButton
+            Icon={MessageSquare}
             variant="primary"
             size="large"
             onClick={() => navigate("/contact")}
@@ -32,6 +34,7 @@ export default function Home() {
             Get a free estimate
           </CtaButton>
           <CtaButton
+            Icon={Folders}
             variant="secondary"
             size="large"
             onClick={() => navigate("/projects")}
