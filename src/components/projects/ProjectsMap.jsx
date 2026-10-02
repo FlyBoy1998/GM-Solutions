@@ -25,8 +25,8 @@ export default function ProjectsMap() {
       aria-label="Map showing completed renovation projects"
     >
       <TileLayer attribution={mapAttribution} url={mapTileUrl} />
-      {filteredProjects?.map((project) => (
-        <ProjectMarker project={project} key={project.id} />
+      {filteredProjects?.map((project, index) => (
+        <ProjectMarker key={project.id} project={project} index={index + 1} />
       ))}
     </MapContainer>
   );
