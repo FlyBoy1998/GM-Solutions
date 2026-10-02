@@ -7,6 +7,7 @@ import {
   Image,
   Users,
   Settings,
+  SquareArrowOutUpRight,
 } from "lucide-react";
 
 import Logout from "../../authentication/Logout";
@@ -84,6 +85,12 @@ export default function AdminNavigation() {
           >
             <Settings size={16} aria-hidden />
             <span>Settings</span>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/" className="admin-nav-link focus-ring">
+            <SquareArrowOutUpRight size={16} aria-hidden />
+            <span>View Website</span>
           </NavLink>
         </li>
       </ul>
