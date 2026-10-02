@@ -6,7 +6,7 @@ import { createProjectMarkerIcon, flyToProject } from "../../utils/utils";
 
 import ProjectPopup from "./ProjectPopup";
 
-export default function ProjectMarker({ project }) {
+export default function ProjectMarker({ project, index }) {
   const { selectedProject, handleSelectProject, handleClearSelection } =
     useContext(MapContext);
   const markerRef = useRef(null);
@@ -41,7 +41,7 @@ export default function ProjectMarker({ project }) {
       ref={markerRef}
       position={[project.latitude, project.longitude]}
       icon={createProjectMarkerIcon({
-        projectIndex: project.id,
+        projectIndex: index,
         isSelected,
       })}
       eventHandlers={{
