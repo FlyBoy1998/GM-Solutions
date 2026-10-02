@@ -9,7 +9,7 @@ import ServiceCardButton from "./ServiceCardButton";
 
 import { toggleServiceVisibility as toggleServiceVisibilityApi } from "../../../api/api";
 
-export default function ServiceCard({ service }) {
+export default function ServiceCard({ service, onDelete }) {
   const navigate = useNavigate();
   const abortControllerRef = useRef(null);
 
@@ -75,7 +75,9 @@ export default function ServiceCard({ service }) {
           >
             Edit
           </ServiceCardButton>
-          <ServiceCardButton Icon={Trash}>Delete</ServiceCardButton>
+          <ServiceCardButton Icon={Trash} onClick={onDelete}>
+            Delete
+          </ServiceCardButton>
         </div>
         <div className="flex items-center gap-2 max-xl:justify-start max-xl:order-1 max-xl:w-full">
           <ToggleButton
