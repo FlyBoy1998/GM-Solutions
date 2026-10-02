@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router";
 import { useForm, FormProvider } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import { X, Plus, Save } from "lucide-react";
 
 import PageHeader from "../../ui/PageHeader";
 import CtaButton from "../../../ui/CtaButton";
@@ -113,6 +114,7 @@ export default function ManageServiceForm() {
         <div className="flex items-center gap-4 max-lg:hidden">
           <CtaButton
             variant="secondary"
+            Icon={X}
             onClick={() => navigate(-1)}
             disabled={isLoading}
           >
@@ -120,6 +122,7 @@ export default function ManageServiceForm() {
           </CtaButton>
           <CtaButton
             variant="primary"
+            Icon={isEditMode ? Save : Plus}
             form="service-form"
             type="submit"
             disabled={isLoading}
