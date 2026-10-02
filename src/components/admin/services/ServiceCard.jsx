@@ -2,8 +2,7 @@ import { useRef } from "react";
 import { useNavigate } from "react-router";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-
-import { Pen, Eye } from "lucide-react";
+import { Pen, Trash } from "lucide-react";
 
 import ToggleButton from "../ui/ToggleButton";
 import ServiceCardButton from "./ServiceCardButton";
@@ -76,7 +75,7 @@ export default function ServiceCard({ service }) {
           >
             Edit
           </ServiceCardButton>
-          <ServiceCardButton Icon={Eye}>View</ServiceCardButton>
+          <ServiceCardButton Icon={Trash}>Delete</ServiceCardButton>
         </div>
         <div className="flex items-center gap-2 max-xl:justify-start max-xl:order-1 max-xl:w-full">
           <ToggleButton
