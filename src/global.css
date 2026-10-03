@@ -316,7 +316,7 @@
 }
 
 @utility carousel-button {
-  @apply cursor-pointer absolute top-[50%] translate-y-[-50%] p-2 rounded-full bg-white hover:bg-light transition-colors focus-ring disabled:cursor-not-allowed disabled:bg-gray disabled:hover:bg-gray;
+  @apply cursor-pointer p-2 rounded-full bg-primary hover:bg-primary-light transition-colors focus-ring disabled:cursor-not-allowed disabled:bg-primary-transparent disabled:hover:bg-primary-transparent;
 }
 
 @utility form-input {
