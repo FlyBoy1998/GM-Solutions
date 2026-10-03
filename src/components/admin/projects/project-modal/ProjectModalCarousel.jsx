@@ -6,7 +6,7 @@ export default function ProjectModalCarousel({ carouselImages }) {
   const { emblaRef, emblaApi, buttons } = useCarouselButtons();
 
   return (
-    <div className="relative max-md:flex-1">
+    <div className="flex flex-col gap-1 max-md:flex-1">
       <div className="h-full overflow-hidden rounded-md" ref={emblaRef}>
         <div className="flex gap-5 touch-pan-y touch-pinch-zoom">
           {carouselImages?.map((image) => (
@@ -23,15 +23,16 @@ export default function ProjectModalCarousel({ carouselImages }) {
           ))}
         </div>
       </div>
-
-      <CarouselPrevButton
-        onClick={() => emblaApi?.scrollPrev()}
-        disabled={buttons.prev}
-      />
-      <CarouselNextButton
-        onClick={() => emblaApi?.scrollNext()}
-        disabled={buttons.next}
-      />
+      <div className="flex gap-2">
+        <CarouselPrevButton
+          onClick={() => emblaApi?.scrollPrev()}
+          disabled={buttons.prev}
+        />
+        <CarouselNextButton
+          onClick={() => emblaApi?.scrollNext()}
+          disabled={buttons.next}
+        />
+      </div>
     </div>
   );
 }
