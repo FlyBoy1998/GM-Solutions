@@ -6,6 +6,7 @@ import MapContextProvider from "./context/MapContext";
 import ProjectsTabsContextProvider from "./context/ProjectsTabsContext";
 import MobileNavigationContextProvider from "./context/MobileNavigationContext";
 import AdminMobileNavigationContextProvider from "./components/admin/context/AdminMobileNavigationContext";
+import AdminProjectsLayout from "./components/admin/context/AdminProjectsLayout";
 
 import ProtectedRoute from "./components/authentication/ProtectedRoute";
 
@@ -62,10 +63,12 @@ const router = createBrowserRouter([
         children: [
           {
             path: "dashboard",
-            element: <AdminDashboard />,
+            element: <AdminProjectsLayout />,
+            children: [{ index: true, element: <AdminDashboard /> }],
           },
           {
             path: "projects",
+            element: <AdminProjectsLayout />,
             children: [
               { index: true, element: <AdminProjects /> },
               { path: "new", element: <ManageProjectForm /> },
