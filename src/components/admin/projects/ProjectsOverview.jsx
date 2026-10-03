@@ -18,12 +18,12 @@ export default function ProjectsOverview() {
   ).length;
 
   return (
-    <div className="col-start-4 col-end-5 row-start-3 row-end-4 flex flex-col py-3 px-4 rounded-lg shadow-md bg-white max-xl:col-start-1 max-xl:col-end-3 max-xl:row-start-5 max-xl:row-end-6">
+    <div className="col-start-4 col-end-5 row-start-3 row-end-4 flex flex-col py-3 px-4 rounded-lg shadow-md bg-white max-xl:col-start-1 max-xl:col-end-3 max-xl:row-start-5 max-xl:row-end-6 max-sm:col-span-full max-sm:row-start-6 max-sm:row-end-7">
       <SectionHeader
         title="Projects Overview"
         description="A quick summary of your projects by their current status."
       />
-      <div className="flex-1 flex flex-col justify-evenly">
+      <div className="flex-1 flex flex-col justify-evenly gap-2">
         <ProjectsOverviewItem
           Icon={Folder}
           value={totalProjectsCount}
