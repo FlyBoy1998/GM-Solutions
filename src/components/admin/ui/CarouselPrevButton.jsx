@@ -10,7 +10,7 @@ export default function CarouselPrevButton({ onClick, disabled }) {
       <ChevronLeft
         size={16}
         strokeWidth={3}
-        className="text-primary"
+        className="text-white"
         aria-hidden
       />
     </button>
