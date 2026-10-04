@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import { NavLink, useLocation } from "react-router";
+import { Shield } from "lucide-react";
 
 import { MobileNavigationContext } from "../../context/MobileNavigationContext";
 
@@ -85,12 +86,27 @@ export default function MainNavigation() {
               Contact
             </NavLink>
           </li>
-          <NavLink
-            to="contact"
-            className="nav-link focus-ring bg-black text-white"
-          >
-            Get a Quote
-          </NavLink>
+          <li>
+            <NavLink
+              to="contact"
+              className="nav-link focus-ring bg-black text-white"
+            >
+              Get a Quote
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/admin"
+              className="nav-link focus-ring flex justify-center items-center bg-white text-black"
+              title="Admin Page"
+            >
+              <Shield
+                size={16}
+                strokeWidth={3}
+                aria-label="Admin Page Navigation Link"
+              />
+            </NavLink>
+          </li>
         </ul>
         <HamburgerBtn
           isOpen={isMobileMenuOpen}
