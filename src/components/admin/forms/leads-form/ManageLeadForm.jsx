@@ -153,20 +153,18 @@ export default function ManageLeadForm() {
             : "Enter the lead details below to keep track of the enquiries and opportunities"
         }
       >
-        <div className="flex items-center gap-4 max-lg:hidden">
-          <CtaButton variant="secondary" Icon={X} onClick={() => navigate(-1)}>
-            Cancel
-          </CtaButton>
-          <CtaButton
-            variant="primary"
-            Icon={isEditMode ? Save : Plus}
-            form="leads-form"
-            type="submit"
-            disabled={isLoading}
-          >
-            {submitButtonContent}
-          </CtaButton>
-        </div>
+        <CtaButton variant="secondary" Icon={X} onClick={() => navigate(-1)}>
+          Cancel
+        </CtaButton>
+        <CtaButton
+          variant="primary"
+          Icon={isEditMode ? Save : Plus}
+          form="leads-form"
+          type="submit"
+          disabled={isLoading}
+        >
+          {submitButtonContent}
+        </CtaButton>
       </PageHeader>
 
       <FormProvider {...methods}>
