@@ -226,14 +226,14 @@ export default function ManageProjectForm() {
             onSubmit={methods.handleSubmit(handleSubmit)}
             className="grid grid-cols-5 gap-6 items-start"
           >
-            <div className="col-start-1 col-end-4 flex flex-col gap-6">
+            <div className="col-start-1 col-end-4 flex flex-col gap-6 max-xl:col-span-full">
               <BasicInformation />
               <Location />
               <ProjectDetails />
               <MaterialsUsed />
               <WorkCompleted />
             </div>
-            <div className="col-start-4 col-end-6 flex flex-col gap-6">
+            <div className="col-start-4 col-end-6 flex flex-col gap-6 max-xl:col-span-full">
               <ProjectImages projectId={projectId} />
               <BeforeAndAfterImages projectId={projectId} />
               <ImagesCarousel />
