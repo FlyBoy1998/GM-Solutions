@@ -17,7 +17,7 @@ export default function ProjectDetails() {
         title="Project Details"
         description="Additional information about the project."
       />
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 gap-4">
         <FormField
           type="input"
           inputType="date"
@@ -27,7 +27,7 @@ export default function ProjectDetails() {
             required: "Completion date is required.",
           })}
           required
-          additionalStyling="col-span-2"
+          additionalStyling="col-span-1 max-md:col-span-full"
           errors={
             errors.completion_date && (
               <p className="input-error">{errors.completion_date.message}</p>
@@ -44,7 +44,7 @@ export default function ProjectDetails() {
           })}
           placeholder="e.g. 2 weeks"
           required
-          additionalStyling="col-span-2"
+          additionalStyling="col-span-1 max-md:col-span-full"
           errors={
             errors.duration && (
               <p className="input-error">{errors.duration.message}</p>
@@ -61,7 +61,7 @@ export default function ProjectDetails() {
           })}
           placeholder="e.g. 18m2"
           required
-          additionalStyling="col-span-2"
+          additionalStyling="col-span-1 max-md:col-span-full"
           errors={
             errors.project_size && (
               <p className="input-error">{errors.project_size.message}</p>
@@ -78,7 +78,7 @@ export default function ProjectDetails() {
           })}
           placeholder="e.g. £18,000 - £35,000"
           required
-          additionalStyling="col-span-2"
+          additionalStyling="col-span-1 max-md:col-span-full"
           errors={
             errors.budget_range && (
               <p className="input-error">{errors.budget_range.message}</p>
