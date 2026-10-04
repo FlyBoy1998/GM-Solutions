@@ -29,7 +29,7 @@ export default function BasicInformation() {
           })}
           placeholder="e.g. Modern Kitchen Remodel"
           required
-          additionalStyling="col-span-1"
+          additionalStyling="col-span-1 max-md:col-span-full"
           errors={
             errors.title && (
               <p className="input-error">{errors.title.message}</p>
@@ -46,7 +46,7 @@ export default function BasicInformation() {
             required: "Category is required.",
           })}
           required
-          additionalStyling="col-span-1"
+          additionalStyling="col-span-1 max-md:col-span-full"
           errors={
             errors.category && (
               <p className="input-error">{errors.category.message}</p>
@@ -63,7 +63,7 @@ export default function BasicInformation() {
           })}
           placeholder="e.g. Kitchen"
           required
-          additionalStyling="col-span-1"
+          additionalStyling="col-span-1 max-md:col-span-full"
           errors={
             errors.label && (
               <p className="input-error">{errors.label.message}</p>
@@ -80,7 +80,7 @@ export default function BasicInformation() {
           })}
           placeholder="e.g. Clapham, London"
           required
-          additionalStyling="col-span-1"
+          additionalStyling="col-span-1 max-md:col-span-full"
           errors={
             errors.address && (
               <p className="input-error">{errors.address.message}</p>
