@@ -1,11 +1,17 @@
+import { useContext } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { Dot } from "lucide-react";
+
+import { AdminProjectsContext } from "../context/AdminProjectsLayout";
 
 import TableActions from "./TableActions";
 
 import { formatToCapitalize, formatDate } from "../../../utils/utils";
 
-export default function ProjectsTableRow({ project, onView, onDelete }) {
+export default function ProjectsTableRow({ project }) {
+  const { handleDisplayProjectModal, handleDisplayDeleteModal } =
+    useContext(AdminProjectsContext);
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -25,7 +31,7 @@ export default function ProjectsTableRow({ project, onView, onDelete }) {
 
   if (project.status === "completed") {
     projectStatusClasses += " project-status-completed";
-  } else if (project.status === "in progress") {
+  } else if (project.status === "in-progress") {
     projectStatusClasses += " project-status-in-progress";
   } else {
     projectStatusClasses += " project-status-draft";
@@ -53,8 +59,8 @@ export default function ProjectsTableRow({ project, onView, onDelete }) {
       <TableActions
         hasDeleteAction={location.pathname.includes("/admin/projects")}
         onEdit={() => navigate(`/admin/projects/${project.id}/edit`)}
-        onView={onView}
-        onDelete={onDelete}
+        onView={() => handleDisplayProjectModal(project)}
+        onDelete={() => handleDisplayDeleteModal(project)}
       />
     </tr>
   );
