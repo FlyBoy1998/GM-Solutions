@@ -198,25 +198,23 @@ export default function ManageProjectForm() {
             : "Fill in the details below to add a new project to your portfolio."
         }
       >
-        <div className="flex items-center gap-4 max-lg:hidden">
-          <CtaButton
-            variant="secondary"
-            Icon={X}
-            onClick={() => navigate(-1)}
-            disabled={isLoading}
-          >
-            Cancel
-          </CtaButton>
-          <CtaButton
-            variant="primary"
-            Icon={isEditMode ? Save : Plus}
-            form="project-form"
-            type="submit"
-            disabled={isLoading}
-          >
-            {submitButtonContent}
-          </CtaButton>
-        </div>
+        <CtaButton
+          variant="secondary"
+          Icon={X}
+          onClick={() => navigate(-1)}
+          disabled={isLoading}
+        >
+          Cancel
+        </CtaButton>
+        <CtaButton
+          variant="primary"
+          Icon={isEditMode ? Save : Plus}
+          form="project-form"
+          type="submit"
+          disabled={isLoading}
+        >
+          {submitButtonContent}
+        </CtaButton>
       </PageHeader>
       {isProjectLoading && <p>Loading project data...</p>}
       {!isProjectLoading && !projectLoadingError && (
