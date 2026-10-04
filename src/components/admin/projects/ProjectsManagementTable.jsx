@@ -16,7 +16,7 @@ export default function ProjectsManagementTable() {
 
   return (
     <div
-      className={`flex flex-col col-span-3 row-start-3 row-end-5 ${!projects.length ? "min-h-min" : "min-h-145"} px-4 rounded-lg shadow-md bg-white max-xl:col-span-full`}
+      className={`flex flex-col col-span-3 row-start-3 row-end-5 ${!projects.length ? "min-h-min" : "min-h-145"} px-4 rounded-lg shadow-md bg-white max-xl:col-span-full max-md:hidden`}
     >
       {!projects.length ? (
         <NoDataPlaceholder
