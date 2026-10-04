@@ -111,25 +111,23 @@ export default function ManageServiceForm() {
         heading={isEditMode ? "Edit Service" : "Add New Service"}
         description="Fill in the details below to add a new renovation service to your website."
       >
-        <div className="flex items-center gap-4 max-lg:hidden">
-          <CtaButton
-            variant="secondary"
-            Icon={X}
-            onClick={() => navigate(-1)}
-            disabled={isLoading}
-          >
-            Cancel
-          </CtaButton>
-          <CtaButton
-            variant="primary"
-            Icon={isEditMode ? Save : Plus}
-            form="service-form"
-            type="submit"
-            disabled={isLoading}
-          >
-            {submitButtonContent}
-          </CtaButton>
-        </div>
+        <CtaButton
+          variant="secondary"
+          Icon={X}
+          onClick={() => navigate(-1)}
+          disabled={isLoading}
+        >
+          Cancel
+        </CtaButton>
+        <CtaButton
+          variant="primary"
+          Icon={isEditMode ? Save : Plus}
+          form="service-form"
+          type="submit"
+          disabled={isLoading}
+        >
+          {submitButtonContent}
+        </CtaButton>
       </PageHeader>
       {isServiceLoading && <p>Loading service data...</p>}
       {!isServiceLoading && !isServiceLoadingError && (
