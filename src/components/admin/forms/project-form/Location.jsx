@@ -64,7 +64,7 @@ export default function Location() {
           })}
           placeholder="e.g. 51.486337"
           required
-          additionalStyling="col-span-1"
+          additionalStyling="col-span-1 max-md:col-span-full"
           errors={
             errors?.latitude && (
               <p className="input-error">{errors?.latitude.message}</p>
@@ -84,7 +84,7 @@ export default function Location() {
           })}
           placeholder="e.g. -10.486337"
           required
-          additionalStyling="col-span-1"
+          additionalStyling="col-span-1 max-md:col-span-full"
           errors={
             errors?.longitude && (
               <p className="input-error">{errors?.longitude.message}</p>
