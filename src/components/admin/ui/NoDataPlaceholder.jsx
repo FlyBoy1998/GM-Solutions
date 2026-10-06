@@ -7,7 +7,7 @@ export default function NoDataPlaceholder({
   heading,
   description,
   secondaryDescription,
-  buttonText,
+  buttonText = "",
   navigateTo,
 }) {
   const navigate = useNavigate();
@@ -27,9 +27,11 @@ export default function NoDataPlaceholder({
           {secondaryDescription}
         </p>
 
-        <CtaButton variant="primary" onClick={() => navigate(navigateTo)}>
-          {buttonText}
-        </CtaButton>
+        {buttonText && (
+          <CtaButton variant="primary" onClick={() => navigate(navigateTo)}>
+            {buttonText}
+          </CtaButton>
+        )}
       </div>
     </div>
   );
