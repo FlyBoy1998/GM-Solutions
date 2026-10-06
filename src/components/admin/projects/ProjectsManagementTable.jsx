@@ -1,4 +1,5 @@
 import noProjectsImage from "../../../../public/images/no-projects-image.png";
+import noMatchingProjectsImage from "../../../../public/images/no-matching-projects.png";
 
 import ProjectsTable from "../ui/ProjectsTable";
 import Pagination from "../ui/Pagination";
@@ -7,12 +8,14 @@ import NoDataPlaceholder from "../ui/NoDataPlaceholder";
 import usePagination from "../../../hooks/usePagination";
 
 import useProjects from "../../../hooks/useProjects";
+import useProjectsFilters from "../../../hooks/useProjectsFilters";
 
 export default function ProjectsManagementTable() {
   const { data: projects = [], isLoading, error } = useProjects();
+  const { filteredProjects } = useProjectsFilters(projects);
 
   const { currentPage, itemsPerPage, totalPages, currentData, setCurrentPage } =
-    usePagination(projects);
+    usePagination(filteredProjects);
 
   return (
     <div
@@ -31,7 +34,16 @@ export default function ProjectsManagementTable() {
         <ProjectsTable projects={currentData} />
       )}
 
-      {projects.length > itemsPerPage ? (
+      {!filteredProjects.length && (
+        <NoDataPlaceholder
+          imageSrc={noMatchingProjectsImage}
+          heading="No matching projects found"
+          description="We couldn't find any projects that match your search or filter criteria."
+          secondaryDescription="Try adjusting your search term or filters to see more results."
+        />
+      )}
+
+      {filteredProjects.length > itemsPerPage ? (
         <Pagination
           totalPages={totalPages}
           currentPage={currentPage}
