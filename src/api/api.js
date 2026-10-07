@@ -213,6 +213,22 @@ export async function getMediaFiles() {
   return media.flat(3);
 }
 
+export async function downloadMediaFile(bucket, storagePath) {
+  if (!bucket || !storagePath) {
+    throw new Error("Media file information is missing.");
+  }
+
+  const { data, error } = await supabase.storage
+    .from(bucket)
+    .download(storagePath);
+
+  if (error) {
+    throw new Error("Could not download the media file.");
+  }
+
+  return data;
+}
+
 export async function getProject(projectId) {
   const { data, error } = await supabase
     .from("projects")
