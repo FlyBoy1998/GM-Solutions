@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import usePagination from "../../../hooks/usePagination";
+import useDonwloadMedia from "../../../hooks/useDownloadMedia";
 
 import Pagination from "../ui/Pagination";
 import MediaCard from "./MediaCard";
@@ -8,6 +9,7 @@ import MediaModal from "./media-modal/MediaModal";
 export default function MediaGrid({ mediaFiles }) {
   const { currentPage, totalPages, currentData, setCurrentPage } =
     usePagination(mediaFiles || []);
+  const { downloadMedia, isDownloading } = useDonwloadMedia();
 
   const [selectedMedia, setSelectedMedia] = useState(null);
   const mediaModalRef = useRef(null);
@@ -28,6 +30,14 @@ export default function MediaGrid({ mediaFiles }) {
               key={file.id}
               mediaFile={file}
               onView={() => handleDisplayMediaModal(file)}
+              onDownload={() =>
+                downloadMedia({
+                  bucket: file.bucket,
+                  storagePath: file.storage_path,
+                  fileName: file.name,
+                })
+              }
+              isDownloading={isDownloading}
             />
           ))}
         </div>
