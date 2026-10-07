@@ -12,6 +12,7 @@ export default function MediaCard({
   onDownload,
   onCopyURL,
   onDelete,
+  isDownloading,
 }) {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const dropdownRef = useRef(null);
@@ -47,6 +48,7 @@ export default function MediaCard({
                 onDownload={onDownload}
                 onCopyURL={onCopyURL}
                 onDelete={onDelete}
+                isDownloading={isDownloading}
               />
             )}
           </div>
