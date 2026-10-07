@@ -21,7 +21,7 @@ export default function MediaCard({
   useClickOutside(dropdownRef, () => setIsDropdownVisible(false));
 
   return (
-    <article className="col-span-1 flex flex-col rounded-lg shadow-md bg-white">
+    <article className="col-span-2 flex flex-col rounded-lg shadow-md bg-white max-md:col-span-3">
       <div className="h-46 rounded-t-lg overflow-hidden">
         <img
           src={mediaFile?.url}
