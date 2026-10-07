@@ -3,9 +3,10 @@ export default function DropdownButton({
   Icon,
   children,
   onClick,
+  ...props
 }) {
   let classes =
-    "cursor-pointer flex items-center gap-4 p-2 rounded-md transition-colors focus-ring bg-white";
+    "cursor-pointer flex items-center gap-4 p-2 rounded-md transition-colors focus-ring bg-white disabled:cursor-not-allowed";
   let textColor;
 
   if (variant === "primary") {
@@ -18,7 +19,7 @@ export default function DropdownButton({
   }
 
   return (
-    <button className={classes} onClick={onClick}>
+    <button className={classes} onClick={onClick} {...props}>
       <Icon size={16} strokeWidth={2} className={textColor} aria-hidden />
       <span className={`text-xs ${textColor}`}>{children}</span>
     </button>
