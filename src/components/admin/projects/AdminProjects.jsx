@@ -14,6 +14,7 @@ import ProjectsOverview from "./ProjectsOverview";
 import ProjectsCarousel from "../ui/ProjectsCarousel";
 import ProjectModal from "./project-modal/ProjectModal";
 import DeleteModal from "../ui/DeleteModal";
+import useProjectsFilters from "../../../hooks/useProjectsFilters";
 
 export default function AdminProjects() {
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ export default function AdminProjects() {
   } = useContext(AdminProjectsContext);
 
   const { data: projects = [], isLoading, error } = useProjects();
+  const { filteredProjects } = useProjectsFilters(projects);
   const { deleteProject, isDeleting } = useDeleteProject();
 
   function handleDeleteProject() {
@@ -76,7 +78,7 @@ export default function AdminProjects() {
 
         <ProjectFilters />
         <ProjectsManagementTable />
-        <ProjectsCarousel projects={projects} />
+        <ProjectsCarousel projects={filteredProjects} />
         <ProjectsOverview />
         <ProjectsCategories />
       </div>
