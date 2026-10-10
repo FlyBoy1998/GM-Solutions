@@ -23,7 +23,7 @@ export default function MediaGrid({ mediaFiles }) {
     <>
       <MediaModal ref={mediaModalRef} mediaFile={selectedMedia} />
 
-      <div className="flex flex-col col-span-full row-start-3 row-end-4 p-3 rounded-lg shadow-lg bg-white">
+      <div className="flex flex-col col-span-full row-start-3 row-end-4 p-3 rounded-lg shadow-lg bg-white max-md:hidden">
         <div className="flex-1 grid grid-cols-6 gap-4">
           {currentData?.map((file) => (
             <MediaCard
