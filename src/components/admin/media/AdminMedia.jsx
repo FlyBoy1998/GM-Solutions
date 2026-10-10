@@ -1,4 +1,5 @@
 import { Upload } from "lucide-react";
+import useMediaFiles from "../../../hooks/useMediaFiles";
 import noMediaImage from "../../../../public/images/no-media-image.png";
 
 import PageHeader from "../ui/PageHeader";
@@ -9,8 +10,7 @@ import StorageUsage from "./StorageUsage";
 import QuickTips from "./QuickTips";
 import MediaSkeleton from "./MediaSkeleton";
 import NoDataPlaceholder from "../ui/NoDataPlaceholder";
-
-import useMediaFiles from "../../../hooks/useMediaFiles";
+import MediaCarousel from "./MediaCarousel";
 
 export default function AdminMedia() {
   const { data: media = [], isLoading, error } = useMediaFiles();
@@ -52,6 +52,7 @@ export default function AdminMedia() {
         <>
           <MediaFilters filesNumber={media?.length} />
           {mediaGridContent}
+          <MediaCarousel mediaFiles={media} />
           <StorageUsage mediaFiles={media} />
           <QuickTips />
         </>
