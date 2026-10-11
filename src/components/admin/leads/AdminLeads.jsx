@@ -1,14 +1,17 @@
 import { useNavigate } from "react-router";
 import { Plus } from "lucide-react";
+import useLeads from "../../../hooks/useLeads";
 
 import PageHeader from "../ui/PageHeader";
 import CtaButton from "../../ui/CtaButton";
 import LeadsMetrics from "./LeadsMetrics";
 import LeadsFilters from "./LeadsFilters";
 import LeadsTableSection from "./LeadsTableSection";
+import LeadsCarousel from "./LeadCarousel";
 
 export default function AdminLeads() {
   const navigate = useNavigate();
+  const { data: leads = [], error } = useLeads();
 
   return (
     <div className="grid grid-cols-4 grid-rows-[auto_auto_auto_1fr] gap-4 p-6 overflow-y-auto">
@@ -29,6 +32,7 @@ export default function AdminLeads() {
       <LeadsMetrics />
       <LeadsFilters />
       <LeadsTableSection />
+      <LeadsCarousel leads={leads} />
     </div>
   );
 }
