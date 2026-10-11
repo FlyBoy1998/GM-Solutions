@@ -16,7 +16,7 @@ export default function LeadsTableSection() {
 
   return (
     <div
-      className={`col-span-full flex flex-col ${!leads.length ? "min-h-min" : "min-h-135"} px-4 rounded-lg shadow-md bg-white max-xl:col-span-full`}
+      className={`col-span-full flex flex-col ${!leads.length ? "min-h-min" : "min-h-135"} px-4 rounded-lg shadow-md bg-white max-xl:col-span-full max-md:hidden`}
     >
       {!leads.length ? (
         <NoDataPlaceholder
