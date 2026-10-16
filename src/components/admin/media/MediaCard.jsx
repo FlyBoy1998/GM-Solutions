@@ -1,5 +1,6 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useContext } from "react";
 import { EllipsisVertical } from "lucide-react";
+import { AdminMediaContext } from "../context/AdminMediaLayout";
 
 import MediaCardDropdown from "./MediaCardDropdown";
 
@@ -12,11 +13,11 @@ export default function MediaCard({
   onView,
   onDownload,
   onCopyURL,
-  onDelete,
   isDownloading,
 }) {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const dropdownRef = useRef(null);
+  const { handleDisplayDeleteModal } = useContext(AdminMediaContext);
 
   let imageClasses = "object-cover h-full w-full";
 
@@ -48,7 +49,7 @@ export default function MediaCard({
                 onView={onView}
                 onDownload={onDownload}
                 onCopyURL={onCopyURL}
-                onDelete={onDelete}
+                onDelete={() => handleDisplayDeleteModal(mediaFile)}
                 isDownloading={isDownloading}
               />
             )}
@@ -79,7 +80,11 @@ export default function MediaCard({
             </CtaButton>
           </div>
           <div className="col-span-1">
-            <CtaButton variant="danger" isFullWidth onClick={onDelete}>
+            <CtaButton
+              variant="danger"
+              isFullWidth
+              onClick={() => handleDisplayDeleteModal(mediaFile)}
+            >
               Delete
             </CtaButton>
           </div>
