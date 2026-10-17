@@ -5,8 +5,10 @@ import { Toaster } from "react-hot-toast";
 import MapContextProvider from "./context/MapContext";
 import ProjectsTabsContextProvider from "./context/ProjectsTabsContext";
 import MobileNavigationContextProvider from "./context/MobileNavigationContext";
+import AdminLayout from "./layout/AdminLayout";
 import AdminMobileNavigationContextProvider from "./components/admin/context/AdminMobileNavigationContext";
 import AdminProjectsLayout from "./components/admin/context/AdminProjectsLayout";
+import AdminMediaLayout from "./components/admin/context/AdminMediaLayout";
 
 import ProtectedRoute from "./components/authentication/ProtectedRoute";
 
@@ -25,7 +27,6 @@ import Projects from "./pages/Projects";
 import ProjectDetails from "./pages/ProjectDetails";
 import Contact from "./pages/Contact";
 import PageNotFound from "./pages/PageNotFound";
-import AdminLayout from "./layout/AdminLayout";
 import GeneralSettings from "./components/admin/settings/tabs/general/GeneralSettings";
 import SiteInformation from "./components/admin/settings/tabs/site-information/SiteInformation";
 import ContactSocial from "./components/admin/settings/tabs/contact-social/ContactSocial";
@@ -85,7 +86,8 @@ const router = createBrowserRouter([
           },
           {
             path: "media",
-            element: <AdminMedia />,
+            element: <AdminMediaLayout />,
+            children: [{ index: true, element: <AdminMedia /> }],
           },
           {
             path: "leads",
