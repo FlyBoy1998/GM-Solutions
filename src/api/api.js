@@ -1,6 +1,6 @@
 import supabase from "../lib/supabase";
 
-import { mediaBuckets } from "../constants/data";
+import { mediaBuckets, mediaConfig } from "../constants/data";
 
 import {
   uploadStorageFile,
@@ -210,6 +210,8 @@ export async function getMediaFiles() {
     mediaBuckets.map(({ name, type }) => getBucketFiles(name, type)),
   );
 
+  console.log(media.flat(3));
+
   return media.flat(3);
 }
 
@@ -227,6 +229,47 @@ export async function downloadMediaFile(bucket, storagePath) {
   }
 
   return data;
+}
+
+export async function deleteMedia(media) {
+  const config = mediaConfig[media?.bucket];
+
+  if (!config || !media?.storage_path) {
+    throw new Error("Missing or invalid media details.");
+  }
+
+  const { table } = config;
+  const { bucket, storage_path } = media;
+
+  const { data: rows, error: findError } = await supabase
+    .from(table)
+    .select("id")
+    .eq("storage_path", storage_path);
+
+  if (findError) {
+    throw new Error("Could not find media record.");
+  }
+
+  if (rows?.length) {
+    const { error } = await supabase
+      .from(table)
+      .delete()
+      .eq("storage_path", storage_path);
+
+    if (error) {
+      throw new Error("Could not delete media record.");
+    }
+  }
+
+  const { error: storageError } = await supabase.storage
+    .from(bucket)
+    .remove([storage_path]);
+
+  if (storageError) {
+    throw new Error("Database record deleted, but storage deletion failed.");
+  }
+
+  return { success: true };
 }
 
 export async function getProject(projectId) {
