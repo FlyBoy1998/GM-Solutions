@@ -330,3 +330,14 @@ export const timeframes = [
   { value: "12_plus_months", label: "12+ months" },
   { value: "flexible", label: "Flexible" },
 ];
+
+export const mediaConfig = {
+  project_images: {
+    table: "project_images",
+    foreignKey: "project_id",
+  },
+  service_images: {
+    table: "service_images",
+    foreignKey: "service_id",
+  },
+};
