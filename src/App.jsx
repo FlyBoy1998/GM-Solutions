@@ -9,6 +9,7 @@ import AdminLayout from "./layout/AdminLayout";
 import AdminMobileNavigationContextProvider from "./components/admin/context/AdminMobileNavigationContext";
 import AdminProjectsLayout from "./components/admin/context/AdminProjectsLayout";
 import AdminMediaLayout from "./components/admin/context/AdminMediaLayout";
+import AdminLeadsLayout from "./components/admin/context/AdminLeadsLayout";
 
 import ProtectedRoute from "./components/authentication/ProtectedRoute";
 
@@ -91,6 +92,7 @@ const router = createBrowserRouter([
           },
           {
             path: "leads",
+            element: <AdminLeadsLayout />,
             children: [
               { index: true, element: <AdminLeads /> },
               { path: "new", element: <ManageLeadForm /> },
