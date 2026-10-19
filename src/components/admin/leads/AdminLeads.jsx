@@ -19,15 +19,13 @@ export default function AdminLeads() {
         heading="Leads"
         description="Manage and track all leads and enquiries."
       >
-        <div className="max-lg:hidden">
-          <CtaButton
-            variant="primary"
-            Icon={Plus}
-            onClick={() => navigate("new")}
-          >
-            Add Lead
-          </CtaButton>
-        </div>
+        <CtaButton
+          variant="primary"
+          Icon={Plus}
+          onClick={() => navigate("new")}
+        >
+          Add Lead
+        </CtaButton>
       </PageHeader>
       <LeadsMetrics />
       <LeadsFilters />
