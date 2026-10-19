@@ -74,15 +74,13 @@ export default function AdminServices() {
           heading="Services"
           description="Manage the renovation services displayed on your website."
         >
-          <div className="max-lg:hidden">
-            <CtaButton
-              variant="primary"
-              Icon={Plus}
-              onClick={() => navigate("new")}
-            >
-              Add Service
-            </CtaButton>
-          </div>
+          <CtaButton
+            variant="primary"
+            Icon={Plus}
+            onClick={() => navigate("new")}
+          >
+            Add Service
+          </CtaButton>
         </PageHeader>
 
         <div className="col-span-full grid grid-cols-3 gap-3">
