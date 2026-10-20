@@ -1,17 +1,18 @@
 import { Folder, CircleCheck, CircleEllipsis, Pencil } from "lucide-react";
+import useProjects from "../../../hooks/useProjects";
 
 import SectionHeader from "../ui/SectionHeader";
 import ProjectsOverviewItem from "./ProjectsOverviewItem";
 
-import { projects } from "../../../../dummy_data/data";
-
 export default function ProjectsOverview() {
+  const { data: projects = [] } = useProjects();
+
   const totalProjectsCount = projects.length;
   const completedProjectsCount = projects.filter(
     (project) => project.status === "completed",
   ).length;
   const inProgressProjectsCount = projects.filter(
-    (project) => project.status === "in progress",
+    (project) => project.status === "in-progress",
   ).length;
   const draftProjectsCount = projects.filter(
     (project) => project.status === "draft",
