@@ -495,12 +495,6 @@ export async function getService(serviceId) {
   const thumbnail_image =
     serviceImages.find((image) => image.image_type === "thumbnail") ?? null;
 
-  console.log({
-    ...data,
-    service_images: serviceImages,
-    thumbnail_image,
-  });
-
   return {
     ...data,
     service_images: serviceImages,
