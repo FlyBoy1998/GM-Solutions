@@ -1,11 +1,12 @@
 import { CookingPot, Bath, House } from "lucide-react";
+import useProjects from "../../../hooks/useProjects";
 
 import SectionHeader from "../ui/SectionHeader";
 import ProjectsCategoriesItem from "./ProjectsCategoriesItem";
 
-import { projects } from "../../../../dummy_data/data";
-
 export default function ProjectsCategories() {
+  const { data: projects = [] } = useProjects();
+
   const kitchenProjectsCount = projects.filter(
     (project) => project.category === "kitchen",
   ).length;
