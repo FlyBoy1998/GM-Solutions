@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router";
 import { useForm, useWatch } from "react-hook-form";
 import { Search, Shapes, Info } from "lucide-react";
 
+import useProjects from "../../../hooks/useProjects";
 import useDebounce from "../../../hooks/useDebounce";
 
 import FormField from "../../ui/FormField";
@@ -12,10 +13,9 @@ import {
   projectStatusOptions,
 } from "../../../constants/data";
 
-import { projects } from "../../../../dummy_data/data";
-
 export default function ProjectFilters() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { data: projects = [] } = useProjects();
   const projectsCount = projects.length;
 
   const { register, control } = useForm({
@@ -75,7 +75,7 @@ export default function ProjectFilters() {
 
   return (
     <div className="col-span-full flex justify-between items-center p-4 rounded-lg shadow-md bg-white max-xl:flex-col max-xl:gap-3">
-      <form action="" className="grid grid-cols-6 gap-4 max-xl:w-full">
+      <form className="grid grid-cols-6 gap-4 max-xl:w-full">
         <FormField
           inputType="text"
           id="searchProject"
