@@ -210,8 +210,6 @@ export async function getMediaFiles() {
     mediaBuckets.map(({ name, type }) => getBucketFiles(name, type)),
   );
 
-  console.log(media.flat(3));
-
   return media.flat(3);
 }
 
