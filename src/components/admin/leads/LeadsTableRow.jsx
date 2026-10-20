@@ -1,11 +1,15 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router";
+import { AdminLeadsContext } from "../context/AdminLeadsLayout";
 
 import TableActions from "../ui/TableActions";
 
 import { formatDate, formatTime } from "../../../utils/utils";
 
-export default function LeadsTableRow({ lead, onDelete, onView }) {
+export default function LeadsTableRow({ lead }) {
   const navigate = useNavigate();
+  const { handleDisplayLeadModal, handleDisplayDeleteModal } =
+    useContext(AdminLeadsContext);
 
   return (
     <tr className="border-t border-slate-100 hover:bg-slate-50 transition-colors">
@@ -34,8 +38,8 @@ export default function LeadsTableRow({ lead, onDelete, onView }) {
       <TableActions
         hasDeleteAction
         onEdit={() => navigate(`/admin/leads/${lead.id}/edit`)}
-        onView={onView}
-        onDelete={onDelete}
+        onView={() => handleDisplayLeadModal(lead)}
+        onDelete={() => handleDisplayDeleteModal(lead)}
       />
     </tr>
   );
