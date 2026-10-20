@@ -1,18 +1,20 @@
 import noLeadsImage from "../../../../public//images/no-leads-image.png";
+import noMatchingLeadsImage from "../../../../public/images/no-matching-leads.png";
+
+import usePagination from "../../../hooks/usePagination";
+import useLeads from "../../../hooks/useLeads";
+import useLeadsFilters from "../../../hooks/useLeadsFilters";
 
 import LeadsTable from "./LeadsTable";
 import Pagination from "../ui/Pagination";
 import NoDataPlaceholder from "../ui/NoDataPlaceholder";
 
-import usePagination from "../../../hooks/usePagination";
-
-import useLeads from "../../../hooks/useLeads";
-
 export default function LeadsTableSection() {
   const { data: leads = [], isLoading, error } = useLeads();
+  const { filteredLeads } = useLeadsFilters(leads);
 
   const { currentPage, itemsPerPage, totalPages, currentData, setCurrentPage } =
-    usePagination(leads || []);
+    usePagination(filteredLeads);
 
   return (
     <div
@@ -29,6 +31,15 @@ export default function LeadsTableSection() {
         />
       ) : (
         <LeadsTable leads={currentData} />
+      )}
+
+      {!filteredLeads.length && (
+        <NoDataPlaceholder
+          imageSrc={noMatchingLeadsImage}
+          heading="No matching leads found"
+          description="We couldn't find any leads that match your search or filter criteria."
+          secondaryDescription="Try adjusting your search term or filters to see more results."
+        />
       )}
 
       {leads.length > itemsPerPage ? (
