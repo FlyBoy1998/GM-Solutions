@@ -39,6 +39,7 @@ export function flyToProject(map, coordinates) {
 
 export function formatToCapitalize(string) {
   return string
+    .replaceAll("-", " ")
     .split(" ")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
