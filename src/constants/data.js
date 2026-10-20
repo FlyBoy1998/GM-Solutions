@@ -148,9 +148,9 @@ export const chartServiceCategories = [
 ];
 
 export const mediaTypesOptions = [
-  { value: "images", label: "Images" },
-  { value: "videos", label: "Videos" },
-  { value: "documents", label: "Documents" },
+  { value: "image", label: "Images" },
+  { value: "video", label: "Videos" },
+  { value: "document", label: "Documents" },
 ];
 
 export const mediaCategories = [
