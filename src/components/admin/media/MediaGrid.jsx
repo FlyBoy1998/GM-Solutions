@@ -13,7 +13,7 @@ export default function MediaGrid({ mediaFiles }) {
   const { currentPage, totalPages, currentData, setCurrentPage } =
     usePagination(mediaFiles || []);
   const { downloadMedia, isDownloading } = useDonwloadMedia();
-  const { deleteMedia, isDeleting } = useDeleteMedia();
+  const { deleteMedia } = useDeleteMedia();
 
   return (
     <div className="flex flex-col col-span-full row-start-3 row-end-4 p-3 rounded-lg shadow-lg bg-white max-md:hidden">
