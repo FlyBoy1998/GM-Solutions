@@ -1,21 +1,24 @@
 import noLeadsImage from "../../../../public//images/no-leads-image.png";
 import noMatchingLeadsImage from "../../../../public/images/no-matching-leads.png";
+import leadsFetchErrorImage from "../../../../public/images/leads-fetch-error-image.png";
 
 import { useContext } from "react";
-import usePagination from "../../../hooks/usePagination";
 import { AdminLeadsContext } from "../context/AdminLeadsLayout";
 import useLeads from "../../../hooks/useLeads";
 import useLeadsFilters from "../../../hooks/useLeadsFilters";
+import usePagination from "../../../hooks/usePagination";
+import useDeleteLead from "../../../hooks/useDeleteLead";
 
 import LeadsTable from "./LeadsTable";
+import LeadsSkeleton from "./LeadsSkeleton";
 import Pagination from "../ui/Pagination";
 import NoDataPlaceholder from "../ui/NoDataPlaceholder";
 import LeadModal from "./leads-modal/LeadModal";
 import DeleteModal from "../ui/DeleteModal";
-import useDeleteLead from "../../../hooks/useDeleteLead";
+import DataFetchError from "../ui/DataFetchError";
 
 export default function LeadsTableSection() {
-  const { data: leads = [], isLoading, error } = useLeads();
+  const { data: leads = [], loading, error } = useLeads();
   const { filteredLeads } = useLeadsFilters(leads);
   const { deleteLead, isDeleting } = useDeleteLead();
   const { selectedLead, leadDetailsModalRef, deleteModalRef, setSelectedLead } =
@@ -51,7 +54,18 @@ export default function LeadsTableSection() {
       <div
         className={`col-span-full flex flex-col ${!leads.length ? "min-h-min" : "min-h-135"} px-4 rounded-lg shadow-md bg-white max-xl:col-span-full max-md:hidden`}
       >
-        {!leads.length ? (
+        {loading ? (
+          <div className="flex-1">
+            <LeadsSkeleton />
+          </div>
+        ) : error ? (
+          <DataFetchError
+            imageSrc={leadsFetchErrorImage}
+            heading="Unable to fetch leads"
+            description="We encountered an error while loading the leads."
+            secondaryDescription="Please try again or check your connection."
+          />
+        ) : !leads.length ? (
           <NoDataPlaceholder
             imageSrc={noLeadsImage}
             heading="No Leads Yet"
@@ -60,26 +74,26 @@ export default function LeadsTableSection() {
             buttonText="Add Lead"
             navigateTo="/admin/leads/new"
           />
-        ) : (
-          <LeadsTable leads={currentData} />
-        )}
-
-        {!filteredLeads.length && (
+        ) : !filteredLeads.length ? (
           <NoDataPlaceholder
             imageSrc={noMatchingLeadsImage}
             heading="No matching leads found"
             description="We couldn't find any leads that match your search or filter criteria."
             secondaryDescription="Try adjusting your search term or filters to see more results."
           />
-        )}
+        ) : (
+          <>
+            <LeadsTable leads={currentData} />
 
-        {leads.length > itemsPerPage ? (
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={setCurrentPage}
-          />
-        ) : null}
+            {leads.length > itemsPerPage && (
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
+              />
+            )}
+          </>
+        )}
       </div>
     </>
   );
