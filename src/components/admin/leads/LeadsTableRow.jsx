@@ -4,7 +4,11 @@ import { AdminLeadsContext } from "../context/AdminLeadsLayout";
 
 import TableActions from "../ui/TableActions";
 
-import { formatDate, formatTime } from "../../../utils/utils";
+import {
+  formatDate,
+  formatTime,
+  formatToCapitalize,
+} from "../../../utils/utils";
 
 export default function LeadsTableRow({ lead }) {
   const navigate = useNavigate();
@@ -24,7 +28,7 @@ export default function LeadsTableRow({ lead }) {
         <p className="text-gray-dark">{lead.phone}</p>
       </td>
       <td className="table-td">{lead.source}</td>
-      <td className="table-td">{lead.status}</td>
+      <td className="table-td">{formatToCapitalize(lead.status)}</td>
       <td className="table-td">
         <p className="max-w-60 line-clamp-2 leading-5">{lead.enquiry}</p>
       </td>
