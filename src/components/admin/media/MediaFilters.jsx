@@ -55,7 +55,7 @@ export default function MediaFilters({ filesNumber }) {
           id="searchMedia"
           placeholder="Search media..."
           icon={<Search className="text-gray-dark" size={16} aria-hidden />}
-          {...register("media_type")}
+          {...register("search_media")}
           additionalStyling="col-span-2 max-md:col-span-full"
         />
         <FormField
@@ -63,7 +63,7 @@ export default function MediaFilters({ filesNumber }) {
           optionsPlaceholder="All Types"
           options={mediaTypesOptions}
           icon={<List className="text-gray-dark" size={16} aria-hidden />}
-          {...register("search_media")}
+          {...register("media_type")}
           additionalStyling="col-span-2 max-md:col-span-full"
         />
       </form>
