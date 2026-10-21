@@ -12,7 +12,7 @@ import LeadsCarousel from "./LeadCarousel";
 
 export default function AdminLeads() {
   const navigate = useNavigate();
-  const { data: leads = [], error } = useLeads();
+  const { data: leads = [] } = useLeads();
   const { filteredLeads } = useLeadsFilters(leads);
 
   return (
