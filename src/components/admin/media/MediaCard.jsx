@@ -1,12 +1,14 @@
 import { useRef, useState, useContext } from "react";
 import { EllipsisVertical } from "lucide-react";
 import { AdminMediaContext } from "../context/AdminMediaLayout";
+import useClickOutside from "../../../hooks/useClickOutside";
+
+import videoPlaceholderImage from "../../../../public/images/videos-placeholder-image.png";
 
 import MediaCardDropdown from "./MediaCardDropdown";
+import CtaButton from "../../ui/CtaButton";
 
 import { formatDate, formatBytes } from "../../../utils/utils";
-import useClickOutside from "../../../hooks/useClickOutside";
-import CtaButton from "../../ui/CtaButton";
 
 export default function MediaCard({
   mediaFile,
@@ -27,7 +29,9 @@ export default function MediaCard({
     <article className="col-span-2 flex flex-col rounded-lg shadow-md bg-white max-md:flex-[0_0_100%] max-md:min-w-0">
       <div className="h-46 rounded-t-lg overflow-hidden">
         <img
-          src={mediaFile?.url}
+          src={
+            mediaFile?.type === "video" ? videoPlaceholderImage : mediaFile?.url
+          }
           className={`${imageClasses} ${mediaFile?.type === "image" ? "scale-125" : ""}`}
           alt="Media file"
         />
