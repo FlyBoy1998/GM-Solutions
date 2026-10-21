@@ -1,9 +1,13 @@
+import noMediaImage from "../../../../public/images/no-media-image.png";
+import noMatchingMedia from "../../../../public/images/no-matching-media.png";
+import mediaFetchErrorImage from "../../../../public/images/media-fetch-error-image.png";
+
 import { useContext } from "react";
 import { Upload } from "lucide-react";
 import { AdminMediaContext } from "../context/AdminMediaLayout";
 import useMediaFiles from "../../../hooks/useMediaFiles";
 import useDeleteMedia from "../../../hooks/useDeleteMedia";
-import noMediaImage from "../../../../public/images/no-media-image.png";
+import useMediaFilters from "../../../hooks/useMediaFilters";
 
 import PageHeader from "../ui/PageHeader";
 import CtaButton from "../../ui/CtaButton";
@@ -12,6 +16,7 @@ import MediaGrid from "./MediaGrid";
 import StorageUsage from "./StorageUsage";
 import QuickTips from "./QuickTips";
 import MediaSkeleton from "./MediaSkeleton";
+import DataFetchError from "../ui/DataFetchError";
 import NoDataPlaceholder from "../ui/NoDataPlaceholder";
 import MediaCarousel from "./MediaCarousel";
 import MediaModal from "./media-modal/MediaModal";
@@ -26,25 +31,8 @@ export default function AdminMedia() {
     handleDisplayDeleteModal,
   } = useContext(AdminMediaContext);
   const { data: media = [], isLoading, error } = useMediaFiles();
+  const { filteredMedia } = useMediaFilters(media);
   const { deleteMedia, isDeleting } = useDeleteMedia();
-
-  let mediaGridContent;
-
-  if (!isLoading && error) {
-    mediaGridContent = <p>Error</p>;
-  } else if (!isLoading && !media.length) {
-    mediaGridContent = (
-      <NoDataPlaceholder
-        imageSrc={noMediaImage}
-        heading="No Media Files Yet"
-        description="Upload your first media file to get started."
-        secondaryDescription="Add photos, documents, videos or other files."
-        buttonText="Upload Media"
-      />
-    );
-  } else {
-    mediaGridContent = <MediaGrid mediaFiles={media} />;
-  }
 
   function handleDeleteMedia() {
     if (!selectedMedia.id) return;
@@ -89,10 +77,47 @@ export default function AdminMedia() {
           <MediaSkeleton />
         ) : (
           <>
-            <MediaFilters filesNumber={media?.length} />
-            {mediaGridContent}
-            <MediaCarousel mediaFiles={media} />
-            <StorageUsage mediaFiles={media} />
+            <MediaFilters filesNumber={media.length} />
+
+            {error ? (
+              <div className="col-span-full">
+                <DataFetchError
+                  imageSrc={mediaFetchErrorImage}
+                  heading="Unable to fetch media files"
+                  description="We encountered an issue while loading the media files."
+                  secondaryDescription="Please try again or check your connection."
+                />
+              </div>
+            ) : !media.length ? (
+              <div className="col-span-full">
+                <NoDataPlaceholder
+                  imageSrc={noMediaImage}
+                  heading="No Media Files Yet"
+                  description="Upload your first media file to get started."
+                  secondaryDescription="Add photos, documents, videos or other files."
+                  buttonText="Upload Media"
+                />
+              </div>
+            ) : !filteredMedia.length ? (
+              <div className="col-span-full">
+                <NoDataPlaceholder
+                  imageSrc={noMatchingMedia}
+                  heading="No matching media files"
+                  description="We couldn't find any media files that match your search or filters."
+                  secondaryDescription="Try adjusting your search terms or filter options."
+                />
+              </div>
+            ) : (
+              <MediaGrid mediaFiles={filteredMedia} />
+            )}
+
+            {!error && (
+              <>
+                <MediaCarousel mediaFiles={filteredMedia} />
+                {media.length > 0 && <StorageUsage mediaFiles={media} />}
+              </>
+            )}
+
             <QuickTips />
           </>
         )}
