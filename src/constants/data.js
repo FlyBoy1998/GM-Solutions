@@ -1,7 +1,4 @@
 import {
-  ClipboardCheck,
-  Map,
-  Image,
   Clock,
   Folder,
   FolderIcon,
@@ -27,37 +24,6 @@ import {
 export const heroStats = [
   { label: "Projects completed", value: "100+", icon: Folder },
   { label: "Experience", value: "10+ Years", icon: Clock },
-];
-
-export const dashboardStats = [
-  {
-    id: "projects-completed",
-    title: "Projects completed",
-    value: 120,
-    icon: ClipboardCheck,
-    bgColor: "bg-blue-500",
-  },
-  {
-    id: "active-projects",
-    title: "Active projects",
-    value: 5,
-    icon: Folder,
-    bgColor: "bg-orange-500",
-  },
-  {
-    id: "map-views",
-    title: "Map Views",
-    value: 100,
-    icon: Map,
-    bgColor: "bg-green-500",
-  },
-  {
-    id: "media-items",
-    title: "Media Items",
-    value: 100,
-    icon: Image,
-    bgColor: "bg-purple-500",
-  },
 ];
 
 export const serviceHighlights = [
