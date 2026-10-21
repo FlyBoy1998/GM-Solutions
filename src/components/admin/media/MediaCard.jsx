@@ -1,5 +1,6 @@
 import { useRef, useState, useContext } from "react";
 import { EllipsisVertical } from "lucide-react";
+import toast from "react-hot-toast";
 import { AdminMediaContext } from "../context/AdminMediaLayout";
 import useClickOutside from "../../../hooks/useClickOutside";
 
@@ -24,6 +25,20 @@ export default function MediaCard({
   let imageClasses = "object-cover h-full w-full";
 
   useClickOutside(dropdownRef, () => setIsDropdownVisible(false));
+
+  async function copyToClipboard(text) {
+    if (!text) {
+      toast.error("No URL available to copy.");
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(text);
+      toast.success("URL copied to clipboard.");
+    } catch {
+      toast.error("Failed to copy URL.");
+    }
+  }
 
   return (
     <article className="col-span-2 flex flex-col rounded-lg shadow-md bg-white max-md:flex-[0_0_100%] max-md:min-w-0">
@@ -52,7 +67,7 @@ export default function MediaCard({
               <MediaCardDropdown
                 onView={onView}
                 onDownload={onDownload}
-                onCopyURL={onCopyURL}
+                onCopyURL={() => copyToClipboard(mediaFile?.url)}
                 onDelete={() => handleDisplayDeleteModal(mediaFile)}
                 isDownloading={isDownloading}
               />
