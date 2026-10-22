@@ -67,7 +67,7 @@ export default function LeadsFilters() {
 
   return (
     <div className="col-span-full flex justify-between items-center p-4 rounded-lg shadow-md bg-white">
-      <form action="" className="grid grid-cols-6 gap-4 max-xl:w-full">
+      <form className="grid grid-cols-6 gap-4 max-xl:w-full">
         <FormField
           inputType="text"
           id="searchLeads"
