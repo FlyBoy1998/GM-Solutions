@@ -9,10 +9,11 @@ import LeadsMetrics from "./LeadsMetrics";
 import LeadsFilters from "./LeadsFilters";
 import LeadsTableSection from "./LeadsTableSection";
 import LeadsCarousel from "./LeadCarousel";
+import LeadsSkeleton from "./LeadsSkeleton";
 
 export default function AdminLeads() {
   const navigate = useNavigate();
-  const { data: leads = [] } = useLeads();
+  const { data: leads = [], isLoading, error } = useLeads();
   const { filteredLeads } = useLeadsFilters(leads);
 
   return (
@@ -29,10 +30,16 @@ export default function AdminLeads() {
           Add Lead
         </CtaButton>
       </PageHeader>
-      <LeadsMetrics />
-      <LeadsFilters />
-      <LeadsTableSection />
-      <LeadsCarousel leads={filteredLeads} />
+      {isLoading ? (
+        <LeadsSkeleton />
+      ) : (
+        <>
+          <LeadsMetrics />
+          <LeadsFilters />
+          <LeadsTableSection leads={leads} error={error} />
+          <LeadsCarousel leads={filteredLeads} />
+        </>
+      )}
     </div>
   );
 }
