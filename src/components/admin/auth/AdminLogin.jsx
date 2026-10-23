@@ -32,10 +32,10 @@ export default function AdminLogin() {
   if (isAuthenticated) return <Navigate to="/admin/dashboard" />;
 
   return (
-    <div className="col-span-1 flex justify-center items-center">
+    <div className="col-span-1 flex justify-center items-center px-6">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col gap-8 w-[50%] p-10 rounded-lg bg-white shadow-md"
+        className="flex flex-col gap-8 w-140 max-w-150 p-10 rounded-lg bg-white shadow-md"
       >
         <div className="flex flex-col items-center">
           <h1 className="heading-sm">Admin Login</h1>
