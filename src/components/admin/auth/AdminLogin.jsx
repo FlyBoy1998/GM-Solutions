@@ -1,6 +1,6 @@
-import { Navigate } from "react-router";
+import { Navigate, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
-import { Mail, Lock, LogIn } from "lucide-react";
+import { Mail, Lock, LogIn, ArrowLeft } from "lucide-react";
 
 import FormField from "../../ui/FormField";
 import CtaButton from "../../ui/CtaButton";
@@ -9,6 +9,7 @@ import { useLogin } from "../../../hooks/useLogin";
 import { useUser } from "../../../hooks/useUser";
 
 export default function AdminLogin() {
+  const navigate = useNavigate();
   const { isAuthenticated } = useUser();
 
   const {
@@ -73,7 +74,7 @@ export default function AdminLogin() {
           />
         </div>
 
-        <div>
+        <div className="flex flex-col gap-2">
           <CtaButton
             variant="primary"
             isFullWidth
@@ -81,6 +82,15 @@ export default function AdminLogin() {
             disabled={isLoading}
           >
             {isLoading ? "Logging in..." : "Log in"}
+          </CtaButton>
+          <CtaButton
+            variant="secondary"
+            isFullWidth
+            Icon={ArrowLeft}
+            onClick={() => navigate("/")}
+            disabled={isLoading}
+          >
+            Back to Homepage
           </CtaButton>
         </div>
       </form>
