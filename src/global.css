@@ -106,10 +106,14 @@
 
   .peer:checked + .toggle::before {
     @apply bg-white;
+    transform: translateX(16px);
   }
 
-  .peer:checked + .toggle::before {
-    transform: translateX(16px);
+  @media (prefers-reduced-motion: reduce) {
+    .toggle,
+    .toggle::before {
+      transition: none;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
