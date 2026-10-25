@@ -13,7 +13,7 @@ export default function NoDataPlaceholder({
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col justify-center items-center py-4 px-4 rounded-lg bg-white">
+    <div className="flex flex-col justify-center items-center p-4 rounded-lg bg-white">
       <div className="w-54 h-54">
         <img src={imageSrc} className="w-full h-full object-cover" alt="" />
       </div>
