@@ -173,11 +173,11 @@ export default function ManageLeadForm() {
           className="grid grid-cols-5 items-start gap-6"
           onSubmit={methods.handleSubmit(handleSubmit)}
         >
-          <div className="col-start-1 col-end-4 flex flex-col gap-6">
+          <div className="col-start-1 col-end-4 flex flex-col gap-6 max-xl:col-span-full">
             <ContactInformation />
             <EnquiryDetails />
           </div>
-          <div className="col-start-4 col-end-6 flex flex-col gap-6">
+          <div className="col-start-4 col-end-6 flex flex-col gap-6 max-xl:col-span-full">
             <Timeline />
             <AdditionalInformation />
             <Tip />
