@@ -1,4 +1,7 @@
+import { useContext } from "react";
+import { useNavigate } from "react-router";
 import { Phone, Paperclip, Calendar, Eye, Pen, Trash } from "lucide-react";
+import { AdminLeadsContext } from "../context/AdminLeadsLayout";
 
 import CtaButton from "../../ui/CtaButton";
 import LeadDetail from "./LeadDetail";
@@ -6,6 +9,10 @@ import LeadDetail from "./LeadDetail";
 import { formatDate } from "../../../utils/utils";
 
 export default function LeadCard({ lead }) {
+  const navigate = useNavigate();
+  const { handleDisplayLeadModal, handleDisplayDeleteModal } =
+    useContext(AdminLeadsContext);
+
   return (
     <article className="flex flex-col gap-6 w-full p-4 rounded-lg shadow-md bg-white max-md:flex-[0_0_100%] max-md:min-w-0">
       <div>
@@ -35,17 +42,32 @@ export default function LeadCard({ lead }) {
       </div>
       <div className="flex gap-2 max-sm:flex-col">
         <div className="flex-1">
-          <CtaButton variant="secondary" Icon={Eye} isFullWidth>
+          <CtaButton
+            variant="secondary"
+            Icon={Eye}
+            isFullWidth
+            onClick={() => handleDisplayLeadModal(lead)}
+          >
             View
           </CtaButton>
         </div>
         <div className="flex-1">
-          <CtaButton variant="secondary" Icon={Pen} isFullWidth>
+          <CtaButton
+            variant="secondary"
+            Icon={Pen}
+            isFullWidth
+            onClick={() => navigate(`/admin/leads/${lead.id}/edit`)}
+          >
             Edit
           </CtaButton>
         </div>
         <div className="flex-1">
-          <CtaButton variant="danger" Icon={Trash} isFullWidth>
+          <CtaButton
+            variant="danger"
+            Icon={Trash}
+            isFullWidth
+            onClick={() => handleDisplayDeleteModal(lead)}
+          >
             Delete
           </CtaButton>
         </div>
