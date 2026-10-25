@@ -5,7 +5,7 @@ export default function DashboardStatsCard({
   bgColor,
 }) {
   return (
-    <div className="col-span-1 flex justify-center items-center gap-3 p-4 rounded-lg shadow-md bg-white hover:bg-slate-50 transition-colors">
+    <div className="col-span-1 flex items-center gap-3 p-4 rounded-lg shadow-md bg-white hover:bg-slate-50 transition-colors">
       <div className={`p-4 rounded-full ${bgColor}`}>
         <Icon className="text-white" aria-hidden />
       </div>
