@@ -13,6 +13,21 @@ export default function LeadCard({ lead }) {
   const { handleDisplayLeadModal, handleDisplayDeleteModal } =
     useContext(AdminLeadsContext);
 
+  let leadStatusClasses;
+
+  if (lead?.status === "new") {
+    leadStatusClasses = "lead-status-new";
+  }
+  if (lead?.status === "contacted") {
+    leadStatusClasses = "lead-status-contacted";
+  }
+  if (lead?.status === "consultation") {
+    leadStatusClasses = "lead-status-consultation";
+  }
+  if (lead?.status === "completed") {
+    leadStatusClasses = "lead-status-completed";
+  }
+
   return (
     <article className="flex flex-col gap-6 w-full p-4 rounded-lg shadow-md bg-white max-md:flex-[0_0_100%] max-md:min-w-0">
       <div>
@@ -21,7 +36,9 @@ export default function LeadCard({ lead }) {
             <h3 className="font-bold">{`${lead?.first_name} ${lead?.last_name}`}</h3>
             <div className="text-sm text-gray-dark">{lead?.project_type}</div>
           </div>
-          <div>{formatToCapitalize(lead?.status)}</div>
+          <div className={`py-1 px-3 rounded-md text-sm ${leadStatusClasses}`}>
+            {formatToCapitalize(lead?.status)}
+          </div>
         </div>
       </div>
       <div className="flex flex-col gap-2">
