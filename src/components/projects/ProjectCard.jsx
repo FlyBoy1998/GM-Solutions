@@ -33,7 +33,7 @@ export default function ProjectCard({ project, thumbnail, index }) {
             <MapPin className="size-5" aria-hidden />
             <span>{project.address}</span>
           </p>
-          <p className="self-start py-1 px-2 text-sm rounded-md bg-light">
+          <p className="self-start py-1 px-2 text-xs rounded-md bg-light">
             {project.label}
           </p>
         </div>
