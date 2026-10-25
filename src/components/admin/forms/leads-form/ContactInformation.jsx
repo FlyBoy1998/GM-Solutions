@@ -28,7 +28,7 @@ export default function ContactInformation() {
           })}
           placeholder="e.g. John"
           required
-          additionalStyling="col-span-1"
+          additionalStyling="col-span-1 max-md:col-span-full"
           errors={
             errors.first_name && (
               <p className="input-error">{errors.first_name.message}</p>
@@ -45,7 +45,7 @@ export default function ContactInformation() {
           })}
           placeholder="e.g. Smith"
           required
-          additionalStyling="col-span-1"
+          additionalStyling="col-span-1 max-md:col-span-full"
           errors={
             errors.last_name && (
               <p className="input-error">{errors.last_name.message}</p>
@@ -76,7 +76,7 @@ export default function ContactInformation() {
           id="phone-number"
           {...register("phone")}
           placeholder="e.g. 07912 354 564"
-          additionalStyling="col-span-1"
+          additionalStyling="col-span-1 max-md:col-span-full"
           errors={
             errors.phone && (
               <p className="input-error">{errors.phone.message}</p>
@@ -90,7 +90,7 @@ export default function ContactInformation() {
           options={contactMethods}
           optionsPlaceholder="Select contact method"
           {...register("prefered_contact_method")}
-          additionalStyling="col-span-1"
+          additionalStyling="col-span-1 max-md:col-span-full"
           errors={
             errors.prefered_contact_method && (
               <p className="input-error">
