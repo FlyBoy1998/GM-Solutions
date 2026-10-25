@@ -32,7 +32,7 @@ export default function EnquiryDetails() {
             required: "Source is required.",
           })}
           required
-          additionalStyling="col-span-1"
+          additionalStyling="col-span-1 max-md:col-span-full"
           errors={
             errors.source && (
               <p className="input-error">{errors.source.message}</p>
@@ -49,7 +49,7 @@ export default function EnquiryDetails() {
             required: "Status is required.",
           })}
           required
-          additionalStyling="col-span-1"
+          additionalStyling="col-span-1 max-md:col-span-full"
           errors={
             errors.status && (
               <p className="input-error">{errors.status.message}</p>
@@ -63,7 +63,7 @@ export default function EnquiryDetails() {
           optionsPlaceholder="Select project type"
           options={projectTypeOptions}
           {...register("project_type")}
-          additionalStyling="col-span-1"
+          additionalStyling="col-span-1 max-md:col-span-full"
           errors={
             errors.project_type && (
               <p className="input-error">{errors.project_type.message}</p>
@@ -77,7 +77,7 @@ export default function EnquiryDetails() {
           id="estimated-budget"
           {...register("estimated_budget")}
           placeholder="e.g. £10,000 - £20,000"
-          additionalStyling="col-span-1"
+          additionalStyling="col-span-1 max-md:col-span-full"
           errors={
             errors.estimated_budget && (
               <p className="input-error">{errors.estimated_budget.message}</p>
