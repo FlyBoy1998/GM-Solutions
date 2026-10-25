@@ -201,7 +201,8 @@
 }
 
 @utility focus-ring {
-  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-transparent focus-visible:ring-offset-2;
+  @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
+  @apply focus-visible:ring-2 focus-visible:ring-primary-transparent;
 }
 
 @utility wrapper {
