@@ -14,7 +14,7 @@ export default function NoDataPlaceholder({
 
   return (
     <div className="flex flex-col justify-center items-center py-4 px-4 rounded-lg bg-white">
-      <div className="w-54 h-54 max-sm:w-46 max-sm:h-46">
+      <div className="w-54 h-54">
         <img src={imageSrc} className="w-full h-full object-cover" alt="" />
       </div>
       <div className="flex flex-col items-center gap-1">
