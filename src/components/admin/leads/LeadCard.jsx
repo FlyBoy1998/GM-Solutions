@@ -6,7 +6,7 @@ import { AdminLeadsContext } from "../context/AdminLeadsLayout";
 import CtaButton from "../../ui/CtaButton";
 import LeadDetail from "./LeadDetail";
 
-import { formatDate } from "../../../utils/utils";
+import { formatDate, formatToCapitalize } from "../../../utils/utils";
 
 export default function LeadCard({ lead }) {
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ export default function LeadCard({ lead }) {
             <h3 className="font-bold">{`${lead?.first_name} ${lead?.last_name}`}</h3>
             <div className="text-sm text-gray-dark">{lead?.project_type}</div>
           </div>
-          <div>{lead?.status}</div>
+          <div>{formatToCapitalize(lead?.status)}</div>
         </div>
       </div>
       <div className="flex flex-col gap-2">
