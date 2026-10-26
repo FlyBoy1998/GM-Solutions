@@ -11,9 +11,14 @@ import RecentLeads from "./RecentLeads";
 import ProjectModal from "../projects/project-modal/ProjectModal";
 import DeleteModal from "../ui/DeleteModal";
 import ProjectsCarousel from "../ui/ProjectsCarousel";
+import DashboardSkeleton from "./DashboardSkeleton";
 
 export default function AdminDashboard() {
-  const { data: projects = [], isLoading, error } = useProjects();
+  const {
+    data: projects = [],
+    isLoading,
+    error: projectsError,
+  } = useProjects();
 
   const sortedProjects = projects?.slice().sort((a, b) => {
     const dateA = new Date(a.completion_date);
@@ -69,11 +74,17 @@ export default function AdminDashboard() {
           heading="Dashboard"
           description="Welcome to your dashboard!"
         />
-        <DashboardStats />
-        <LatestProjectsTable projects={sortedProjects?.slice(0, 6)} />
-        <ProjectsCarousel projects={sortedProjects?.slice(0, 6)} />
-        <QuickActions />
-        <RecentLeads />
+        {isLoading ? (
+          <DashboardSkeleton />
+        ) : (
+          <>
+            <DashboardStats />
+            <LatestProjectsTable projects={sortedProjects?.slice(0, 6)} />
+            <ProjectsCarousel projects={sortedProjects?.slice(0, 6)} />
+            <QuickActions />
+            <RecentLeads />
+          </>
+        )}
       </div>
     </>
   );
