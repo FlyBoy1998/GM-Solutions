@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AdminProjectsContext } from "../context/AdminProjectsLayout";
 import useProjects from "../../../hooks/useProjects";
+import useLeads from "../../../hooks/useLeads";
 import useDeleteProject from "../../../hooks/useDeleteProject";
 
 import PageHeader from "../ui/PageHeader";
@@ -16,9 +17,16 @@ import DashboardSkeleton from "./DashboardSkeleton";
 export default function AdminDashboard() {
   const {
     data: projects = [],
-    isLoading,
-    error: projectsError,
+    isProjectsLoading,
+    error: projectsFetchError,
   } = useProjects();
+  const {
+    data: leads = [],
+    isLoading: isLeadsLoading,
+    error: leadsFetchError,
+  } = useLeads();
+
+  console.log(leads);
 
   const sortedProjects = projects?.slice().sort((a, b) => {
     const dateA = new Date(a.completion_date);
@@ -74,7 +82,7 @@ export default function AdminDashboard() {
           heading="Dashboard"
           description="Welcome to your dashboard!"
         />
-        {isLoading ? (
+        {isProjectsLoading || isLeadsLoading ? (
           <DashboardSkeleton />
         ) : (
           <>
@@ -82,7 +90,7 @@ export default function AdminDashboard() {
             <LatestProjectsTable projects={sortedProjects?.slice(0, 6)} />
             <ProjectsCarousel projects={sortedProjects?.slice(0, 6)} />
             <QuickActions />
-            <RecentLeads />
+            <RecentLeads leads={leads} />
           </>
         )}
       </div>
