@@ -1,12 +1,10 @@
 import SectionHeader from "../ui/SectionHeader";
 import LeadItem from "./LeadItem";
 
-import { leads } from "../../../../dummy_data/data";
-
-export default function RecentLeads() {
-  const sortedLeads = leads.sort((a, b) => {
-    const dateA = new Date(a.createdAt.split("T")[0]);
-    const dateB = new Date(b.createdAt.split("T")[0]);
+export default function RecentLeads({ leads }) {
+  const sortedLeads = leads?.sort((a, b) => {
+    const dateA = new Date(a.created_at.split("T")[0]);
+    const dateB = new Date(b.created_at.split("T")[0]);
     return dateB - dateA;
   });
 
@@ -16,9 +14,9 @@ export default function RecentLeads() {
         title="Recent Leads"
         description="View the latest enquiries submitted through your website."
       />
-      <div className="flex-1 flex flex-col justify-evenly gap-3">
-        {sortedLeads.slice(0, 3).map((leadItem) => (
-          <LeadItem key={leadItem.id} leadItem={leadItem} />
+      <div className="flex-1 flex flex-col gap-3">
+        {sortedLeads.slice(0, 3).map((item) => (
+          <LeadItem key={item.id} item={item} />
         ))}
       </div>
     </div>
