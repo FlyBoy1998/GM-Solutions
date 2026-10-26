@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { Plus } from "lucide-react";
+import useServices from "../../../hooks/useServices";
 
 import CtaButton from "../../../components/ui/CtaButton";
 import PageHeader from "../ui/PageHeader";
@@ -10,8 +11,8 @@ import ServiceCard from "./ServiceCard";
 import TopServices from "./TopServices";
 import ServicePerformanceOverview from "./ServicePerformanceOverview";
 import DeleteModal from "../ui/DeleteModal";
+import ServicesSkeleton from "./ServicesSkeleton";
 
-import useServices from "../../../hooks/useServices";
 import { deleteService as deleteServiceApi } from "../../../api/api";
 
 export default function AdminServices() {
@@ -83,17 +84,23 @@ export default function AdminServices() {
           </CtaButton>
         </PageHeader>
 
-        <div className="col-span-full grid grid-cols-3 gap-3">
-          {services.map((service) => (
-            <ServiceCard
-              key={service.id}
-              service={service}
-              onDelete={() => handleDisplayDeleteModal(service)}
-            />
-          ))}
-        </div>
-        <TopServices />
-        <ServicePerformanceOverview />
+        {isLoading ? (
+          <ServicesSkeleton />
+        ) : (
+          <>
+            <div className="col-span-full grid grid-cols-3 gap-3">
+              {services.map((service) => (
+                <ServiceCard
+                  key={service.id}
+                  service={service}
+                  onDelete={() => handleDisplayDeleteModal(service)}
+                />
+              ))}
+            </div>
+            <TopServices />
+            <ServicePerformanceOverview />
+          </>
+        )}
       </div>
     </>
   );
