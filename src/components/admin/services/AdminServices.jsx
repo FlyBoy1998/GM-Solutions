@@ -1,3 +1,5 @@
+import serviceFetchErrorImage from "../../../../public/images/services-fetch-error-image.png";
+
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -11,6 +13,7 @@ import ServiceCard from "./ServiceCard";
 import TopServices from "./TopServices";
 import ServicePerformanceOverview from "./ServicePerformanceOverview";
 import DeleteModal from "../ui/DeleteModal";
+import DataFetchError from "../ui/DataFetchError";
 import ServicesSkeleton from "./ServicesSkeleton";
 
 import { deleteService as deleteServiceApi } from "../../../api/api";
@@ -86,6 +89,16 @@ export default function AdminServices() {
 
         {isLoading ? (
           <ServicesSkeleton />
+        ) : !isLoading && error ? (
+          <div className="col-span-full">
+            <DataFetchError
+              imageSrc={serviceFetchErrorImage}
+              heading="Unable to load services"
+              description="We couldn't load the services at the moment."
+              secondaryDescription="Please check your connection and try again."
+              bgColor="bg-surface"
+            />
+          </div>
         ) : (
           <>
             <div className="col-span-full grid grid-cols-3 gap-3">
