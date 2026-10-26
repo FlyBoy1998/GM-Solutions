@@ -10,7 +10,7 @@ export default function DataFetchError({
         <img src={imageSrc} className="w-full h-full object-cover" alt="" />
       </div>
       <div className="flex flex-col items-center gap-1">
-        <h3 className="heading-sm text-center">{heading}</h3>
+        <h2 className="heading-sm text-center">{heading}</h2>
         <p className="text-center text-sm text-gray-dark">{description}</p>
         <p className="text-center text-sm text-gray-dark mb-4">
           {secondaryDescription}
