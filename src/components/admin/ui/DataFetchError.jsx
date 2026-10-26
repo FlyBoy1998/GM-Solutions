@@ -3,9 +3,12 @@ export default function DataFetchError({
   heading,
   description,
   secondaryDescription,
+  bgColor = "bg-white",
 }) {
   return (
-    <div className="flex flex-col justify-center items-center py-4 px-4 rounded-lg bg-white">
+    <div
+      className={`flex flex-col justify-center items-center py-4 px-4 rounded-lg ${bgColor}`}
+    >
       <div className="w-72 h-54 max-sm:w-46 max-sm:h-46">
         <img src={imageSrc} className="w-full h-full object-cover" alt="" />
       </div>
