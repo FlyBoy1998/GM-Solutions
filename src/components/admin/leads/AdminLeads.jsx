@@ -1,3 +1,5 @@
+import noLeadsCarouselItemsImage from "../../../../public/images/no-leads-carousel-items.png";
+
 import { useContext } from "react";
 import { useNavigate } from "react-router";
 import { Plus } from "lucide-react";
@@ -15,6 +17,7 @@ import LeadsFilters from "./LeadsFilters";
 import LeadsTableSection from "./LeadsTableSection";
 import LeadsCarousel from "./LeadCarousel";
 import LeadsSkeleton from "./LeadsSkeleton";
+import NoCarouselDataPlaceholder from "../ui/NoCarouselDataPlaceholder";
 
 export default function AdminLeads() {
   const navigate = useNavigate();
@@ -68,7 +71,16 @@ export default function AdminLeads() {
             <LeadsMetrics />
             <LeadsFilters />
             <LeadsTableSection leads={leads} error={error} />
-            <LeadsCarousel leads={filteredLeads} />
+            {!leads.length || !filteredLeads.length ? (
+              <NoCarouselDataPlaceholder
+                imageSrc={noLeadsCarouselItemsImage}
+                heading="No leads to display"
+                description="There are no leads available to show in this carousel."
+                secondaryDescription="New customer enquiries will appear here when they arrive. Try adjusting your filters or check back later."
+              />
+            ) : (
+              <LeadsCarousel leads={filteredLeads} />
+            )}
           </>
         )}
       </div>
