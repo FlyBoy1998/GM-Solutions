@@ -1,11 +1,11 @@
-export default function ServiceHighlight({ Icon, title, description }) {
+export default function ServiceHighlight({ item }) {
   return (
     <li className="flex flex-col">
       <div className="self-start mb-3 p-3 rounded-full bg-primary-transparent">
-        {<Icon className="text-white" />}
+        {<item.icon className="text-white" />}
       </div>
-      <h3 className="font-bold">{title}</h3>
-      <p className="text-sm text-gray-dark">{description}</p>
+      <h3 className="font-bold">{item.title}</h3>
+      <p className="text-sm text-gray-dark">{item.description}</p>
     </li>
   );
 }
