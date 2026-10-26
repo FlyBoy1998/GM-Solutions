@@ -5,7 +5,7 @@ export default function LeadsSkeleton() {
   return (
     <>
       <p className="sr-only" role="status">
-        Loading data...
+        Loading leads data...
       </p>
       <div className="col-span-full row-start-2 row-end-5 grid grid-cols-subgrid grid-rows-subgrid gap-4">
         <div className="grid grid-cols-4 col-span-full gap-3 max-xl:grid-cols-2 max-sm:grid-cols-1">
