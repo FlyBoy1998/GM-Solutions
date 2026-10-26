@@ -101,7 +101,7 @@ export default function ProjectFilters() {
           additionalStyling="col-span-2 max-md:col-span-3 max-sm:col-span-full"
         />
       </form>
-      <p className="text-sm max-xl:self-start">
+      <p className="text-sm max-xl:self-center">
         <span className="font-bold">{projectsCount}</span> Projects
       </p>
     </div>
