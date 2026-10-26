@@ -23,25 +23,25 @@ export default function LeadsMetrics() {
       <LeadMetricCard
         title="New Leads"
         value={newLeads}
-        icon={<UsersRound className="text-white" aria-hidden />}
+        icon={UsersRound}
         bgColor="bg-purple-700"
       />
       <LeadMetricCard
         title="Contacted"
         value={contacted}
-        icon={<MessagesSquare className="text-white" aria-hidden />}
+        icon={MessagesSquare}
         bgColor="bg-green-700"
       />
       <LeadMetricCard
         title="Consultations"
         value={consultations}
-        icon={<CalendarCheck className="text-white" aria-hidden />}
+        icon={CalendarCheck}
         bgColor="bg-yellow-500"
       />
       <LeadMetricCard
         title="Converted"
         value={converted}
-        icon={<FolderPlus className="text-white" aria-hidden />}
+        icon={FolderPlus}
         bgColor="bg-blue-600"
       />
     </div>
