@@ -15,9 +15,13 @@ export default function RecentLeads({ leads }) {
         description="View the latest enquiries submitted through your website."
       />
       <div className="flex-1 flex flex-col gap-3">
-        {sortedLeads.slice(0, 3).map((item) => (
-          <LeadItem key={item.id} item={item} />
-        ))}
+        {!leads.length ? (
+          <p className="font-bold">No leads yet</p>
+        ) : (
+          sortedLeads
+            .slice(0, 3)
+            .map((item) => <LeadItem key={item.id} item={item} />)
+        )}
       </div>
     </div>
   );
