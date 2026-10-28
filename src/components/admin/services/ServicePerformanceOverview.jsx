@@ -1,7 +1,7 @@
 import SectionHeader from "../ui/SectionHeader";
 import ServicePerformanceMetric from "./ServicePerformanceMetric";
 
-import { Folder, DollarSign, FolderKanban, TrendingUp } from "lucide-react";
+import { Folder, PoundSterling, FolderKanban, TrendingUp } from "lucide-react";
 
 export default function ServicePerformanceOverview() {
   return (
@@ -19,9 +19,9 @@ export default function ServicePerformanceOverview() {
         />
         <ServicePerformanceMetric
           label="Total Revenue"
-          icon={DollarSign}
+          icon={PoundSterling}
           iconColors="text-green-500 bg-green-100"
-          value="$245,000"
+          value="£245,000"
         />
         <ServicePerformanceMetric
           label="Avg. Project Value"
