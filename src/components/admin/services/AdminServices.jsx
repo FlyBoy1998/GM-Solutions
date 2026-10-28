@@ -6,6 +6,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { Plus } from "lucide-react";
 import useServices from "../../../hooks/useServices";
+import useProjects from "../../../hooks/useProjects";
 
 import CtaButton from "../../../components/ui/CtaButton";
 import PageHeader from "../ui/PageHeader";
@@ -25,7 +26,16 @@ export default function AdminServices() {
   const deleteModalRef = useRef(null);
   const queryClient = useQueryClient();
 
-  const { data: services = [], isLoading, error } = useServices();
+  const {
+    data: services = [],
+    isLoading: isServicesLoading,
+    error,
+  } = useServices();
+  const {
+    data: projects = [],
+    isLoading: isProjectsLoading,
+    error: projectsError,
+  } = useProjects();
 
   const { mutate: deleteService, isPending: isDeleting } = useMutation({
     mutationFn: async ({ serviceId }) => {
@@ -87,9 +97,9 @@ export default function AdminServices() {
           </CtaButton>
         </PageHeader>
 
-        {isLoading ? (
+        {isServicesLoading || isProjectsLoading ? (
           <ServicesSkeleton />
-        ) : !isLoading && error ? (
+        ) : !isServicesLoading && !isProjectsLoading && error ? (
           <div className="col-span-full">
             <DataFetchError
               imageSrc={serviceFetchErrorImage}
@@ -111,7 +121,7 @@ export default function AdminServices() {
               ))}
             </div>
             <TopServices />
-            <ServicePerformanceOverview />
+            <ServicePerformanceOverview projects={projects} />
           </>
         )}
       </div>
