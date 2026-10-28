@@ -6,9 +6,10 @@ import ServicePerformanceMetric from "./ServicePerformanceMetric";
 import {
   calculateAverageProjectValue,
   calculateTotalRevenue,
+  calculateConversionRate,
 } from "../../../api/helpers";
 
-export default function ServicePerformanceOverview({ projects }) {
+export default function ServicePerformanceOverview({ projects, leads }) {
   const projectsCount = projects.length;
 
   const totalRevenue = calculateTotalRevenue(projects);
@@ -24,6 +25,9 @@ export default function ServicePerformanceOverview({ projects }) {
     currency: "GBP",
     maximumFractionDigits: 0,
   }).format(averageProjectValue);
+
+  const conversionRate = calculateConversionRate(leads);
+  const formattedConversionRate = `${conversionRate.toFixed(0)}%`;
 
   return (
     <div className="col-start-1 col-end-3 row-start-3 row-end-4 flex flex-col py-3 px-4 rounded-lg shadow-md bg-white max-lg:col-span-3 max-md:col-span-full">
@@ -54,7 +58,7 @@ export default function ServicePerformanceOverview({ projects }) {
           label="Conversion Rate"
           icon={TrendingUp}
           iconColors="text-red-500 bg-red-100"
-          value="24%"
+          value={formattedConversionRate}
         />
       </div>
     </div>
