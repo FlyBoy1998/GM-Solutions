@@ -352,3 +352,31 @@ export function calculateTotalRevenue(projects = []) {
     return total + (min + max) / 2;
   }, 0);
 }
+
+export function calculateAverageProjectValue(projects = []) {
+  const validValues = projects
+    .map(({ budget_range }) => {
+      if (!budget_range) return null;
+
+      const amounts = budget_range.match(/[\d,]+(?:\.\d+)?/g);
+
+      if (!amounts || amounts.length !== 2) return null;
+
+      const [min, max] = amounts.map((amount) =>
+        Number(amount.replace(/,/g, "")),
+      );
+
+      if (!Number.isFinite(min) || !Number.isFinite(max) || min > max) {
+        return null;
+      }
+
+      return (min + max) / 2;
+    })
+    .filter((value) => value !== null);
+
+  if (validValues.length === 0) return 0;
+
+  return (
+    validValues.reduce((total, value) => total + value, 0) / validValues.length
+  );
+}
