@@ -13,46 +13,26 @@ export default function ServicePerformanceOverview() {
       <div className="flex-1 grid grid-cols-2 gap-2 max-lg:grid-cols-1">
         <ServicePerformanceMetric
           label="Total Projects"
-          icon={
-            <Folder
-              className="p-2 rounded-md text-orange-500 bg-orange-50"
-              size={40}
-              aria-hidden
-            />
-          }
+          icon={Folder}
+          iconColors="text-orange-500 bg-orange-100"
           value={18}
         />
         <ServicePerformanceMetric
           label="Total Revenue"
-          icon={
-            <DollarSign
-              className="p-2 rounded-md text-green-500 bg-green-50"
-              size={40}
-              aria-hidden
-            />
-          }
+          icon={DollarSign}
+          iconColors="text-green-500 bg-green-100"
           value="$245,000"
         />
         <ServicePerformanceMetric
           label="Avg. Project Value"
-          icon={
-            <FolderKanban
-              className="p-2 rounded-md text-blue-500 bg-blue-50"
-              size={40}
-              aria-hidden
-            />
-          }
+          icon={FolderKanban}
+          iconColors="text-blue-500 bg-blue-100"
           value="$13,000"
         />
         <ServicePerformanceMetric
           label="Conversion Rate"
-          icon={
-            <TrendingUp
-              className="p-2 rounded-md text-red-500 bg-red-50"
-              size={40}
-              aria-hidden
-            />
-          }
+          icon={TrendingUp}
+          iconColors="text-red-500 bg-red-100"
           value="24%"
         />
       </div>
