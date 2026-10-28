@@ -331,3 +331,24 @@ export async function getBucketFiles(bucket, type) {
 
   return listFolder();
 }
+
+export function calculateTotalRevenue(projects = []) {
+  return projects.reduce((total, project) => {
+    const range = project.budget_range;
+
+    if (!range) return total;
+
+    const amounts = range.match(/[\d,]+(?:\.\d{1,2})?/g);
+
+    if (!amounts || amounts.length < 2) return total;
+
+    const min = Number(amounts[0].replaceAll(",", ""));
+    const max = Number(amounts[1].replaceAll(",", ""));
+
+    if (!Number.isFinite(min) || !Number.isFinite(max)) {
+      return total;
+    }
+
+    return total + (min + max) / 2;
+  }, 0);
+}
