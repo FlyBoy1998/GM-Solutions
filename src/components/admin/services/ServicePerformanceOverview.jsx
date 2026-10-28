@@ -3,7 +3,10 @@ import { Folder, PoundSterling, FolderKanban, TrendingUp } from "lucide-react";
 import SectionHeader from "../ui/SectionHeader";
 import ServicePerformanceMetric from "./ServicePerformanceMetric";
 
-import { calculateTotalRevenue } from "../../../api/helpers";
+import {
+  calculateAverageProjectValue,
+  calculateTotalRevenue,
+} from "../../../api/helpers";
 
 export default function ServicePerformanceOverview({ projects }) {
   const projectsCount = projects.length;
@@ -14,6 +17,13 @@ export default function ServicePerformanceOverview({ projects }) {
     currency: "GBP",
     maximumFractionDigits: 0,
   }).format(totalRevenue);
+
+  const averageProjectValue = calculateAverageProjectValue(projects);
+  const formattedAverageProjectValue = new Intl.NumberFormat("en-GB", {
+    style: "currency",
+    currency: "GBP",
+    maximumFractionDigits: 0,
+  }).format(averageProjectValue);
 
   return (
     <div className="col-start-1 col-end-3 row-start-3 row-end-4 flex flex-col py-3 px-4 rounded-lg shadow-md bg-white max-lg:col-span-3 max-md:col-span-full">
@@ -38,7 +48,7 @@ export default function ServicePerformanceOverview({ projects }) {
           label="Avg. Project Value"
           icon={FolderKanban}
           iconColors="text-blue-500 bg-blue-100"
-          value="$13,000"
+          value={formattedAverageProjectValue}
         />
         <ServicePerformanceMetric
           label="Conversion Rate"
