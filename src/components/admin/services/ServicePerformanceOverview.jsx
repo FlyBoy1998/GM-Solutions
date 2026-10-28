@@ -1,9 +1,11 @@
+import { Folder, PoundSterling, FolderKanban, TrendingUp } from "lucide-react";
+
 import SectionHeader from "../ui/SectionHeader";
 import ServicePerformanceMetric from "./ServicePerformanceMetric";
 
-import { Folder, PoundSterling, FolderKanban, TrendingUp } from "lucide-react";
+export default function ServicePerformanceOverview({ projects }) {
+  const projectsCount = projects.length;
 
-export default function ServicePerformanceOverview() {
   return (
     <div className="col-start-1 col-end-3 row-start-3 row-end-4 flex flex-col py-3 px-4 rounded-lg shadow-md bg-white max-lg:col-span-3 max-md:col-span-full">
       <SectionHeader
@@ -15,7 +17,7 @@ export default function ServicePerformanceOverview() {
           label="Total Projects"
           icon={Folder}
           iconColors="text-orange-500 bg-orange-100"
-          value={18}
+          value={projectsCount}
         />
         <ServicePerformanceMetric
           label="Total Revenue"
