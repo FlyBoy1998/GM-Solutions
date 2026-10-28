@@ -3,8 +3,17 @@ import { Folder, PoundSterling, FolderKanban, TrendingUp } from "lucide-react";
 import SectionHeader from "../ui/SectionHeader";
 import ServicePerformanceMetric from "./ServicePerformanceMetric";
 
+import { calculateTotalRevenue } from "../../../api/helpers";
+
 export default function ServicePerformanceOverview({ projects }) {
   const projectsCount = projects.length;
+
+  const totalRevenue = calculateTotalRevenue(projects);
+  const formattedRevenue = new Intl.NumberFormat("en-GB", {
+    style: "currency",
+    currency: "GBP",
+    maximumFractionDigits: 0,
+  }).format(totalRevenue);
 
   return (
     <div className="col-start-1 col-end-3 row-start-3 row-end-4 flex flex-col py-3 px-4 rounded-lg shadow-md bg-white max-lg:col-span-3 max-md:col-span-full">
@@ -23,7 +32,7 @@ export default function ServicePerformanceOverview({ projects }) {
           label="Total Revenue"
           icon={PoundSterling}
           iconColors="text-green-500 bg-green-100"
-          value="£245,000"
+          value={formattedRevenue}
         />
         <ServicePerformanceMetric
           label="Avg. Project Value"
