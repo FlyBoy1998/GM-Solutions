@@ -380,3 +380,13 @@ export function calculateAverageProjectValue(projects = []) {
     validValues.reduce((total, value) => total + value, 0) / validValues.length
   );
 }
+
+export function calculateConversionRate(leads = []) {
+  if (leads.length === 0) return 0;
+
+  const convertedLeads = leads.filter(
+    (lead) => lead.status === "converted",
+  ).length;
+
+  return (convertedLeads / leads.length) * 100;
+}
