@@ -1,4 +1,5 @@
-import serviceFetchErrorImage from "../../../../public/images/services-fetch-error-image.png";
+import servicesFetchErrorImage from "../../../../public/images/services-fetch-error-image.png";
+import projectsFetchErrorImage from "../../../../public/images/projects-fetch-error-image.png";
 
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router";
@@ -29,7 +30,7 @@ export default function AdminServices() {
   const {
     data: services = [],
     isLoading: isServicesLoading,
-    error,
+    error: servicesError,
   } = useServices();
   const {
     data: projects = [],
@@ -99,12 +100,22 @@ export default function AdminServices() {
 
         {isServicesLoading || isProjectsLoading ? (
           <ServicesSkeleton />
-        ) : !isServicesLoading && !isProjectsLoading && error ? (
+        ) : !isServicesLoading && !isProjectsLoading && servicesError ? (
           <div className="col-span-full">
             <DataFetchError
-              imageSrc={serviceFetchErrorImage}
+              imageSrc={servicesFetchErrorImage}
               heading="Unable to load services"
               description="We couldn't load the services at the moment."
+              secondaryDescription="Please check your connection and try again."
+              bgColor="bg-surface"
+            />
+          </div>
+        ) : !isServicesLoading && !isProjectsLoading && projectsError ? (
+          <div className="col-span-full">
+            <DataFetchError
+              imageSrc={projectsFetchErrorImage}
+              heading="Unable to load projects"
+              description="We couldn't load the projects at the moment."
               secondaryDescription="Please check your connection and try again."
               bgColor="bg-surface"
             />
