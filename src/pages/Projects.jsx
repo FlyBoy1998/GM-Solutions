@@ -1,14 +1,11 @@
 import { useContext } from "react";
-
 import { ProjectsTabsContext } from "../context/ProjectsTabsContext";
+import useFilteredProjects from "../hooks/useFilteredProjects";
 
 import Main from "../layout/Main";
-
 import ProjectFilters from "../components/projects/ProjectFilters";
 import ProjectsList from "../components/projects/ProjectsList";
 import ProjectsMap from "../components/projects/ProjectsMap";
-
-import useFilteredProjects from "../hooks/useFilteredProjects";
 
 export default function Projects() {
   const { activeTab } = useContext(ProjectsTabsContext);
