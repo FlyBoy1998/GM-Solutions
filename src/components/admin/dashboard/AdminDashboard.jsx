@@ -87,7 +87,10 @@ export default function AdminDashboard() {
         ) : (
           <>
             <DashboardStats />
-            <LatestProjectsTable projects={sortedProjects?.slice(0, 6)} />
+            <LatestProjectsTable
+              projects={sortedProjects?.slice(0, 6)}
+              error={projectsFetchError}
+            />
             <ProjectsCarousel projects={sortedProjects?.slice(0, 6)} />
             <QuickActions />
             <RecentLeads leads={leads} error={leadsFetchError} />
