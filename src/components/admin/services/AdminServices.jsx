@@ -1,5 +1,6 @@
 import servicesFetchErrorImage from "../../../../public/images/services-fetch-error-image.png";
 import projectsFetchErrorImage from "../../../../public/images/projects-fetch-error-image.png";
+import leadsFetchErrorImage from "../../../../public/images/leads-fetch-error-image.png";
 
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router";
@@ -8,6 +9,7 @@ import toast from "react-hot-toast";
 import { Plus } from "lucide-react";
 import useServices from "../../../hooks/useServices";
 import useProjects from "../../../hooks/useProjects";
+import useLeads from "../../../hooks/useLeads";
 
 import CtaButton from "../../../components/ui/CtaButton";
 import PageHeader from "../ui/PageHeader";
@@ -37,6 +39,22 @@ export default function AdminServices() {
     isLoading: isProjectsLoading,
     error: projectsError,
   } = useProjects();
+  const {
+    data: leads = [],
+    isLoading: isLeadsLoading,
+    error: leadsError,
+  } = useLeads();
+
+  const isLoading = isServicesLoading || isProjectsLoading || isLeadsLoading;
+  const isNotLoading =
+    !isServicesLoading && !isProjectsLoading && !isLeadsLoading;
+  const error = servicesError || projectsError || leadsError;
+
+  const imageSource = servicesError
+    ? servicesFetchErrorImage
+    : projectsError
+      ? projectsFetchErrorImage
+      : leadsFetchErrorImage;
 
   const { mutate: deleteService, isPending: isDeleting } = useMutation({
     mutationFn: async ({ serviceId }) => {
@@ -98,24 +116,14 @@ export default function AdminServices() {
           </CtaButton>
         </PageHeader>
 
-        {isServicesLoading || isProjectsLoading ? (
+        {isLoading ? (
           <ServicesSkeleton />
-        ) : !isServicesLoading && !isProjectsLoading && servicesError ? (
+        ) : isNotLoading && error ? (
           <div className="col-span-full">
             <DataFetchError
-              imageSrc={servicesFetchErrorImage}
-              heading="Unable to load services"
-              description="We couldn't load the services at the moment."
-              secondaryDescription="Please check your connection and try again."
-              bgColor="bg-surface"
-            />
-          </div>
-        ) : !isServicesLoading && !isProjectsLoading && projectsError ? (
-          <div className="col-span-full">
-            <DataFetchError
-              imageSrc={projectsFetchErrorImage}
-              heading="Unable to load projects"
-              description="We couldn't load the projects at the moment."
+              imageSrc={imageSource}
+              heading={`Unable to load ${servicesError ? "services" : projectsError ? "projects" : "leads"}`}
+              description={`We couldn't load the ${servicesError ? "services" : projectsError ? "projects" : "leads"} at the moment.`}
               secondaryDescription="Please check your connection and try again."
               bgColor="bg-surface"
             />
@@ -132,7 +140,7 @@ export default function AdminServices() {
               ))}
             </div>
             <TopServices />
-            <ServicePerformanceOverview projects={projects} />
+            <ServicePerformanceOverview projects={projects} leads={leads} />
           </>
         )}
       </div>
