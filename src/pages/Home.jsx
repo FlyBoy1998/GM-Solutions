@@ -24,23 +24,29 @@ export default function Home() {
           excepturi veritatis delectus deleniti ex nulla autem magnam,
           consequatur, error at tempore cumque corporis optio.
         </p>
-        <div className="flex gap-4">
-          <CtaButton
-            Icon={MessageSquare}
-            variant="primary"
-            size="large"
-            onClick={() => navigate("/contact")}
-          >
-            Get a free estimate
-          </CtaButton>
-          <CtaButton
-            Icon={Folders}
-            variant="secondary"
-            size="large"
-            onClick={() => navigate("/projects")}
-          >
-            View our work
-          </CtaButton>
+        <div className="flex gap-4 max-sm:flex-col">
+          <div>
+            <CtaButton
+              Icon={MessageSquare}
+              variant="primary"
+              size="large"
+              isFullWidth
+              onClick={() => navigate("/contact")}
+            >
+              Get a free estimate
+            </CtaButton>
+          </div>
+          <div>
+            <CtaButton
+              Icon={Folders}
+              variant="secondary"
+              size="large"
+              isFullWidth
+              onClick={() => navigate("/projects")}
+            >
+              View our work
+            </CtaButton>
+          </div>
         </div>
         <HeroStatsBar />
       </section>
