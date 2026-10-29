@@ -77,7 +77,7 @@ export default function AdminProjects() {
         </PageHeader>
 
         <ProjectFilters />
-        <ProjectsManagementTable />
+        <ProjectsManagementTable error={error} />
         <ProjectsCarousel projects={filteredProjects} />
         <ProjectsOverview />
         <ProjectsCategories />
