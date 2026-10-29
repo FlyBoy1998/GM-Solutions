@@ -2,6 +2,7 @@ import recentLeadsPlaceholderImage from "../../../../public/images/recent-leads-
 
 import SectionHeader from "../ui/SectionHeader";
 import LeadItem from "./LeadItem";
+import RecentLeadsPlaceholder from "./RecentLeadsPlaceholder";
 
 export default function RecentLeads({ leads = [] }) {
   const sortedLeads = [...leads]?.sort((a, b) => {
@@ -18,19 +19,12 @@ export default function RecentLeads({ leads = [] }) {
       />
       <div className="flex-1 flex flex-col gap-3">
         {!leads.length ? (
-          <div className="flex flex-col justify-center items-center">
-            <div className="h-18 w-18">
-              <img
-                src={recentLeadsPlaceholderImage}
-                className="h-full w-full object-cover"
-                alt="Recent leads placeholder image"
-              />
-            </div>
-            <h3 className="font-bold">No leads yet</h3>
-            <p className="text-center text-xs text-gray-dark">
-              New enquiries from your website will appear here.
-            </p>
-          </div>
+          <RecentLeadsPlaceholder
+            imageSrc={recentLeadsPlaceholderImage}
+            imageAlt="Recent leads placeholder image"
+            heading="No leads yet"
+            description="New enquiries from your website will appear here."
+          />
         ) : (
           sortedLeads
             .slice(0, 3)
