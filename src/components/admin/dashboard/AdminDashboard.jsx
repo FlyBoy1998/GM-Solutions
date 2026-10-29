@@ -26,8 +26,6 @@ export default function AdminDashboard() {
     error: leadsFetchError,
   } = useLeads();
 
-  console.log(leads);
-
   const sortedProjects = projects?.slice().sort((a, b) => {
     const dateA = new Date(a.completion_date);
     const dateB = new Date(b.completion_date);
