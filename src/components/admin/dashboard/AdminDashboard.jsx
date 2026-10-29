@@ -90,7 +90,7 @@ export default function AdminDashboard() {
             <LatestProjectsTable projects={sortedProjects?.slice(0, 6)} />
             <ProjectsCarousel projects={sortedProjects?.slice(0, 6)} />
             <QuickActions />
-            <RecentLeads leads={leads} />
+            <RecentLeads leads={leads} error={leadsFetchError} />
           </>
         )}
       </div>
