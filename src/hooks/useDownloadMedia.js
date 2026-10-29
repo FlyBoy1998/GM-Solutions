@@ -1,7 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-
-import { downloadMediaFile } from "../api/api";
+import { downloadMediaFile } from "../api/mediaApi";
 
 export default function useDownlaodMedia() {
   const { mutate: downloadMedia, isPending: isDownloading } = useMutation({

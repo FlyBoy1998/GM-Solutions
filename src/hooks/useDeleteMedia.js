@@ -1,6 +1,6 @@
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { deleteMedia as deleteMediaApi } from "../api/api";
+import { deleteMedia as deleteMediaApi } from "../api/mediaApi";
 
 export default function useDeleteMedia() {
   const queryClient = useQueryClient();

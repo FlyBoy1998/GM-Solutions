@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getMediaFiles } from "../api/api";
+import { getMediaFiles } from "../api/mediaApi";
 
 export default function useMediaFiles() {
   return useQuery({
