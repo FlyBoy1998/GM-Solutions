@@ -5,5 +5,6 @@ export default function useServices() {
   return useQuery({
     queryKey: ["services"],
     queryFn: getServices,
+    staleTime: 10 * 60 * 1000,
   });
 }
