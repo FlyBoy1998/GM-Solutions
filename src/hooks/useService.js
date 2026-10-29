@@ -6,5 +6,6 @@ export default function useService(serviceId) {
     queryKey: ["service", serviceId],
     queryFn: () => getService(serviceId),
     enabled: Boolean(serviceId),
+    staleTime: 5 * 60 * 1000,
   });
 }
