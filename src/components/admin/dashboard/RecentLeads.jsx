@@ -1,10 +1,11 @@
 import recentLeadsPlaceholderImage from "../../../../public/images/recent-leads-placeholder-image.png";
+import recentLeadsErrorImage from "../../../../public/images/recent-leads-error-image.png";
 
 import SectionHeader from "../ui/SectionHeader";
 import LeadItem from "./LeadItem";
 import RecentLeadsPlaceholder from "./RecentLeadsPlaceholder";
 
-export default function RecentLeads({ leads = [] }) {
+export default function RecentLeads({ leads = [], error = false }) {
   const sortedLeads = [...leads]?.sort((a, b) => {
     const dateA = new Date(a.created_at.split("T")[0]);
     const dateB = new Date(b.created_at.split("T")[0]);
@@ -18,7 +19,14 @@ export default function RecentLeads({ leads = [] }) {
         description="View the latest enquiries submitted through your website."
       />
       <div className="flex-1 flex flex-col gap-3">
-        {!leads.length ? (
+        {error ? (
+          <RecentLeadsPlaceholder
+            imageSrc={recentLeadsErrorImage}
+            imageAlt="Recent leads fetch error image"
+            heading="Unable to load leads."
+            description="We couldn't retrieve your recent enquiries."
+          />
+        ) : !leads.length ? (
           <RecentLeadsPlaceholder
             imageSrc={recentLeadsPlaceholderImage}
             imageAlt="Recent leads placeholder image"
