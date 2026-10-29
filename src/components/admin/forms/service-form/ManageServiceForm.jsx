@@ -4,6 +4,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { X, Plus, Save } from "lucide-react";
+import useService from "../../../../hooks/useService";
 
 import PageHeader from "../../ui/PageHeader";
 import CtaButton from "../../../ui/CtaButton";
@@ -12,8 +13,7 @@ import BasicInformation from "./BasicInformation";
 import ServiceImage from "./ServiceImage";
 import Visibility from "./Visibility";
 
-import useService from "../../../../hooks/useService";
-import { createService, updateService } from "../../../../api/api";
+import { createService, updateService } from "../../../../api/servicesApi";
 
 export default function ManageServiceForm() {
   const navigate = useNavigate();
