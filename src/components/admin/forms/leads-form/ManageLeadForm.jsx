@@ -4,6 +4,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { Plus, Save, X } from "lucide-react";
+import useLead from "../../../../hooks/useLead";
 
 import PageHeader from "../../ui/PageHeader";
 import CtaButton from "../../../ui/CtaButton";
@@ -13,8 +14,7 @@ import Timeline from "./Timeline";
 import AdditionalInformation from "./AdditionalInformation";
 import Tip from "./Tip";
 
-import useLead from "../../../../hooks/useLead";
-import { createLead, updateLead } from "../../../../api/api";
+import { createLead, updateLead } from "../../../../api/leadsApi";
 
 export default function ManageLeadForm() {
   const navigate = useNavigate();
