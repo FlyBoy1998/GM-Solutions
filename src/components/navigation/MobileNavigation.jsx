@@ -1,14 +1,10 @@
 import { useContext } from "react";
 import { NavLink, useNavigate } from "react-router";
-
-import { Phone, Mail } from "lucide-react";
-
+import { Phone, Mail, Shield } from "lucide-react";
+import { MobileNavigationContext } from "../../context/MobileNavigationContext";
 import useNavbarHeight from "../../hooks/useNavbarHeight";
 
 import ContactInfoItem from "../contact/ContactInfoItem";
-
-import { MobileNavigationContext } from "../../context/MobileNavigationContext";
-
 import CtaButton from "../ui/CtaButton";
 
 export default function MobileNavigation() {
@@ -93,6 +89,19 @@ export default function MobileNavigation() {
           secondary="We reply within 24 hours"
         />
       </div>
+      <NavLink
+        onClick={() => setIsMobileMenuOpen(false)}
+        to="/admin"
+        className="nav-link focus-ring flex justify-center items-center justify-self-start gap-2 mt-auto p-4 bg-white text-black"
+        title="Admin Page"
+      >
+        <Shield
+          size={16}
+          strokeWidth={3}
+          aria-label="Admin Page Navigation Link"
+        />
+        <span className="text-lg">Admin Page</span>
+      </NavLink>
     </nav>
   );
 }
