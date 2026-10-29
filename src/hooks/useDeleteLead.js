@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { deleteLead as deleteLeadApi } from "../api/api";
+import { deleteLead as deleteLeadApi } from "../api/leadsApi";
 
 export default function useDeleteLead() {
   const queryClient = useQueryClient();

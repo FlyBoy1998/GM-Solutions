@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getLeads } from "../api/api";
+import { getLeads } from "../api/leadsApi";
 
 export default function useLeads() {
   return useQuery({
