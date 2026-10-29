@@ -4,6 +4,7 @@ import { Plus } from "lucide-react";
 import { AdminProjectsContext } from "../context/AdminProjectsLayout";
 import useProjects from "../../../hooks/useProjects";
 import useDeleteProject from "../../../hooks/useDeleteProject";
+import useProjectsFilters from "../../../hooks/useProjectsFilters";
 
 import PageHeader from "../ui/PageHeader";
 import CtaButton from "../../ui/CtaButton";
@@ -14,7 +15,7 @@ import ProjectsOverview from "./ProjectsOverview";
 import ProjectsCarousel from "../ui/ProjectsCarousel";
 import ProjectModal from "./project-modal/ProjectModal";
 import DeleteModal from "../ui/DeleteModal";
-import useProjectsFilters from "../../../hooks/useProjectsFilters";
+import ProjectsSkeleton from "./ProjectsSkeleton";
 
 export default function AdminProjects() {
   const navigate = useNavigate();
@@ -75,12 +76,17 @@ export default function AdminProjects() {
             Add New Project
           </CtaButton>
         </PageHeader>
-
-        <ProjectFilters />
-        <ProjectsManagementTable error={error} />
-        <ProjectsCarousel projects={filteredProjects} />
-        <ProjectsOverview />
-        <ProjectsCategories />
+        {isLoading ? (
+          <ProjectsSkeleton />
+        ) : (
+          <>
+            <ProjectFilters />
+            <ProjectsManagementTable error={error} />
+            <ProjectsCarousel projects={filteredProjects} />
+            <ProjectsOverview />
+            <ProjectsCategories />
+          </>
+        )}
       </div>
     </>
   );
