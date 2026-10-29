@@ -4,6 +4,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { FormProvider, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { X, Plus, Save } from "lucide-react";
+import useProject from "../../../../hooks/useProject";
 
 import PageHeader from "../../ui/PageHeader";
 import CtaButton from "../../../ui/CtaButton";
@@ -17,9 +18,7 @@ import MaterialsUsed from "./MaterialsUsed";
 import WorkCompleted from "./WorkCompleted";
 import SeoAltText from "./SeoAltText";
 
-import { createProject, updateProject } from "../../../../api/api";
-
-import useProject from "../../../../hooks/useProject";
+import { createProject, updateProject } from "../../../../api/projectsApi";
 
 export default function ManageProjectForm() {
   const navigate = useNavigate();
