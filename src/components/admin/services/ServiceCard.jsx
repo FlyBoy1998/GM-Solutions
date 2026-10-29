@@ -7,7 +7,7 @@ import { Pen, Trash } from "lucide-react";
 import ToggleButton from "../ui/ToggleButton";
 import ServiceCardButton from "./ServiceCardButton";
 
-import { toggleServiceVisibility as toggleServiceVisibilityApi } from "../../../api/api";
+import { toggleServiceVisibility as toggleServiceVisibilityApi } from "../../../api/servicesApi";
 
 export default function ServiceCard({ service, onDelete }) {
   const navigate = useNavigate();
