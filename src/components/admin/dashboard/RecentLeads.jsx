@@ -4,7 +4,7 @@ import SectionHeader from "../ui/SectionHeader";
 import LeadItem from "./LeadItem";
 
 export default function RecentLeads({ leads = [] }) {
-  const sortedLeads = leads?.sort((a, b) => {
+  const sortedLeads = [...leads]?.sort((a, b) => {
     const dateA = new Date(a.created_at.split("T")[0]);
     const dateB = new Date(b.created_at.split("T")[0]);
     return dateB - dateA;
