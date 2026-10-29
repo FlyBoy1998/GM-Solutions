@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getService } from "../api/api";
+import { getService } from "../api/servicesApi";
 
 export default function useService(serviceId) {
   return useQuery({
