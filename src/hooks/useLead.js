@@ -6,5 +6,6 @@ export default function useLead(leadId) {
     queryKey: ["lead", leadId],
     queryFn: () => getLead(leadId),
     enabled: Boolean(leadId),
+    staleTime: 5 * 60 * 1000,
   });
 }
