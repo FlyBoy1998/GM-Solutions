@@ -5,5 +5,6 @@ export default function useMediaFiles() {
   return useQuery({
     queryKey: ["media"],
     queryFn: getMediaFiles,
+    staleTime: 10 * 60 * 1000,
   });
 }
