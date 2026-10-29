@@ -51,10 +51,10 @@ export default function DashboardSkeleton() {
           <Skeleton className="min-h-97.5" />
         </div>
         <div className="col-start-4 col-end-5 row-start-2 row-end-3 flex flex-col rounded-lg shadow-md max-xl:col-start-3 max-xl:col-end-5 max-xl:row-start-4 max-xl:row-end-5 max-sm:col-span-full">
-          <Skeleton className="h-72.25 max-xl:h-61" />
+          <Skeleton className="min-h-72.25 max-xl:min-h-61" />
         </div>
         <div className="col-start-4 col-end-5 row-start-3 row-end-4 flex flex-col rounded-lg shadow-md max-xl:col-start-1 max-xl:col-end-3 max-xl:row-start-4 max-xl:row-end-5 max-sm:col-span-full max-sm:row-start-6 max-sm:row-end-7">
-          <Skeleton className="h-72.5 max-xl:h-61 max-sm:h-51.5" />
+          <Skeleton className="min-h-72.5 max-xl:min-h-61 max-sm:min-h-51.5" />
         </div>
       </div>
     </>
