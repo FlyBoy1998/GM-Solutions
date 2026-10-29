@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getProject } from "../api/api";
+import { getProject } from "../api/projectsApi";
 
 export default function useProject(projectId) {
   return useQuery({
