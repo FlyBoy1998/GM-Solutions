@@ -8,6 +8,7 @@ import Main from "../layout/Main";
 import ProjectFilters from "../components/projects/ProjectFilters";
 import ProjectsList from "../components/projects/ProjectsList";
 import ProjectsMap from "../components/projects/ProjectsMap";
+import PageLoader from "../components/ui/PageLoader";
 
 export default function Projects() {
   const { activeTab } = useContext(ProjectsTabsContext);
@@ -18,14 +19,11 @@ export default function Projects() {
   return (
     <Main>
       {isLoading ? (
-        <div className="nav-offset-height flex justify-center items-center">
-          <div className="max-w-4xl">
-            <p className="sr-only" role="status">
-              Loading projects...
-            </p>
-            <img src={projectsPageLoader} className="w-full object-cover" />
-          </div>
-        </div>
+        <PageLoader
+          imageSrc={projectsPageLoader}
+          message="Loading projects..."
+          className="items-center"
+        />
       ) : (
         <section className="grid grid-cols-[40%_1fr] relative h-full gap-3 rounded-lg max-lg:grid-cols-1 max-lg:gap-0">
           <div
