@@ -1,5 +1,8 @@
+import projectDetailsPageLoader from "../../public//images/project-details-page-loader.gif";
+
 import { useParams, Link } from "react-router";
 import { MapPin, Share2, ArrowLeft } from "lucide-react";
+import useProject from "../hooks/useProject";
 
 import Main from "../layout/Main";
 
@@ -11,8 +14,6 @@ import ProjectImagesGrid from "../components/projects/project-details/ProjectIma
 import ProjectOverviewSection from "../components/projects/project-details/ProjectOverviewSection";
 import CallToActionSection from "../components/ui/CallToActionSection";
 import Footer from "../components/footer/Footer";
-
-import useProject from "../hooks/useProject";
 
 export default function ProjectDetails() {
   const { projectId } = useParams();
@@ -35,50 +36,67 @@ export default function ProjectDetails() {
   return (
     <>
       <Main>
-        <section className="section-pb">
-          <div className="grid grid-cols-[45%_1fr] gap-x-6 max-lg:grid-cols-1">
-            <div className="col-span-2 max-lg:col-span-full">
-              <Link
-                to="/projects"
-                className="cursor-pointer inline-flex items-center self-start gap-1 my-2 p-2 rounded-md text-primary hover:bg-primary-transparent hover:text-white focus-ring transition-all ease-out duration-400"
-              >
-                <ArrowLeft aria-hidden /> <span>Back to Projects</span>
-              </Link>
-            </div>
-            <div className="flex-1 flex flex-col justify-center gap-6 py-8 max-lg:col-span-full">
-              <p className="self-start py-2 px-3 rounded-md text-sm bg-light text-gray-dark">
-                {project.label}
+        {isLoading ? (
+          <div className="nav-offset-height flex justify-center">
+            <div className="max-w-4xl">
+              <p className="sr-only" role="status">
+                Loading project details...
               </p>
-              <h1 className="heading-sm font-bold">{project.title}</h1>
-              <p className="flex items-center gap-1 text-sm text-gray-dark">
-                <MapPin aria-hidden /> <span>{project.address}</span>
-              </p>
-              <p className="text-sm leading-7">{project.description}</p>
-              <ProjectMeta project={project} />
-              <div>
-                <CtaButton variant="primary" Icon={Share2}>
-                  Share Project
-                </CtaButton>
-              </div>
-            </div>
-            <div className="flex-2 rounded-md overflow-hidden max-lg:col-span-full">
               <img
-                src={project.main_image?.storage_path}
-                className="object-cover h-full w-full"
-                alt={project.alt}
-                loading="eager"
-                decoding="async"
+                src={projectDetailsPageLoader}
+                className="w-full object-cover"
+                alt=""
               />
             </div>
           </div>
-        </section>
-        {carouselImagesLength < 8 ? (
-          <ProjectImagesGrid project={project} />
         ) : (
-          <ProjectCarousel project={project} />
+          <>
+            <section className="section-pb">
+              <div className="grid grid-cols-[45%_1fr] gap-x-6 max-lg:grid-cols-1">
+                <div className="col-span-2 max-lg:col-span-full">
+                  <Link
+                    to="/projects"
+                    className="cursor-pointer inline-flex items-center self-start gap-1 my-2 p-2 rounded-md text-primary hover:bg-primary-transparent hover:text-white focus-ring transition-all ease-out duration-400"
+                  >
+                    <ArrowLeft aria-hidden /> <span>Back to Projects</span>
+                  </Link>
+                </div>
+                <div className="flex-1 flex flex-col justify-center gap-6 py-8 max-lg:col-span-full">
+                  <p className="self-start py-2 px-3 rounded-md text-sm bg-light text-gray-dark">
+                    {project.label}
+                  </p>
+                  <h1 className="heading-sm font-bold">{project.title}</h1>
+                  <p className="flex items-center gap-1 text-sm text-gray-dark">
+                    <MapPin aria-hidden /> <span>{project.address}</span>
+                  </p>
+                  <p className="text-sm leading-7">{project.description}</p>
+                  <ProjectMeta project={project} />
+                  <div>
+                    <CtaButton variant="primary" Icon={Share2}>
+                      Share Project
+                    </CtaButton>
+                  </div>
+                </div>
+                <div className="flex-2 rounded-md overflow-hidden max-lg:col-span-full">
+                  <img
+                    src={project.main_image?.storage_path}
+                    className="object-cover h-full w-full"
+                    alt={project.alt}
+                    loading="eager"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+            </section>
+            {carouselImagesLength < 8 ? (
+              <ProjectImagesGrid project={project} />
+            ) : (
+              <ProjectCarousel project={project} />
+            )}
+            <ProjectOverviewSection project={project} />
+            <CallToActionSection />
+          </>
         )}
-        <ProjectOverviewSection project={project} />
-        <CallToActionSection />
       </Main>
       <Footer />
     </>
