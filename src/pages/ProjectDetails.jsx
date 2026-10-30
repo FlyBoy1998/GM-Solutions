@@ -14,6 +14,7 @@ import ProjectImagesGrid from "../components/projects/project-details/ProjectIma
 import ProjectOverviewSection from "../components/projects/project-details/ProjectOverviewSection";
 import CallToActionSection from "../components/ui/CallToActionSection";
 import Footer from "../components/footer/Footer";
+import PageLoader from "../components/ui/PageLoader";
 
 export default function ProjectDetails() {
   const { projectId } = useParams();
@@ -37,18 +38,10 @@ export default function ProjectDetails() {
     <>
       <Main>
         {isLoading ? (
-          <div className="nav-offset-height flex justify-center">
-            <div className="max-w-4xl">
-              <p className="sr-only" role="status">
-                Loading project details...
-              </p>
-              <img
-                src={projectDetailsPageLoader}
-                className="w-full object-cover"
-                alt=""
-              />
-            </div>
-          </div>
+          <PageLoader
+            imageSrc={projectDetailsPageLoader}
+            message="Loading project details..."
+          />
         ) : (
           <>
             <section className="section-pb">
