@@ -1,10 +1,6 @@
-import useServices from "../../hooks/useServices";
-
 import ServiceCard from "./ServiceCard";
 
-export default function CoreServicesSection() {
-  const { data: services = [], isLoading, error } = useServices();
-
+export default function CoreServicesSection({ services }) {
   const visibleServices = services?.filter((service) => service.is_visible);
 
   return (
