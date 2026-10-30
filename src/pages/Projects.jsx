@@ -40,7 +40,7 @@ export default function Projects() {
             <p className="mt-4 text-xs text-gray-dark">
               {filteredProjects.length} projects found
             </p>
-            <ProjectsList />
+            <ProjectsList projects={filteredProjects} />
           </div>
           <div
             className={`nav-offset-height col-span-1 ${activeTab === "map" ? "block" : "hidden"} lg:block`}
