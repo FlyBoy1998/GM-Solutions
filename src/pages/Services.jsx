@@ -9,6 +9,7 @@ import ServiceHighlights from "../components/services/ServiceHighlights";
 import CoreServicesSection from "../components/services/CoreServicesSection";
 import CallToActionSection from "../components/ui/CallToActionSection";
 import Footer from "../components/footer/Footer";
+import PageLoader from "../components/ui/PageLoader";
 
 export default function Services() {
   const { data: services = [], isLoading, error } = useServices();
@@ -17,14 +18,11 @@ export default function Services() {
     <>
       <Main>
         {isLoading ? (
-          <div className="nav-offset-height flex justify-center items-center">
-            <div className="max-w-4xl">
-              <p className="sr-only" role="status">
-                Loading services...
-              </p>
-              <img src={servicesPageLoader} className="w-full object-cover" />
-            </div>
-          </div>
+          <PageLoader
+            imageSrc={servicesPageLoader}
+            message="Loading servicess"
+            className="items-center"
+          />
         ) : (
           <>
             <section className="section-pb grid grid-cols-[45%_1fr] gap-x-6 max-lg:grid-cols-1 max-lg:gap-y-6">
