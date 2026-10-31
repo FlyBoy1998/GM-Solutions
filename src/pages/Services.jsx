@@ -1,5 +1,6 @@
 import servicesMainImg from "../../public/images/services-main.jpg";
 import servicesPageLoader from "../../public/images/services-page-loader.gif";
+import servicesFetchErrorImage from "../../public/images/services-fetch-error-image.png";
 
 import { Folder } from "lucide-react";
 import useServices from "../hooks/useServices";
@@ -10,9 +11,16 @@ import CoreServicesSection from "../components/services/CoreServicesSection";
 import CallToActionSection from "../components/ui/CallToActionSection";
 import Footer from "../components/footer/Footer";
 import PageLoader from "../components/ui/PageLoader";
+import FetchErrorState from "../components/ui/FetchErrorState";
 
 export default function Services() {
-  const { data: services = [], isLoading, error } = useServices();
+  const {
+    data: services = [],
+    isLoading,
+    error,
+    refetch,
+    isFetching,
+  } = useServices();
 
   return (
     <>
@@ -22,6 +30,14 @@ export default function Services() {
             imageSrc={servicesPageLoader}
             message="Loading servicess"
             className="items-center"
+          />
+        ) : !isLoading && error ? (
+          <FetchErrorState
+            imageSrc={servicesFetchErrorImage}
+            heading="We couldn't load services"
+            description="We're having trouble fetching services right now."
+            onRetry={() => refetch()}
+            isRetrying={isFetching}
           />
         ) : (
           <>
