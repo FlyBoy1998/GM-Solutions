@@ -1,4 +1,5 @@
 import projectDetailsPageLoader from "../../public//images/project-details-page-loader.gif";
+import singleProjectFetchErrorImage from "../../public/images/single-project-fetch-error-image.png";
 
 import { useParams, Link } from "react-router";
 import { MapPin, Share2, ArrowLeft } from "lucide-react";
@@ -15,11 +16,18 @@ import ProjectOverviewSection from "../components/projects/project-details/Proje
 import CallToActionSection from "../components/ui/CallToActionSection";
 import Footer from "../components/footer/Footer";
 import PageLoader from "../components/ui/PageLoader";
+import FetchErrorState from "../components/ui/FetchErrorState";
 
 export default function ProjectDetails() {
   const { projectId } = useParams();
 
-  const { data: project = [], isLoading, error } = useProject(projectId);
+  const {
+    data: project = [],
+    isLoading,
+    error,
+    refetch,
+    isFetching,
+  } = useProject(projectId);
 
   const carouselImagesLength = project?.carousel_images?.length;
 
@@ -34,6 +42,7 @@ export default function ProjectDetails() {
     );
   }
 
+  // Create copy link functionality for the share project button
   return (
     <>
       <Main>
@@ -41,6 +50,14 @@ export default function ProjectDetails() {
           <PageLoader
             imageSrc={projectDetailsPageLoader}
             message="Loading project details..."
+          />
+        ) : !isLoading && error ? (
+          <FetchErrorState
+            imageSrc={singleProjectFetchErrorImage}
+            heading="We couldn't load the project details."
+            description="We are having troubles fetching the project details now."
+            onRetry={() => refetch()}
+            isRetrying={isFetching}
           />
         ) : (
           <>
