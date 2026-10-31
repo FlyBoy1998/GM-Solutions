@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 
 import FormField from "../ui/FormField";
 import CtaButton from "../ui/CtaButton";
@@ -10,10 +10,21 @@ import { projectTypeOptions } from "../../constants/data";
 export default function ContactForm() {
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      message: "",
+    },
+  });
+
+  const message = useWatch({
+    control,
+    name: "message",
+    defaultValue: "",
+  });
 
   function onSubmit(data) {
     // ...
@@ -118,6 +129,7 @@ export default function ContactForm() {
             message: "Message must be 3,000 characters or fewer",
           },
         })}
+        messageLength={message.length}
       />
 
       <div className="col-span-full">
