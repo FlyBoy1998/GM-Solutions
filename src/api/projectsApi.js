@@ -361,3 +361,13 @@ export async function deleteProject(projectId, signal) {
     }
   }
 }
+
+export async function copyProjectUrl() {
+  try {
+    await navigator.clipboard.writeText(window.location.href);
+    return true;
+  } catch (error) {
+    console.error("Failed to copy project URL:", error);
+    return false;
+  }
+}
