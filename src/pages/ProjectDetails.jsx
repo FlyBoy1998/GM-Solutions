@@ -3,6 +3,7 @@ import singleProjectFetchErrorImage from "../../public/images/single-project-fet
 
 import { useParams, Link } from "react-router";
 import { MapPin, Share2, ArrowLeft } from "lucide-react";
+import toast from "react-hot-toast";
 import useProject from "../hooks/useProject";
 
 import Main from "../layout/Main";
@@ -18,6 +19,8 @@ import Footer from "../components/footer/Footer";
 import PageLoader from "../components/ui/PageLoader";
 import FetchErrorState from "../components/ui/FetchErrorState";
 
+import { copyProjectUrl } from "../api/projectsApi";
+
 export default function ProjectDetails() {
   const { projectId } = useParams();
 
@@ -31,6 +34,16 @@ export default function ProjectDetails() {
 
   const carouselImagesLength = project?.carousel_images?.length;
 
+  async function handleShareProject() {
+    const success = await copyProjectUrl();
+
+    if (success) {
+      toast.success("Project link copied!");
+    } else {
+      toast.error("Failed to copy project link.");
+    }
+  }
+
   if (!project) {
     return (
       <PageNotFound
@@ -42,7 +55,6 @@ export default function ProjectDetails() {
     );
   }
 
-  // Create copy link functionality for the share project button
   return (
     <>
       <Main>
@@ -82,7 +94,11 @@ export default function ProjectDetails() {
                   <p className="text-sm leading-7">{project.description}</p>
                   <ProjectMeta project={project} />
                   <div>
-                    <CtaButton variant="primary" Icon={Share2}>
+                    <CtaButton
+                      variant="primary"
+                      Icon={Share2}
+                      onClick={handleShareProject}
+                    >
                       Share Project
                     </CtaButton>
                   </div>
