@@ -8,6 +8,7 @@ export default function FormField({
   errors,
   additionalStyling = "",
   icon = null,
+  messageLength = 0,
   required = false,
   ...props
 }) {
@@ -57,6 +58,17 @@ export default function FormField({
         {icon && <div className="form-input-icon-wrapper">{icon}</div>}
         {field}
       </div>
+      {type === "textarea" && (
+        <div className="flex justify-end mt-2">
+          <span
+            className={`text-sm ${
+              messageLength >= 2800 ? "text-orange-700" : "text-gray-500"
+            }`}
+          >
+            {messageLength}/3000
+          </span>
+        </div>
+      )}
       {errors}
     </div>
   );
