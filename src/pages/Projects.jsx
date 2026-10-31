@@ -1,4 +1,6 @@
 import projectsPageLoader from "../../public/images/projects-page-loader.gif";
+import projectsPageErrorImage from "../../public/images/projects-page-error-image.png";
+
 import { useContext } from "react";
 import { ProjectsTabsContext } from "../context/ProjectsTabsContext";
 import useProjects from "../hooks/useProjects";
@@ -9,11 +11,18 @@ import ProjectFilters from "../components/projects/ProjectFilters";
 import ProjectsList from "../components/projects/ProjectsList";
 import ProjectsMap from "../components/projects/ProjectsMap";
 import PageLoader from "../components/ui/PageLoader";
+import FetchErrorState from "../components/ui/FetchErrorState";
 
 export default function Projects() {
   const { activeTab } = useContext(ProjectsTabsContext);
 
-  const { data: projects = [], isLoading, error } = useProjects();
+  const {
+    data: projects = [],
+    isLoading,
+    error,
+    refetch,
+    isFetching,
+  } = useProjects();
   const { filteredProjects } = useFilteredProjects(projects);
 
   return (
@@ -23,6 +32,14 @@ export default function Projects() {
           imageSrc={projectsPageLoader}
           message="Loading projects..."
           className="items-center"
+        />
+      ) : !isLoading && error ? (
+        <FetchErrorState
+          imageSrc={projectsPageErrorImage}
+          heading="We couldn't load the projects"
+          description="We're having trouble fetching our projects right now."
+          onRetry={() => refetch()}
+          isRetrying={isFetching}
         />
       ) : (
         <section className="grid grid-cols-[40%_1fr] relative h-full gap-3 rounded-lg max-lg:grid-cols-1 max-lg:gap-0">
