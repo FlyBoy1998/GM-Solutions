@@ -29,6 +29,10 @@ export default function ContactForm() {
         id="fullName"
         {...register("fullName", {
           required: "Please enter your full name",
+          maxLength: {
+            value: 100,
+            message: "Name must be 100 characters or fewer.",
+          },
         })}
         icon={<User className="text-gray-dark" size={16} aria-hidden />}
         additionalStyling="col-span-1 max-lg:col-span-2"
@@ -49,6 +53,10 @@ export default function ContactForm() {
             value: /^[+\d\s()-]{7,20}$/,
             message: "Please enter a valid phone number.",
           },
+          maxLength: {
+            value: 30,
+            message: "Phone number must be 30 characters or fewer.",
+          },
         })}
         icon={<Phone className="text-gray-dark" size={16} aria-hidden />}
         placeholder="e.g. +44 7123 456789"
@@ -67,6 +75,10 @@ export default function ContactForm() {
           pattern: {
             value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
             message: "Please enter a valid email address.",
+          },
+          maxLength: {
+            value: 254,
+            message: "Email must be 254 characters or fewer",
           },
         })}
         icon={<Mail className="text-gray-dark" size={16} aria-hidden />}
@@ -100,7 +112,12 @@ export default function ContactForm() {
         id="message"
         additionalStyling="col-span-2"
         placeholder="Tell us about your renovation project"
-        {...register("message")}
+        {...register("message", {
+          maxLength: {
+            value: 3000,
+            message: "Message must be 3,000 characters or fewer",
+          },
+        })}
       />
 
       <div className="col-span-full">
