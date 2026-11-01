@@ -19,10 +19,9 @@ export default function Home() {
         </h1>
         <div className="accent-line"></div>
         <p className="section-description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-          laboriosam iste nesciunt blanditiis similique, consequuntur enim
-          excepturi veritatis delectus deleniti ex nulla autem magnam,
-          consequatur, error at tempore cumque corporis optio.
+          From kitchen and bathroom transformations to complete home
+          renovations, GM Solutions delivers quality craftsmanship and
+          thoughtful improvements tailored to your home, lifestyle and budget.
         </p>
         <div className="flex gap-4 max-sm:flex-col">
           <div>
