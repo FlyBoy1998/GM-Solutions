@@ -18,8 +18,8 @@ export default function CtaButton({
   }
   if (variant === "secondary") {
     classes +=
-      " bg-white text-black border-2 border-black hover:bg-gray disabled:bg-gray-light";
-    iconClasses = "text-black";
+      " bg-white text-primary border-2 border-primary hover:text-white hover:bg-primary disabled:bg-primary-transparent";
+    iconClasses = "text-inherit";
   }
   if (variant === "danger") {
     classes +=
