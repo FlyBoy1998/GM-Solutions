@@ -50,11 +50,12 @@ export default function Services() {
                 </h1>
                 <div className="accent-line"></div>
                 <p className="leading-8 mb-6">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Magnam reiciendis doloribus, atque eius est sapiente animi
-                  laboriosam libero non tempora. Vero dolorem dolore, sit ipsam
-                  quo molestiae provident labore esse debitis asperiores magni
-                  optio.
+                  Whether you're updating a single room or reimagining your
+                  entire home, we deliver renovation solutions tailored to your
+                  property and priorities. From the initial planning and
+                  material selection to the finishing touches, we focus on
+                  thoughtful details, quality craftsmanship, and results built
+                  for everyday living.
                 </p>
                 <ServiceHighlights />
               </div>
