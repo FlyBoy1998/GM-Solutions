@@ -23,8 +23,8 @@ export default function CtaButton({
   }
   if (variant === "danger") {
     classes +=
-      " bg-white text-red-500 border-2 border-red-500 hover:bg-red-100 disabled:bg-red-50";
-    iconClasses = "text-red-500";
+      " bg-white text-red-500 border-2 border-red-500 hover:text-white hover:bg-red-500 disabled:bg-red-50";
+    iconClasses = "text-inherit";
   }
   if (isFullWidth) {
     classes += " w-full";
