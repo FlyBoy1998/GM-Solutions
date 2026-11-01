@@ -1,7 +1,6 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 
-import { projects } from "../../../../dummy_data/data";
 import { chartServiceCategories } from "../../../constants/data";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -15,8 +14,8 @@ const options = {
   },
 };
 
-export default function TopServicesChart() {
-  const projectCounts = projects.reduce((counts, project) => {
+export default function TopServicesChart({ projects }) {
+  const projectCounts = projects?.reduce((counts, project) => {
     counts[project.label] = (counts[project.label] || 0) + 1;
 
     return counts;
