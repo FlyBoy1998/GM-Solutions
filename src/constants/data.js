@@ -107,7 +107,7 @@ export const chartServiceCategories = [
     color: "rgb(74, 128, 145)",
   },
   {
-    label: "Full home",
+    label: "Full Home",
     chartLabel: "Full Home Renovation",
     color: "rgb(126, 108, 91)",
   },
