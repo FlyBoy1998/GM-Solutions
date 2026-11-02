@@ -118,7 +118,7 @@ export default function AdminServices() {
                 />
               ))}
             </div>
-            <TopServices />
+            <TopServices projects={projects} />
             <ServicePerformanceOverview projects={projects} leads={leads} />
           </>
         )}
