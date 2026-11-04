@@ -12,6 +12,7 @@ import ProjectsList from "../components/projects/ProjectsList";
 import ProjectsMap from "../components/projects/ProjectsMap";
 import PageLoader from "../components/ui/PageLoader";
 import FetchErrorState from "../components/ui/FetchErrorState";
+import EmptyProjectsState from "../components/projects/EmptyProjectsState";
 
 export default function Projects() {
   const { activeTab } = useContext(ProjectsTabsContext);
@@ -23,6 +24,7 @@ export default function Projects() {
     refetch,
     isFetching,
   } = useProjects();
+
   const { filteredProjects } = useFilteredProjects(projects);
 
   return (
@@ -41,6 +43,8 @@ export default function Projects() {
           onRetry={() => refetch()}
           isRetrying={isFetching}
         />
+      ) : !projects.length ? (
+        <EmptyProjectsState />
       ) : (
         <section className="grid grid-cols-[40%_1fr] relative h-full gap-3 rounded-lg max-lg:grid-cols-1 max-lg:gap-0">
           <div
