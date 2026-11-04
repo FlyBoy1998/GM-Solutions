@@ -35,6 +35,8 @@ export async function logout() {
   const { error } = await supabase.auth.signOut();
 
   if (error) {
-    throw new Error(error.message);
+    throw new Error(
+      error.message || "Something went wrong when trying to log out.",
+    );
   }
 }
