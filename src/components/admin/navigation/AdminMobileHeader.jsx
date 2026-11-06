@@ -1,12 +1,15 @@
-import { useContext } from "react";
-import { NavLink } from "react-router";
-import { AdminMobileNavigationContext } from "../context/AdminMobileNavigationContext";
-
 import logo from "../../../../public/images/gm-solutions-logo-dark.png";
+
+import { useContext } from "react";
+import { NavLink, useLocation } from "react-router";
+import { AdminMobileNavigationContext } from "../context/AdminMobileNavigationContext";
 
 import HamburgerBtn from "../../navigation/HamburgerButton";
 
 export default function AdminMobileHeader() {
+  const location = useLocation();
+  const isLoginPage = location.pathname === "/admin";
+
   const { isOpen, setIsOpen } = useContext(AdminMobileNavigationContext);
 
   return (
@@ -17,10 +20,12 @@ export default function AdminMobileHeader() {
       <NavLink to="/admin" onClick={() => setIsOpen(false)}>
         <img src={logo} className="logo" alt="GM Solutions logo" />
       </NavLink>
-      <HamburgerBtn
-        isOpen={isOpen}
-        onToggle={() => setIsOpen((prev) => !prev)}
-      />
+      {isLoginPage ? null : (
+        <HamburgerBtn
+          isOpen={isOpen}
+          onToggle={() => setIsOpen((prev) => !prev)}
+        />
+      )}
     </header>
   );
 }
