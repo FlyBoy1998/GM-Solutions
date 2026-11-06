@@ -11,6 +11,8 @@ import {
   Hr,
 } from "@react-email/components";
 
+import gmSolutionsEmailLogo from "../../public/images/gm-solutions-email-logo.png";
+
 const colors = {
   navy: "#122033",
   orange: "#B9562B",
@@ -57,7 +59,7 @@ export default function EnquiryConfirmationEmail({ name = "there" }) {
             }}
           >
             <Img
-              src="public-logo-url"
+              src={gmSolutionsEmailLogo}
               alt="GM Solutions"
               width="80"
               height="80"
