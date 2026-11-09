@@ -10,13 +10,13 @@ export async function getMaintenanceStatus() {
     throw new Error("Could not load maintenance status.");
   }
 
-  return data.is_maintenance;
+  return data.is_maintenance_mode;
 }
 
 export async function updateMaintenanceStatus(isMaintenance) {
   const { data, error } = await supabase
     .from("settings")
-    .update({ is_maintenance: isMaintenance })
+    .update({ is_maintenance_mode: isMaintenance })
     .select("is_maintenance_mode")
     .single();
 
@@ -24,5 +24,5 @@ export async function updateMaintenanceStatus(isMaintenance) {
     throw new Error("Could not update maintenance status.");
   }
 
-  return data.is_maintenance;
+  return data.is_maintenance_mode;
 }
