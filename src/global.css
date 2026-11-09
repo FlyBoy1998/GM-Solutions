@@ -200,6 +200,10 @@
   @apply bg-[url('/images/kitchen-bg.jpg')];
 }
 
+@utility maintenance-bg {
+  @apply bg-[url('/images/maintenance-mode-bg-image.png')];
+}
+
 @utility focus-ring {
   @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
   @apply focus-visible:ring-2 focus-visible:ring-primary-transparent;
