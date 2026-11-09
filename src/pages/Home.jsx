@@ -1,8 +1,6 @@
 import { useNavigate } from "react-router";
 import { MessageSquare, Folders } from "lucide-react";
 
-import Main from "../layout/Main";
-
 import HeroStatsBar from "../components/hero/HeroStatsBar";
 import CtaButton from "../components/ui/CtaButton";
 
@@ -10,45 +8,43 @@ export default function Home() {
   const navigate = useNavigate();
 
   return (
-    <Main>
-      <section className="relative flex flex-col justify-center min-h-screen z-10 py-(--nav-height)">
-        <p className="eyebrow">Premium home renovations</p>
-        <h1 className="heading-xl mb-3">
-          Beautiful spaces. <br />
-          Built around you.
-        </h1>
-        <div className="accent-line"></div>
-        <p className="section-description">
-          From kitchen and bathroom transformations to complete home
-          renovations, GM Solutions delivers quality craftsmanship and
-          thoughtful improvements tailored to your home, lifestyle and budget.
-        </p>
-        <div className="flex gap-4 max-sm:flex-col">
-          <div>
-            <CtaButton
-              Icon={MessageSquare}
-              variant="primary"
-              size="large"
-              isFullWidth
-              onClick={() => navigate("/contact")}
-            >
-              Get a free estimate
-            </CtaButton>
-          </div>
-          <div>
-            <CtaButton
-              Icon={Folders}
-              variant="secondary"
-              size="large"
-              isFullWidth
-              onClick={() => navigate("/projects")}
-            >
-              View our work
-            </CtaButton>
-          </div>
+    <section className="relative flex flex-col justify-center min-h-screen z-10 py-(--nav-height)">
+      <p className="eyebrow">Premium home renovations</p>
+      <h1 className="heading-xl mb-3">
+        Beautiful spaces. <br />
+        Built around you.
+      </h1>
+      <div className="accent-line"></div>
+      <p className="section-description">
+        From kitchen and bathroom transformations to complete home renovations,
+        GM Solutions delivers quality craftsmanship and thoughtful improvements
+        tailored to your home, lifestyle and budget.
+      </p>
+      <div className="flex gap-4 max-sm:flex-col">
+        <div>
+          <CtaButton
+            Icon={MessageSquare}
+            variant="primary"
+            size="large"
+            isFullWidth
+            onClick={() => navigate("/contact")}
+          >
+            Get a free estimate
+          </CtaButton>
         </div>
-        <HeroStatsBar />
-      </section>
-    </Main>
+        <div>
+          <CtaButton
+            Icon={Folders}
+            variant="secondary"
+            size="large"
+            isFullWidth
+            onClick={() => navigate("/projects")}
+          >
+            View our work
+          </CtaButton>
+        </div>
+      </div>
+      <HeroStatsBar />
+    </section>
   );
 }

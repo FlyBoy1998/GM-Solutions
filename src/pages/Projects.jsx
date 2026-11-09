@@ -6,7 +6,6 @@ import { ProjectsTabsContext } from "../context/ProjectsTabsContext";
 import useProjects from "../hooks/useProjects";
 import useFilteredProjects from "../hooks/useFilteredProjects";
 
-import Main from "../layout/Main";
 import ProjectFilters from "../components/projects/ProjectFilters";
 import ProjectsList from "../components/projects/ProjectsList";
 import ProjectsMap from "../components/projects/ProjectsMap";
@@ -28,7 +27,7 @@ export default function Projects() {
   const { filteredProjects } = useFilteredProjects(projects);
 
   return (
-    <Main>
+    <>
       {isLoading ? (
         <PageLoader
           imageSrc={projectsPageLoader}
@@ -68,6 +67,6 @@ export default function Projects() {
           </div>
         </section>
       )}
-    </Main>
+    </>
   );
 }

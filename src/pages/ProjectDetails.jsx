@@ -6,8 +6,6 @@ import { MapPin, Share2, ArrowLeft } from "lucide-react";
 import toast from "react-hot-toast";
 import useProject from "../hooks/useProject";
 
-import Main from "../layout/Main";
-
 import PageNotFound from "./PageNotFound";
 import ProjectMeta from "../components/projects/project-details/ProjectMeta";
 import CtaButton from "../components/ui/CtaButton";
@@ -15,7 +13,6 @@ import ProjectCarousel from "../components/projects/project-details/ProjectCarou
 import ProjectImagesGrid from "../components/projects/project-details/ProjectImagesGrid";
 import ProjectOverviewSection from "../components/projects/project-details/ProjectOverviewSection";
 import CallToActionSection from "../components/ui/CallToActionSection";
-import Footer from "../components/footer/Footer";
 import PageLoader from "../components/ui/PageLoader";
 import FetchErrorState from "../components/ui/FetchErrorState";
 
@@ -57,74 +54,71 @@ export default function ProjectDetails() {
 
   return (
     <>
-      <Main>
-        {isLoading ? (
-          <PageLoader
-            imageSrc={projectDetailsPageLoader}
-            message="Loading project details..."
-          />
-        ) : !isLoading && error ? (
-          <FetchErrorState
-            imageSrc={singleProjectFetchErrorImage}
-            heading="We couldn't load the project details."
-            description="We are having troubles fetching the project details now."
-            onRetry={() => refetch()}
-            isRetrying={isFetching}
-          />
-        ) : (
-          <>
-            <section className="section-pb">
-              <div className="grid grid-cols-[45%_1fr] gap-x-6 max-lg:grid-cols-1">
-                <div className="col-span-2 max-lg:col-span-full">
-                  <Link
-                    to="/projects"
-                    className="cursor-pointer inline-flex items-center self-start gap-1 my-2 p-2 rounded-md text-primary hover:bg-primary-transparent hover:text-white focus-ring transition-all ease-out duration-400"
+      {isLoading ? (
+        <PageLoader
+          imageSrc={projectDetailsPageLoader}
+          message="Loading project details..."
+        />
+      ) : !isLoading && error ? (
+        <FetchErrorState
+          imageSrc={singleProjectFetchErrorImage}
+          heading="We couldn't load the project details."
+          description="We are having troubles fetching the project details now."
+          onRetry={() => refetch()}
+          isRetrying={isFetching}
+        />
+      ) : (
+        <>
+          <section className="section-pb">
+            <div className="grid grid-cols-[45%_1fr] gap-x-6 max-lg:grid-cols-1">
+              <div className="col-span-2 max-lg:col-span-full">
+                <Link
+                  to="/projects"
+                  className="cursor-pointer inline-flex items-center self-start gap-1 my-2 p-2 rounded-md text-primary hover:bg-primary-transparent hover:text-white focus-ring transition-all ease-out duration-400"
+                >
+                  <ArrowLeft aria-hidden /> <span>Back to Projects</span>
+                </Link>
+              </div>
+              <div className="flex-1 flex flex-col justify-center gap-6 py-8 max-lg:col-span-full">
+                <p className="self-start py-2 px-3 rounded-md text-sm bg-light text-gray-dark">
+                  {project.label}
+                </p>
+                <h1 className="heading-sm font-bold">{project.title}</h1>
+                <p className="flex items-center gap-1 text-sm text-gray-dark">
+                  <MapPin aria-hidden /> <span>{project.address}</span>
+                </p>
+                <p className="text-sm leading-7">{project.description}</p>
+                <ProjectMeta project={project} />
+                <div>
+                  <CtaButton
+                    variant="primary"
+                    Icon={Share2}
+                    onClick={handleShareProject}
                   >
-                    <ArrowLeft aria-hidden /> <span>Back to Projects</span>
-                  </Link>
-                </div>
-                <div className="flex-1 flex flex-col justify-center gap-6 py-8 max-lg:col-span-full">
-                  <p className="self-start py-2 px-3 rounded-md text-sm bg-light text-gray-dark">
-                    {project.label}
-                  </p>
-                  <h1 className="heading-sm font-bold">{project.title}</h1>
-                  <p className="flex items-center gap-1 text-sm text-gray-dark">
-                    <MapPin aria-hidden /> <span>{project.address}</span>
-                  </p>
-                  <p className="text-sm leading-7">{project.description}</p>
-                  <ProjectMeta project={project} />
-                  <div>
-                    <CtaButton
-                      variant="primary"
-                      Icon={Share2}
-                      onClick={handleShareProject}
-                    >
-                      Share Project
-                    </CtaButton>
-                  </div>
-                </div>
-                <div className="flex-2 rounded-md overflow-hidden max-lg:col-span-full">
-                  <img
-                    src={project.main_image?.storage_path}
-                    className="object-cover h-full w-full"
-                    alt={project.alt}
-                    loading="eager"
-                    decoding="async"
-                  />
+                    Share Project
+                  </CtaButton>
                 </div>
               </div>
-            </section>
-            {carouselImagesLength < 8 ? (
-              <ProjectImagesGrid project={project} />
-            ) : (
-              <ProjectCarousel project={project} />
-            )}
-            <ProjectOverviewSection project={project} />
-            <CallToActionSection />
-          </>
-        )}
-      </Main>
-      <Footer />
+              <div className="flex-2 rounded-md overflow-hidden max-lg:col-span-full">
+                <img
+                  src={project.main_image?.storage_path}
+                  className="object-cover h-full w-full"
+                  alt={project.alt}
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
+            </div>
+          </section>
+          {carouselImagesLength < 8 ? (
+            <ProjectImagesGrid project={project} />
+          ) : (
+            <ProjectCarousel project={project} />
+          )}
+          <ProjectOverviewSection project={project} />
+          <CallToActionSection />
+        </>
+      )}
     </>
   );
 }
