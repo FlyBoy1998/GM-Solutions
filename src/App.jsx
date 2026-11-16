@@ -13,6 +13,7 @@ import AdminLeadsLayout from "./components/admin/context/AdminLeadsLayout";
 
 import ProtectedRoute from "./components/authentication/ProtectedRoute";
 
+import MaintenanceGate from "./layout/MaintenanceGate";
 import RootLayout from "./layout/RootLayout";
 import Admin from "./pages/Admin";
 import AdminLogin from "./components/admin/auth/AdminLogin";
@@ -41,11 +42,16 @@ const router = createBrowserRouter([
     path: "/",
     errorElement: <PageNotFound />,
     children: [
-      { index: true, element: <Home /> },
-      { element: <Services />, path: "services" },
-      { element: <Projects />, path: "projects" },
-      { element: <ProjectDetails />, path: "projects/:projectId" },
-      { element: <Contact />, path: "contact" },
+      {
+        element: <MaintenanceGate />,
+        children: [
+          { index: true, element: <Home /> },
+          { path: "services", element: <Services /> },
+          { path: "projects", element: <Projects /> },
+          { path: "projects/:projectId", element: <ProjectDetails /> },
+          { path: "contact", element: <Contact /> },
+        ],
+      },
     ],
   },
   {
