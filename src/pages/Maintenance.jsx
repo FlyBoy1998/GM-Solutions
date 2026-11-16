@@ -1,3 +1,5 @@
+import MaintenanceBenefit from "../components/maintenance/MaintenanceBenefit";
+
 export default function Maintenance() {
   return (
     <section className="relative flex flex-col justify-center min-h-screen z-10 py-(--nav-height)">
@@ -11,6 +13,7 @@ export default function Maintenance() {
         Our website is undergoing maintenance to bring you a better and more
         reliable experience. Thank you for your patience and support.
       </p>
+      <MaintenanceBenefit />
     </section>
   );
 }
