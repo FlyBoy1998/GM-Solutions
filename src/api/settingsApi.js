@@ -21,7 +21,7 @@ export async function updateMaintenanceStatus(isMaintenance) {
     .single();
 
   if (error) {
-    throw new Error("Could not update maintenance status.");
+    throw new Error(error.message || "Could not update maintenance status.");
   }
 
   return data.is_maintenance_mode;
