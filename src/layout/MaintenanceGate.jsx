@@ -1,6 +1,6 @@
 import houseConstructionLoader from "../../public/images/house-construction-loader.gif";
 
-import { Outlet } from "react-router";
+import { useLocation, Outlet, Navigate } from "react-router";
 import useMaintenanceStatus from "../hooks/useMaintenanceStatus";
 
 import PageLoader from "../components/ui/PageLoader";
@@ -8,6 +8,8 @@ import FetchErrorState from "../components/ui/FetchErrorState";
 import Maintenance from "../pages/Maintenance";
 
 export default function MaintenanceGate() {
+  const location = useLocation();
+
   const {
     data: isMaintenance = false,
     isLoading,
@@ -25,6 +27,10 @@ export default function MaintenanceGate() {
   }
 
   if (isMaintenance) {
+    if (location.pathname !== "/") {
+      return <Navigate to="/" replace />;
+    }
+
     return <Maintenance />;
   }
 
