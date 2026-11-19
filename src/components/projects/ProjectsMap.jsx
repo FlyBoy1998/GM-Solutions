@@ -13,7 +13,7 @@ import ProjectMarker from "./ProjectMarker";
 import useProjects from "../../hooks/useProjects";
 
 export default function ProjectsMap() {
-  const { data: projects, isLoading, error } = useProjects();
+  const { data: projects } = useProjects();
   const { filteredProjects } = useFilteredProjects(projects);
 
   return (
