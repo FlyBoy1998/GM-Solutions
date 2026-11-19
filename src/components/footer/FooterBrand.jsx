@@ -1,4 +1,4 @@
-import logo from "../../../public/images/gm-solutions-logo-dark.png";
+import logo from "/images/gm-solutions-logo-dark.png";
 
 export default function FooterBrand() {
   return (
@@ -12,8 +12,9 @@ export default function FooterBrand() {
         />
       </div>
       <p className="w-[70%] text-sm text-white max-sm:w-full">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima
-        laudantium adipisci laborum distinctio.
+        GM Solutions provides professional property improvement and renovation
+        services helping transform spaces with thoughtful planning and attention
+        to detail.
       </p>
     </div>
   );
