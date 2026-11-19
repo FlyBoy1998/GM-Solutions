@@ -17,12 +17,13 @@ export async function updateMaintenanceStatus(isMaintenance) {
   const { data, error } = await supabase
     .from("settings")
     .update({ is_maintenance_mode: isMaintenance })
+    .eq("id", 1)
     .select("is_maintenance_mode")
     .single();
 
   if (error) {
-    throw new Error(error.message || "Could not update maintenance status.");
+    throw new Error(error.message);
   }
 
-  return data.is_maintenance_mode;
+  return data.is_maintenance;
 }
