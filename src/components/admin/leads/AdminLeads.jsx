@@ -1,4 +1,4 @@
-import noLeadsCarouselItemsImage from "../../../../public/images/no-leads-carousel-items.png";
+import noLeadsCarouselItemsImage from "/images/no-leads-carousel-items.png";
 
 import { useContext } from "react";
 import { useNavigate } from "react-router";

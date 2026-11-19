@@ -1,6 +1,6 @@
-import noLeadsImage from "../../../../public//images/no-leads-image.png";
-import noMatchingLeadsImage from "../../../../public/images/no-matching-leads.png";
-import leadsFetchErrorImage from "../../../../public/images/leads-fetch-error-image.png";
+import noLeadsImage from "/images/no-leads-image.png";
+import noMatchingLeadsImage from "/images/no-matching-leads.png";
+import leadsFetchErrorImage from "/images/leads-fetch-error-image.png";
 
 import useLeadsFilters from "../../../hooks/useLeadsFilters";
 import usePagination from "../../../hooks/usePagination";

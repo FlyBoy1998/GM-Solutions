@@ -1,6 +1,6 @@
-import servicesFetchErrorImage from "../../../../public/images/services-fetch-error-image.png";
-import projectsFetchErrorImage from "../../../../public/images/projects-fetch-error-image.png";
-import leadsFetchErrorImage from "../../../../public/images/leads-fetch-error-image.png";
+import servicesFetchErrorImage from "/images/services-fetch-error-image.png";
+import projectsFetchErrorImage from "/images/projects-fetch-error-image.png";
+import leadsFetchErrorImage from "/images/leads-fetch-error-image.png";
 
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router";

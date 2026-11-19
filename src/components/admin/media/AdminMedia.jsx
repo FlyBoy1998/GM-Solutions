@@ -1,6 +1,6 @@
-import noMediaImage from "../../../../public/images/no-media-image.png";
-import noMatchingMedia from "../../../../public/images/no-matching-media.png";
-import mediaFetchErrorImage from "../../../../public/images/media-fetch-error-image.png";
+import noMediaImage from "/images/no-media-image.png";
+import noMatchingMedia from "/images/no-matching-media.png";
+import mediaFetchErrorImage from "/images/media-fetch-error-image.png";
 
 import { useContext } from "react";
 import { Upload } from "lucide-react";

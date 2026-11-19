@@ -1,4 +1,4 @@
-import renovationPlanningIllustration from "../../../public/images/renovation-planning-illustration.png";
+import renovationPlanningIllustration from "/images/renovation-planning-illustration.png";
 
 export default function EmptyProjectsState() {
   return (

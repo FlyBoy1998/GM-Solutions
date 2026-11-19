@@ -1,6 +1,6 @@
-import noProjectsImage from "../../../../public/images/no-projects-image.png";
-import noMatchingProjectsImage from "../../../../public/images/no-matching-projects.png";
-import projectsFetchErrorImage from "../../../../public/images/projects-fetch-error-image.png";
+import noProjectsImage from "/images/no-projects-image.png";
+import noMatchingProjectsImage from "/images/no-matching-projects.png";
+import projectsFetchErrorImage from "/images/projects-fetch-error-image.png";
 
 import ProjectsTable from "../ui/ProjectsTable";
 import Pagination from "../ui/Pagination";

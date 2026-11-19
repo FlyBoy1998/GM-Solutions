@@ -1,5 +1,5 @@
-import projectDetailsPageLoader from "../../public//images/project-details-page-loader.gif";
-import singleProjectFetchErrorImage from "../../public/images/single-project-fetch-error-image.png";
+import projectDetailsPageLoader from "/images/project-details-page-loader.gif";
+import singleProjectFetchErrorImage from "/images/single-project-fetch-error-image.png";
 
 import { useParams, Link } from "react-router";
 import { MapPin, Share2, ArrowLeft } from "lucide-react";

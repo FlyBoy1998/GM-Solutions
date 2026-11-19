@@ -1,5 +1,5 @@
-import recentLeadsPlaceholderImage from "../../../../public/images/recent-leads-placeholder-image.png";
-import recentLeadsErrorImage from "../../../../public/images/recent-leads-error-image.png";
+import recentLeadsPlaceholderImage from "/images/recent-leads-placeholder-image.png";
+import recentLeadsErrorImage from "/images/recent-leads-error-image.png";
 
 import SectionHeader from "../ui/SectionHeader";
 import LeadItem from "./LeadItem";

@@ -1,5 +1,5 @@
-import projectsPageLoader from "../../public/images/projects-page-loader.gif";
-import projectsPageErrorImage from "../../public/images/projects-page-error-image.png";
+import projectsPageLoader from "/images/projects-page-loader.gif";
+import projectsPageErrorImage from "/images/projects-page-error-image.png";
 
 import { useContext } from "react";
 import { ProjectsTabsContext } from "../context/ProjectsTabsContext";

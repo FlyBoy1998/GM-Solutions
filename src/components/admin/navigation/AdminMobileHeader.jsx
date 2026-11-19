@@ -1,4 +1,4 @@
-import logo from "../../../../public/images/gm-solutions-logo-dark.png";
+import logo from "/images/gm-solutions-logo-dark.png";
 
 import { useContext } from "react";
 import { NavLink, useLocation } from "react-router";

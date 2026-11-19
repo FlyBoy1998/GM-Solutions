@@ -1,5 +1,5 @@
-import noProjectsImage from "../../../../public/images/no-projects-image.png";
-import projectsFetchErrorImage from "../../../../public/images/projects-fetch-error-image.png";
+import noProjectsImage from "/images/no-projects-image.png";
+import projectsFetchErrorImage from "/images/projects-fetch-error-image.png";
 
 import SectionHeader from "../ui/SectionHeader";
 import ProjectsTable from "../ui/ProjectsTable";

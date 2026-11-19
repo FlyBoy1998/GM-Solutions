@@ -1,6 +1,6 @@
-import servicesMainImg from "../../public/images/services-main.jpg";
-import servicesPageLoader from "../../public/images/services-page-loader.gif";
-import servicesFetchErrorImage from "../../public/images/services-fetch-error-image.png";
+import servicesMainImg from "/images/services-main.jpg";
+import servicesPageLoader from "/images/services-page-loader.gif";
+import servicesFetchErrorImage from "/images/services-fetch-error-image.png";
 
 import { Folder } from "lucide-react";
 import useServices from "../hooks/useServices";

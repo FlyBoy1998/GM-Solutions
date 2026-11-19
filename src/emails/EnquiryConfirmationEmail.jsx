@@ -11,7 +11,7 @@ import {
   Hr,
 } from "@react-email/components";
 
-import gmSolutionsEmailLogo from "../../public/images/gm-solutions-email-logo.png";
+import gmSolutionsEmailLogo from "/images/gm-solutions-email-logo.png";
 
 const colors = {
   navy: "#122033",

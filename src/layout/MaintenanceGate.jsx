@@ -1,4 +1,4 @@
-import houseConstructionLoader from "../../public/images/house-construction-loader.gif";
+import houseConstructionLoader from "/images/house-construction-loader.gif";
 
 import { useLocation, Outlet, Navigate } from "react-router";
 import useMaintenanceStatus from "../hooks/useMaintenanceStatus";
