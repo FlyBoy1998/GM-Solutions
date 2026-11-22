@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { NavLink } from "react-router";
 import {
   House,
   Folder,
@@ -7,6 +8,7 @@ import {
   Users,
   Settings,
   LogOut,
+  Navigation,
 } from "lucide-react";
 
 import { AdminMobileNavigationContext } from "../context/AdminMobileNavigationContext";
@@ -106,9 +108,23 @@ export default function AdminMobileNavigation() {
           </ul>
 
           <div className="flex flex-col gap-2 mt-auto p-2">
+            <NavLink
+              to="/"
+              className="flex items-center gap-4 rounded-lg font-bold bg-blue-950"
+              onClick={() => setIsOpen(false)}
+            >
+              <Navigation
+                size={42}
+                strokeWidth={3}
+                className="p-3 text-white"
+                aria-hidden
+              />
+              <span className="text-white max-sm:text-sm">View Website</span>
+            </NavLink>
             <button
               className="cursor-pointer flex items-center gap-4 rounded-lg font-bold"
               onClick={handleLogout}
+              disabled={isLoading}
             >
               <LogOut
                 size={42}
