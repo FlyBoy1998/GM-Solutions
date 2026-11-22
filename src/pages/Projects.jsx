@@ -63,7 +63,7 @@ export default function Projects() {
           <div
             className={`nav-offset-height col-span-1 ${activeTab === "map" ? "block" : "hidden"} lg:block`}
           >
-            <ProjectsMap />
+            <ProjectsMap activeTab={activeTab} />
           </div>
         </section>
       )}
