@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { NavLink, useNavigate } from "react-router";
-import { Phone, Mail, Shield } from "lucide-react";
+import { Phone, Mail, Shield, Home, Toolbox, Folder } from "lucide-react";
 import { MobileNavigationContext } from "../../context/MobileNavigationContext";
 import useNavbarHeight from "../../hooks/useNavbarHeight";
 
+import NavigationLink from "./NavigationLink";
 import ContactInfoItem from "../contact/ContactInfoItem";
 import CtaButton from "../ui/CtaButton";
 
@@ -26,48 +27,41 @@ export default function MobileNavigation() {
     >
       <ul className="flex flex-col gap-6 list-none">
         <li>
-          <NavLink
+          <NavigationLink
             onClick={() => setIsMobileMenuOpen(false)}
             to="/"
-            className={({ isActive }) =>
-              `mobile-nav-link focus-ring ${isActive ? "border-b border-primary" : ""}`
-            }
+            icon={Home}
           >
             Home
-          </NavLink>
+          </NavigationLink>
         </li>
+
         <li>
-          <NavLink
+          <NavigationLink
             onClick={() => setIsMobileMenuOpen(false)}
             to="/services"
-            className={({ isActive }) =>
-              `mobile-nav-link focus-ring ${isActive ? "border-b border-primary" : ""}`
-            }
+            icon={Toolbox}
           >
             Services
-          </NavLink>
+          </NavigationLink>
         </li>
         <li>
-          <NavLink
+          <NavigationLink
             onClick={() => setIsMobileMenuOpen(false)}
             to="/projects"
-            className={({ isActive }) =>
-              `mobile-nav-link focus-ring ${isActive ? "border-b border-primary" : ""}`
-            }
+            icon={Folder}
           >
             Projects
-          </NavLink>
+          </NavigationLink>
         </li>
         <li>
-          <NavLink
+          <NavigationLink
             onClick={() => setIsMobileMenuOpen(false)}
             to="/contact"
-            className={({ isActive }) =>
-              `mobile-nav-link focus-ring ${isActive ? "border-b border-primary" : ""}`
-            }
+            icon={Phone}
           >
             Contact
-          </NavLink>
+          </NavigationLink>
         </li>
         <li>
           <CtaButton variant="primary" onClick={handleClick}>
