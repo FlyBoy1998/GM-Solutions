@@ -17,7 +17,7 @@ export default function MediaCarousel({ mediaFiles }) {
           ))}
         </div>
       </div>
-      <div className="relative flex gap-2 justify-between z-1000">
+      <div className="relative flex gap-2 justify-between">
         <CarouselPrevButton
           onClick={() => emblaApi?.scrollPrev()}
           disabled={buttons.prev}
