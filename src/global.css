@@ -259,7 +259,7 @@
 }
 
 @utility mobile-nav-link {
-  @apply block p-3 text-xl font-bold rounded-md focus-ring;
+  @apply flex justify-between items-center p-3 border-s-4 font-bold rounded-md focus-ring;
 }
 
 @utility admin-nav-link {
