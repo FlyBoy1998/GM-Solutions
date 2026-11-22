@@ -1,6 +1,14 @@
 import { useContext } from "react";
 import { NavLink, useNavigate } from "react-router";
-import { Phone, Mail, Shield, Home, Toolbox, Folder } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  Shield,
+  Home,
+  Toolbox,
+  Folder,
+  MessageCircle,
+} from "lucide-react";
 import { MobileNavigationContext } from "../../context/MobileNavigationContext";
 import useNavbarHeight from "../../hooks/useNavbarHeight";
 
@@ -64,7 +72,11 @@ export default function MobileNavigation() {
           </NavigationLink>
         </li>
         <li>
-          <CtaButton variant="primary" onClick={handleClick}>
+          <CtaButton
+            variant="primary"
+            Icon={MessageCircle}
+            onClick={handleClick}
+          >
             Get a Quote
           </CtaButton>
         </li>
