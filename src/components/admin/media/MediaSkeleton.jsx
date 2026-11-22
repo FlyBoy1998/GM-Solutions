@@ -11,7 +11,7 @@ export default function MediaSkeleton() {
         <Skeleton className="w-17.5 h-5" />
       </div>
       <div className="flex flex-col col-span-full row-start-3 row-end-4 p-3 rounded-lg shadow-lg bg-white">
-        <div className="flex-1 grid grid-cols-3 gap-4">
+        <div className="flex-1 grid grid-cols-3 gap-4 max-sm:hidden">
           {Array.from({ length: 6 }).map((_, index) => (
             <Skeleton
               key={index}
@@ -19,7 +19,8 @@ export default function MediaSkeleton() {
             />
           ))}
         </div>
-        <div className="flex items-center justify-center mt-auto py-4 border-t border-slate-200">
+        <Skeleton className="hidden col-span-full min-h-96 max-sm:block" />
+        <div className="flex items-center justify-center mt-auto py-4 border-t border-slate-200 max-sm:hidden">
           <Skeleton className="min-w-82 min-h-10" />
         </div>
       </div>
